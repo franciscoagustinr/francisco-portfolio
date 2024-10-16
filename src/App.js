@@ -1,8 +1,8 @@
-import { Scene } from "./Scene";
+import { Scene } from "./components/Scene";
 
 function App() {
   return (
-    <div className="h-screen bg-[#282c34] text-white min-h-screen">
+    <div className="h-screen">
       <Scene />
     </div>
   );
