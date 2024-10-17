@@ -1,3 +1,4 @@
+import { useFBX } from "@react-three/drei";
 import React from "react";
 
 export const ChineseHat = ({ nodes, materials }) => (
@@ -294,3 +295,18 @@ export const CowboyHat = ({ nodes, materials }) => (
     </group>
   </>
 );
+
+export const BatmanHat = () => {
+  const batmanHat = useFBX("./batman-hat.fbx");
+  return (
+    <>
+      <primitive
+        object={batmanHat}
+        dispose={null}
+        scale={0.00045}
+        position={[0, 2.07, 0.15]}
+        rotation={[-0.1, 3.2, 0]}
+      />
+    </>
+  );
+};
