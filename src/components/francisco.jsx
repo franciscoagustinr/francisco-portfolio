@@ -30,9 +30,7 @@ export function Francisco(props) {
   const hatNames = Object.keys(hats); // Obtener los nombres de los sombreros
 
   const handleAvatarClick = () => {
-    setTimeout(() => {
-      setCurrentHatIndex((prevIndex) => (prevIndex + 1) % hatNames.length);
-    }, 800);
+    setCurrentHatIndex((prevIndex) => (prevIndex + 1) % hatNames.length);
 
     setIsExploding(true);
     setClicked(true);
@@ -50,7 +48,7 @@ export function Francisco(props) {
 
   const { scale, position, rotation } = useSpring({
     scale: clicked ? [0.95, 0.95, 0.95] : [1, 1, 1],
-    position: clicked ? [0, 0, -1] : [0, 0, 0],
+    position: clicked ? [0, 0, -0.5] : [0, 0, 0],
     // rotation: clicked ? [-0.18, 0, 0] : [0, 0, 0],
     rotation: clicked
       ? [-0.18, 0, 0]
