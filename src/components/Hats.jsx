@@ -1,5 +1,5 @@
 import { useFBX } from "@react-three/drei";
-import React from "react";
+import React, { useMemo } from "react";
 
 export const ChineseHat = ({ nodes, materials }) => (
   <>
@@ -304,9 +304,24 @@ export const BatmanHat = () => {
         object={batmanHat}
         dispose={null}
         scale={0.00045}
-        position={[0, 2.07, 0.15]}
+        position={[0, 2.035, 0.13]}
         rotation={[-0.1, 3.2, 0]}
       />
     </>
+  );
+};
+
+export const useHats = (nodes, materials) => {
+  return useMemo(
+    () => ({
+      NoneHat: null,
+      ChineseHat: <ChineseHat nodes={nodes} materials={materials} />,
+      MickeyHat: <MickeyHat nodes={nodes} materials={materials} />,
+      SharkHat: <SharkHat nodes={nodes} materials={materials} />,
+      OktopusHat: <OktopusHat nodes={nodes} materials={materials} />,
+      CowboyHat: <CowboyHat nodes={nodes} materials={materials} />,
+      BatmanHat: <BatmanHat />,
+    }),
+    [nodes, materials]
   );
 };

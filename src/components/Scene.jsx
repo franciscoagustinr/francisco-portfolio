@@ -2,15 +2,10 @@ import React, { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Avatar } from "./Avatar";
 import {
-  Center,
   ContactShadows,
   Environment,
   Float,
-  MeshTransmissionMaterial,
-  OrbitControls,
   PresentationControls,
-  RenderTexture,
-  Text3D,
 } from "@react-three/drei";
 
 export const Scene = () => {

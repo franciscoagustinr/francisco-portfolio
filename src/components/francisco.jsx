@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Html, useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import {
@@ -8,6 +8,7 @@ import {
   MickeyHat,
   OktopusHat,
   SharkHat,
+  useHats,
 } from "./Hats";
 import ConfettiExplosion from "react-confetti-explosion";
 import { useSpring, animated } from "@react-spring/three";
@@ -21,6 +22,31 @@ export function Francisco(props) {
   const [clicked, setClicked] = useState(false);
   const [isShaking, setIsShaking] = useState(false);
   const influences = objectRef?.current?.morphTargetInfluences;
+  const [isBlinking, setIsBlinking] = useState(false);
+  const blinkStartTime = useRef(0);
+  const BLINK_DURATION = 0.15; // Duración de cierre y apertura de ojos
+  const BLINK_INTERVAL = useRef(Math.random() * 5 + 3); // Tiempo entre parpadeos
+  const hats = useHats(nodes, materials);
+  const hatNames = Object.keys(hats); // Obtener los nombres de los sombreros
+
+  const handleAvatarClick = () => {
+    setTimeout(() => {
+      setCurrentHatIndex((prevIndex) => (prevIndex + 1) % hatNames.length);
+    }, 800);
+
+    setIsExploding(true);
+    setClicked(true);
+    influences[0] = 1;
+    influences[1] = 1;
+    setTimeout(() => {
+      setIsExploding(false);
+      setClicked(false);
+    }, 800);
+    setTimeout(() => {
+      influences[0] = 0;
+      influences[1] = 0;
+    }, 800);
+  };
 
   const { scale, position, rotation } = useSpring({
     scale: clicked ? [0.95, 0.95, 0.95] : [1, 1, 1],
@@ -38,8 +64,6 @@ export function Francisco(props) {
         setIsShaking(true); // Iniciar sacudida de cabeza
         setTimeout(() => setIsShaking(false), 1000); // Detener sacudida después de 1 segundo
       }
-      influences[0] = 0;
-      influences[1] = 0;
     },
   });
 
@@ -47,22 +71,17 @@ export function Francisco(props) {
     document.body.style.cursor = hovered ? "pointer" : "auto";
   }, [hovered]);
 
-  const [isBlinking, setIsBlinking] = useState(false);
-  const blinkStartTime = useRef(0);
-  const blinkDuration = 0.15; // Duración de cierre y apertura de ojos
-  const blinkInterval = useRef(Math.random() * 5 + 3); // Tiempo entre parpadeos
-
   useFrame((state) => {
     const time = state.clock.getElapsedTime();
-
+    if (clicked) return;
     if (objectRef.current) {
       // Si el parpadeo ha comenzado
       if (isBlinking) {
         const elapsedBlinkTime = time - blinkStartTime.current;
 
-        if (elapsedBlinkTime < blinkDuration) {
+        if (elapsedBlinkTime < BLINK_DURATION) {
           // Fase de cierre de ojos
-          const blinkProgress = elapsedBlinkTime / blinkDuration;
+          const blinkProgress = elapsedBlinkTime / BLINK_DURATION;
           influences[0] = Math.sin(Math.PI * blinkProgress); // Suaviza el cierre
           influences[1] = Math.sin(Math.PI * blinkProgress);
         } else {
@@ -70,59 +89,15 @@ export function Francisco(props) {
           influences[0] = 0;
           influences[1] = 0;
           setIsBlinking(false);
-          blinkInterval.current = Math.random() * 5 + 3; // Próximo parpadeo entre 3 y 8 segundos
+          BLINK_INTERVAL.current = Math.random() * 5 + 3; // Próximo parpadeo entre 3 y 8 segundos
         }
-      } else if (time - blinkStartTime.current > blinkInterval.current) {
+      } else if (time - blinkStartTime.current > BLINK_INTERVAL.current) {
         // Comienza un nuevo parpadeo
         setIsBlinking(true);
         blinkStartTime.current = time;
       }
     }
   });
-
-  const hatsArr = [
-    { name: "None", component: null },
-    {
-      name: "Chinese Hat",
-      component: <ChineseHat nodes={nodes} materials={materials} />,
-    },
-    {
-      name: "Mickey Hat",
-      component: <MickeyHat nodes={nodes} materials={materials} />,
-    },
-    {
-      name: "Shark Hat",
-      component: <SharkHat nodes={nodes} materials={materials} />,
-    },
-    {
-      name: "Oktopus Hat",
-      component: <OktopusHat nodes={nodes} materials={materials} />,
-    },
-    {
-      name: "Cowboy Hat",
-      component: <CowboyHat nodes={nodes} materials={materials} />,
-    },
-    {
-      name: "Batman Hat",
-      component: <BatmanHat />,
-    },
-  ];
-
-  const handleAvatarClick = () => {
-    // setCurrentHatIndex((prevIndex) => (prevIndex + 1) % hatsArr.length);
-    setTimeout(() => {
-      setCurrentHatIndex((prevIndex) => (prevIndex + 1) % hatsArr.length);
-    }, 800);
-
-    setIsExploding(true);
-    setClicked(true);
-    influences[0] = 1;
-    influences[1] = 1;
-    setTimeout(() => {
-      setIsExploding(false);
-      setClicked(false);
-    }, 800);
-  };
 
   return (
     <animated.group scale={scale} position={position} rotation={rotation}>
@@ -133,9 +108,7 @@ export function Francisco(props) {
         onPointerOver={() => setHovered(true)}
         onPointerOut={() => setHovered(false)}
       >
-        {hatsArr[currentHatIndex].component && (
-          <group>{hatsArr[currentHatIndex].component} </group>
-        )}
+        {hats[hatNames[currentHatIndex]]}
         {isExploding && (
           <Html position={[0, 2.5, 0]}>
             <div className="absolute !inset-0">
