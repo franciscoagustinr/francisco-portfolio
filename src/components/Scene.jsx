@@ -13,7 +13,7 @@ export const Scene = () => {
     <Canvas dpr={[1.5, 2]} className="bg-[rgb(53,190,214)]">
       <Suspense fallback={null}>
         <ambientLight intensity={1} position={[0, 0, 0]} />
-        <pointLight intensity={1} position={[0, 0, 0]} />
+        {/* <pointLight intensity={1} position={[0, 0, 0]} /> */}
         <Environment preset="warehouse" />
         {/* <OrbitControls /> */}
         <Float

@@ -8,6 +8,7 @@ import { useSpring, animated } from "@react-spring/three";
 export function Francisco(props) {
   const { nodes, materials } = useGLTF("/F-model7.glb");
   const objectRef = useRef();
+  const avatarRef = useRef();
   const [currentHatIndex, setCurrentHatIndex] = useState(0);
   const [isExploding, setIsExploding] = useState(false);
   const [hovered, setHovered] = useState(false);
@@ -64,6 +65,45 @@ export function Francisco(props) {
   useFrame((state) => {
     const time = state.clock.getElapsedTime();
     if (clicked) return;
+
+    // const cursorX = state.pointer.x;
+    // const cursorY = state.pointer.y;
+
+    // // Convertir las coordenadas del cursor a ángulos de rotación
+    // const lookAtX = (cursorX * Math.PI) / 5; // Ajusta el factor de escala si es necesario
+    // const lookAtY = (cursorY * Math.PI) / 20;
+
+    // // Aplicar rotación a la cabeza (asumiendo que la cabeza es el objeto que quieres mover)
+    // if (avatarRef.current) {
+    //   avatarRef.current.rotation.x = lookAtY; // Rotación en el eje X
+    //   avatarRef.current.rotation.y = lookAtX; // Rotación en el eje Y
+    // }
+    const { pointer } = state;
+    const cursorX = pointer.x; // X normalizado entre -1 y 1
+    const cursorY = pointer.y; // Y normalizado entre -1 y 1
+
+    // Convertir las coordenadas del cursor a ángulos de rotación
+    const lookAtX = (cursorX * Math.PI) / 5; // Eje Y
+    const lookAtY = (cursorY * Math.PI) / -10; // Eje X
+
+    // Suavizar la rotación
+    if (avatarRef.current) {
+      avatarRef.current.rotation.y +=
+        (lookAtX - avatarRef.current.rotation.y) * 0.1; // Interpolación suave
+      avatarRef.current.rotation.x +=
+        (lookAtY - avatarRef.current.rotation.x) * 0.3; // Interpolación suave
+
+      // Limitar la rotación en el eje Y para evitar que gire demasiado
+      avatarRef.current.rotation.x = Math.max(
+        -Math.PI / 4,
+        Math.min(Math.PI / 4, avatarRef.current.rotation.x)
+      ); // Limitar rotación hacia arriba y abajo
+      avatarRef.current.rotation.y = Math.max(
+        -Math.PI / 2,
+        Math.min(Math.PI / 2, avatarRef.current.rotation.y)
+      ); // Limitar rotación hacia los lados
+    }
+
     if (objectRef.current) {
       // Si el parpadeo ha comenzado
       if (isBlinking) {
@@ -93,6 +133,7 @@ export function Francisco(props) {
     <animated.group scale={scale} position={position} rotation={rotation}>
       <group
         {...props}
+        ref={avatarRef}
         dispose={null}
         onClick={handleAvatarClick}
         onPointerOver={() => setHovered(true)}
