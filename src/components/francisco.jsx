@@ -1,15 +1,7 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Html, useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import {
-  BatmanHat,
-  ChineseHat,
-  CowboyHat,
-  MickeyHat,
-  OktopusHat,
-  SharkHat,
-  useHats,
-} from "./Hats";
+import { useHats } from "./Hats";
 import ConfettiExplosion from "react-confetti-explosion";
 import { useSpring, animated } from "@react-spring/three";
 
