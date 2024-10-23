@@ -66,24 +66,14 @@ export function Francisco(props) {
     const time = state.clock.getElapsedTime();
     if (clicked) return;
 
-    // const cursorX = state.pointer.x;
-    // const cursorY = state.pointer.y;
-
-    // // Convertir las coordenadas del cursor a ángulos de rotación
-    // const lookAtX = (cursorX * Math.PI) / 5; // Ajusta el factor de escala si es necesario
-    // const lookAtY = (cursorY * Math.PI) / 20;
-
-    // // Aplicar rotación a la cabeza (asumiendo que la cabeza es el objeto que quieres mover)
-    // if (avatarRef.current) {
-    //   avatarRef.current.rotation.x = lookAtY; // Rotación en el eje X
-    //   avatarRef.current.rotation.y = lookAtX; // Rotación en el eje Y
-    // }
     const { pointer } = state;
     const cursorX = pointer.x; // X normalizado entre -1 y 1
     const cursorY = pointer.y; // Y normalizado entre -1 y 1
 
-    // Convertir las coordenadas del cursor a ángulos de rotación
-    const lookAtX = (cursorX * Math.PI) / 5; // Eje Y
+    // follow cursor
+    // const lookAtX = (cursorX * Math.PI) / 8; // Eje Y
+    // const lookAtY = (cursorY * Math.PI) / -50; // Eje X
+    const lookAtX = (cursorX * Math.PI) / 7; // Eje Y
     const lookAtY = (cursorY * Math.PI) / -10; // Eje X
 
     // Suavizar la rotación

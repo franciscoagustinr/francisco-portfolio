@@ -2,6 +2,7 @@ import React, { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Avatar } from "./Avatar";
 import {
+  Center,
   ContactShadows,
   Environment,
   Float,
@@ -17,10 +18,10 @@ export const Scene = () => {
         <Environment preset="warehouse" />
         {/* <OrbitControls /> */}
         <Float
-          speed={3}
+          speed={5}
           rotationIntensity={0.2}
           floatIntensity={1}
-          floatingRange={[1, 1.5]}
+          floatingRange={[1, 1.2]}
         >
           <PresentationControls
             config={{ mass: 1, tension: 500 }}
@@ -29,7 +30,9 @@ export const Scene = () => {
             azimuth={[-1, Math.PI / 2]}
             cursor={false}
           >
-            <Avatar />
+            <Center position={[0, -1, 0]}>
+              <Avatar />
+            </Center>
           </PresentationControls>
         </Float>
         <ContactShadows
