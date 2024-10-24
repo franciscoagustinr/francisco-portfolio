@@ -8,15 +8,21 @@ import {
   Float,
   PresentationControls,
 } from "@react-three/drei";
+import { TextTitle } from "./Text";
 
 export const Scene = () => {
   return (
     <Canvas dpr={[1.5, 2]} className="bg-[rgb(53,190,214)]">
       <Suspense fallback={null}>
         <ambientLight intensity={1} position={[0, 0, 0]} />
-        {/* <pointLight intensity={1} position={[0, 0, 0]} /> */}
         <Environment preset="warehouse" />
-        {/* <OrbitControls /> */}
+        <ContactShadows
+          position={[0, -1.55, 0]}
+          opacity={0.75}
+          scale={10}
+          blur={3}
+          far={4}
+        />
         <Float
           speed={5}
           rotationIntensity={0.2}
@@ -30,18 +36,13 @@ export const Scene = () => {
             azimuth={[-1, Math.PI / 2]}
             cursor={false}
           >
-            <Center position={[0, -1, 0]}>
+            <Center position={[0, -1, 1]}>
               <Avatar />
             </Center>
           </PresentationControls>
         </Float>
-        <ContactShadows
-          position={[0, -1.4, 0]}
-          opacity={0.75}
-          scale={10}
-          blur={3}
-          far={4}
-        />
+
+        <TextTitle />
       </Suspense>
     </Canvas>
   );

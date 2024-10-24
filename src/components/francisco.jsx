@@ -48,7 +48,7 @@ export function Francisco(props) {
       : // : isShaking
         // ? [0, 0.2, 0] // TODO: hacer la animación de sacudida de cabeza
         [0, 0, 0],
-    config: { tension: 250, friction: 14 },
+    config: { tension: 250, friction: 20 },
     onRest: () => {
       if (clicked) {
         setClicked(false); // Resetear clic después de la animación
@@ -71,10 +71,8 @@ export function Francisco(props) {
     const cursorY = pointer.y; // Y normalizado entre -1 y 1
 
     // follow cursor
-    // const lookAtX = (cursorX * Math.PI) / 8; // Eje Y
-    // const lookAtY = (cursorY * Math.PI) / -50; // Eje X
     const lookAtX = (cursorX * Math.PI) / 7; // Eje Y
-    const lookAtY = (cursorY * Math.PI) / -10; // Eje X
+    const lookAtY = (cursorY * Math.PI) / -30; // Eje X
 
     // Suavizar la rotación
     if (avatarRef.current) {
@@ -84,14 +82,14 @@ export function Francisco(props) {
         (lookAtY - avatarRef.current.rotation.x) * 0.3; // Interpolación suave
 
       // Limitar la rotación en el eje Y para evitar que gire demasiado
-      avatarRef.current.rotation.x = Math.max(
-        -Math.PI / 4,
-        Math.min(Math.PI / 4, avatarRef.current.rotation.x)
-      ); // Limitar rotación hacia arriba y abajo
-      avatarRef.current.rotation.y = Math.max(
-        -Math.PI / 2,
-        Math.min(Math.PI / 2, avatarRef.current.rotation.y)
-      ); // Limitar rotación hacia los lados
+      // avatarRef.current.rotation.x = Math.max(
+      //   -Math.PI / 2, //abajo
+      //   Math.min(Math.PI / 4, avatarRef.current.rotation.x) //arriba
+      // ); // Limitar rotación hacia arriba y abajo
+      // avatarRef.current.rotation.y = Math.max(
+      //   -Math.PI / 2,
+      //   Math.min(Math.PI / 2, avatarRef.current.rotation.y)
+      // ); // Limitar rotación hacia los lados
     }
 
     if (objectRef.current) {
