@@ -4,10 +4,11 @@
 
 @font-face {
   font-family: "Karla";
-  src: url("/Users/portinos/Desktop/francisco/francisco/public/fonts/Karla-Regular.ttf")
-    format("ttf");
-  font-weight: 300;
-  font-style: normal;
+  src: url("../public/fonts/Karla-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../public/fonts/Inter.ttf") format("truetype");
 }
 
 @keyframes marquee {
@@ -37,8 +38,6 @@
 .dialog_box:before {
   border-width: 8px;
 }
-
-/*Arrow pointing LEFT*/
 .dialog_box.left:after,
 .dialog_box.left:before {
   right: 100%;
