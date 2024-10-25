@@ -3,6 +3,7 @@ import { DialogBox } from "./components/dialog-box";
 import { Marquee } from "./components/marquee-freelance";
 import { RRSS } from "./components/RRSS";
 import { Scene } from "./components/Scene";
+import WeatherData from "./components/Weather";
 
 function App() {
   const [dialogText, setDialogText] = useState(null);
@@ -13,6 +14,7 @@ function App() {
       <Scene />
       <RRSS setDialogText={setDialogText} />
       {dialogText && <DialogBox text={dialogText} />}
+      <WeatherData />
     </div>
   );
 }
