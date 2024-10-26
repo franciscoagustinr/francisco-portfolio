@@ -59,7 +59,7 @@ export function Francisco(props) {
   });
 
   useEffect(() => {
-    document.body.style.cursor = hovered ? "pointer" : "auto";
+    document.body.style.cursor = hovered ? "pointer " : "auto";
   }, [hovered]);
 
   useFrame((state) => {

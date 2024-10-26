@@ -4,17 +4,19 @@ import { Marquee } from "./components/marquee-freelance";
 import { RRSS } from "./components/RRSS";
 import { Scene } from "./components/Scene";
 import WeatherData from "./components/Weather";
+import { Coffee } from "./components/coffee";
 
 function App() {
   const [dialogText, setDialogText] = useState(null);
 
   return (
-    <div className="h-screen">
+    <div className="h-screen bg-[rgb(53,190,214)]">
       <Marquee />
       <Scene />
       <RRSS setDialogText={setDialogText} />
+      <Coffee setDialogText={setDialogText} />
       {dialogText && <DialogBox text={dialogText} />}
-      <WeatherData />
+      <WeatherData setDialogText={setDialogText} />
     </div>
   );
 }

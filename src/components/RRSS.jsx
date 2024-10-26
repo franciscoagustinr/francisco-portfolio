@@ -9,7 +9,7 @@ export const RRSS = ({ setDialogText }) => {
         <img
           src={GithubLogo}
           alt="github-logo"
-          className="w-12 h-auto cursor-pointer hover:rotate-12 transition-all duration-100"
+          className="reflection w-12 h-auto cursor-pointer hover:rotate-12 transition-all duration-100"
           onClick={() => {
             window.open("https://github.com/franciscoagustinr", "_blank");
           }}
