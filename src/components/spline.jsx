@@ -15,9 +15,9 @@ export function SplineModels(props) {
       splineModelsRef.current.position.y = cursorY * 0.05; // Movimiento en el eje Y
 
       // Rotación en los ejes X e Y basada en cursorX y cursorY
-      splineModelsRef.current.rotation.x = (cursorY * 0.01) / 2;
-      splineModelsRef.current.rotation.y = (cursorX * 0.01) / 2;
-      splineModelsRef.current.rotation.z = (cursorX * 0.01) / 2;
+      splineModelsRef.current.rotation.x = cursorY * 0.01;
+      splineModelsRef.current.rotation.y = cursorX * 0.01;
+      splineModelsRef.current.rotation.z = cursorX * 0.01;
     }
   });
 
