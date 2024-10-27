@@ -315,12 +315,20 @@ export const useHats = (nodes, materials) => {
   return useMemo(
     () => ({
       NoneHat: null,
-      ChineseHat: <ChineseHat nodes={nodes} materials={materials} />,
-      MickeyHat: <MickeyHat nodes={nodes} materials={materials} />,
-      SharkHat: <SharkHat nodes={nodes} materials={materials} />,
-      OktopusHat: <OktopusHat nodes={nodes} materials={materials} />,
-      CowboyHat: <CowboyHat nodes={nodes} materials={materials} />,
-      BatmanHat: <BatmanHat />,
+      ChineseHat: (
+        <ChineseHat nodes={nodes} materials={materials} dispose={null} />
+      ),
+      MickeyHat: (
+        <MickeyHat nodes={nodes} materials={materials} dispose={null} />
+      ),
+      SharkHat: <SharkHat nodes={nodes} materials={materials} dispose={null} />,
+      OktopusHat: (
+        <OktopusHat nodes={nodes} materials={materials} dispose={null} />
+      ),
+      CowboyHat: (
+        <CowboyHat nodes={nodes} materials={materials} dispose={null} />
+      ),
+      BatmanHat: <BatmanHat dispose={null} />,
     }),
     [nodes, materials]
   );

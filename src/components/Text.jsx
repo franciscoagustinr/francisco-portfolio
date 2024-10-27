@@ -5,8 +5,8 @@ export const TextTitle = () => {
   return (
     <>
       <Text
-        position={[0, 1.4, -1]}
-        fontSize={2.4}
+        position={[0, 1.65, -2]}
+        fontSize={2.8}
         letterSpacing={-0.025}
         color="black"
         font="./fonts/Anton-Regular.ttf"
@@ -15,8 +15,8 @@ export const TextTitle = () => {
         FRANCISCO
       </Text>
       <Text
-        position={[0, -0.8, -1]}
-        fontSize={2.4}
+        position={[0, -1, -2]}
+        fontSize={2.8}
         letterSpacing={-0.025}
         color="black"
         font="./fonts/Anton-Regular.ttf"

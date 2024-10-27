@@ -41,7 +41,7 @@ export function Francisco(props) {
 
   const { scale, position, rotation } = useSpring({
     scale: clicked ? [0.95, 0.95, 0.95] : [1, 1, 1],
-    position: clicked ? [0, 0, -0.5] : [0, 0, 0],
+    position: clicked ? [0, 0, -0.05] : [0, 0, 0],
     // rotation: clicked ? [-0.18, 0, 0] : [0, 0, 0],
     rotation: clicked
       ? [-0.18, 0, 0]

@@ -10,6 +10,7 @@ import {
 } from "@react-three/drei";
 import { TextTitle } from "./Text";
 import { Francisco } from "./francisco";
+import { SplineModels } from "./spline";
 
 export const Scene = () => {
   return (
@@ -17,18 +18,19 @@ export const Scene = () => {
       <Suspense fallback={null}>
         <ambientLight intensity={1} position={[0, 0, 0]} />
         <Environment preset="warehouse" />
+        <SplineModels />
         <ContactShadows
-          position={[0, -1.55, 0]}
-          opacity={0.75}
-          scale={10}
-          blur={3}
-          far={4}
+          position={[0, -1.55, 0.15]}
+          opacity={0.35}
+          scale={3}
+          blur={6}
+          far={10}
         />
         <Float
           speed={5}
           rotationIntensity={0.2}
           floatIntensity={0.9}
-          floatingRange={[1, 1.2]}
+          floatingRange={[1, 1.1]}
         >
           <PresentationControls
             config={{ mass: 1, tension: 500 }}
