@@ -1,5 +1,5 @@
 import { useFBX } from "@react-three/drei";
-import React, { Suspense, useMemo } from "react";
+import React, { useMemo } from "react";
 
 export const ChineseHat = ({ nodes, materials }) => (
   <>
@@ -315,36 +315,12 @@ export const useHats = (nodes, materials) => {
   return useMemo(
     () => ({
       NoneHat: null,
-      ChineseHat: (
-        <Suspense fallback={null}>
-          <ChineseHat nodes={nodes} materials={materials} />
-        </Suspense>
-      ),
-      MickeyHat: (
-        <Suspense fallback={null}>
-          <MickeyHat nodes={nodes} materials={materials} />
-        </Suspense>
-      ),
-      SharkHat: (
-        <Suspense fallback={null}>
-          <SharkHat nodes={nodes} materials={materials} />
-        </Suspense>
-      ),
-      OktopusHat: (
-        <Suspense fallback={null}>
-          <OktopusHat nodes={nodes} materials={materials} />
-        </Suspense>
-      ),
-      CowboyHat: (
-        <Suspense fallback={null}>
-          <CowboyHat nodes={nodes} materials={materials} />
-        </Suspense>
-      ),
-      BatmanHat: (
-        <Suspense fallback={null}>
-          <BatmanHat />
-        </Suspense>
-      ),
+      ChineseHat: <ChineseHat nodes={nodes} materials={materials} />,
+      MickeyHat: <MickeyHat nodes={nodes} materials={materials} />,
+      SharkHat: <SharkHat nodes={nodes} materials={materials} />,
+      OktopusHat: <OktopusHat nodes={nodes} materials={materials} />,
+      CowboyHat: <CowboyHat nodes={nodes} materials={materials} />,
+      BatmanHat: <BatmanHat />,
     }),
     [nodes, materials]
   );

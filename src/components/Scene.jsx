@@ -6,7 +6,6 @@ import {
   ContactShadows,
   Environment,
   Float,
-  Preload,
   PresentationControls,
 } from "@react-three/drei";
 import { TextTitle } from "./Text";
@@ -16,7 +15,6 @@ export const Scene = () => {
   return (
     <Canvas dpr={[1.5, 2]} className="bg-[rgb(53,190,214)]">
       <Suspense fallback={null}>
-        <Preload all />
         <ambientLight intensity={1} position={[0, 0, 0]} />
         <Environment preset="warehouse" />
         <ContactShadows
@@ -39,9 +37,9 @@ export const Scene = () => {
             azimuth={[-0.2, 0.2]}
             cursor={false}
           >
-            <Center position={[0.2, -1, 1]}>
-              <mesh position={[-0.2, -4, 0]}>
-                <Francisco scale={1.5} />
+            <Center position={[0, -1, 1]}>
+              <mesh position={[-0.2, -4, 0]} scale={1.5}>
+                <Francisco />
               </mesh>
             </Center>
           </PresentationControls>
