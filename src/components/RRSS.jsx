@@ -1,6 +1,7 @@
 import React from "react";
 import GithubLogo from "../assets/github.png";
 import LinkedinLogo from "../assets/linkedin.png";
+// import MailLogo from "../assets/mail1.png";
 
 export const RRSS = ({ setDialogText }) => {
   return (
@@ -34,6 +35,21 @@ export const RRSS = ({ setDialogText }) => {
           onMouseLeave={() => setDialogText("")}
         />
       </div>
+      {/* <img
+        src={MailLogo}
+        alt="github-logo"
+        className="absolute left-3 top-4 w-16 h-auto cursor-pointer hover:rotate-12 transition-all duration-100 "
+        onClick={() => {
+          window.open(
+            "https://www.linkedin.com/in/franciscoagustinr/",
+            "_blank"
+          );
+        }}
+        onMouseEnter={() =>
+          setDialogText("Where opportunities and connections bloom 🌱")
+        }
+        onMouseLeave={() => setDialogText("")}
+      /> */}
     </>
   );
 };

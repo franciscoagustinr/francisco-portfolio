@@ -5,6 +5,7 @@ import { RRSS } from "./components/RRSS";
 import { Scene } from "./components/Scene";
 import WeatherData from "./components/Weather";
 import { Coffee } from "./components/coffee";
+import { About } from "./components/about";
 
 function App() {
   const [dialogText, setDialogText] = useState(null);
@@ -12,6 +13,7 @@ function App() {
   return (
     <div className="h-screen bg-[rgb(53,190,214)]">
       <Marquee />
+      <About setDialogText={setDialogText} />
       <Scene />
       <RRSS setDialogText={setDialogText} />
       <Coffee setDialogText={setDialogText} />

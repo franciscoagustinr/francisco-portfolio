@@ -11,8 +11,8 @@ export function SplineModels(props) {
     const cursorX = pointer.x; // X normalizado entre -1 y 1
     const cursorY = pointer.y; // Y normalizado entre -1 y 1
     if (splineModelsRef.current) {
-      splineModelsRef.current.position.x = cursorX * 0.05; // Movimiento en el eje X
-      splineModelsRef.current.position.y = cursorY * 0.05; // Movimiento en el eje Y
+      splineModelsRef.current.position.x = cursorX * -0.05; // Movimiento en el eje X
+      splineModelsRef.current.position.y = cursorY * -0.05; // Movimiento en el eje Y
 
       // Rotación en los ejes X e Y basada en cursorX y cursorY
       splineModelsRef.current.rotation.x = cursorY * 0.01;
@@ -23,7 +23,7 @@ export function SplineModels(props) {
 
   return (
     <group dispose={null}>
-      <group ref={splineModelsRef} scale={0.01}>
+      <group ref={splineModelsRef} scale={0.0075}>
         <mesh
           geometry={nodes.Torus_5.geometry}
           material={nodes.Torus_5.material}

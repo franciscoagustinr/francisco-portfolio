@@ -24,7 +24,7 @@ export const TextTitle = () => {
       >
         AGUSTIN
       </Text>
-      <Text
+      {/* <Text
         position={[-3.1, 2.67, -1]}
         fontSize={0.4}
         letterSpacing={0.01}
@@ -34,7 +34,7 @@ export const TextTitle = () => {
         rotation={[0, 0, 0]}
       >
         freelance dev
-      </Text>
+      </Text> */}
     </>
   );
 };
