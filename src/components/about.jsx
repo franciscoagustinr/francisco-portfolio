@@ -4,12 +4,12 @@ import FranciscoFunPhoto from "../assets/617883fc59767869-sticker.png";
 
 export const About = ({ setDialogText }) => {
   return (
-    <div
-      className="picture-container absolute top-5 -left-2 cursor-pointer z-40"
-      onMouseEnter={() => setDialogText("Know more about me! 😄")}
-      onMouseLeave={() => setDialogText("")}
-    >
-      <div className="relative ">
+    <div className="picture-container absolute top-6 -left-1 cursor-pointer z-40 max-h-20">
+      <div
+        className="relative max-h-20"
+        onMouseEnter={() => setDialogText("Know more about me! 😄")}
+        onMouseLeave={() => setDialogText("")}
+      >
         <img
           src={FranciscoPhoto}
           alt="Francisco"
