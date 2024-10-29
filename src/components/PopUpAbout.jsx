@@ -13,23 +13,39 @@ export const PopUpAbout = ({ isPopUpOpen, setIsPopUpOpen }) => {
             className="absolute right-2 top-2 cursor-pointer z-50"
             onClick={handleClosePopUp}
           />
-          <div className="z-30 relative flex justify-start items-center gap-5 mt-3 ml-7 pr-4">
-            <div className="bg-[#E4C087] rounded-full ">
-              <img src={FranciscoPhoto} alt="Francisco" className="w-32" />
+          <div className="flex gap-4 mt-8 mx-4 mr-12 ">
+            <div className="flex flex-col gap-3 flex-1 text-black ">
+              <ChatSimulator />
             </div>
-            <div className="flex flex-col font-Karla">
-              <p>
-                Hi! <span className="text-lg">👋🏻</span> I'm
-              </p>
-              <h1 className="font-Lilita text-3xl -mt-2">
-                Francisco Agustín Rodríguez
-              </h1>
-              <p className="">Frontend Developer 🎨</p>
-            </div>
+            <div className="flex flex-col bg-yellow-500 w-1/4">stats</div>
           </div>
         </div>
       </div>
     )
+  );
+};
+
+export const ChatSimulator = () => {
+  const messages = [
+    "Hey there! My name is Francisco Agustín Rodríguez.",
+    "I'm a front-end developer based in Buenos Aires (🇦🇷 AR)",
+    "I specialize in crafting interactive, visually engaging websites with a strong emphasis on smooth motion and user experience.",
+    "This is my teammate 👇🏻",
+    "img",
+    "Let's chat, laugh and and craft ideas together! 💡",
+  ];
+  return (
+    <>
+      {messages.map((message, index) => (
+        <div
+          key={index}
+          className="relative rounded-2xl bg-[#ffffff] p-2 text-sm pl-3"
+        >
+          <div className="absolute bottom-0.5 -left-1 -rotate-45 w-0 h-0 border-t-8 border-t-white border-r-8 border-r-transparent" />
+          {message}
+        </div>
+      ))}
+    </>
   );
 };
 
@@ -50,3 +66,37 @@ export const IconCross = ({ className, onClick }) => {
     </>
   );
 };
+
+// eslint-disable-next-line no-lone-blocks
+{
+  /* <div className="z-30 relative flex justify-start items-center gap-5 mt-3 ml-7 mr-4">
+            <div className="bg-[#E4C087] rounded-full ">
+              <img src={FranciscoPhoto} alt="Francisco" className="w-32" />
+            </div>
+            <div className="flex flex-col font-Karla text-md mr-5">
+              <p>
+                Hey there! <span className="text-lg">👋🏻</span> I'm
+              </p>
+              <h1 className="font-HappyMonkey text-xl font-black -mt-1">
+                Francisco Agustín Rodríguez
+              </h1>
+            </div>
+          </div> */
+}
+{
+  /* <div className="mt-4 px-9 mr-7 text-sm  ">
+            <p>
+              Your friendly frontend developer 🎨 <br /> based in Buenos Aires,
+              Argentina 🇦🇷 <br />I specialize in crafting interactive, visually
+              engaging websites with a strong emphasis on smooth motion and user
+              experience.
+            </p>
+            <p>
+              I work with HTML/CSS, Tailwind CSS, JavaScript, React, GSAP, and a
+              touch of Three.js (using r3f), allowing me to bring life to the
+              web through subtle animations and immersive interactivity. There’s
+              something uniquely rewarding about transforming ideas into dynamic
+              online experiences.
+            </p>
+          </div> */
+}

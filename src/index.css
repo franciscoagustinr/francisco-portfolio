@@ -7,6 +7,10 @@
   src: url("../public/fonts/Karla-Regular.ttf") format("truetype");
 }
 @font-face {
+  font-family: "KarlaLight";
+  src: url("../public/fonts/Karla-Light.ttf") format("truetype");
+}
+@font-face {
   font-family: "Inter";
   src: url("../public/fonts/Inter.ttf") format("truetype");
 }
@@ -15,8 +19,8 @@
   src: url("../public/fonts/HomemadeApple-Regular.ttf") format("truetype");
 }
 @font-face {
-  font-family: "Lilita";
-  src: url("../public/fonts/LilitaOne-Regular.ttf") format("truetype");
+  font-family: "HappyMonkey";
+  src: url("../public/fonts/HappyMonkey-Regular.ttf") format("truetype");
 }
 
 @keyframes marquee {
@@ -104,7 +108,7 @@
 }
 
 .shake:hover {
-  animation: shake 0.3s linear infinite;
+  animation: shake 0.5s linear infinite;
 }
 
 .image {

@@ -5,9 +5,10 @@ module.exports = {
     extend: {
       fontFamily: {
         'Karla': ['Karla', 'sans-serif'],
+        'KarlaLight': ['KarlaLight', 'sans-serif'],
         'Inter': ['Inter', 'sans-serif'],
         'HomemadeApple': ['HomemadeApple', 'sans-serif'],
-        'Lilita': ['Lilita', 'sans-serif']
+        'HappyMonkey': ['HappyMonkey', 'sans-serif']
       }
     },
   },
