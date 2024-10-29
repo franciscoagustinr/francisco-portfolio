@@ -28,7 +28,7 @@ const WeatherData = ({ setDialogText }) => {
   return (
     <div
       ref={weatherRefContainer}
-      className="w-[250px] absolute xsm:right-3 sm:right-5 md:right-5 lg:right-[4%] top-12 z-[9999] text-[#FAFAFA]"
+      className="w-[250px] absolute xsm:right-3 sm:right-5 md:right-5 lg:right-[4%] top-12 z-40 text-[#FAFAFA]"
     >
       {weatherData ? (
         <div className="text-right font-NeueMontrealBook text-xs tracking-tight uppercase  ">

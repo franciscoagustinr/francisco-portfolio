@@ -8,7 +8,7 @@ export const Coffee = ({ setDialogText }) => {
         <img
           src={CoffeeCup}
           alt="Coffee Cup"
-          className="shake w-24 -rotate-12 cursor-pointer relative"
+          className="shake select-none w-24 -rotate-12 cursor-pointer relative"
           onClick={() => {
             window.open("https://cafecito.app/franciscoagustinr", "_blank");
           }}

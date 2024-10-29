@@ -10,7 +10,7 @@ export const RRSS = ({ setDialogText }) => {
         <img
           src={GithubLogo}
           alt="github-logo"
-          className="reflection w-12 h-auto cursor-pointer hover:rotate-12 transition-all duration-100"
+          className="reflection select-none w-12 h-auto cursor-pointer hover:rotate-12 transition-all duration-100"
           onClick={() => {
             window.open("https://github.com/franciscoagustinr", "_blank");
           }}
@@ -22,7 +22,7 @@ export const RRSS = ({ setDialogText }) => {
         <img
           src={LinkedinLogo}
           alt="github-logo"
-          className="w-12 h-auto cursor-pointer hover:rotate-12 transition-all duration-100 "
+          className="w-12 h-auto select-none cursor-pointer hover:rotate-12 transition-all duration-100 "
           onClick={() => {
             window.open(
               "https://www.linkedin.com/in/franciscoagustinr/",

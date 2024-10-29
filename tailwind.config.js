@@ -5,7 +5,9 @@ module.exports = {
     extend: {
       fontFamily: {
         'Karla': ['Karla', 'sans-serif'],
-        'Inter': ['Inter', 'sans-serif']
+        'Inter': ['Inter', 'sans-serif'],
+        'HomemadeApple': ['HomemadeApple', 'sans-serif'],
+        'Lilita': ['Lilita', 'sans-serif']
       }
     },
   },

@@ -10,6 +10,14 @@
   font-family: "Inter";
   src: url("../public/fonts/Inter.ttf") format("truetype");
 }
+@font-face {
+  font-family: "HomemadeApple";
+  src: url("../public/fonts/HomemadeApple-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Lilita";
+  src: url("../public/fonts/LilitaOne-Regular.ttf") format("truetype");
+}
 
 @keyframes marquee {
   0% {
