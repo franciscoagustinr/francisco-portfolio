@@ -150,3 +150,18 @@
   background-color: #f1f1f1;
   color: #fafafa;
 }
+
+@keyframes appearAnimation {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.appear-animation {
+  animation: appearAnimation 0.2s ease forwards;
+}
