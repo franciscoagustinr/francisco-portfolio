@@ -32,9 +32,13 @@ export const PopUpAbout = ({ isPopUpOpen, setIsPopUpOpen }) => {
             className="absolute right-2 top-2 cursor-pointer z-50"
             onClick={handleClosePopUp}
           />
-          <div className="flex gap-4 mt-2.5 mx-4 mr-12 pb-4">
+          <div className="flex gap-4 mt-2.5 mx-4 mr-8 pb-4">
             <div className="flex flex-col gap-3 flex-1 text-black ">
               <ChatSimulator />
+              {/* <div className="flex justify-around">
+                <button>send message</button>
+                <button>get resume</button>
+              </div> */}
             </div>
             <div className="flex flex-col bg-yellow-500 w-1/4">stats</div>
           </div>
@@ -103,7 +107,7 @@ export const ChatSimulator = () => {
       {visibleMessages.map((message, index) => (
         <div
           key={index}
-          className="appear-animation relative rounded-2xl rounded-bl-md bg-[#ffffff] p-2 text-sm pl-3 my-4 cursor-pointer select-none"
+          className="appear-animation relative rounded-2xl rounded-bl-md bg-[#ffffff] p-2 text-sm pl-3 my-5 cursor-pointer select-none"
           onClick={() => handleReaction(index)}
         >
           <div className="absolute bottom-0 -left-1 rotate-90 w-0 h-0 border-t-8 border-l-8 border-t-white border-l-transparent" />
