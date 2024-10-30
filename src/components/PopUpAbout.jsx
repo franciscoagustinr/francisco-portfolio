@@ -1,19 +1,38 @@
-import React from "react";
-import FranciscoPhoto from "../assets/francisco-photo.png";
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import FranciscoWithBeto from "../assets/FranciscoWithBeto.JPG";
 
 export const PopUpAbout = ({ isPopUpOpen, setIsPopUpOpen }) => {
+  const popupRef = useRef();
+
   const handleClosePopUp = () => {
     setIsPopUpOpen(false);
   };
+
+  const handleClickOutside = (e) => {
+    if (popupRef.current && !popupRef.current.contains(e.target)) {
+      setIsPopUpOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
     isPopUpOpen && (
       <div className="fixed inset-0 bg-gray-400 bg-opacity-50 flex items-center justify-center z-50">
-        <div className="relative h-2/3 w-5/12 bg-sky-200 border border-solid border-sky-600 rounded-2xl z-20">
+        <div
+          ref={popupRef}
+          className="relative h-4/5 w-5/12 bg-sky-200 border border-solid border-sky-600 rounded-2xl z-20 overflow-y-scroll"
+        >
           <IconCross
             className="absolute right-2 top-2 cursor-pointer z-50"
             onClick={handleClosePopUp}
           />
-          <div className="flex gap-4 mt-8 mx-4 mr-12 ">
+          <div className="flex gap-4 mt-8 mx-4 mr-12 pb-4">
             <div className="flex flex-col gap-3 flex-1 text-black ">
               <ChatSimulator />
             </div>
@@ -26,26 +45,73 @@ export const PopUpAbout = ({ isPopUpOpen, setIsPopUpOpen }) => {
 };
 
 export const ChatSimulator = () => {
-  const messages = [
-    "Hey there! My name is Francisco Agustín Rodríguez.",
-    "I'm a front-end developer based in Buenos Aires (🇦🇷 AR)",
-    "I specialize in crafting interactive, visually engaging websites with a strong emphasis on smooth motion and user experience.",
-    "This is my teammate 👇🏻",
-    "img",
-    "Let's chat, laugh and and craft ideas together! 💡",
-  ];
+  const messages = useMemo(
+    () => [
+      "Hey there! My name is Francisco Agustín Rodríguez.",
+      "I'm a front-end developer based in Buenos Aires (🇦🇷 AR)",
+      "I specialize in crafting interactive, visually engaging websites with a strong emphasis on smooth motion and user experience.",
+      "This is my teammate 👇🏻",
+      "img",
+      "his name is Beto 🐶",
+      "Let's chat, laugh and craft ideas together! 💡",
+    ],
+    []
+  );
+  const endOfMessagesRef = useRef();
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (count < messages.length) {
+        setCount((prevCount) => prevCount + 1);
+      } else {
+        clearInterval(interval);
+      }
+    }, 2000);
+
+    return () => clearInterval(interval);
+  }, [count, messages.length]);
+
+  const visibleMessages = messages.slice(0, count);
+
+  useEffect(() => {
+    if (endOfMessagesRef.current) {
+      endOfMessagesRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [visibleMessages]);
+
   return (
-    <>
-      {messages.map((message, index) => (
+    <div>
+      {visibleMessages.map((message, index) => (
         <div
           key={index}
-          className="relative rounded-2xl bg-[#ffffff] p-2 text-sm pl-3"
+          className="relative rounded-2xl rounded-bl-md bg-[#ffffff] p-2 text-sm pl-3 my-2 "
         >
-          <div className="absolute bottom-0.5 -left-1 -rotate-45 w-0 h-0 border-t-8 border-t-white border-r-8 border-r-transparent" />
-          {message}
+          <div className="absolute bottom-0 -left-1 rotate-90 w-0 h-0 border-t-8 border-l-8 border-t-white border-l-transparent" />
+          {message === "img" ? (
+            <div className="-ml-1">
+              <img
+                src={FranciscoWithBeto}
+                alt="Beto & Me"
+                className="w-full rounded-lg"
+              />
+            </div>
+          ) : (
+            <span>{message}</span>
+          )}
         </div>
       ))}
-    </>
+      {count < messages.length && (
+        <>
+          <div className="relative rounded-2xl rounded-bl-md bg-[#ffffff] p-0.5q text-sm my-2 max-w-16">
+            <span className="typing-animation flex justify-center items-center">
+              <TypingDots />
+            </span>
+          </div>
+        </>
+      )}
+      <div ref={endOfMessagesRef}></div>
+    </div>
   );
 };
 
@@ -67,36 +133,14 @@ export const IconCross = ({ className, onClick }) => {
   );
 };
 
-// eslint-disable-next-line no-lone-blocks
-{
-  /* <div className="z-30 relative flex justify-start items-center gap-5 mt-3 ml-7 mr-4">
-            <div className="bg-[#E4C087] rounded-full ">
-              <img src={FranciscoPhoto} alt="Francisco" className="w-32" />
-            </div>
-            <div className="flex flex-col font-Karla text-md mr-5">
-              <p>
-                Hey there! <span className="text-lg">👋🏻</span> I'm
-              </p>
-              <h1 className="font-HappyMonkey text-xl font-black -mt-1">
-                Francisco Agustín Rodríguez
-              </h1>
-            </div>
-          </div> */
-}
-{
-  /* <div className="mt-4 px-9 mr-7 text-sm  ">
-            <p>
-              Your friendly frontend developer 🎨 <br /> based in Buenos Aires,
-              Argentina 🇦🇷 <br />I specialize in crafting interactive, visually
-              engaging websites with a strong emphasis on smooth motion and user
-              experience.
-            </p>
-            <p>
-              I work with HTML/CSS, Tailwind CSS, JavaScript, React, GSAP, and a
-              touch of Three.js (using r3f), allowing me to bring life to the
-              web through subtle animations and immersive interactivity. There’s
-              something uniquely rewarding about transforming ideas into dynamic
-              online experiences.
-            </p>
-          </div> */
-}
+export const TypingDots = () => {
+  return (
+    <>
+      <svg height="30" width="40">
+        <circle class="dot" cx="10" cy="20" r="3" fill="grey" />
+        <circle class="dot" cx="20" cy="20" r="3" fill="grey" />
+        <circle class="dot" cx="30" cy="20" r="3" fill="grey" />
+      </svg>
+    </>
+  );
+};
