@@ -57,8 +57,20 @@ export const ChatSimulator = () => {
     ],
     []
   );
+  const [reactions, setReactions] = useState(Array(messages.length).fill(null));
+  const emojiReactions = ["😄", "⭐️⭐️⭐️", "🤓", "🌈", "😍", "💖", "✨"];
+
   const endOfMessagesRef = useRef();
   const [count, setCount] = useState(0);
+
+  const handleReaction = (index) => {
+    const emoji = emojiReactions[index] || "";
+    setReactions((prevReactions) => {
+      const newReactions = [...prevReactions];
+      newReactions[index] = emoji;
+      return newReactions;
+    });
+  };
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -85,7 +97,8 @@ export const ChatSimulator = () => {
       {visibleMessages.map((message, index) => (
         <div
           key={index}
-          className="appear-animation relative rounded-2xl rounded-bl-md bg-[#ffffff] p-2 text-sm pl-3 my-2 cursor-pointer"
+          className="appear-animation relative rounded-2xl rounded-bl-md bg-[#ffffff] p-2 text-sm pl-3 my-4 cursor-pointer"
+          onClick={() => handleReaction(index, emojiReactions[0])}
         >
           <div className="absolute bottom-0 -left-1 rotate-90 w-0 h-0 border-t-8 border-l-8 border-t-white border-l-transparent" />
           {message === "img" ? (
@@ -98,6 +111,11 @@ export const ChatSimulator = () => {
             </div>
           ) : (
             <span>{message}</span>
+          )}
+          {reactions[index] && (
+            <span className="absolute border border-gray-300 -bottom-3.5 right-2 text-md bg-white py-0.5 px-2 rounded-full">
+              {reactions[index]}
+            </span>
           )}
         </div>
       ))}
