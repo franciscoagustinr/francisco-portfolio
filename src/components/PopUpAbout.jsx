@@ -33,7 +33,7 @@ export const PopUpAbout = ({ isPopUpOpen, setIsPopUpOpen }) => {
             onClick={handleClosePopUp}
           />
           <div className="flex gap-4 pt-2.5 mx-4 mr-8 pb-4 min-h-full ">
-            <div className=" flex flex-col justify-end gap-3 flex-1 text-black ">
+            <div className="flex flex-col justify-end gap-3 flex-1 text-black ">
               <ChatSimulator />
               {/* <div className="flex justify-around">
                 <button>send message</button>
@@ -68,6 +68,7 @@ export const ChatSimulator = () => {
 
   const endOfMessagesRef = useRef();
   const [count, setCount] = useState(0);
+  const [showTypingDots, setShowTypingDots] = useState(true);
 
   const handleReaction = (index) => {
     setReactions((prevReactions) => {
@@ -82,32 +83,36 @@ export const ChatSimulator = () => {
     });
   };
 
+  const visibleMessages = messages.slice(0, count);
+
   useEffect(() => {
     const interval = setInterval(() => {
       if (count < messages.length) {
         setCount((prevCount) => prevCount + 1);
+        setShowTypingDots(false); // Ocultar typingDots mientras se muestra un mensaje
+        setTimeout(() => setShowTypingDots(true), 400); // Mostrar typingDots después de un tiempo
       } else {
         clearInterval(interval);
       }
     }, 2000);
 
     return () => clearInterval(interval);
-  }, [count, messages.length]);
-
-  const visibleMessages = messages.slice(0, count);
+  }, [count, messages.length, visibleMessages.length]);
 
   useEffect(() => {
     if (endOfMessagesRef.current) {
       endOfMessagesRef.current.scrollIntoView({ behavior: "smooth" });
     }
-  }, [visibleMessages.length]);
+  }, [visibleMessages.length, showTypingDots]);
 
   return (
     <div className="h-full flex flex-col justify-end">
       {visibleMessages.map((message, index) => (
         <div
           key={index}
-          className="appear-animation relative inline-block rounded-2xl rounded-bl-md bg-[#ffffff] py-2 text-sm pl-3 pr-2 mb-4 cursor-pointer select-none"
+          className={`appear-animation relative rounded-2xl rounded-bl-md bg-[#ffffff] py-2 text-sm pl-3 pr-2 cursor-pointer select-none max-w-max ${
+            reactions[index].emoji ? "mb-4" : "mb-2"
+          } `}
           onClick={() => handleReaction(index)}
         >
           <div className="absolute bottom-0 -left-1 rotate-90 w-0 h-0 border-t-8 border-l-8 border-t-white border-l-transparent" />
@@ -125,16 +130,19 @@ export const ChatSimulator = () => {
           {reactions[index].emoji && (
             <span className="appear-animation absolute border border-gray-300 -bottom-3.5 right-2 text-md bg-white py-0.5 px-2 rounded-full">
               {reactions[index].emoji}
-              <span className="ml-0.5 text-xs text-gray-500">
+              <span
+                key={`${index}-${reactions[index].count}`}
+                className="ml-0.5 text-xs text-gray-500 appear-animation pl-0.5 relative"
+              >
                 {reactions[index].count}
               </span>
             </span>
           )}
         </div>
       ))}
-      {count < messages.length && (
+      {count < messages.length && showTypingDots && (
         <>
-          <div className="relative rounded-2xl rounded-bl-md bg-[#ffffff] p-0.5q text-sm my-2 max-w-16">
+          <div className="appear-animation relative rounded-2xl rounded-bl-md bg-[#ffffff] p-0.5q text-sm my-2 max-w-16">
             <span className="typing-animation flex justify-center items-center">
               <TypingDots />
             </span>
