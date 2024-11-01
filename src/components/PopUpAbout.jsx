@@ -32,8 +32,8 @@ export const PopUpAbout = ({ isPopUpOpen, setIsPopUpOpen }) => {
             className="absolute right-2 top-2 cursor-pointer z-50"
             onClick={handleClosePopUp}
           />
-          <div className="flex gap-4 pt-2.5 mx-4 mr-8 pb-4 h-full">
-            <div className="h-full flex flex-col justify-end gap-3 flex-1 text-black ">
+          <div className="flex gap-4 pt-2.5 mx-4 mr-8 pb-4 min-h-full ">
+            <div className=" flex flex-col justify-end gap-3 flex-1 text-black ">
               <ChatSimulator />
               {/* <div className="flex justify-around">
                 <button>send message</button>
