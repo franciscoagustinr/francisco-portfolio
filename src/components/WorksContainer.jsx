@@ -22,7 +22,7 @@ export const WorksContainer = () => {
                   style={{
                     position: "absolute",
                     // left: (mousePosition.x / Math.PI) * 0.4,
-                    right: -mousePosition.x / Math.PI + 300,
+                    right: -mousePosition.x / Math.PI + 380,
                     top: mousePosition.y * -0.1,
                   }}
                 >
@@ -41,7 +41,7 @@ export const WorksContainer = () => {
                       viewBox="0 0 14 13"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
-                      className=" w-3.5 -translate-x-2 group-hover:translate-x-0 origin-top-left group-hover:rotate-0 rotate-45 transition-all duration-500"
+                      className=" w-3.5 -translate-x-2 group-hover:translate-x-0 origin-top-left group-hover:rotate-0 rotate-45 transition-all duration-200"
                     >
                       <path
                         fillRule="evenodd"
