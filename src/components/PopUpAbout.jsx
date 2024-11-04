@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import FranciscoWithBeto from "../assets/FranciscoWithBeto.JPG";
+import { WorksContainer } from "./WorksContainer";
 
 export const PopUpAbout = ({ isPopUpOpen, setIsPopUpOpen }) => {
   const popupRef = useRef();
@@ -26,21 +27,35 @@ export const PopUpAbout = ({ isPopUpOpen, setIsPopUpOpen }) => {
       <div className="fixed inset-0 bg-gray-400 bg-opacity-50 flex items-center justify-center z-50">
         <div
           ref={popupRef}
-          className="relative h-4/5 w-5/12 bg-sky-200 border border-solid border-sky-600 rounded-2xl z-20 overflow-y-scroll"
+          // className="relative h-4/5 w-auto bg-sky-200 border border-solid border-sky-600 rounded-2xl z-20 overflow-y-scroll"
+          className="relative top-3 h-auto max-h-[43.5rem] w-auto bg-sky-200 border border-solid border-sky-600 rounded-2xl z-20 overflow-y-scroll"
         >
           <IconCross
-            className="absolute right-2 top-2 cursor-pointer z-50"
+            className="absolute right-1 top-2 cursor-pointer z-50"
             onClick={handleClosePopUp}
           />
-          <div className="flex gap-4 pt-2.5 mx-4 mr-8 pb-4 min-h-full ">
-            <div className="flex flex-col justify-end gap-3 flex-1 text-black ">
+          <div className="relative flex gap-4 pt-2.5 mx-4 mr-8 pb-4 min-h-full ">
+            <div className="flex flex-col justify-end gap-3 flex-1 text-black w-[440px]">
               <ChatSimulator />
               {/* <div className="flex justify-around">
-                <button>send message</button>
-                <button>get resume</button>
+                <button className="p-1.5 px-4 rounded-3xl font-Karla bg-[#63D2FF] text-white">
+                  Get in touch
+                </button>
+                <button className="p-1.5 px-4 rounded-3xl font-Karla bg-[#63D2FF] text-white">
+                  Get resume
+                </button>
               </div> */}
             </div>
-            <div className="flex flex-col bg-yellow-500 w-1/4">stats</div>
+            <div className=" max-h-[41rem] self-center min-h-[41rem] flex flex-col items-center justify-center bg-[#FFEFAF] w-[450px] rounded-lg">
+              <div className="">
+                <h2 className="select-none text-center font-RampartOne text-7xl leading-[3.8rem] text-[#323445]">
+                  ~Selected~ <br /> Works
+                </h2>
+              </div>
+              <div className="mt-2 w-full px-6">
+                <WorksContainer />
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -56,7 +71,7 @@ export const ChatSimulator = () => {
       "I specialize in crafting interactive, visually engaging websites with a strong emphasis on smooth motion and user experience.",
       "This is my teammate 👇🏻",
       "img",
-      "his name is Beto 🐶",
+      "His name is Beto 🐶",
       "Let's chat, laugh and craft ideas together! 💡",
     ],
     []
@@ -101,7 +116,8 @@ export const ChatSimulator = () => {
 
   useEffect(() => {
     if (endOfMessagesRef.current) {
-      endOfMessagesRef.current.scrollIntoView({ behavior: "smooth" });
+      visibleMessages >= 4 &&
+        endOfMessagesRef.current.scrollIntoView({ behavior: "smooth" });
     }
   }, [visibleMessages.length, showTypingDots]);
 
@@ -110,14 +126,16 @@ export const ChatSimulator = () => {
       {visibleMessages.map((message, index) => (
         <div
           key={index}
-          className={`appear-animation relative rounded-2xl rounded-bl-md bg-[#ffffff] py-2 text-sm pl-3 pr-2 cursor-pointer select-none max-w-max ${
-            reactions[index].emoji ? "mb-4" : "mb-2"
-          } `}
+          className={`appear-animation relative rounded-2xl rounded-bl-md bg-[#ffffff] py-2 text-sm pl-3 pr-2 cursor-pointer select-none max-w-max transition-all duration-300 ease-in-out
+            hover:!scale-[1.009] font-KarlaLight ${
+              reactions[index].emoji ? "mb-4" : "mb-2"
+            } `}
           onClick={() => handleReaction(index)}
         >
           <div className="absolute bottom-0 -left-1 rotate-90 w-0 h-0 border-t-8 border-l-8 border-t-white border-l-transparent" />
           {message === "img" ? (
-            <div className="-ml-1">
+            <div className="-ml-1 max-w-[340px]">
+              {/* <ArcCard /> */}
               <img
                 src={FranciscoWithBeto}
                 alt="Beto & Me"
@@ -128,7 +146,7 @@ export const ChatSimulator = () => {
             <span>{message}</span>
           )}
           {reactions[index].emoji && (
-            <span className="appear-animation absolute border border-gray-300 -bottom-3.5 right-2 text-md bg-white py-0.5 px-2 rounded-full">
+            <span className="appear-animation duration-0 absolute border border-gray-300 -bottom-3.5 right-2 text-md bg-white py-0.5 px-2 rounded-full">
               {reactions[index].emoji}
               <span
                 key={`${index}-${reactions[index].count}`}
@@ -142,7 +160,7 @@ export const ChatSimulator = () => {
       ))}
       {count < messages.length && showTypingDots && (
         <>
-          <div className="appear-animation relative rounded-2xl rounded-bl-md bg-[#ffffff] p-0.5q text-sm my-2 max-w-16">
+          <div className="appear-animation relative rounded-2xl rounded-bl-md bg-[#ffffff] p-0 text-sm my-2 max-w-16">
             <span className="typing-animation flex justify-center items-center">
               <TypingDots />
             </span>
@@ -181,5 +199,44 @@ export const TypingDots = () => {
         <circle class="dot" cx="30" cy="20" r="3" fill="grey" />
       </svg>
     </>
+  );
+};
+
+export const ArcCard = () => {
+  const boundingRef = useRef();
+
+  return (
+    <div className="flex flex-col [perspective: 800px]">
+      <div
+        onMouseLeave={() => (boundingRef.current = null)}
+        onMouseEnter={(ev) => {
+          boundingRef.current = ev.currentTarget.getBoundingClientRect();
+        }}
+        onMouseMove={(ev) => {
+          if (!boundingRef.current) return;
+          const x = ev.clientX - boundingRef.current.left;
+          const y = ev.clientY - boundingRef.current.top;
+          const xPercentage = x / boundingRef.current.width;
+          const yPercentage = y / boundingRef.current.height;
+          const xRotation = (xPercentage - 0.5) * 20;
+          const yRotation = (0.5 - yPercentage) * 20;
+
+          ev.currentTarget.style.setProperty("--x-rotation", `${yRotation}deg`);
+          ev.currentTarget.style.setProperty("--y-rotation", `${xRotation}deg`);
+          ev.currentTarget.style.setProperty("--x", `${xPercentage * 100}%`);
+          ev.currentTarget.style.setProperty("--y", `${yPercentage * 100}%`);
+        }}
+        className="group relative w-full rounded-xl bg-[#fff] p-1 transition-transform ease-out hover:[transform:rotateX(var(--x-rotation))_rotateY(var(--y-rotation))_scale(1.03)]"
+      >
+        <div className="max-w-[340px]">
+          <img
+            src={FranciscoWithBeto}
+            alt="Beto & Me"
+            className="w-full rounded-lg"
+          />
+        </div>
+        <div className="pointer-events-none absolute inset-0 group-hover:bg-[radial-gradient(at_var(--x)_var(--y),rgba(255,255,255,0.3)_20%,transparent_80%)]" />
+      </div>
+    </div>
   );
 };

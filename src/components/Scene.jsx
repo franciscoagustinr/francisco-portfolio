@@ -18,7 +18,9 @@ export const Scene = () => {
       <Suspense fallback={null}>
         <ambientLight intensity={1} position={[0, 0, 0]} />
         <Environment preset="warehouse" />
-        <SplineModels />
+        <mesh scale={1}>
+          <SplineModels />
+        </mesh>
         <ContactShadows
           position={[0, -1.55, 0.15]}
           opacity={0.35}
@@ -32,19 +34,19 @@ export const Scene = () => {
           floatIntensity={0.9}
           floatingRange={[1, 1.1]}
         >
-          <PresentationControls
+          {/* <PresentationControls
             config={{ mass: 1, tension: 500 }}
             snap={{ mass: 4, tension: 1500 }}
             rotation={[0, 0, 0]}
             azimuth={[-0.2, 0.2]}
             cursor={false}
-          >
-            <Center position={[0, -1, 1]}>
-              <mesh position={[-0.2, -4, 0]} scale={1.5}>
-                <Francisco />
-              </mesh>
-            </Center>
-          </PresentationControls>
+          > */}
+          <Center position={[0, -1, 1]}>
+            <mesh position={[-0.2, -4, 0]} scale={1.5}>
+              <Francisco />
+            </mesh>
+          </Center>
+          {/* </PresentationControls> */}
         </Float>
         <TextTitle />
       </Suspense>

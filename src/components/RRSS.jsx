@@ -1,9 +1,17 @@
 import React from "react";
 import GithubLogo from "../assets/github.png";
 import LinkedinLogo from "../assets/linkedin.png";
-// import MailLogo from "../assets/mail1.png";
+import ResumeLogo from "../assets/rb_986.png";
 
 export const RRSS = ({ setDialogText }) => {
+  const handleOpenPDF = () => {
+    // window.open("/assets/FranciscoAgustinRodriguez-CV.pdf", "_blank");
+    window.open(
+      "https://golden-daifuku-48cfde.netlify.app/static/media/FranciscoAgustinRodriguez-CV.6deac65fd1c4875d4fe3.pdf",
+      "_blank"
+    );
+  };
+
   return (
     <>
       <div className="absolute bottom-3 right-3 flex gap-3">
@@ -29,9 +37,15 @@ export const RRSS = ({ setDialogText }) => {
               "_blank"
             );
           }}
-          onMouseEnter={() =>
-            setDialogText("Where opportunities and connections bloom 🌱")
-          }
+          onMouseEnter={() => setDialogText("Where connections bloom 🌱")}
+          onMouseLeave={() => setDialogText("")}
+        />
+        <img
+          src={ResumeLogo}
+          alt="resume-logo"
+          className="w-12 h-auto select-none cursor-pointer hover:rotate-12 transition-all duration-100 "
+          onClick={handleOpenPDF}
+          onMouseEnter={() => setDialogText("See my resume 🤓")}
           onMouseLeave={() => setDialogText("")}
         />
       </div>

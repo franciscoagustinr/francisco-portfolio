@@ -13,9 +13,7 @@ export const About = ({ setDialogText, setIsPopUpOpen, isPopUpOpen }) => {
       onClick={handleOpenPopUp}
     >
       <div
-        className={`relative max-h-20 transition-all duration-200 ${
-          isPopUpOpen ? "opacity-0" : "opacity-100"
-        }`}
+        className={`relative max-h-20 transition-all duration-200`}
         onMouseEnter={() => setDialogText("Know more about me! 😄")}
         onMouseLeave={() => setDialogText("")}
       >

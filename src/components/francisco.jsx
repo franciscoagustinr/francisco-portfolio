@@ -4,6 +4,7 @@ import { useFrame } from "@react-three/fiber";
 import { useHats } from "./Hats";
 import ConfettiExplosion from "react-confetti-explosion";
 import { useSpring, animated } from "@react-spring/three";
+import PunchEmoji from "../assets/punch-emoji.png";
 
 export function Francisco(props) {
   const { nodes, materials } = useGLTF("/F-model7.glb");
@@ -59,7 +60,7 @@ export function Francisco(props) {
   });
 
   useEffect(() => {
-    document.body.style.cursor = hovered ? "pointer " : "auto";
+    document.body.style.cursor = hovered ? "pointer" : "auto";
   }, [hovered]);
 
   useFrame((state) => {

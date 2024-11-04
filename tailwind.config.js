@@ -8,7 +8,8 @@ module.exports = {
         'KarlaLight': ['KarlaLight', 'sans-serif'],
         'Inter': ['Inter', 'sans-serif'],
         'HomemadeApple': ['HomemadeApple', 'sans-serif'],
-        'HappyMonkey': ['HappyMonkey', 'sans-serif']
+        'HappyMonkey': ['HappyMonkey', 'sans-serif'],
+        'RampartOne': ['RampartOne', 'sans-serif']
       }
     },
   },

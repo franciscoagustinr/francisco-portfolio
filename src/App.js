@@ -6,7 +6,7 @@ import { Scene } from "./components/Scene";
 import WeatherData from "./components/Weather";
 import { Coffee } from "./components/coffee";
 import { About } from "./components/about";
-import { StayInContact } from "./StayInContact";
+import { HandwrittenTexts } from "./components/Handwritten-texts";
 import { PopUpAbout } from "./components/PopUpAbout";
 
 function App() {
@@ -18,12 +18,11 @@ function App() {
       <Marquee />
       <About setDialogText={setDialogText} setIsPopUpOpen={setIsPopUpOpen} isPopUpOpen={isPopUpOpen} />
       <PopUpAbout setIsPopUpOpen={setIsPopUpOpen} isPopUpOpen={isPopUpOpen} />
-      <StayInContact />
+      <HandwrittenTexts />
       <Scene />
       <RRSS setDialogText={setDialogText} />
       <Coffee setDialogText={setDialogText} />
       <WeatherData setDialogText={setDialogText} />
-
       {dialogText && <DialogBox text={dialogText} />}
     </div>
   );
