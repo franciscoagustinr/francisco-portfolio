@@ -28,7 +28,7 @@ export const PopUpAbout = ({ isPopUpOpen, setIsPopUpOpen }) => {
         <div
           ref={popupRef}
           // className="relative h-4/5 w-auto bg-sky-200 border border-solid border-sky-600 rounded-2xl z-20 overflow-y-scroll"
-          className="relative top-3 h-auto max-h-[43.5rem] w-auto bg-sky-200 border border-solid border-sky-600 rounded-2xl z-20 overflow-y-scroll"
+          className="relative top-2 h-auto w-auto bg-sky-200 border border-solid border-sky-600 rounded-2xl z-20 overflow-y-scroll"
         >
           <IconCross
             className="absolute right-1 top-2 cursor-pointer z-50"
@@ -46,13 +46,14 @@ export const PopUpAbout = ({ isPopUpOpen, setIsPopUpOpen }) => {
                 </button>
               </div> */}
             </div>
-            <div className=" max-h-[41rem] self-center min-h-[41rem] flex flex-col items-center justify-center bg-[#FFEFAF] w-[450px] rounded-lg">
+            {/* <div className=" max-h-[41rem] self-center min-h-[41rem] flex flex-col items-center justify-center bg-[#FFEFAF] w-[450px] rounded-lg"> */}
+            <div className="self-center flex flex-col items-center justify-center w-[450px] rounded-lg">
               <div className="">
                 <h2 className="select-none text-center font-RampartOne text-7xl leading-[3.8rem] text-[#323445]">
                   ~Selected~ <br /> Works
                 </h2>
               </div>
-              <div className="mt-2 w-full px-6">
+              <div className=" w-full px-6">
                 <WorksContainer />
               </div>
             </div>

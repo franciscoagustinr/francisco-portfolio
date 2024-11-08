@@ -4,7 +4,6 @@ import { useFrame } from "@react-three/fiber";
 import { useHats } from "./Hats";
 import ConfettiExplosion from "react-confetti-explosion";
 import { useSpring, animated } from "@react-spring/three";
-import PunchEmoji from "../assets/punch-emoji.png";
 
 export function Francisco(props) {
   const { nodes, materials } = useGLTF("/F-model7.glb");
@@ -59,9 +58,35 @@ export function Francisco(props) {
     },
   });
 
+  // useEffect(() => {
+  //   const customCursor =
+  //     "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='75' height='90' viewport='0 0 100 100' style='fill:black;font-size:45px;'><text y='50%'>👉🏻</text></svg>\") 16 0, auto";
+  //   document.body.style.cursor = hovered ? customCursor : "auto";
+  // }, [hovered]);
+
   useEffect(() => {
-    document.body.style.cursor = hovered ? "pointer" : "auto";
+    const handleMouseMove = (e) => {
+      const cursorIcon =
+        e.clientX < window.innerWidth / 2
+          ? "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='75' height='90' viewport='0 0 100 100' style='fill:black;font-size:45px;'><text y='50%'>👉🏻</text></svg>\") 16 0, auto"
+          : "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='75' height='90' viewport='0 0 100 100' style='fill:black;font-size:45px;'><text y='50%'>👈🏻</text></svg>\") 16 0, auto";
+      document.body.style.cursor = hovered ? cursorIcon : "auto";
+    };
+
+    if (hovered) {
+      window.addEventListener("mousemove", handleMouseMove);
+    } else {
+      document.body.style.cursor = "auto";
+    }
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
   }, [hovered]);
+
+  // useEffect(() => {
+  //   document.body.style.cursor = hovered ? "pointer" : "auto";
+  // }, [hovered]);
 
   useFrame((state) => {
     const time = state.clock.getElapsedTime();
@@ -81,6 +106,8 @@ export function Francisco(props) {
         (lookAtX - avatarRef.current.rotation.y) * 0.1; // Interpolación suave
       avatarRef.current.rotation.x +=
         (lookAtY - avatarRef.current.rotation.x) * 0.3; // Interpolación suave
+      // avatarRef.current.rotation.z +=
+      //   (lookAtY - avatarRef.current.rotation.x) * 0.2; // Interpolación suave
 
       // Limitar la rotación en el eje Y para evitar que gire demasiado
       // avatarRef.current.rotation.x = Math.max(
