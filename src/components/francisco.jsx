@@ -58,12 +58,6 @@ export function Francisco(props) {
     },
   });
 
-  // useEffect(() => {
-  //   const customCursor =
-  //     "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='75' height='90' viewport='0 0 100 100' style='fill:black;font-size:45px;'><text y='50%'>👉🏻</text></svg>\") 16 0, auto";
-  //   document.body.style.cursor = hovered ? customCursor : "auto";
-  // }, [hovered]);
-
   useEffect(() => {
     const handleMouseMove = (e) => {
       const cursorIcon =
@@ -83,10 +77,6 @@ export function Francisco(props) {
       window.removeEventListener("mousemove", handleMouseMove);
     };
   }, [hovered]);
-
-  // useEffect(() => {
-  //   document.body.style.cursor = hovered ? "pointer" : "auto";
-  // }, [hovered]);
 
   useFrame((state) => {
     const time = state.clock.getElapsedTime();

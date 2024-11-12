@@ -49,11 +49,11 @@ export const PopUpAbout = ({ isPopUpOpen, setIsPopUpOpen }) => {
             {/* <div className=" max-h-[41rem] self-center min-h-[41rem] flex flex-col items-center justify-center bg-[#FFEFAF] w-[450px] rounded-lg"> */}
             <div className="self-center flex flex-col items-center justify-center w-[450px] rounded-lg">
               <div className="">
-                <h2 className="select-none text-center font-RampartOne text-7xl leading-[3.8rem] text-[#323445]">
-                  ~Selected~ <br /> Works
+                <h2 className="select-none text-center font-RampartOne text-7xl leading-[4.3rem] text-[#323445]">
+                  Selected <br /> Works
                 </h2>
               </div>
-              <div className=" w-full px-6">
+              <div className=" w-full px-6 mt-4">
                 <WorksContainer />
               </div>
             </div>
@@ -62,6 +62,45 @@ export const PopUpAbout = ({ isPopUpOpen, setIsPopUpOpen }) => {
       </div>
     )
   );
+  // return (
+  //   isPopUpOpen && (
+  //     <div className="fixed inset-0 bg-transparent bg-opacity-50 flex items-center justify-center z-50">
+  //       <div
+  //         ref={popupRef}
+  //         className="relative h-4/5 left-44 w-auto bg-sky-200 border border-solid border-sky-600 rounded-2xl z-20 overflow-y-scroll"
+  //       >
+  //         <IconCross
+  //           className="absolute right-1 top-2 cursor-pointer z-50"
+  //           onClick={handleClosePopUp}
+  //         />
+  //         <div className="relative flex gap-4 pt-2.5 mx-4 mr-8 pb-4 min-h-full ">
+  //           <div className="flex flex-col justify-end gap-3 flex-1 text-black w-[440px]">
+  //             <ChatSimulator />
+  //             {/* <div className="flex justify-around">
+  //               <button className="p-1.5 px-4 rounded-3xl font-Karla bg-[#63D2FF] text-white">
+  //                 Get in touch
+  //               </button>
+  //               <button className="p-1.5 px-4 rounded-3xl font-Karla bg-[#63D2FF] text-white">
+  //                 Get resume
+  //               </button>
+  //             </div> */}
+  //           </div>
+  //           {/* <div className=" max-h-[41rem] self-center min-h-[41rem] flex flex-col items-center justify-center bg-[#FFEFAF] w-[450px] rounded-lg"> */}
+  //           <div className="self-center flex flex-col items-center justify-center w-[450px] rounded-lg">
+  //             <div className="">
+  //               <h2 className="select-none text-center font-RampartOne text-7xl leading-[3.8rem] text-[#323445]">
+  //                 ~Selected~ <br /> Works
+  //               </h2>
+  //             </div>
+  //             <div className=" w-full px-6">
+  //               <WorksContainer />
+  //             </div>
+  //           </div>
+  //         </div>
+  //       </div>
+  //     </div>
+  //   )
+  // );
 };
 
 export const ChatSimulator = () => {

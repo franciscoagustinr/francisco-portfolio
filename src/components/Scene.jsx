@@ -5,8 +5,9 @@ import { Center, ContactShadows, Environment, Float } from "@react-three/drei";
 import { TextTitle } from "./Text";
 import { Francisco } from "./francisco";
 import { SplineModels } from "./spline";
+import { PaperPlane } from "./paper-plane";
 
-export const Scene = () => {
+export const Scene = ({ isPopUpOpen }) => {
   return (
     <Canvas dpr={[1.5, 2]} className="bg-[rgb(53,190,214)] ">
       <Suspense fallback={null}>
@@ -35,11 +36,18 @@ export const Scene = () => {
             azimuth={[-0.2, 0.2]}
             cursor={false}
           > */}
-          <Center position={[0, -1, 1]}>
-            <mesh position={[-0.2, -4, 0]} scale={1.5}>
+          {/* <Center
+            position={[isPopUpOpen ? -4.2 : 0, -1.2, isPopUpOpen ? 0.08 : 1]}
+            rotation={[-0.01, isPopUpOpen ? 1.4 : 0, isPopUpOpen ? -0.13 : 0]}
+          > */}
+          <Center position={[0, -1.2, 1]} rotation={[0, 0, 0]}>
+            <mesh position={[-0.2, -4.4, 0]} scale={1.7}>
               <Francisco />
             </mesh>
           </Center>
+          {/* <mesh scale={5} position={[5, 1.5, 0]} rotation={[0.3, 0, 0]}>
+            <PaperPlane />
+          </mesh> */}
           {/* </PresentationControls> */}
         </Float>
         <TextTitle />

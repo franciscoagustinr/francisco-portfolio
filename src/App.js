@@ -19,12 +19,12 @@ function App() {
       <About setDialogText={setDialogText} setIsPopUpOpen={setIsPopUpOpen} isPopUpOpen={isPopUpOpen} />
       <PopUpAbout setIsPopUpOpen={setIsPopUpOpen} isPopUpOpen={isPopUpOpen} />
       <HandwrittenTexts />
-      <Scene />
+      <Scene isPopUpOpen={isPopUpOpen} />
       <RRSS setDialogText={setDialogText} />
       <Coffee setDialogText={setDialogText} />
       <WeatherData setDialogText={setDialogText} />
       {dialogText && <DialogBox text={dialogText} />}
-    </div>
+    </div >
   );
 }
 
