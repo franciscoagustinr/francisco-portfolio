@@ -5,7 +5,7 @@ import { useHats } from "./Hats";
 import ConfettiExplosion from "react-confetti-explosion";
 import { useSpring, animated } from "@react-spring/three";
 
-export function Francisco(props) {
+export function Francisco({ props, onHatChange }) {
   const { nodes, materials } = useGLTF("/F-model7.glb");
   const objectRef = useRef();
   const avatarRef = useRef();
@@ -21,9 +21,23 @@ export function Francisco(props) {
   const BLINK_INTERVAL = useRef(Math.random() * 5 + 3); // Tiempo entre parpadeos
   const hats = useHats(nodes, materials);
   const hatNames = Object.keys(hats); // Obtener los nombres de los sombreros
+  console.log(hatNames);
 
   const handleAvatarClick = () => {
-    setCurrentHatIndex((prevIndex) => (prevIndex + 1) % hatNames.length);
+    // setCurrentHatIndex((prevIndex) => (prevIndex + 1) % hatNames.length);
+    // const currentHatName = hatNames[currentHatIndex];
+    // onHatChange(currentHatName);
+    // Calcula el próximo índice del sombrero
+    const nextHatIndex = (currentHatIndex + 1) % hatNames.length;
+
+    // Actualiza el índice del sombrero
+    setCurrentHatIndex(nextHatIndex);
+
+    // Obtiene el nombre del sombrero correspondiente al nuevo índice
+    const nextHatName = hatNames[nextHatIndex];
+
+    // Llama a la función `onHatChange` con el nuevo nombre del sombrero
+    onHatChange(nextHatName);
 
     setIsExploding(true);
     setClicked(true);
@@ -95,7 +109,7 @@ export function Francisco(props) {
       avatarRef.current.rotation.y +=
         (lookAtX - avatarRef.current.rotation.y) * 0.1; // Interpolación suave
       avatarRef.current.rotation.x +=
-        (lookAtY - avatarRef.current.rotation.x) * 0.3; // Interpolación suave
+        (lookAtY - avatarRef.current.rotation.x) * 0.2; // Interpolación suave
       // avatarRef.current.rotation.z +=
       //   (lookAtY - avatarRef.current.rotation.x) * 0.2; // Interpolación suave
 

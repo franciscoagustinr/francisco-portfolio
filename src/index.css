@@ -169,3 +169,57 @@
 .appear-animation {
   animation: appearAnimation 0.2s ease forwards;
 }
+
+.NoneHat {
+  background: rgb(53, 190, 214);
+}
+.OktopusHat {
+  background: linear-gradient(to bottom right, #ee43be, #9e2ba8);
+}
+.BatmanHat {
+  background: linear-gradient(to bottom, #1d2167, #0f0f0f);
+}
+.ChineseHat {
+  background: linear-gradient(to bottom right, #b99c70, #8a7345);
+}
+.MickeyHat {
+  background: linear-gradient(to bottom, #bed95f, #f2ba52);
+}
+.CowboyHat {
+  background: linear-gradient(to bottom right, #f6bc4e, #f2a65e);
+}
+.SharkHat {
+  background: linear-gradient(to bottom left, #047692, #0476ff);
+}
+
+/* .NoneHat {
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(53, 190, 214),
+    rgb(53, 190, 214)
+  );
+}
+
+.OktopusHat {
+  background-image: linear-gradient(to bottom right, #ee43be, #9e2ba8);
+}
+
+.BatmanHat {
+  background-image: linear-gradient(to bottom, #1d2167, #0f0f0f);
+}
+
+.ChineseHat {
+  background-image: linear-gradient(to bottom right, #b99c70, #8a7345);
+}
+
+.MickeyHat {
+  background-image: linear-gradient(to bottom, #bed95f, #f2ba52);
+}
+
+.CowboyHat {
+  background-image: linear-gradient(to bottom right, #f6bc4e, #f2a65e);
+}
+
+.SharkHat {
+  background-image: linear-gradient(to bottom left, #047692, #0476ff);
+} */
