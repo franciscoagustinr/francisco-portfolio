@@ -24,7 +24,7 @@ export const RRSS = ({ setDialogText }) => {
 
     const onMouseMove = (e) => {
       let isHover = false;
-      const hoverArea = hover ? 1.2 : 0.7;
+      const hoverArea = hover ? 1.3 : 0.7;
       const deltaX = e.clientX - x;
       const deltaY = e.clientY - y;
       const distance = Math.sqrt(deltaX ** 2 + deltaY ** 2);

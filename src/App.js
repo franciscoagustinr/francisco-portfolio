@@ -50,10 +50,10 @@ function App() {
 
   return (
     // <div className="h-screen bg-[rgb(53,190,214)]">
-    <div className={`main-container h-screen  `}>
+    <div className={`main-container h-screen`}>
       <Marquee />
       <About setDialogText={setDialogText} setIsPopUpOpen={setIsPopUpOpen} isPopUpOpen={isPopUpOpen} />
-      <PopUpAbout setIsPopUpOpen={setIsPopUpOpen} isPopUpOpen={isPopUpOpen} />
+      <PopUpAbout setIsPopUpOpen={setIsPopUpOpen} isPopUpOpen={isPopUpOpen} hatName={hatName} />
       <HandwrittenTexts />
       <Scene isPopUpOpen={isPopUpOpen} onHatChange={setHatName} triggerConfetti={triggerConfetti} />
       <RRSS setDialogText={setDialogText} />

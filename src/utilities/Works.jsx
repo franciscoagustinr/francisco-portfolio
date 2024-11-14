@@ -17,7 +17,7 @@ export const Works = [
   },
   {
     url: "https://golden-daifuku-48cfde.netlify.app/",
-    name: "Previous Portfolio (2023)",
+    name: "Previous Portfolio",
     description: "Check my previous portfolio!",
     technologies: "REACTJS + TAILWINDCSS",
     id: "2",

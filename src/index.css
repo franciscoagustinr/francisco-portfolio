@@ -11,6 +11,14 @@
   src: url("../public/fonts/Karla-Light.ttf") format("truetype");
 }
 @font-face {
+  font-family: "KarlaSemiBold";
+  src: url("../public/fonts/Karla-SemiBold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "KarlaExtraBold";
+  src: url("../public/fonts/Karla-ExtraBold.ttf") format("truetype");
+}
+@font-face {
   font-family: "Inter";
   src: url("../public/fonts/Inter.ttf") format("truetype");
 }
