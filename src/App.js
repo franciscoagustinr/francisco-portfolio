@@ -6,7 +6,7 @@ import { Scene } from "./components/Scene";
 import WeatherData from "./components/Weather";
 import { Coffee } from "./components/coffee";
 import { About } from "./components/about";
-import { HandwrittenTexts } from "./components/Handwritten-texts";
+import { HandwrittenTexts } from "./components/Text-Handwritten";
 import { PopUpAbout } from "./components/PopUpAbout";
 import gsap from "gsap";
 
@@ -19,20 +19,14 @@ function App() {
   useEffect(() => {
     gsap.to(".main-container", {
       background: getHatBackground(hatName), // Función que devuelve el color o gradiente según `hatName`
-      duration: 0.4,
-      ease: "power2.inOut",
+      duration: 1,
+      // ease: "power2.inOut",
+      ease: "power4.in",
     });
   }, [hatName]);
 
   const getHatBackground = (hatName) => {
     switch (hatName) {
-      // case "OktopusHat":
-      //   return "linear-gradient(to bottom right, #ee43be, #9e2ba8)";
-      // case "BatmanHat":
-      //   return "linear-gradient(to bottom, #1d2167, #0f0f0f)";
-      // case "ChineseHat":
-      //   return "linear-gradient(to bottom right, #b99c70, #8a7345)";
-
       case 'NoneHat':
         return "linear-gradient(to bottom right, rgb(53, 190, 214), rgb(53, 190, 214))";
       case 'OktopusHat':
@@ -52,8 +46,6 @@ function App() {
     }
 
   }
-
-
 
   return (
     // <div className="h-screen bg-[rgb(53,190,214)]">

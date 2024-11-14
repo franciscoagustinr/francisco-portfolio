@@ -3,8 +3,7 @@ import React from "react";
 export const HandwrittenTexts = () => {
   return (
     <>
-      {/* STAY IN CONTACT */}
-      <div className="absolute right-20 z-40 top-52 pointer-events-none select-none">
+      <div className="absolute right-20 z-40 top-52 pointer-events-none select-none animate-pulse  ">
         <div className="relative text-white -rotate-45 font-HomemadeApple flex">
           stay in contact
           <svg
