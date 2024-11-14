@@ -14,6 +14,7 @@ function App() {
   const [dialogText, setDialogText] = useState(null);
   const [isPopUpOpen, setIsPopUpOpen] = useState(false);
   const [hatName, setHatName] = useState('NoneHat');
+  const [triggerConfetti, setTriggerConfetti] = useState(false);
 
 
   useEffect(() => {
@@ -42,7 +43,7 @@ function App() {
       case 'SharkHat':
         return "linear-gradient(to bottom left, #047692, #0476ff)";
       default:
-        return "rgb(53, 190, 214)";
+        return "linear-gradient(to bottom right, rgb(53, 190, 214), rgb(53, 190, 214))";
     }
 
   }
@@ -54,10 +55,10 @@ function App() {
       <About setDialogText={setDialogText} setIsPopUpOpen={setIsPopUpOpen} isPopUpOpen={isPopUpOpen} />
       <PopUpAbout setIsPopUpOpen={setIsPopUpOpen} isPopUpOpen={isPopUpOpen} />
       <HandwrittenTexts />
-      <Scene isPopUpOpen={isPopUpOpen} onHatChange={setHatName} />
+      <Scene isPopUpOpen={isPopUpOpen} onHatChange={setHatName} triggerConfetti={triggerConfetti} />
       <RRSS setDialogText={setDialogText} />
-      <Coffee setDialogText={setDialogText} />
-      <WeatherData setDialogText={setDialogText} />
+      {/* <Coffee setDialogText={setDialogText} /> */}
+      <WeatherData setDialogText={setDialogText} hatName={hatName} triggerConfetti={triggerConfetti} setTriggerConfetti={setTriggerConfetti} />
       {dialogText && <DialogBox text={dialogText} />}
     </div >
   );

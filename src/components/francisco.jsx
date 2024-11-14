@@ -5,7 +5,7 @@ import { useHats } from "./Hats";
 import ConfettiExplosion from "react-confetti-explosion";
 import { useSpring, animated } from "@react-spring/three";
 
-export function Francisco({ props, onHatChange }) {
+export function Francisco({ props, onHatChange, triggerConfetti }) {
   const { nodes, materials } = useGLTF("/F-model7.glb");
   const objectRef = useRef();
   const avatarRef = useRef();
@@ -21,7 +21,6 @@ export function Francisco({ props, onHatChange }) {
   const BLINK_INTERVAL = useRef(Math.random() * 5 + 3); // Tiempo entre parpadeos
   const hats = useHats(nodes, materials);
   const hatNames = Object.keys(hats); // Obtener los nombres de los sombreros
-  console.log(hatNames);
 
   const handleAvatarClick = () => {
     // setCurrentHatIndex((prevIndex) => (prevIndex + 1) % hatNames.length);
@@ -60,8 +59,10 @@ export function Francisco({ props, onHatChange }) {
     rotation: clicked
       ? [-0.18, 0, 0]
       : // : isShaking
-        // ? [0, 0.2, 0] // TODO: hacer la animación de sacudida de cabeza
-        [0, 0, 0],
+      // ? [0, 0.2, 0] // TODO: hacer la animación de sacudida de cabeza
+      triggerConfetti
+      ? [0, Math.PI / 0.5, 0]
+      : [0, 0, 0],
     config: { tension: 250, friction: 20 },
     onRest: () => {
       if (clicked) {

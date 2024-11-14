@@ -93,63 +93,6 @@
   animation: dialog-box 200ms ease-out;
 }
 
-@keyframes shake {
-  0% {
-    transform: rotate(0deg);
-  }
-  25% {
-    transform: rotate(10deg);
-  }
-  50% {
-    transform: rotate(0eg);
-  }
-  75% {
-    transform: rotate(-10deg);
-  }
-  100% {
-    transform: rotate(0deg);
-  }
-}
-
-.shake:hover {
-  animation: shake 0.5s linear infinite;
-}
-
-.image {
-  transition: opacity 0.2s ease-in-out;
-}
-
-.photo {
-  opacity: 1;
-}
-
-.fun-photo {
-  opacity: 0;
-}
-
-.picture-container:hover .photo {
-  opacity: 0;
-}
-
-.picture-container:hover .fun-photo {
-  opacity: 1;
-}
-
-@keyframes blink {
-  50% {
-    fill: transparent;
-  }
-}
-.dot {
-  animation: 0.8s blink infinite;
-}
-.dot:nth-child(2) {
-  animation-delay: 250ms;
-}
-.dot:nth-child(3) {
-  animation-delay: 500ms;
-}
-
 .loader {
   background-color: #f1f1f1;
   color: #fafafa;
@@ -170,7 +113,7 @@
   animation: appearAnimation 0.2s ease forwards;
 }
 
-.NoneHat {
+/* .NoneHat {
   background: rgb(53, 190, 214);
 }
 .OktopusHat {
@@ -190,36 +133,10 @@
 }
 .SharkHat {
   background: linear-gradient(to bottom left, #047692, #0476ff);
-}
+} */
 
-/* .NoneHat {
-  background-image: linear-gradient(
-    to bottom right,
-    rgb(53, 190, 214),
-    rgb(53, 190, 214)
-  );
-}
-
-.OktopusHat {
-  background-image: linear-gradient(to bottom right, #ee43be, #9e2ba8);
-}
-
-.BatmanHat {
-  background-image: linear-gradient(to bottom, #1d2167, #0f0f0f);
-}
-
-.ChineseHat {
-  background-image: linear-gradient(to bottom right, #b99c70, #8a7345);
-}
-
-.MickeyHat {
-  background-image: linear-gradient(to bottom, #bed95f, #f2ba52);
-}
-
-.CowboyHat {
-  background-image: linear-gradient(to bottom right, #f6bc4e, #f2a65e);
-}
-
-.SharkHat {
-  background-image: linear-gradient(to bottom left, #047692, #0476ff);
+/* .bg-talk::after {
+  content: "";
+  background: var(--bg-after);
+  transition: background 0.35s ease-in;
 } */

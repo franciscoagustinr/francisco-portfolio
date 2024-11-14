@@ -234,9 +234,21 @@ export const TypingDots = () => {
   return (
     <>
       <svg height="30" width="40">
-        <circle class="dot" cx="10" cy="20" r="3" fill="grey" />
-        <circle class="dot" cx="20" cy="20" r="3" fill="grey" />
-        <circle class="dot" cx="30" cy="20" r="3" fill="grey" />
+        <circle className="animate-blink" cx="10" cy="20" r="3" fill="grey" />
+        <circle
+          className="animate-blink delay-250ms "
+          cx="20"
+          cy="20"
+          r="3"
+          fill="grey"
+        />
+        <circle
+          className="animate-blink delay-500ms"
+          cx="30"
+          cy="20"
+          r="3"
+          fill="grey"
+        />
       </svg>
     </>
   );
