@@ -4,17 +4,35 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'Karla': ['Karla', 'sans-serif'],
-        'KarlaLight': ['KarlaLight', 'sans-serif'],
-        'Inter': ['Inter', 'sans-serif'],
-        'HomemadeApple': ['HomemadeApple', 'sans-serif'],
-        'HappyMonkey': ['HappyMonkey', 'sans-serif'],
-        'RampartOne': ['RampartOne', 'sans-serif']
+        Karla: ['Karla', 'sans-serif'],
+        KarlaLight: ['KarlaLight', 'sans-serif'],
+        Inter: ['Inter', 'sans-serif'],
+        HomemadeApple: ['HomemadeApple', 'sans-serif'],
+        HappyMonkey: ['HappyMonkey', 'sans-serif'],
+        RampartOne: ['RampartOne', 'sans-serif'],
       },
-      cursor: {
-        'punch': "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='75' height='90' viewport='0 0 100 100' style='fill:black;font-size:45px;'><text y='50%'>🥊</text></svg>\") 16 0, auto",
+      keyframes: {
+        blink: {
+          '50%': {
+            fill: 'transparent',
+          },
+        },
+      },
+      animation: {
+        blink: 'blink 0.8s infinite',
       },
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }) {
+      addUtilities({
+        '.delay-250ms': {
+          animationDelay: '250ms',
+        },
+        '.delay-500ms': {
+          animationDelay: '500ms',
+        },
+      });
+    },
+  ],
 };
