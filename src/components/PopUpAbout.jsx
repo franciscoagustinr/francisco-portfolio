@@ -37,34 +37,17 @@ export const PopUpAbout = ({ isPopUpOpen, setIsPopUpOpen, hatName }) => {
             className="absolute right-2 top-2 cursor-pointer z-50"
             onClick={handleClosePopUp}
           />
-          <div className="relative flex gap-4 pt-2.5 mx-4 mr-8 pb-1 min-h-full ">
-            <div className="flex flex-col justify-end gap-3 flex-1 text-black w-[440px]">
+          <div className="relative flex gap-4 pt-2.5 mx-4 mr-8 pb-1 min-h-full">
+            <div className="flex flex-col justify-end gap-3 text-black w-[440px]">
               <ChatSimulator />
-              {/* <div className="flex justify-around">
-                <button className="p-1.5 px-4 rounded-3xl font-Karla bg-[#63D2FF] text-white">
-                  Get in touch
-                </button>
-                <button className="p-1.5 px-4 rounded-3xl font-Karla bg-[#63D2FF] text-white">
-                  Get resume
-                </button>
-              </div> */}
             </div>
-            {/* <div className=" max-h-[41rem] self-center min-h-[41rem] flex flex-col items-center justify-center bg-[#FFEFAF] w-[450px] rounded-lg"> */}
-            <div className="self-center flex flex-col items-center justify-center w-[450px] rounded-lg">
-              <h2 className="select-none relative -top-2 text-center font-RampartOne text-7xl leading-[4rem] text-[#fff]">
+            <div className="sticky top-8 flex flex-col items-center justify-start w-[450px] rounded-lg h-full">
+              <h2 className=" select-none relative  text-center font-RampartOne text-7xl leading-[4rem] text-[#fff]">
                 Selected <br /> Works
               </h2>
               <div className=" w-full px-6 mt-3">
                 <WorksContainer hatName={hatName} />
               </div>
-              {/* <div className="flex justify-around items-center w-full py-2">
-                <button className="p-1.5 px-4 rounded-3xl font-Karla bg-[#63D2FF] text-white">
-                  Get in touch
-                </button>
-                <button className="p-1.5 px-4 rounded-3xl font-Karla bg-[#63D2FF] text-white">
-                  Get resume
-                </button>
-              </div> */}
             </div>
           </div>
         </div>
