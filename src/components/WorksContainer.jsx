@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Works } from "../utilities/Works";
 import { useMousePosition } from "../utilities/mousePosition";
 
 export const WorksContainer = ({ hatName }) => {
   const mousePosition = useMousePosition();
-  const [hovered, setHovered] = useState(false);
 
   const getHatBackground = (hatName) => {
     switch (hatName) {
@@ -27,25 +26,6 @@ export const WorksContainer = ({ hatName }) => {
     }
   };
   const dynamicColor = getHatBackground(hatName);
-
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      const cursorIcon =
-        "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='75' height='90' viewport='0 0 100 100' style='fill:black;font-size:45px;'><text y='50%'>💌</text></svg>\") 16 0, auto ";
-
-      document.body.style.cursor = hovered ? cursorIcon : "auto";
-    };
-
-    if (hovered) {
-      window.addEventListener("mousemove", handleMouseMove);
-    } else {
-      document.body.style.cursor = "auto";
-    }
-
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-    };
-  }, [hovered]);
 
   return (
     <div
@@ -120,17 +100,11 @@ export const WorksContainer = ({ hatName }) => {
         })}
       <div className="mt-6 px-2 flex items-center justify-around ">
         <button
-          className={`hover:scale-110 hover:bg-white hover:text-[var(--dynamic-color)] transition-all duration-300 px-6 py-2 rounded-full font-light uppercase bg-[var(--dynamic-color)] text-white`}
-          onMouseEnter={() => setHovered(true)}
-          onMouseLeave={() => setHovered(false)}
+          className={`cursor-contact hover:scale-110 hover:bg-white hover:text-[var(--dynamic-color)] transition-all duration-300 px-6 py-2 rounded-full font-light uppercase bg-[var(--dynamic-color)] text-white`}
         >
           Stay in contact!
         </button>
-        <button
-          className="hover:scale-110 hover:bg-white hover:text-[var(--dynamic-color)] transition-all duration-300 px-6 py-2 rounded-full font-light uppercase bg-[var(--dynamic-color)] text-white"
-          // onMouseEnter={() => setHovered(true)}
-          // onMouseLeave={() => setHovered(false)}
-        >
+        <button className="cursor-resume hover:scale-110 hover:bg-white hover:text-[var(--dynamic-color)] transition-all duration-300 px-6 py-2 rounded-full font-light uppercase bg-[var(--dynamic-color)] text-white">
           Get resume
         </button>
       </div>
