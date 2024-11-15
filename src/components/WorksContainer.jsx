@@ -1,10 +1,10 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Works } from "../utilities/Works";
 import { useMousePosition } from "../utilities/mousePosition";
-import gsap from "gsap";
 
 export const WorksContainer = ({ hatName }) => {
   const mousePosition = useMousePosition();
+  const [hovered, setHovered] = useState(false);
 
   const getHatBackground = (hatName) => {
     switch (hatName) {
@@ -27,6 +27,26 @@ export const WorksContainer = ({ hatName }) => {
     }
   };
   const dynamicColor = getHatBackground(hatName);
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      const cursorIcon =
+        "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='75' height='90' viewport='0 0 100 100' style='fill:black;font-size:45px;'><text y='50%'>💌</text></svg>\") 16 0, auto ";
+
+      document.body.style.cursor = hovered ? cursorIcon : "auto";
+    };
+
+    if (hovered) {
+      window.addEventListener("mousemove", handleMouseMove);
+    } else {
+      document.body.style.cursor = "auto";
+    }
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, [hovered]);
+
   return (
     <div
       style={{
@@ -98,82 +118,22 @@ export const WorksContainer = ({ hatName }) => {
             </div>
           );
         })}
-      {/* <div className="flex justify-around items-center w-full mt-5">
-        <button className="p-1.5 px-4 rounded-3xl font-Karla brigh bg-[var(--dynamic-color)] text-white">
-          Get in touch
+      <div className="mt-6 px-2 flex items-center justify-around ">
+        <button
+          className={`hover:scale-110 hover:bg-white hover:text-[var(--dynamic-color)] transition-all duration-300 px-6 py-2 rounded-full font-light uppercase bg-[var(--dynamic-color)] text-white`}
+          onMouseEnter={() => setHovered(true)}
+          onMouseLeave={() => setHovered(false)}
+        >
+          Stay in contact!
         </button>
-        <button className="p-1.5 px-4 rounded-3xl font-Karla brigh bg-[var(--dynamic-color)] text-white">
+        <button
+          className="hover:scale-110 hover:bg-white hover:text-[var(--dynamic-color)] transition-all duration-300 px-6 py-2 rounded-full font-light uppercase bg-[var(--dynamic-color)] text-white"
+          // onMouseEnter={() => setHovered(true)}
+          // onMouseLeave={() => setHovered(false)}
+        >
           Get resume
         </button>
-      </div> */}
-
-      <OurWorksButton />
+      </div>
     </div>
-  );
-};
-
-export const OurWorksButton = () => {
-  const buttonRef = useRef(null);
-  const circleRef = useRef(null);
-  const textRef = useRef(null);
-
-  // Mouse enter animation
-  const handleMouseEnter = (e) => {
-    // Animate the circle
-    gsap.to(circleRef.current, {
-      scale: 1,
-      duration: 0.5,
-      y: -14,
-      ease: "power3.out",
-    });
-
-    // Animate the text
-    gsap.to(textRef.current, {
-      y: -10, // Mueve hacia arriba
-      opacity: 0,
-      duration: 0.3,
-      ease: "expo.out",
-    });
-  };
-
-  // Mouse leave animation
-  const handleMouseLeave = () => {
-    // Reset the circle
-    gsap.to(circleRef.current, {
-      scale: 0,
-      duration: 0.3,
-      ease: "power3.out",
-    });
-
-    // Reset the text
-    gsap.to(textRef.current, {
-      opacity: 1,
-      duration: 0.3,
-      ease: "power3.out",
-    });
-  };
-
-  return (
-    <button
-      ref={buttonRef}
-      className="group relative overflow-hidden px-6 py-3 rounded-full text-white hover:text-black font-bold"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
-      {/* Expanding circle */}
-      <div
-        ref={circleRef}
-        className="absolute w-[220px] h-[100px] -ml-[6.2rem] bg-white rounded-full transform scale-0 pointer-events-none"
-        style={{
-          transformOrigin: "center",
-          zIndex: 1,
-        }}
-      ></div>
-
-      {/* Button text */}
-      <span ref={textRef} className="relative z-[999] ">
-        Contact
-      </span>
-    </button>
   );
 };

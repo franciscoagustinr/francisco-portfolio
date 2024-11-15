@@ -30,11 +30,11 @@ export const PopUpAbout = ({ isPopUpOpen, setIsPopUpOpen, hatName }) => {
           ref={popupRef}
           // className="relative h-4/5 w-auto bg-sky-200 border border-solid border-sky-600 rounded-2xl z-20 overflow-y-scroll"
           // className="relative top-2 h-auto w-auto bg-sky-200 border border-solid border-sky-600 rounded-2xl z-20 overflow-y-scroll"
-          className="relative top-2 h-auto w-auto bg-gray-600 bg-opacity-20 border border-solid border-gray-100 rounded-2xl z-20 overflow-y-scroll max-h-[43rem]"
+          className="relative top-2 h-[43rem] w-auto bg-gray-600 bg-opacity-20 border border-solid border-gray-100 rounded-2xl z-20 overflow-y-scroll"
           // className="relative h-[calc(100%-5px)] w-[calc(100%-5px)] bg-sky-200 border border-solid border-sky-600 rounded-2xl z-20 overflow-y-scroll"
         >
           <IconCross
-            className="absolute right-1 top-2 cursor-pointer z-50"
+            className="absolute right-2 top-2 cursor-pointer z-50"
             onClick={handleClosePopUp}
           />
           <div className="relative flex gap-4 pt-2.5 mx-4 mr-8 pb-1 min-h-full ">
@@ -51,7 +51,7 @@ export const PopUpAbout = ({ isPopUpOpen, setIsPopUpOpen, hatName }) => {
             </div>
             {/* <div className=" max-h-[41rem] self-center min-h-[41rem] flex flex-col items-center justify-center bg-[#FFEFAF] w-[450px] rounded-lg"> */}
             <div className="self-center flex flex-col items-center justify-center w-[450px] rounded-lg">
-              <h2 className="select-none text-center font-RampartOne text-7xl leading-[4rem] text-[#fff]">
+              <h2 className="select-none relative -top-2 text-center font-RampartOne text-7xl leading-[4rem] text-[#fff]">
                 Selected <br /> Works
               </h2>
               <div className=" w-full px-6 mt-3">
