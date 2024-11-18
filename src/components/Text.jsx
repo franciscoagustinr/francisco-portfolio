@@ -252,26 +252,6 @@ export const TextTitle = () => {
       <mesh position={[-4.2, -3.6, 0]} scale={1.2}>
         {generateTextElements("AGUSTIN", agustinColors, setAgustinColors)}
       </mesh>
-      {/* <Text
-        position={[0, 1.4, -1]}
-        fontSize={2.4}
-        letterSpacing={-0.025}
-        color="black"
-        font="./fonts/Anton-Regular.ttf"
-        fillOpacity={0.4}
-      >
-        FRANCISCO
-      </Text>
-      <Text
-        position={[0, -0.8, -1]}
-        fontSize={2.4}
-        letterSpacing={-0.025}
-        color="black"
-        font="./fonts/Anton-Regular.ttf"
-        fillOpacity={0.4}
-      >
-        AGUSTIN
-      </Text> */}
     </>
   );
 };

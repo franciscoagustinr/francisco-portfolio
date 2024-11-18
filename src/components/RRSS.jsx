@@ -88,7 +88,7 @@ export const RRSS = ({ setDialogText }) => {
 
   return (
     <>
-      <div className="absolute bottom-3 right-3">
+      <div className="absolute bottom-4 right-16">
         <img
           ref={linkedinRef}
           src={LinkedinLogo}
@@ -104,7 +104,7 @@ export const RRSS = ({ setDialogText }) => {
           onMouseLeave={() => setDialogText("")}
         />
       </div>
-      <div className="absolute bottom-3 right-20">
+      <div className="absolute bottom-4 right-40">
         <img
           ref={githubRef}
           src={GithubLogo}
@@ -119,12 +119,12 @@ export const RRSS = ({ setDialogText }) => {
           onMouseLeave={() => setDialogText("")}
         />
       </div>
-      <div className="absolute left-1 bottom-2">
+      <div className="absolute left-5 bottom-3">
         <img
           ref={coffeeRef}
           src={CoffeeCup}
           alt="Coffee Cup"
-          className=" select-none w-24 -rotate-12 cursor-pointer relative"
+          className=" select-none w-20 -rotate-12 cursor-pointer relative"
           onClick={() => {
             window.open("https://cafecito.app/franciscoagustinr", "_blank");
           }}

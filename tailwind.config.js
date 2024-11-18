@@ -12,6 +12,7 @@ module.exports = {
         RampartOne: ['RampartOne', 'sans-serif'],
         KarlaSemiBold: ['KarlaSemiBold', 'sans-serif'],
         KarlaExtraBold: ['KarlaExtraBold', 'sans-serif'],
+        RecoletaBlack: ['RecoletaBlack', 'sans-serif'],
       },
       keyframes: {
         blink: {

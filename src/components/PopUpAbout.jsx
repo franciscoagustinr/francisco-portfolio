@@ -42,10 +42,11 @@ export const PopUpAbout = ({ isPopUpOpen, setIsPopUpOpen, hatName }) => {
               <ChatSimulator />
             </div>
             <div className="sticky top-8 flex flex-col items-center justify-start w-[450px] rounded-lg h-full">
-              <h2 className=" select-none relative  text-center font-RampartOne text-7xl leading-[4rem] text-[#fff]">
+              {/* <h2 className=" select-none relative  text-center font-RampartOne text-7xl leading-[4rem] text-[#fff]"> */}
+              <h2 className=" select-none relative  text-center font-RecoletaBlack text-7xl tracking-wide -rotate-3 leading-[4rem] text-[#fff]">
                 Selected <br /> Works
               </h2>
-              <div className=" w-full px-6 mt-3">
+              <div className=" w-full px-6 mt-6">
                 <WorksContainer hatName={hatName} />
               </div>
             </div>

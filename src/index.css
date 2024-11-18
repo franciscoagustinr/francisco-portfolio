@@ -34,6 +34,10 @@
   font-family: "RampartOne";
   src: url("../public/fonts/RampartOne-Regular.ttf") format("truetype");
 }
+@font-face {
+  font-family: "RecoletaBlack";
+  src: url("../public/fonts/Recoleta-Black.ttf") format("truetype");
+}
 
 @keyframes marquee {
   0% {
