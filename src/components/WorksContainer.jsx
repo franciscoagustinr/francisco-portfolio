@@ -82,7 +82,7 @@ export const WorksContainer = ({ hatName }) => {
                   </div>
                   <div className=" -translate-x-9 group-hover:-translate-x-0 transition-all duration-[210ms] ease-linear">
                     <h2
-                      className={`uppercase group-hover:brightness-150 font-KarlaExtraBold text-xl text-[#fff] group-hover:text-[var(--dynamic-color)] transition-all duration-200 ease-linear max-w-fit px-2`}
+                      className={`uppercase group-hover:brightness-150 font-KarlaExtraBold text-lg text-[#fff] group-hover:text-[var(--dynamic-color)] transition-all duration-200 ease-linear max-w-fit px-2 pl-0`}
                     >
                       {work.name}
                     </h2>
