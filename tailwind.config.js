@@ -20,9 +20,19 @@ module.exports = {
             fill: 'transparent',
           },
         },
+        wave: {
+          "0%": { transform: "rotate(0deg)" },
+          "15%": { transform: "rotate(15deg)" },
+          "30%": { transform: "rotate(-15deg)" },
+          "45%": { transform: "rotate(10deg)" },
+          "60%": { transform: "rotate(-10deg)" },
+          "75%": { transform: "rotate(5deg)" },
+          "100%": { transform: "rotate(0deg)" },
+        },
       },
       animation: {
         blink: 'blink 0.8s infinite',
+        wavingHand: "wave 1.5s ease-in-out infinite",
       },
       cursor: {
         contact:

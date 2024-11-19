@@ -43,10 +43,52 @@ export const PopUpAbout = ({ isPopUpOpen, setIsPopUpOpen, hatName }) => {
             </div>
             <div className="sticky top-8 flex flex-col items-center justify-start w-[450px] rounded-lg h-full">
               {/* <h2 className=" select-none relative  text-center font-RampartOne text-7xl leading-[4rem] text-[#fff]"> */}
-              <h2 className=" select-none relative  text-center font-RecoletaBlack text-7xl tracking-wide -rotate-3 leading-[4rem] text-[#fff]">
+              {/* <h2 className=" select-none relative  text-center font-RecoletaBlack text-7xl tracking-wide -rotate-3 leading-[4rem] text-[#fff]">
                 Selected <br /> Works
+              </h2> */}
+              <h2 className="select-none relative text-center font-RecoletaBlack text-7xl tracking-wider -rotate-3 leading-[4.2rem] text-[#fff]">
+                {Array.from("Selected").map((letter, index) => (
+                  <span
+                    key={index}
+                    className={`inline-block transition-all duration-150 hover:scale-150 
+                      ${index % 2 === 0 ? "hover:rotate-6" : "hover:-rotate-12"}
+                      ${
+                        [
+                          "hover:text-[#f7d65f]",
+                          "hover:text-[#e18754]",
+                          "hover:text-[#54f0f0]",
+                          "hover:text-[#db7c45]",
+                          "hover:text-[#ef4d53]",
+                          "hover:text-[#dd5ad9]",
+                          "hover:text-[#d97e4a]",
+                          "hover:text-[#eecb4b]",
+                        ][index % 7]
+                      }`}
+                  >
+                    {letter}
+                  </span>
+                ))}
+                <br />
+                {Array.from("Works").map((letter, index) => (
+                  <span
+                    key={index}
+                    className={`inline-block transition-all duration-150 hover:scale-150 
+                      ${index % 2 === 0 ? "hover:rotate-6" : "hover:-rotate-6"}
+                      ${
+                        [
+                          "hover:text-[#c0ef3d]",
+                          "hover:text-[#fb8039]",
+                          "hover:text-[#3effff]",
+                          "hover:text-[#df4c51]",
+                          "hover:text-[#f265ee]",
+                        ][index % 7]
+                      }`}
+                  >
+                    {letter}
+                  </span>
+                ))}
               </h2>
-              <div className=" w-full px-6 mt-6">
+              <div className=" w-full px-6 mt-3">
                 <WorksContainer hatName={hatName} />
               </div>
             </div>
@@ -60,13 +102,13 @@ export const PopUpAbout = ({ isPopUpOpen, setIsPopUpOpen, hatName }) => {
 export const ChatSimulator = () => {
   const messages = useMemo(
     () => [
-      "Hey there! My name is Francisco Agustín Rodríguez.",
-      "I'm a front-end developer based in Buenos Aires (🇦🇷 AR)",
-      "I specialize in crafting interactive, visually engaging websites with a strong emphasis on smooth motion and user experience.",
-      "This is my teammate 👇🏻",
+      "Hi there! <span class='text-xl animate-wavingHand inline-block'>👋🏻</span> I’m Francisco Agustín Rodríguez —but you can call me Fran.",
+      "I’m a front-end developer hailing from Buenos Aires, Argentina (<span class='text-xl '>🇦🇷</span>)",
+      "I bring websites to life by creating interactive <span class='text-xl '>🕹️</span> visually stunning <span class='text-xl '>🎨</span> experiences with a focus on seamless motion and user-friendly design <span class='text-xl '>✨</span>",
+      "This is my teammate <span class='text-xl inline-block animate-bounce duration-150 '>👇🏻</span><span class='text-xl inline-block animate-bounce delay-150 duration-300'>👇🏻</span>",
       "img",
-      "His name is Beto 🐶",
-      "Let's chat, laugh and craft ideas together! 💡",
+      "This is Beto, my loyal sidekick <span class='text-2xl '>🐶</span> He keeps the creativity flowing! <span class='text-xl '>💫</span>",
+      "Let’s connect <span class='text-2xl '>🤝🏻</span> share some laughs, and turn ideas into reality! <span class='text-xl '>🚀</span> ",
     ],
     []
   );
@@ -109,20 +151,19 @@ export const ChatSimulator = () => {
   }, [count, messages.length, visibleMessages.length]);
 
   useEffect(() => {
-    if (endOfMessagesRef.current) {
-      visibleMessages >= 4 &&
-        endOfMessagesRef.current.scrollIntoView({ behavior: "smooth" });
+    if (endOfMessagesRef.current && visibleMessages) {
+      endOfMessagesRef.current.scrollIntoView({ behavior: "smooth" });
     }
-  }, [visibleMessages.length, showTypingDots]);
+  }, [visibleMessages.length, visibleMessages]);
 
   return (
     <div className="h-full flex flex-col justify-end bg-transparent">
       {visibleMessages.map((message, index) => (
         <div
           key={index}
-          className={`appear-animation relative rounded-2xl rounded-bl-md bg-[#ffffff] py-2 text-sm pl-3 pr-2 cursor-pointer select-none max-w-max transition-all duration-300 ease-in-out
+          className={`shadow-md appear-animation relative rounded-2xl rounded-bl-md bg-[#ffffff] py-2 text-md pl-3 pr-2 cursor-pointer select-none max-w-max transition-all duration-300 ease-in-out
             hover:!scale-[1.009] font-KarlaLight ${
-              reactions[index].emoji ? "mb-4" : "mb-2"
+              reactions[index].emoji ? "mb-5" : "mb-2"
             } `}
           onClick={() => handleReaction(index)}
         >
@@ -137,10 +178,11 @@ export const ChatSimulator = () => {
               />
             </div>
           ) : (
-            <span>{message}</span>
+            // <span>{message}</span>
+            <div dangerouslySetInnerHTML={{ __html: message }} />
           )}
           {reactions[index].emoji && (
-            <span className="appear-animation duration-0 absolute border border-gray-300 -bottom-3.5 right-2 text-md bg-white py-0.5 px-2 rounded-full">
+            <span className="appear-animation duration-0 absolute border border-gray-300 -bottom-3.5 right-2 text-md bg-white py-0.5 px-2 rounded-full shadow-sm ">
               {reactions[index].emoji}
               <span
                 key={`${index}-${reactions[index].count}`}
@@ -161,7 +203,7 @@ export const ChatSimulator = () => {
           </div>
         </>
       )}
-      <div ref={endOfMessagesRef}></div>
+      <div ref={endOfMessagesRef} />
     </div>
   );
 };
@@ -170,7 +212,7 @@ export const IconCross = ({ className, onClick }) => {
   return (
     <>
       <svg
-        className={`w-6 ${className} hover:scale-125 transition-all duration-150 `}
+        className={`w-6 ${className} hover:scale-150 transition-all duration-150 `}
         viewBox="0 -0.5 25 25"
         fill="#000"
         onClick={onClick}
