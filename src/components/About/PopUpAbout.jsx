@@ -150,7 +150,7 @@ export const ChatSimulator = () => {
     if (endOfMessagesRef.current && visibleMessages) {
       endOfMessagesRef.current.scrollIntoView({ behavior: "smooth" });
     }
-  }, [visibleMessages.length]);
+  }, [visibleMessages.length, showTypingDots]);
 
   return (
     <div className="h-full flex flex-col justify-end bg-transparent">

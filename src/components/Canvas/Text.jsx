@@ -1,10 +1,13 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useCallback, useMemo, useState } from "react";
 import { Text } from "@react-three/drei";
+import { useMousePosition } from "../../utilities/mousePosition";
 
 export const TextTitle = () => {
   const FONT_SIZE = 2.8;
   const BASE_SPACING = FONT_SIZE * 0.45; // Espaciado base para letras de ancho medio
+  const mousePosition = useMousePosition();
+  console.log(mousePosition.x, mousePosition.y);
 
   // Mantenemos un estado de colores separado para cada palabra
   const [franciscoColors, setFranciscoColors] = useState(
@@ -16,13 +19,15 @@ export const TextTitle = () => {
 
   const letterSpacingMap = useMemo(
     () => ({
+      i: BASE_SPACING * 0.73,
       I: BASE_SPACING * 0.7,
-      F: BASE_SPACING * 0.9,
+      F: BASE_SPACING * 0.95,
       S: BASE_SPACING * 0.95,
-      C: BASE_SPACING * 0.7,
+      C: BASE_SPACING * 0.75,
       secondC: BASE_SPACING * 1,
       secondI: BASE_SPACING * 1,
       T: BASE_SPACING * 0.67,
+      R: BASE_SPACING * 0.99,
     }),
     [BASE_SPACING]
   );
@@ -32,9 +37,11 @@ export const TextTitle = () => {
       F: "#FFE484",
       R: "#FFAA79",
       A: "#B4FAFA",
+      a: "#B4FAFA",
       N: "#FF787D",
       C: "#EFB1ED",
       I: "#FFE484",
+      i: "#FFE484",
       S: "#B4FAFA",
       secondC: "#FF787D",
       O: "#EFB1ED",
@@ -42,19 +49,19 @@ export const TextTitle = () => {
       G: "#FFAA79",
       U: "#FFE484",
       T: "#FFAA79",
-      // F: "#FFD449", // Más fuerte que #FFE484
-      // R: "#FF7745", // Más fuerte que #FFAA79
-      // A: "#6FF2F2", // Más fuerte que #B4FAFA
-      // N: "#FF3B41", // Más fuerte que #FF787D
-      // C: "#E16FE5", // Más fuerte que #EFB1ED
-      // I: "#FFD449", // Más fuerte que #FFE484
-      // S: "#6FF2F2", // Más fuerte que #B4FAFA
-      // secondC: "#FF3B41", // Más fuerte que #FF787D
-      // O: "#E16FE5", // Más fuerte que #EFB1ED
-      // secondI: "#FFD449", // Más fuerte que #FFE484
-      // G: "#FF7745", // Más fuerte que #FFAA79
-      // U: "#FFD449", // Más fuerte que #FFE484
-      // T: "#FF7745", // Más fuerte que #FFAA79
+      //F: "#FFD449", // Más fuerte que #FFE484
+      //R: "#FF7745", // Más fuerte que #FFAA79
+      //A: "#6FF2F2", // Más fuerte que #B4FAFA
+      //N: "#FF3B41", // Más fuerte que #FF787D
+      //C: "#E16FE5", // Más fuerte que #EFB1ED
+      //I: "#FFD449", // Más fuerte que #FFE484
+      //S: "#6FF2F2", // Más fuerte que #B4FAFA
+      //secondC: "#FF3B41", // Más fuerte que #FF787D
+      //O: "#E16FE5", // Más fuerte que #EFB1ED
+      //secondI: "#FFD449", // Más fuerte que #FFE484
+      //G: "#FF7745", // Más fuerte que #FFAA79
+      //U: "#FFD449", // Más fuerte que #FFE484
+      //T: "#FF7745", // Más fuerte que #FFAA79
     }),
     []
   );
@@ -88,11 +95,12 @@ export const TextTitle = () => {
           : isSecondI
           ? letterSpacingMap.secondI
           : letterSpacingMap[letter] || BASE_SPACING;
+
         const color = isSecondC
           ? letterColors.secondC
           : isSecondI
           ? letterColors.secondI
-          : letterColors[letter] || "black";
+          : letterColors[letter] || undefined;
 
         const element = (
           <Text
@@ -101,11 +109,33 @@ export const TextTitle = () => {
             lineHeight={0.9}
             fontSize={FONT_SIZE}
             letterSpacing={-0.025}
-            color={colors[index]} // Usar el color específico de cada letra
+            color={colors[index]}
             font="./fonts/Anton-Regular.ttf"
+            // fillOpacity={0.2}
             fillOpacity={colors[index] !== "black" ? 1 : 0.2}
+            rotation={[
+              0, 0, 0,
+              // letter === "R" || letter === "N" ? Math.PI * 1 : 0,
+              // letter === "i" ? Math.PI * 1 : 0,
+            ]}
             onPointerOver={() => handlePointerOver(index, color, setColors)}
             onPointerOut={() => handlePointerOut(index, setColors)}
+            // onPointerOver={(e) => {
+            //   handlePointerOver(index, color, setColors);
+            //   e.object.scale.set(1, 1, 1); // Hover effect: scaling
+            //   e.object.rotation.z = index % 2 === 0 ? 0.2 : -0.2; // Rotation on hover
+            //   e.object.fillOpacity = 1;
+            //   e.object.position.z = -1.9;
+            // }}
+            // onPointerLeave={(e) => {
+            //   handlePointerOut(index, setColors);
+            //   e.object.scale.set(1, 1, 1); // Reset scale
+            //   e.object.rotation.z = 0; // Reset rotation
+            //   e.object.fillOpacity = 0.2;
+            //   e.object.position.z = -2;
+            //   e.object.rotation.z =
+            //     letter === "i" || letter === "S" ? Math.PI * 1 : 0;
+            // }}
           >
             {letter}
           </Text>
@@ -127,90 +157,24 @@ export const TextTitle = () => {
 
   return (
     <>
-      <mesh position={[-5.5, -0.3, 0]} scale={1.2}>
-        {generateTextElements("FRANCISCO", franciscoColors, setFranciscoColors)}
-      </mesh>
-      <mesh position={[-4.2, -3.6, 0]} scale={1.2}>
-        {generateTextElements("AGUSTIN", agustinColors, setAgustinColors)}
-      </mesh>
+      <group
+        position={[
+          ((mousePosition.x / window.innerWidth) * 2) / 6,
+          (-(mousePosition.y / window.innerHeight) * 2) / 6,
+          0,
+        ]}
+      >
+        <mesh position={[-5.5, -0.3, 0]} scale={1.2}>
+          {generateTextElements(
+            "FRANCISCO",
+            franciscoColors,
+            setFranciscoColors
+          )}
+        </mesh>
+        <mesh position={[-4.2, -3.6, 0]} scale={1.2}>
+          {generateTextElements("AGUSTIN", agustinColors, setAgustinColors)}
+        </mesh>
+      </group>
     </>
   );
 };
-
-// // import React from "react";
-// // import { Text } from "@react-three/drei";
-
-// // const colors = [
-// //   "#f7d65f",
-// //   "#e18754",
-// //   "#54f0f0",
-// //   "#db7c45",
-// //   "#ef4d53",
-// //   "#dd5ad9",
-// //   "#d97e4a",
-// //   "#eecb4b",
-// // ];
-
-// // export const TextTitle = () => {
-// //   return (
-// //     <group>
-// //       {/* First Line */}
-// //       <group position={[0, 1.5, 0]}>
-// //         {Array.from("FRANCISCO").map((letter, index) => (
-// //           <Text
-// //             key={index}
-// //             font="./fonts/Giant-Boss.ttf" // Replace with the path to your custom font
-// //             fontSize={1.6} // Adjust text size
-// //             letterSpacing={-0.05}
-// //             color="transparent"
-// //             // outlineWidth={0.05}
-// //             // outlineColor="#1b1b1b" // Text stroke effect
-// //             position={[index * 1.2 - 4.8, 0, 0]} // Adjust positioning
-// //             rotation={[0, 0, 0]}
-// //             onPointerOver={(e) => {
-// //               e.object.scale.set(1.5, 1.5, 1.5); // Hover effect: scaling
-// //               e.object.rotation.z = index % 2 === 0 ? 0.1 : -0.1; // Rotation on hover
-// //               e.object.material.color.set(colors[index % colors.length]); // Change color
-// //             }}
-// //             onPointerOut={(e) => {
-// //               e.object.scale.set(1, 1, 1); // Reset scale
-// //               e.object.rotation.z = 0; // Reset rotation
-// //               e.object.material.color.set("transparent"); // Reset color
-// //             }}
-// //           >
-// //             {letter}
-// //           </Text>
-// //         ))}
-// //       </group>
-
-// //       {/* Second Line */}
-// //       <group position={[0, 0, 0]}>
-// //         {Array.from("AGUSTIN").map((letter, index) => (
-// //           <Text
-// //             key={index}
-// //             font="./fonts/Giant-Boss.ttf"
-// //             fontSize={1.6}
-// //             letterSpacing={-0.05}
-// //             color="transparent"
-// //             // outlineWidth={0.05}
-// //             // outlineColor="#1b1b1b"
-// //             position={[index * 1.2 - 4.2, 0, 0]}
-// //             rotation={[0, 0, 0]}
-// //             onPointerOver={(e) => {
-// //               e.object.scale.set(1.5, 1.5, 1.5);
-// //               e.object.rotation.z = index % 2 === 0 ? 0.1 : -0.1;
-// //               e.object.material.color.set(colors[index % colors.length]);
-// //             }}
-// //             onPointerOut={(e) => {
-// //               e.object.scale.set(1, 1, 1);
-// //               e.object.rotation.z = 0;
-// //               e.object.material.color.set("transparent");
-// //             }}
-// //           >
-// //             {letter}
-// //           </Text>
-// //         ))}
-// //       </group>
-// //     </group>
-// //   );
-// // };

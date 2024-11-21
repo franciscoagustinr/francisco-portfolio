@@ -25,7 +25,7 @@ export const Scene = ({ isPopUpOpen, onHatChange, triggerConfetti }) => {
         <ContactShadows
           position={[0, -1.55, 0.15]}
           opacity={0.35}
-          scale={3}
+          scale={4}
           blur={6}
           far={10}
         />
@@ -47,8 +47,8 @@ export const Scene = ({ isPopUpOpen, onHatChange, triggerConfetti }) => {
             rotation={[-0.01, isPopUpOpen ? 1.4 : 0, isPopUpOpen ? -0.13 : 0]}
           > */}
           <Center position={[0, -1.2, 1]} rotation={[0, 0, 0]}>
-            {/* <mesh position={[-0.2, -4.3, 0]} scale={1.7}> */}
-            <mesh position={[-0.2, -4.5, 0]} scale={1.9}>
+            <mesh position={[-0.2, -4.3, 0]} scale={1.7}>
+              {/* <mesh position={[-0.2, -4.5, 0]} scale={1.9}> */}
               <Francisco
                 onHatChange={onHatChange}
                 triggerConfetti={triggerConfetti}

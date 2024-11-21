@@ -26,10 +26,6 @@
   font-family: "RecoletaBlack";
   src: url("../public/fonts/Recoleta-Black.ttf") format("truetype");
 }
-@font-face {
-  font-family: "GiantBoss";
-  src: url("../public/fonts/Giant-Boss.ttf") format("truetype");
-}
 
 @keyframes marquee {
   0% {
