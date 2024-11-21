@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import { DialogBox } from "./components/dialog-box";
 import { Marquee } from "./components/marquee-freelance";
 import { RRSS } from "./components/RRSS";
-import { Scene } from "./components/Scene";
+import { Scene } from "./components/Canvas/Scene";
 import WeatherData from "./components/Weather";
 import { Coffee } from "./components/coffee";
 import { About } from "./components/about";
 import { HandwrittenTexts } from "./components/Text-Handwritten";
-import { PopUpAbout } from "./components/PopUpAbout";
+import { PopUpAbout } from "./components/About/PopUpAbout";
 import gsap from "gsap";
 
 function App() {
@@ -60,6 +60,7 @@ function App() {
       {/* <Coffee setDialogText={setDialogText} /> */}
       <WeatherData setDialogText={setDialogText} hatName={hatName} triggerConfetti={triggerConfetti} setTriggerConfetti={setTriggerConfetti} />
       {dialogText && <DialogBox text={dialogText} />}
+
     </div >
   );
 }

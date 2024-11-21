@@ -296,9 +296,9 @@ export const CowboyHat = ({ nodes, materials }) => (
   </>
 );
 
-useFBX.preload("./batman-hat.fbx");
+useFBX.preload("./models/batman-hat.fbx");
 export const BatmanHat = () => {
-  const batmanHat = useFBX("./batman-hat.fbx");
+  const batmanHat = useFBX("./models/batman-hat.fbx");
   return (
     <>
       <primitive

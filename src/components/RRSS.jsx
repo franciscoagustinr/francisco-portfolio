@@ -88,7 +88,7 @@ export const RRSS = ({ setDialogText }) => {
 
   return (
     <>
-      <div className="absolute bottom-4 right-16">
+      <div className="absolute bottom-4 right-14">
         <img
           ref={linkedinRef}
           src={LinkedinLogo}
@@ -104,7 +104,7 @@ export const RRSS = ({ setDialogText }) => {
           onMouseLeave={() => setDialogText("")}
         />
       </div>
-      <div className="absolute bottom-4 right-40">
+      <div className="absolute bottom-4 right-36">
         <img
           ref={githubRef}
           src={GithubLogo}

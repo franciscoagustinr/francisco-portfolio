@@ -136,3 +136,81 @@ export const TextTitle = () => {
     </>
   );
 };
+
+// // import React from "react";
+// // import { Text } from "@react-three/drei";
+
+// // const colors = [
+// //   "#f7d65f",
+// //   "#e18754",
+// //   "#54f0f0",
+// //   "#db7c45",
+// //   "#ef4d53",
+// //   "#dd5ad9",
+// //   "#d97e4a",
+// //   "#eecb4b",
+// // ];
+
+// // export const TextTitle = () => {
+// //   return (
+// //     <group>
+// //       {/* First Line */}
+// //       <group position={[0, 1.5, 0]}>
+// //         {Array.from("FRANCISCO").map((letter, index) => (
+// //           <Text
+// //             key={index}
+// //             font="./fonts/Giant-Boss.ttf" // Replace with the path to your custom font
+// //             fontSize={1.6} // Adjust text size
+// //             letterSpacing={-0.05}
+// //             color="transparent"
+// //             // outlineWidth={0.05}
+// //             // outlineColor="#1b1b1b" // Text stroke effect
+// //             position={[index * 1.2 - 4.8, 0, 0]} // Adjust positioning
+// //             rotation={[0, 0, 0]}
+// //             onPointerOver={(e) => {
+// //               e.object.scale.set(1.5, 1.5, 1.5); // Hover effect: scaling
+// //               e.object.rotation.z = index % 2 === 0 ? 0.1 : -0.1; // Rotation on hover
+// //               e.object.material.color.set(colors[index % colors.length]); // Change color
+// //             }}
+// //             onPointerOut={(e) => {
+// //               e.object.scale.set(1, 1, 1); // Reset scale
+// //               e.object.rotation.z = 0; // Reset rotation
+// //               e.object.material.color.set("transparent"); // Reset color
+// //             }}
+// //           >
+// //             {letter}
+// //           </Text>
+// //         ))}
+// //       </group>
+
+// //       {/* Second Line */}
+// //       <group position={[0, 0, 0]}>
+// //         {Array.from("AGUSTIN").map((letter, index) => (
+// //           <Text
+// //             key={index}
+// //             font="./fonts/Giant-Boss.ttf"
+// //             fontSize={1.6}
+// //             letterSpacing={-0.05}
+// //             color="transparent"
+// //             // outlineWidth={0.05}
+// //             // outlineColor="#1b1b1b"
+// //             position={[index * 1.2 - 4.2, 0, 0]}
+// //             rotation={[0, 0, 0]}
+// //             onPointerOver={(e) => {
+// //               e.object.scale.set(1.5, 1.5, 1.5);
+// //               e.object.rotation.z = index % 2 === 0 ? 0.1 : -0.1;
+// //               e.object.material.color.set(colors[index % colors.length]);
+// //             }}
+// //             onPointerOut={(e) => {
+// //               e.object.scale.set(1, 1, 1);
+// //               e.object.rotation.z = 0;
+// //               e.object.material.color.set("transparent");
+// //             }}
+// //           >
+// //             {letter}
+// //           </Text>
+// //         ))}
+// //       </group>
+// //     </group>
+// //   );
+// // };

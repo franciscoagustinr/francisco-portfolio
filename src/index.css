@@ -11,10 +11,6 @@
   src: url("../public/fonts/Karla-Light.ttf") format("truetype");
 }
 @font-face {
-  font-family: "KarlaSemiBold";
-  src: url("../public/fonts/Karla-SemiBold.ttf") format("truetype");
-}
-@font-face {
   font-family: "KarlaExtraBold";
   src: url("../public/fonts/Karla-ExtraBold.ttf") format("truetype");
 }
@@ -27,16 +23,12 @@
   src: url("../public/fonts/HomemadeApple-Regular.ttf") format("truetype");
 }
 @font-face {
-  font-family: "HappyMonkey";
-  src: url("../public/fonts/HappyMonkey-Regular.ttf") format("truetype");
-}
-@font-face {
-  font-family: "RampartOne";
-  src: url("../public/fonts/RampartOne-Regular.ttf") format("truetype");
-}
-@font-face {
   font-family: "RecoletaBlack";
   src: url("../public/fonts/Recoleta-Black.ttf") format("truetype");
+}
+@font-face {
+  font-family: "GiantBoss";
+  src: url("../public/fonts/Giant-Boss.ttf") format("truetype");
 }
 
 @keyframes marquee {
@@ -110,6 +102,7 @@
   color: #fafafa;
 }
 
+/* POP UP ABOUT */
 @keyframes appearAnimation {
   0% {
     opacity: 0;

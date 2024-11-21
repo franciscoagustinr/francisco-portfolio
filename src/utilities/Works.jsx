@@ -55,11 +55,9 @@ export const Works = [
   // {
   //   url: "https://dulcet-mandazi-5ba759.netlify.app/",
   //   name: "RMR || Locutor ",
-  //   description:
-  //     "My first project: single-page application of Ricardo M. Rodríguez, argentinian voice locutor",
+  //   description: "SPA of Ricardo M. Rodríguez, argentinian voice locutor",
   //   technologies: "HTML + CSS + JS",
   //   id: "6",
-  //   // imageURL: "../assets/RMRPreview.jpg",
   //   imageURL: RMRPreview,
   // },
 ];

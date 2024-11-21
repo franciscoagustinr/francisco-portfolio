@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import FranciscoWithBeto from "../assets/FranciscoWithBeto.JPG";
+import FranciscoWithBeto from "../../assets/FranciscoWithBeto.JPG";
 import { WorksContainer } from "./WorksContainer";
 
 export const PopUpAbout = ({ isPopUpOpen, setIsPopUpOpen, hatName }) => {
@@ -30,7 +30,7 @@ export const PopUpAbout = ({ isPopUpOpen, setIsPopUpOpen, hatName }) => {
           ref={popupRef}
           // className="relative h-4/5 w-auto bg-sky-200 border border-solid border-sky-600 rounded-2xl z-20 overflow-y-scroll"
           // className="relative top-2 h-auto w-auto bg-sky-200 border border-solid border-sky-600 rounded-2xl z-20 overflow-y-scroll"
-          className="relative top-2 h-[43rem] w-auto bg-gray-600 bg-opacity-20 border border-solid border-gray-100 rounded-2xl z-20 overflow-y-scroll"
+          className="shadow-2xl relative top-2 h-[43rem] w-auto bg-gray-600 bg-opacity-20 border border-solid border-gray-100 rounded-2xl z-20 overflow-y-scroll"
           // className="relative h-[calc(100%-5px)] w-[calc(100%-5px)] bg-sky-200 border border-solid border-sky-600 rounded-2xl z-20 overflow-y-scroll"
         >
           <IconCross
@@ -42,10 +42,6 @@ export const PopUpAbout = ({ isPopUpOpen, setIsPopUpOpen, hatName }) => {
               <ChatSimulator />
             </div>
             <div className="sticky top-8 flex flex-col items-center justify-start w-[450px] rounded-lg h-full">
-              {/* <h2 className=" select-none relative  text-center font-RampartOne text-7xl leading-[4rem] text-[#fff]"> */}
-              {/* <h2 className=" select-none relative  text-center font-RecoletaBlack text-7xl tracking-wide -rotate-3 leading-[4rem] text-[#fff]">
-                Selected <br /> Works
-              </h2> */}
               <h2 className="select-none relative text-center font-RecoletaBlack text-7xl tracking-wider -rotate-3 leading-[4.2rem] text-[#fff]">
                 {Array.from("Selected").map((letter, index) => (
                   <span
@@ -88,7 +84,7 @@ export const PopUpAbout = ({ isPopUpOpen, setIsPopUpOpen, hatName }) => {
                   </span>
                 ))}
               </h2>
-              <div className=" w-full px-6 mt-3">
+              <div className=" w-full px-6 mt-5">
                 <WorksContainer hatName={hatName} />
               </div>
             </div>
@@ -103,12 +99,12 @@ export const ChatSimulator = () => {
   const messages = useMemo(
     () => [
       "Hi there! <span class='text-xl animate-wavingHand inline-block'>👋🏻</span> I’m Francisco Agustín Rodríguez —but you can call me Fran.",
-      "I’m a front-end developer hailing from Buenos Aires, Argentina (<span class='text-xl '>🇦🇷</span>)",
-      "I bring websites to life by creating interactive <span class='text-xl '>🕹️</span> visually stunning <span class='text-xl '>🎨</span> experiences with a focus on seamless motion and user-friendly design <span class='text-xl '>✨</span>",
-      "This is my teammate <span class='text-xl inline-block animate-bounce duration-150 '>👇🏻</span><span class='text-xl inline-block animate-bounce delay-150 duration-300'>👇🏻</span>",
+      "I’m a front-end developer hailing from Buenos Aires, Argentina <span class='text-xl '>🇦🇷</span>",
+      "I bring websites to life by creating interactive <span class='text-xl '>🕹️</span> visually stunning experiences <span class='text-xl '>🎨</span> with a focus on seamless motion and user-friendly design <span class='text-xl '>✨</span>",
+      "This is my teammate <span class='text-xl inline-block animate-bounce duration-150'>👇🏻</span><span class='text-xl inline-block animate-bounce delay-150 duration-300'>👇🏻</span>",
       "img",
-      "This is Beto, my loyal sidekick <span class='text-2xl '>🐶</span> He keeps the creativity flowing! <span class='text-xl '>💫</span>",
-      "Let’s connect <span class='text-2xl '>🤝🏻</span> share some laughs, and turn ideas into reality! <span class='text-xl '>🚀</span> ",
+      "Beto, my loyal sidekick <span class='text-2xl inline-block animate-shake '>🐶</span> He keeps the creativity flowing! <span class='text-xl '>💫</span>",
+      "Let’s connect <span class='text-xl animate-bounce inline-block'>🤝🏻</span> share some laughs <span class='text-xl animate-spin inline-block'>🙂</span> and turn your ideas into reality! <span class='text-xl inline-block'>🚀</span> ",
     ],
     []
   );
@@ -154,20 +150,20 @@ export const ChatSimulator = () => {
     if (endOfMessagesRef.current && visibleMessages) {
       endOfMessagesRef.current.scrollIntoView({ behavior: "smooth" });
     }
-  }, [visibleMessages.length, visibleMessages]);
+  }, [visibleMessages.length]);
 
   return (
     <div className="h-full flex flex-col justify-end bg-transparent">
       {visibleMessages.map((message, index) => (
         <div
           key={index}
-          className={`shadow-md appear-animation relative rounded-2xl rounded-bl-md bg-[#ffffff] py-2 text-md pl-3 pr-2 cursor-pointer select-none max-w-max transition-all duration-300 ease-in-out
+          className={`shadow-sm appear-animation relative rounded-2xl rounded-bl-md bg-[#ffffff] py-2 text-sm pl-3 pr-2 cursor-pointer select-none max-w-max transition-all duration-300 ease-in-out
             hover:!scale-[1.009] font-KarlaLight ${
               reactions[index].emoji ? "mb-5" : "mb-2"
             } `}
           onClick={() => handleReaction(index)}
         >
-          <div className="absolute bottom-0 -left-1 rotate-90 w-0 h-0 border-t-8 border-l-8 border-t-white border-l-transparent" />
+          <div className="absolute bottom-0 -left-1 rotate-90 w-0 h-0 border-t-8 border-l-8 border-t-white border-l-transparent " />
           {message === "img" ? (
             <div className="-ml-1 max-w-[340px]">
               {/* <ArcCard /> */}
@@ -178,7 +174,6 @@ export const ChatSimulator = () => {
               />
             </div>
           ) : (
-            // <span>{message}</span>
             <div dangerouslySetInnerHTML={{ __html: message }} />
           )}
           {reactions[index].emoji && (

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { GetWeather } from "./GetWeather";
+import { GetWeather } from "../utilities/GetWeather";
 import gsap from "gsap";
 import ConfettiExplosion from "react-confetti-explosion";
 // import BlackArrowSvg from "../assets/arrow-black.svg";
@@ -75,19 +75,37 @@ const WeatherData = ({
   return (
     <>
       {triggerConfetti && (
-        <div className="absolute left-1/2 top-14">
-          <ConfettiExplosion
-            force={0.2}
-            particleCount={120}
-            width={window.innerWidth}
-            duration={1500}
-          />
-        </div>
+        <>
+          <div className="absolute left-1/2 top-0">
+            <ConfettiExplosion
+              force={0.2}
+              particleCount={200}
+              width={window.innerWidth}
+              duration={1700}
+            />
+          </div>
+          <div className="absolute left-1/3 top-1/3">
+            <ConfettiExplosion
+              force={0.5}
+              particleCount={120}
+              width={window.innerWidth / 2}
+              duration={1800}
+            />
+          </div>
+          <div className="absolute right-1/3 top-1/3">
+            <ConfettiExplosion
+              force={0.5}
+              particleCount={120}
+              width={window.innerWidth / 2}
+              duration={1800}
+            />
+          </div>
+        </>
       )}
 
       <div
         ref={weatherRefContainer}
-        className="w-[270px] absolute xsm:right-3 sm:right-5 md:right-5 lg:right-[4%] top-11 z-30 text-[#FAFAFA]"
+        className="w-72 absolute xsm:right-3 sm:right-5 md:right-5 lg:right-[4%] top-11 z-30 text-[#FAFAFA]"
       >
         {weatherData ? (
           <div className="text-right font-sans text-sm tracking-tight uppercase  ">
@@ -106,7 +124,7 @@ const WeatherData = ({
                 onClick={handleTriggerConfetti}
               >
                 <span
-                  className={`bg-talk after:bg-[var(--bg-after)] font-semibold select-none pointer-events-none relative text-white flex flex-row items-center after:content-[''] after:absolute after:!left-1.5 after:!bottom-[-2px] after:!w-24 after:!h-4 after:z-[-1] after:!transition-all after:!duration-150 group-hover:scale-125 group-hover:after:!-left-1 group-hover:after:!bottom-[-3px] group-hover:after:!rotate-3 group-hover:after:!w-[6.4rem] group-hover:after:shadow-md group-hover:after:!h-6 font-RecoletaBlack tracking-wide transition-all duration-200  `}
+                  className={`bg-talk after:bg-[var(--bg-after)] font-semibold select-none pointer-events-none relative text-white flex flex-row items-center after:content-[''] after:absolute after:!left-1.5 after:!bottom-[-2px] after:!w-24 after:!h-4 after:z-[-1] after:!transition-all after:!duration-150 group-hover:scale-110 group-hover:after:!-left-1 group-hover:after:!bottom-[-3px] group-hover:after:!rotate-3 group-hover:after:!w-[6.4rem] group-hover:after:shadow-md group-hover:after:!h-6 font-RecoletaBlack tracking-wide transition-all duration-200  `}
                 >
                   lets talk!
                   <svg

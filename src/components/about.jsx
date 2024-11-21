@@ -1,6 +1,6 @@
 import React from "react";
 import FranciscoPhoto from "../assets/francisco-photo.png";
-import FranciscoFunPhoto from "../assets/617883fc59767869-sticker.png";
+import FranciscoFunPhoto from "../assets/francisco-fun-photo.png";
 
 export const About = ({ setDialogText, setIsPopUpOpen, isPopUpOpen }) => {
   const handleOpenPopUp = () => {

@@ -1,6 +1,6 @@
 import React from "react";
-import { Works } from "../utilities/Works";
-import { useMousePosition } from "../utilities/mousePosition";
+import { Works } from "../../utilities/Works";
+import { useMousePosition } from "../../utilities/mousePosition";
 
 export const WorksContainer = ({ hatName }) => {
   const mousePosition = useMousePosition();
@@ -82,7 +82,7 @@ export const WorksContainer = ({ hatName }) => {
                   </div>
                   <div className=" -translate-x-9 group-hover:-translate-x-0 transition-all duration-[210ms] ease-linear">
                     <h2
-                      className={`uppercase group-hover:brightness-150 font-KarlaExtraBold text-lg text-[#fff] group-hover:text-[var(--dynamic-color)] transition-all duration-200 ease-linear max-w-fit px-2 pl-0`}
+                      className={`uppercase group-hover:brightness-150 font-KarlaExtraBold text-base text-[#fff] group-hover:text-[var(--dynamic-color)] transition-all duration-200 ease-linear max-w-fit px-2 pl-0`}
                     >
                       {work.name}
                     </h2>
@@ -98,7 +98,7 @@ export const WorksContainer = ({ hatName }) => {
             </div>
           );
         })}
-      <div className="mt-6 px-2 flex items-center justify-between ">
+      <div className="mt-8 px-2 flex items-center justify-around ">
         <button
           className={`cursor-contact  hover:bg-white hover:text-[var(--dynamic-color)] transition-all duration-200 hover:scale-125 hover:-rotate-2 hover:shadow-lg px-6 py-2 rounded-full uppercase bg-[var(--dynamic-color)] text-white font-RecoletaBlack tracking-wide`}
         >
