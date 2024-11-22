@@ -7,7 +7,6 @@ export const TextTitle = () => {
   const FONT_SIZE = 2.8;
   const BASE_SPACING = FONT_SIZE * 0.45; // Espaciado base para letras de ancho medio
   const mousePosition = useMousePosition();
-  console.log(mousePosition.x, mousePosition.y);
 
   // Mantenemos un estado de colores separado para cada palabra
   const [franciscoColors, setFranciscoColors] = useState(
@@ -159,8 +158,8 @@ export const TextTitle = () => {
     <>
       <group
         position={[
-          ((mousePosition.x / window.innerWidth) * 2) / 6,
-          (-(mousePosition.y / window.innerHeight) * 2) / 6,
+          ((mousePosition.x / window.innerWidth) * 2) / 8,
+          (-(mousePosition.y / window.innerHeight) * 2) / 8,
           0,
         ]}
       >
