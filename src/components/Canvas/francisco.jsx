@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Html, useGLTF } from "@react-three/drei";
+import { Html, useGLTF, Wireframe } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { useHats } from "./Hats";
 import ConfettiExplosion from "react-confetti-explosion";
@@ -26,17 +26,6 @@ export function Francisco({ props }) {
   const BLINK_DURATION = 0.15; // Duración de cierre y apertura de ojos
   const BLINK_INTERVAL = useRef(Math.random() * 5 + 3); // Tiempo entre parpadeos
   const triggerConfetti = useConfettiStore((state) => state.triggerConfetti);
-  const { isHoverRRSS } = useRRSSStore();
-
-  useEffect(() => {
-    if (isHoverRRSS) {
-      influences[0] = 0;
-      influences[1] = 1;
-    } else {
-      influences[0] = 0;
-      influences[1] = 0;
-    }
-  }, [isHoverRRSS]); // El efecto se ejecuta cada vez que isHoverRRSS cambia
 
   const handleAvatarClick = () => {
     // Calcula el próximo índice del sombrero
@@ -116,7 +105,7 @@ export function Francisco({ props }) {
 
     // follow cursor
     const lookAtX = (cursorX * Math.PI) / 7; // Eje Y
-    const lookAtY = (cursorY * Math.PI) / -30; // Eje X
+    const lookAtY = (cursorY * Math.PI) / -50; // Eje X
 
     // Suavizar la rotación
     if (avatarRef.current) {
@@ -162,6 +151,19 @@ export function Francisco({ props }) {
       }
     }
   });
+
+  // useEffect(() => {
+  //   if (avatarRef.current) {
+  //     avatarRef.current.traverse((child) => {
+  //       if (child.isMesh) {
+  //         if (child.material) {
+  //           child.material.wireframe = true; // Activa el wireframe
+  //           child.material.color.set("#D8FFDD");
+  //         }
+  //       }
+  //     });
+  //   }
+  // }, []);
 
   return (
     <animated.group scale={scale} position={position} rotation={rotation}>
@@ -505,7 +507,6 @@ export function Francisco({ props }) {
           rotation={[1.977, -0.018, -1.786]}
           scale={[-0.02, -0.03, -0.021]}
         />
-
         <group name="hair" position={[0, 1.041, 0]} scale={0.411}>
           <mesh
             castShadow

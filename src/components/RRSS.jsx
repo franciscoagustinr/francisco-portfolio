@@ -2,15 +2,12 @@ import React, { useEffect, useRef } from "react";
 import GithubLogo from "../assets/github.png";
 import LinkedinLogo from "../assets/linkedin.png";
 import gsap from "gsap";
-// import ResumeLogo from "../assets/rb_986.png";
 import CoffeeCup from "../assets/coffee-cup.png";
-import { useRRSSStore } from "../stores/useRRSS";
 
 export const RRSS = ({ setDialogText }) => {
   const githubRef = useRef(null);
   const linkedinRef = useRef(null);
   const coffeeRef = useRef(null);
-  const { setIsHoverRRSS } = useRRSSStore();
 
   const initHoverEffect = (el) => {
     let hover = false;
@@ -109,11 +106,9 @@ export const RRSS = ({ setDialogText }) => {
           // onMouseLeave={() => setDialogText(""), setIsHoverRRSS(false)}
           onMouseEnter={() => {
             setDialogText("Where connections bloom 🌱");
-            setIsHoverRRSS(true);
           }}
           onMouseLeave={() => {
             setDialogText("");
-            setIsHoverRRSS(false);
           }}
         />
       </div>
@@ -128,11 +123,9 @@ export const RRSS = ({ setDialogText }) => {
           }}
           onMouseEnter={() => {
             setDialogText("Check out my most exciting projects! 🚀");
-            setIsHoverRRSS(true);
           }}
           onMouseLeave={() => {
             setDialogText("");
-            setIsHoverRRSS(false);
           }}
         />
       </div>
@@ -147,29 +140,12 @@ export const RRSS = ({ setDialogText }) => {
           }}
           onMouseEnter={() => {
             setDialogText("Invite me a coffee! 🙂 ");
-            setIsHoverRRSS(true);
           }}
           onMouseLeave={() => {
             setDialogText("");
-            setIsHoverRRSS(false);
           }}
         />
       </div>
     </>
   );
 };
-//  <img
-//           src={ResumeLogo}
-//           alt="resume-logo"
-//           className="w-12 h-auto select-none cursor-pointer hover:rotate-12 transition-all duration-100 "
-//           onClick={handleOpenPDF}
-//           onMouseEnter={() => setDialogText("See my resume 🤓")}
-//           onMouseLeave={() => setDialogText("")}
-//         />
-// const handleOpenPDF = () => {
-//   // window.open("/assets/FranciscoAgustinRodriguez-CV.pdf", "_blank");
-//   window.open(
-//     "https://golden-daifuku-48cfde.netlify.app/static/media/FranciscoAgustinRodriguez-CV.6deac65fd1c4875d4fe3.pdf",
-//     "_blank"
-//   );
-// };
