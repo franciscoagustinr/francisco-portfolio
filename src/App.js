@@ -8,45 +8,21 @@ import { About } from "./components/about";
 import { HandwrittenTexts } from "./components/Text-Handwritten";
 import { PopUpAbout } from "./components/About/PopUpAbout";
 import gsap from "gsap";
+import { useHatBackground } from "./hooks/useBackground";
 
 function App() {
   const [dialogText, setDialogText] = useState(null);
-  // const [isPopUpOpen, setIsPopUpOpen] = useState(false);
-
   const [hatName, setHatName] = useState('NoneHat');
-  const [triggerConfetti, setTriggerConfetti] = useState(false);
-
+  const { getGradientBackground } = useHatBackground();
 
   useEffect(() => {
     gsap.to(".main-container", {
-      background: getHatBackground(hatName), // Función que devuelve el color o gradiente según `hatName`
+      background: getGradientBackground(hatName), // Función que devuelve el color o gradiente según `hatName`
       duration: 1,
       // ease: "power2.inOut",
       ease: "power4.in",
     });
-  }, [hatName]);
-
-  const getHatBackground = (hatName) => {
-    switch (hatName) {
-      case 'NoneHat':
-        return "linear-gradient(to bottom right, rgb(53, 190, 214), rgb(53, 190, 214))";
-      case 'OktopusHat':
-        return "linear-gradient(to bottom right, #ee43be, #9e2ba8)";
-      case 'BatmanHat':
-        return "linear-gradient(to bottom, #1d2167, #0f0f0f)";
-      case 'ChineseHat':
-        return "linear-gradient(to bottom right, #b99c70, #8a7345)";
-      case 'MickeyHat':
-        return "linear-gradient(to bottom, #bed95f, #f2ba52)";
-      case 'CowboyHat':
-        return "linear-gradient(to bottom right, #f6bc4e, #f2a65e)";
-      case 'SharkHat':
-        return "linear-gradient(to bottom left, #047692, #0476ff)";
-      default:
-        return "linear-gradient(to bottom right, rgb(53, 190, 214), rgb(53, 190, 214))";
-    }
-
-  }
+  }, [getGradientBackground, hatName]);
 
   return (
     // <div className="h-screen bg-[rgb(53,190,214)]">
@@ -55,9 +31,9 @@ function App() {
       <About setDialogText={setDialogText} />
       <PopUpAbout hatName={hatName} />
       <HandwrittenTexts />
-      <Scene onHatChange={setHatName} triggerConfetti={triggerConfetti} />
+      <Scene onHatChange={setHatName} />
       <RRSS setDialogText={setDialogText} />
-      <WeatherData setDialogText={setDialogText} hatName={hatName} triggerConfetti={triggerConfetti} setTriggerConfetti={setTriggerConfetti} />
+      <WeatherData setDialogText={setDialogText} hatName={hatName} />
       {dialogText && <DialogBox text={dialogText} />}
 
     </div >

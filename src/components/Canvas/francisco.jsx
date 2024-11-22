@@ -1,11 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Html, useGLTF } from "@react-three/drei";
-import { useFrame, useLoader } from "@react-three/fiber";
+import { useFrame } from "@react-three/fiber";
 import { useHats } from "./Hats";
 import ConfettiExplosion from "react-confetti-explosion";
 import { useSpring, animated } from "@react-spring/three";
+import { useConfettiStore } from "../../stores/useTriggerConfetti-Talk";
 
-export function Francisco({ props, onHatChange, triggerConfetti }) {
+export function Francisco({ props, onHatChange }) {
   const { nodes, materials } = useGLTF("/models/F-model7.glb");
   const hats = useHats(nodes, materials);
   const hatNames = Object.keys(hats);
@@ -21,6 +22,7 @@ export function Francisco({ props, onHatChange, triggerConfetti }) {
   const blinkStartTime = useRef(0);
   const BLINK_DURATION = 0.15; // Duración de cierre y apertura de ojos
   const BLINK_INTERVAL = useRef(Math.random() * 5 + 3); // Tiempo entre parpadeos
+  const triggerConfetti = useConfettiStore((state) => state.triggerConfetti);
 
   const handleAvatarClick = () => {
     // setCurrentHatIndex((prevIndex) => (prevIndex + 1) % hatNames.length);

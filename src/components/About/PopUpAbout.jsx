@@ -8,10 +8,6 @@ export const PopUpAbout = ({ hatName }) => {
   const closePopUp = usePopupStore((state) => state.closePopUp);
   const isPopUpOpen = usePopupStore((state) => state.isPopUpOpen);
 
-  // const handleClosePopUp = () => {
-  //   openPopUp();
-  // };
-
   const handleClickOutside = (e) => {
     if (popupRef.current && !popupRef.current.contains(e.target)) {
       closePopUp();

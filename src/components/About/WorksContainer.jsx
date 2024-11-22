@@ -1,31 +1,12 @@
 import React from "react";
 import { Works } from "../../utilities/Works";
 import { useMousePosition } from "../../utilities/mousePosition";
+import { useHatBackground } from "../../hooks/useBackground";
 
 export const WorksContainer = ({ hatName }) => {
   const mousePosition = useMousePosition();
-
-  const getHatBackground = (hatName) => {
-    switch (hatName) {
-      case "NoneHat":
-        return "#ec4899";
-      case "OktopusHat":
-        return "#9C2B7C";
-      case "BatmanHat":
-        return "#414AF0";
-      case "ChineseHat":
-        return "#DF9930";
-      case "MickeyHat":
-        return "#C39642";
-      case "CowboyHat":
-        return "#F49E00";
-      case "SharkHat":
-        return "#09CEFF";
-      default:
-        return "#ec4899";
-    }
-  };
-  const dynamicColor = getHatBackground(hatName);
+  const { getHexBackground } = useHatBackground();
+  const dynamicColor = getHexBackground(hatName);
 
   return (
     <div
@@ -48,8 +29,6 @@ export const WorksContainer = ({ hatName }) => {
                   <div
                     style={{
                       left: (mousePosition.x / Math.PI - 250) / 4,
-                      //   right: -mousePosition.x / Math.PI + 410,
-                      // top: mousePosition.y * -0.1,
                     }}
                     className="absolute"
                   >

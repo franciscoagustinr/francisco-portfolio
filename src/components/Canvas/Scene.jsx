@@ -1,18 +1,12 @@
 import React, { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 
-import {
-  Center,
-  ContactShadows,
-  Environment,
-  Float,
-  Html,
-} from "@react-three/drei";
+import { Center, ContactShadows, Environment, Float } from "@react-three/drei";
 import { TextTitle } from "./Text";
 import { Francisco } from "./francisco";
 import { SplineModels } from "./spline";
 
-export const Scene = ({ isPopUpOpen, onHatChange, triggerConfetti }) => {
+export const Scene = ({ onHatChange }) => {
   return (
     // <Canvas dpr={[1.5, 2]} className="bg-[rgb(53,190,214)] ">
     <Canvas dpr={[1.5, 2]} className=" ">
@@ -49,10 +43,7 @@ export const Scene = ({ isPopUpOpen, onHatChange, triggerConfetti }) => {
           <Center position={[0, -1.2, 1]} rotation={[0, 0, 0]}>
             <mesh position={[-0.2, -4.3, 0]} scale={1.7}>
               {/* <mesh position={[-0.2, -4.5, 0]} scale={1.9}> */}
-              <Francisco
-                onHatChange={onHatChange}
-                triggerConfetti={triggerConfetti}
-              />
+              <Francisco onHatChange={onHatChange} />
             </mesh>
           </Center>
           {/* </PresentationControls> */}

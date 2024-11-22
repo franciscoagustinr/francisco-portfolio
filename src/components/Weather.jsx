@@ -2,55 +2,35 @@ import React, { useEffect, useRef, useState } from "react";
 import { GetWeather } from "../utilities/GetWeather";
 import gsap from "gsap";
 import ConfettiExplosion from "react-confetti-explosion";
+import { useConfettiStore } from "../stores/useTriggerConfetti-Talk";
+import { useHatBackground } from "../hooks/useBackground";
 // import BlackArrowSvg from "../assets/arrow-black.svg";
 
-const WeatherData = ({
-  setDialogText,
-  hatName,
-  triggerConfetti,
-  setTriggerConfetti,
-}) => {
+const WeatherData = ({ setDialogText, hatName }) => {
   const [weatherData, setWeatherData] = useState(null);
   const weatherRefContainer = useRef();
+  const triggerConfetti = useConfettiStore((state) => state.triggerConfetti);
+  const setTriggerConfetti = useConfettiStore(
+    (state) => state.setTriggerConfetti
+  );
+  const { getHexBackground } = useHatBackground();
 
   useEffect(() => {
     gsap.to(".bg-talk", {
-      "--bg-after": getHatBackground(hatName), // Función que devuelve el color o gradiente según `hatName`
+      "--bg-after": getHexBackground(hatName), // Función que devuelve el color o gradiente según `hatName`
       duration: 0.9,
       // ease: "power2.inOut",
       ease: "power1.in",
     });
   }, [hatName]);
 
-  const getHatBackground = (hatName) => {
-    switch (hatName) {
-      case "NoneHat":
-        return "#ec4899";
-      case "OktopusHat":
-        return "#9C2B7C";
-      case "BatmanHat":
-        return "#414AF0";
-      case "ChineseHat":
-        return "#DF9930";
-      case "MickeyHat":
-        return "#C39642";
-      case "CowboyHat":
-        return "#F49E00";
-      case "SharkHat":
-        return "#09CEFF";
-      default:
-        return "#ec4899";
-    }
-  };
-
   useEffect(() => {
     GetWeather(setWeatherData);
-
     document.documentElement.style.setProperty(
       "--bg-after",
-      getHatBackground(hatName)
+      getHexBackground(hatName)
     );
-  }, [hatName]);
+  }, [hatName]); //todo: improve
 
   const clima =
     weatherData && weatherData.temperature2m
