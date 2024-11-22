@@ -6,6 +6,7 @@ import ConfettiExplosion from "react-confetti-explosion";
 import { useSpring, animated } from "@react-spring/three";
 import { useConfettiStore } from "../../stores/useTriggerConfetti-Talk";
 import { useHatStore } from "../../stores/useHatStore";
+import { useRRSSStore } from "../../stores/useRRSS";
 
 export function Francisco({ props }) {
   const { nodes, materials } = useGLTF("/models/F-model7.glb");
@@ -25,46 +26,27 @@ export function Francisco({ props }) {
   const BLINK_DURATION = 0.15; // Duración de cierre y apertura de ojos
   const BLINK_INTERVAL = useRef(Math.random() * 5 + 3); // Tiempo entre parpadeos
   const triggerConfetti = useConfettiStore((state) => state.triggerConfetti);
+  const { isHoverRRSS } = useRRSSStore();
 
-  // const handleAvatarClick = () => {
-  //   // Calcula el próximo índice del sombrero
-  //   const nextHatIndex = (currentHatIndex + 1) % hatNames.length;
+  useEffect(() => {
+    if (isHoverRRSS) {
+      influences[0] = 0;
+      influences[1] = 1;
+    } else {
+      influences[0] = 0;
+      influences[1] = 0;
+    }
+  }, [isHoverRRSS]); // El efecto se ejecuta cada vez que isHoverRRSS cambia
 
-  //   // Actualiza el índice del sombrero
-  //   setCurrentHatIndex(nextHatIndex);
-
-  //   // Obtiene el nombre del sombrero correspondiente al nuevo índice
-  //   const nextHatName = hatNames[nextHatIndex];
-
-  //   // Llama a la función `onHatChange` con el nuevo nombre del sombrero
-  //   onHatChange(nextHatName);
-
-  //   setIsExploding(true);
-  //   setClicked(true);
-  //   influences[0] = 1;
-  //   influences[1] = 1;
-  //   setTimeout(() => {
-  //     setIsExploding(false);
-  //     setClicked(false);
-  //   }, 800);
-  //   setTimeout(() => {
-  //     influences[0] = 0;
-  //     influences[1] = 0;
-  //   }, 800);
-  // };
   const handleAvatarClick = () => {
     // Calcula el próximo índice del sombrero
     const nextHatIndex = (currentHatIndex + 1) % hatNames.length;
-
     // Actualiza el índice del sombrero
     setCurrentHatIndex(nextHatIndex);
-
     // Obtiene el nombre del sombrero correspondiente al nuevo índice
     const nextHatName = hatNames[nextHatIndex];
-
     // Actualiza el estado global de `hatName`
     setHatName(nextHatName);
-
     // Animaciones y lógica adicional
     setIsExploding(true);
     setClicked(true);

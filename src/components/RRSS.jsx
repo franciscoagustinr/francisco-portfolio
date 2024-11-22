@@ -4,11 +4,13 @@ import LinkedinLogo from "../assets/linkedin.png";
 import gsap from "gsap";
 // import ResumeLogo from "../assets/rb_986.png";
 import CoffeeCup from "../assets/coffee-cup.png";
+import { useRRSSStore } from "../stores/useRRSS";
 
 export const RRSS = ({ setDialogText }) => {
   const githubRef = useRef(null);
   const linkedinRef = useRef(null);
   const coffeeRef = useRef(null);
+  const { setIsHoverRRSS } = useRRSSStore();
 
   const initHoverEffect = (el) => {
     let hover = false;
@@ -100,8 +102,19 @@ export const RRSS = ({ setDialogText }) => {
               "_blank"
             );
           }}
-          onMouseEnter={() => setDialogText("Where connections bloom 🌱")}
-          onMouseLeave={() => setDialogText("")}
+          // onMouseEnter={
+          //   (() => setDialogText("Where connections bloom 🌱");
+          //   setIsHoverRRSS(true))
+          // }
+          // onMouseLeave={() => setDialogText(""), setIsHoverRRSS(false)}
+          onMouseEnter={() => {
+            setDialogText("Where connections bloom 🌱");
+            setIsHoverRRSS(true);
+          }}
+          onMouseLeave={() => {
+            setDialogText("");
+            setIsHoverRRSS(false);
+          }}
         />
       </div>
       <div className="absolute bottom-4 right-36">
@@ -113,10 +126,14 @@ export const RRSS = ({ setDialogText }) => {
           onClick={() => {
             window.open("https://github.com/franciscoagustinr", "_blank");
           }}
-          onMouseEnter={() =>
-            setDialogText("Check out my most exciting projects! 🚀")
-          }
-          onMouseLeave={() => setDialogText("")}
+          onMouseEnter={() => {
+            setDialogText("Check out my most exciting projects! 🚀");
+            setIsHoverRRSS(true);
+          }}
+          onMouseLeave={() => {
+            setDialogText("");
+            setIsHoverRRSS(false);
+          }}
         />
       </div>
       <div className="absolute left-5 bottom-3">
@@ -128,8 +145,14 @@ export const RRSS = ({ setDialogText }) => {
           onClick={() => {
             window.open("https://cafecito.app/franciscoagustinr", "_blank");
           }}
-          onMouseEnter={() => setDialogText("Invite me a coffee! 🙂 ")}
-          onMouseLeave={() => setDialogText("")}
+          onMouseEnter={() => {
+            setDialogText("Invite me a coffee! 🙂 ");
+            setIsHoverRRSS(true);
+          }}
+          onMouseLeave={() => {
+            setDialogText("");
+            setIsHoverRRSS(false);
+          }}
         />
       </div>
     </>
