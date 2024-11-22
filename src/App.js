@@ -9,11 +9,13 @@ import { HandwrittenTexts } from "./components/Text-Handwritten";
 import { PopUpAbout } from "./components/About/PopUpAbout";
 import gsap from "gsap";
 import { useHatBackground } from "./hooks/useBackground";
+import { useHatStore } from "./stores/useHatStore";
 
 function App() {
   const [dialogText, setDialogText] = useState(null);
-  const [hatName, setHatName] = useState('NoneHat');
+  // const [hatName, setHatName] = useState('NoneHat');
   const { getGradientBackground } = useHatBackground();
+  const { hatName } = useHatStore();
 
   useEffect(() => {
     gsap.to(".main-container", {
@@ -31,7 +33,7 @@ function App() {
       <About setDialogText={setDialogText} />
       <PopUpAbout hatName={hatName} />
       <HandwrittenTexts />
-      <Scene onHatChange={setHatName} />
+      <Scene />
       <RRSS setDialogText={setDialogText} />
       <WeatherData setDialogText={setDialogText} hatName={hatName} />
       {dialogText && <DialogBox text={dialogText} />}

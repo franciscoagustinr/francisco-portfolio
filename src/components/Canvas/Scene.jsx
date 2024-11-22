@@ -6,7 +6,7 @@ import { TextTitle } from "./Text";
 import { Francisco } from "./francisco";
 import { SplineModels } from "./spline";
 
-export const Scene = ({ onHatChange }) => {
+export const Scene = () => {
   return (
     // <Canvas dpr={[1.5, 2]} className="bg-[rgb(53,190,214)] ">
     <Canvas dpr={[1.5, 2]} className=" ">
@@ -43,7 +43,7 @@ export const Scene = ({ onHatChange }) => {
           <Center position={[0, -1.2, 1]} rotation={[0, 0, 0]}>
             <mesh position={[-0.2, -4.3, 0]} scale={1.7}>
               {/* <mesh position={[-0.2, -4.5, 0]} scale={1.9}> */}
-              <Francisco onHatChange={onHatChange} />
+              <Francisco />
             </mesh>
           </Center>
           {/* </PresentationControls> */}
