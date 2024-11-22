@@ -6,7 +6,6 @@ import ConfettiExplosion from "react-confetti-explosion";
 import { useSpring, animated } from "@react-spring/three";
 import { useConfettiStore } from "../../stores/useTriggerConfetti-Talk";
 import { useHatStore } from "../../stores/useHatStore";
-import { useRRSSStore } from "../../stores/useRRSS";
 
 export function Francisco({ props }) {
   const { nodes, materials } = useGLTF("/models/F-model7.glb");
@@ -113,18 +112,6 @@ export function Francisco({ props }) {
         (lookAtX - avatarRef.current.rotation.y) * 0.1; // Interpolación suave
       avatarRef.current.rotation.x +=
         (lookAtY - avatarRef.current.rotation.x) * 0.2; // Interpolación suave
-      // avatarRef.current.rotation.z +=
-      //   (lookAtY - avatarRef.current.rotation.x) * 0.2; // Interpolación suave
-
-      // Limitar la rotación en el eje Y para evitar que gire demasiado
-      // avatarRef.current.rotation.x = Math.max(
-      //   -Math.PI / 2, //abajo
-      //   Math.min(Math.PI / 4, avatarRef.current.rotation.x) //arriba
-      // ); // Limitar rotación hacia arriba y abajo
-      // avatarRef.current.rotation.y = Math.max(
-      //   -Math.PI / 2,
-      //   Math.min(Math.PI / 2, avatarRef.current.rotation.y)
-      // ); // Limitar rotación hacia los lados
     }
 
     if (objectRef.current) {

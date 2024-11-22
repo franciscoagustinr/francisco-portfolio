@@ -1,12 +1,34 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import React, { useCallback, useMemo, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { Text } from "@react-three/drei";
 import { useMousePosition } from "../../utilities/mousePosition";
+// import gsap from "gsap";
 
 export const TextTitle = () => {
-  const FONT_SIZE = 2.8;
-  const BASE_SPACING = FONT_SIZE * 0.45; // Espaciado base para letras de ancho medio
   const mousePosition = useMousePosition();
+  const FONT_SIZE = 2.8;
+  const BASE_SPACING = FONT_SIZE * 0.45;
+  // const SCROLL_SENSITIVITY = 200;
+
+  // const FONTS = useMemo(
+  //   () => [
+  //     "./fonts/Anton-Regular.ttf",
+  //     "./fonts/KIDOBOLD.ttf",
+  //     "./fonts/Yorkmade.otf",
+  //     "./fonts/ToronoKugelSans.otf",
+  //   ],
+  //   []
+  // );
+
+  // const [currentFont, setCurrentFont] = useState(0); // Controla la fuente actual
+  // const [isScrolling, setIsScrolling] = useState(false); // Estado de scrolling
+  // const scrollTimeout = useRef(null);
 
   // Mantenemos un estado de colores separado para cada palabra
   const [franciscoColors, setFranciscoColors] = useState(
@@ -78,6 +100,70 @@ export const TextTitle = () => {
     );
   }, []);
 
+  // const animateLettersOnScroll = useCallback(
+  //   (direction) => {
+  //     const nextFont = (currentFont + direction + FONTS.length) % FONTS.length;
+  //     setCurrentFont(nextFont);
+
+  //     gsap.to(".animated-text", {
+  //       y: direction * 20, // Desplazamiento en el eje Y
+  //       rotation: direction * 5, // Rotación leve
+  //       duration: 1.2,
+  //       ease: "power2.out",
+  //       onComplete: () => {
+  //         // Cambiar la fuente después del desplazamiento
+  //         gsap.to(".animated-text", {
+  //           fontFamily: FONTS[nextFont],
+  //           duration: 0.5,
+  //         });
+  //       },
+  //     });
+  //   },
+  //   [currentFont]
+  // );
+
+  // const handleScroll = useCallback(
+  //   (event) => {
+  //     if (isScrolling) return; // Si ya estamos en un scroll en curso, no hacer nada
+
+  //     setIsScrolling(true); // Inicia el scroll
+
+  //     const direction = event.deltaY > 0 ? 1 : -1;
+  //     animateLettersOnScroll(direction);
+
+  //     if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
+
+  //     scrollTimeout.current = setTimeout(() => {
+  //       gsap.to(".animated-text", {
+  //         y: 0,
+  //         rotation: 0,
+  //         fontFamily: FONTS[0],
+  //         duration: 1,
+  //         ease: "power2.inOut",
+  //       });
+  //     }, 2);
+  //   },
+  //   [animateLettersOnScroll] // Quitar isScrolling de las dependencias
+  // );
+
+  // useEffect(() => {
+  //   if (isScrolling) {
+  //     setTimeout(() => {
+  //       setIsScrolling(false);
+  //     }, 700);
+  //   }
+  //   console.log(isScrolling);
+  // }, [isScrolling]);
+
+  // useEffect(() => {
+  //   window.addEventListener("wheel", handleScroll, { passive: true });
+
+  //   return () => {
+  //     window.removeEventListener("wheel", handleScroll);
+  //     if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
+  //   };
+  // }, [handleScroll]);
+
   // Generador de texto reutilizable
   const generateTextElements = useCallback(
     (text, colors, setColors) => {
@@ -110,31 +196,26 @@ export const TextTitle = () => {
             letterSpacing={-0.025}
             color={colors[index]}
             font="./fonts/Anton-Regular.ttf"
+            // font="./fonts/KIDOBOLD.ttf"
+            // font="./fonts/Yorkmade.otf"
+            // font="./fonts/ToronoKugelSans.otf"
             // fillOpacity={0.2}
             fillOpacity={colors[index] !== "black" ? 1 : 0.2}
-            rotation={[
-              0, 0, 0,
-              // letter === "R" || letter === "N" ? Math.PI * 1 : 0,
-              // letter === "i" ? Math.PI * 1 : 0,
-            ]}
+            rotation={[0, 0, 0]}
             onPointerOver={() => handlePointerOver(index, color, setColors)}
             onPointerOut={() => handlePointerOut(index, setColors)}
-            // onPointerOver={(e) => {
-            //   handlePointerOver(index, color, setColors);
-            //   e.object.scale.set(1, 1, 1); // Hover effect: scaling
-            //   e.object.rotation.z = index % 2 === 0 ? 0.2 : -0.2; // Rotation on hover
-            //   e.object.fillOpacity = 1;
-            //   e.object.position.z = -1.9;
-            // }}
-            // onPointerLeave={(e) => {
-            //   handlePointerOut(index, setColors);
-            //   e.object.scale.set(1, 1, 1); // Reset scale
-            //   e.object.rotation.z = 0; // Reset rotation
-            //   e.object.fillOpacity = 0.2;
-            //   e.object.position.z = -2;
-            //   e.object.rotation.z =
-            //     letter === "i" || letter === "S" ? Math.PI * 1 : 0;
-            // }}
+            // key={index}
+            // position={[xPosition, 1.65, -2]}
+            // lineHeight={0.9}
+            // fontSize={FONT_SIZE}
+            // letterSpacing={-0.025}
+            // color={colors[index]}
+            // font={FONTS[currentFont]}
+            // className="animated-text"
+            // fillOpacity={colors[index] !== "black" ? 1 : 0.2}
+            // rotation={[0, 0, 0]}
+            // onPointerOver={() => handlePointerOver(index, color, setColors)}
+            // onPointerOut={() => handlePointerOut(index, setColors)}
           >
             {letter}
           </Text>
@@ -145,10 +226,10 @@ export const TextTitle = () => {
       });
     },
     [
-      BASE_SPACING,
-      FONT_SIZE,
-      letterColors,
       letterSpacingMap,
+      BASE_SPACING,
+      letterColors,
+      FONT_SIZE,
       handlePointerOver,
       handlePointerOut,
     ]
@@ -165,12 +246,14 @@ export const TextTitle = () => {
       >
         <mesh position={[-5.5, -0.3, 0]} scale={1.2}>
           {generateTextElements(
+            // "フランシスコ",
             "FRANCISCO",
             franciscoColors,
             setFranciscoColors
           )}
         </mesh>
         <mesh position={[-4.2, -3.6, 0]} scale={1.2}>
+          {/* {generateTextElements("アグティン", agustinColors, setAgustinColors)} */}
           {generateTextElements("AGUSTIN", agustinColors, setAgustinColors)}
         </mesh>
       </group>

@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect, useRef, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 
 import { Center, ContactShadows, Environment, Float } from "@react-three/drei";
@@ -7,6 +7,16 @@ import { Francisco } from "./francisco";
 import { SplineModels } from "./spline";
 
 export const Scene = () => {
+  const meshRef = useRef(null);
+  const [time, setTime] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTime((prevTime) => prevTime + 0.05);
+    }, 16); // Update every frame (60 FPS)
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     // <Canvas dpr={[1.5, 2]} className="bg-[rgb(53,190,214)] ">
     <Canvas dpr={[1.5, 2]} className=" ">
@@ -48,60 +58,14 @@ export const Scene = () => {
           </Center>
           {/* </PresentationControls> */}
         </Float>
-        <TextTitle />
-        {/* <Html occlude="blending" position={[-8.5, 2.8, -2]}>
-          <div className="flex flex-col items-center">
-            <div className="flex">
-              {Array.from("FRANCISCO").map((letter, index) => (
-                <span
-                  key={index}
-                  className={`font-GiantBoss text-[16rem] tracking-tight text-center leading-[13rem] transition-all duration-100 hover:scale-150 text-transparent stroke-black
-                    ${index % 2 === 0 ? "hover:rotate-6" : "hover:-rotate-12"}
-                    ${
-                      [
-                        "hover:text-[#f7d65f]",
-                        "hover:text-[#e18754]",
-                        "hover:text-[#54f0f0]",
-                        "hover:text-[#db7c45]",
-                        "hover:text-[#ef4d53]",
-                        "hover:text-[#dd5ad9]",
-                        "hover:text-[#d97e4a]",
-                        "hover:text-[#eecb4b]",
-                      ][index % 7]
-                    }`}
-                  style={{
-                    WebkitTextStroke: "3px #1b1b1b", // Define el borde del texto
-                  }}
-                >
-                  {letter}
-                </span>
-              ))}
-            </div>
-            <div className="flex">
-              {Array.from("AGUSTIN").map((letter, index) => (
-                <span
-                  key={index}
-                  className={`font-GiantBoss text-[16rem] tracking-tight text-center leading-[13rem] transition-all duration-100 hover:scale-150 
-                    ${index % 2 === 0 ? "hover:rotate-6" : "hover:-rotate-12"}
-                    ${
-                      [
-                        "hover:text-[#f7d65f]",
-                        "hover:text-[#e18754]",
-                        "hover:text-[#54f0f0]",
-                        "hover:text-[#db7c45]",
-                        "hover:text-[#ef4d53]",
-                        "hover:text-[#dd5ad9]",
-                        "hover:text-[#d97e4a]",
-                        "hover:text-[#eecb4b]",
-                      ][index % 7]
-                    }`}
-                >
-                  {letter}
-                </span>
-              ))}
-            </div>
-          </div>
-        </Html> */}
+        <mesh
+          ref={meshRef}
+          position={[0, 0, -2]}
+          scale={1.45}
+          // rotation-x={-Math.PI / 2}
+        >
+          <TextTitle />
+        </mesh>
       </Suspense>
     </Canvas>
   );
