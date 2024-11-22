@@ -1,17 +1,20 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import FranciscoWithBeto from "../../assets/FranciscoWithBeto.JPG";
 import { WorksContainer } from "./WorksContainer";
+import { usePopupStore } from "../../stores/usePopUp";
 
-export const PopUpAbout = ({ isPopUpOpen, setIsPopUpOpen, hatName }) => {
+export const PopUpAbout = ({ hatName }) => {
   const popupRef = useRef();
+  const closePopUp = usePopupStore((state) => state.closePopUp);
+  const isPopUpOpen = usePopupStore((state) => state.isPopUpOpen);
 
-  const handleClosePopUp = () => {
-    setIsPopUpOpen(false);
-  };
+  // const handleClosePopUp = () => {
+  //   openPopUp();
+  // };
 
   const handleClickOutside = (e) => {
     if (popupRef.current && !popupRef.current.contains(e.target)) {
-      setIsPopUpOpen(false);
+      closePopUp();
     }
   };
 
@@ -35,7 +38,7 @@ export const PopUpAbout = ({ isPopUpOpen, setIsPopUpOpen, hatName }) => {
         >
           <IconCross
             className="absolute right-2 top-2 cursor-pointer z-50"
-            onClick={handleClosePopUp}
+            onClick={closePopUp}
           />
           <div className="relative flex gap-4 pt-2.5 mx-4 mr-8 pb-1 min-h-full">
             <div className="flex flex-col justify-end gap-3 text-black w-[440px]">

@@ -4,7 +4,6 @@ import { Marquee } from "./components/marquee-freelance";
 import { RRSS } from "./components/RRSS";
 import { Scene } from "./components/Canvas/Scene";
 import WeatherData from "./components/Weather";
-import { Coffee } from "./components/coffee";
 import { About } from "./components/about";
 import { HandwrittenTexts } from "./components/Text-Handwritten";
 import { PopUpAbout } from "./components/About/PopUpAbout";
@@ -12,7 +11,8 @@ import gsap from "gsap";
 
 function App() {
   const [dialogText, setDialogText] = useState(null);
-  const [isPopUpOpen, setIsPopUpOpen] = useState(false);
+  // const [isPopUpOpen, setIsPopUpOpen] = useState(false);
+
   const [hatName, setHatName] = useState('NoneHat');
   const [triggerConfetti, setTriggerConfetti] = useState(false);
 
@@ -52,12 +52,11 @@ function App() {
     // <div className="h-screen bg-[rgb(53,190,214)]">
     <div className={`main-container h-screen`}>
       <Marquee />
-      <About setDialogText={setDialogText} setIsPopUpOpen={setIsPopUpOpen} isPopUpOpen={isPopUpOpen} />
-      <PopUpAbout setIsPopUpOpen={setIsPopUpOpen} isPopUpOpen={isPopUpOpen} hatName={hatName} />
+      <About setDialogText={setDialogText} />
+      <PopUpAbout hatName={hatName} />
       <HandwrittenTexts />
-      <Scene isPopUpOpen={isPopUpOpen} onHatChange={setHatName} triggerConfetti={triggerConfetti} />
+      <Scene onHatChange={setHatName} triggerConfetti={triggerConfetti} />
       <RRSS setDialogText={setDialogText} />
-      {/* <Coffee setDialogText={setDialogText} /> */}
       <WeatherData setDialogText={setDialogText} hatName={hatName} triggerConfetti={triggerConfetti} setTriggerConfetti={setTriggerConfetti} />
       {dialogText && <DialogBox text={dialogText} />}
 

@@ -1,16 +1,15 @@
 import React from "react";
 import FranciscoPhoto from "../assets/francisco-photo.png";
 import FranciscoFunPhoto from "../assets/francisco-fun-photo.png";
+import { usePopupStore } from "../stores/usePopUp";
 
-export const About = ({ setDialogText, setIsPopUpOpen, isPopUpOpen }) => {
-  const handleOpenPopUp = () => {
-    setIsPopUpOpen(true);
-  };
+export const About = ({ setDialogText }) => {
+  const openPopUp = usePopupStore((state) => state.openPopUp);
 
   return (
     <div
       className="picture-container absolute top-6 left-2 cursor-pointer max-h-20 z-30"
-      onClick={handleOpenPopUp}
+      onClick={openPopUp}
     >
       <div
         className={`group relative max-h-20 transition-all duration-200`}
