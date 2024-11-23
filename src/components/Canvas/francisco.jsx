@@ -110,7 +110,7 @@ export function Francisco({ props }) {
       avatarRef.current.rotation.y +=
         (lookAtX - avatarRef.current.rotation.y) * 0.1; // Interpolación suave
       avatarRef.current.rotation.x +=
-        (lookAtY - avatarRef.current.rotation.x) * 0.2; // Interpolación suave
+        (lookAtY - avatarRef.current.rotation.x) * 0.05; // Interpolación suave
     }
 
     if (objectRef.current) {
