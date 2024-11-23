@@ -7,7 +7,6 @@ import { Francisco } from "./francisco";
 import { SplineModels } from "./spline";
 
 export const Scene = () => {
-  const meshRef = useRef(null);
   const [time, setTime] = useState(0);
 
   useEffect(() => {
@@ -19,7 +18,7 @@ export const Scene = () => {
 
   return (
     // <Canvas dpr={[1.5, 2]} className="bg-[rgb(53,190,214)] ">
-    <Canvas dpr={[1.5, 2]} className=" ">
+    <Canvas dpr={[1.5, 2]} className="canvasContainer">
       <Suspense fallback={null}>
         <ambientLight intensity={1} position={[0, 0, 0]} />
         <Environment preset="warehouse" />
@@ -59,7 +58,6 @@ export const Scene = () => {
           {/* </PresentationControls> */}
         </Float>
         <mesh
-          ref={meshRef}
           position={[0, 0, -2]}
           scale={1.45}
           // rotation-x={-Math.PI / 2}

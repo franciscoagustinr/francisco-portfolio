@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import FranciscoPhoto from "../assets/francisco-photo.png";
 import FranciscoFunPhoto from "../assets/francisco-fun-photo.png";
 import { usePopupStore } from "../stores/usePopUp";
+import { useScrollStore } from "../stores/useScroll";
+import { applyBounceEffect } from "../utils/applyBounceEffect";
 
 export const About = ({ setDialogText }) => {
   const openPopUp = usePopupStore((state) => state.openPopUp);
+  const isScrolling = useScrollStore((state) => state.isScrolling);
+
+  useEffect(() => {
+    applyBounceEffect(".picture-container", isScrolling);
+  }, [isScrolling]);
 
   return (
     <div

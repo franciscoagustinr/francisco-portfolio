@@ -1,6 +1,6 @@
 import React from "react";
-import { Works } from "../../utilities/Works";
-import { useMousePosition } from "../../utilities/mousePosition";
+import { Works } from "../../utils/Works";
+import { useMousePosition } from "../../utils/mousePosition";
 import { useHatBackground } from "../../hooks/useBackground";
 
 export const WorksContainer = ({ hatName }) => {

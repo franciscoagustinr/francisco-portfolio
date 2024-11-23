@@ -3,11 +3,19 @@ import GithubLogo from "../assets/github.png";
 import LinkedinLogo from "../assets/linkedin.png";
 import gsap from "gsap";
 import CoffeeCup from "../assets/coffee-cup.png";
+import { useScrollStore } from "../stores/useScroll";
+import { applyBounceEffect } from "../utils/applyBounceEffect";
 
 export const RRSS = ({ setDialogText }) => {
   const githubRef = useRef(null);
   const linkedinRef = useRef(null);
   const coffeeRef = useRef(null);
+  const elementsRef = [
+    githubRef.current,
+    linkedinRef.current,
+    coffeeRef.current,
+  ];
+  const isScrolling = useScrollStore((state) => state.isScrolling);
 
   const initHoverEffect = (el) => {
     let hover = false;
@@ -85,9 +93,13 @@ export const RRSS = ({ setDialogText }) => {
     };
   }, []);
 
+  useEffect(() => {
+    applyBounceEffect(elementsRef, isScrolling);
+  }, [isScrolling]);
+
   return (
     <>
-      <div className="absolute bottom-4 right-14">
+      <div className={`absolute bottom-4 right-14`}>
         <img
           ref={linkedinRef}
           src={LinkedinLogo}

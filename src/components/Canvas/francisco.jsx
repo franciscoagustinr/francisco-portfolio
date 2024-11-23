@@ -6,6 +6,8 @@ import ConfettiExplosion from "react-confetti-explosion";
 import { useSpring, animated } from "@react-spring/three";
 import { useConfettiStore } from "../../stores/useTriggerConfetti-Talk";
 import { useHatStore } from "../../stores/useHatStore";
+import { useScrollStore } from "../../stores/useScroll";
+import { applyBounceEffect } from "../../utils/applyBounceEffect";
 
 export function Francisco({ props }) {
   const { nodes, materials } = useGLTF("/models/F-model7.glb");
@@ -18,13 +20,13 @@ export function Francisco({ props }) {
   const [isExploding, setIsExploding] = useState(false);
   const [hovered, setHovered] = useState(false);
   const [clicked, setClicked] = useState(false);
-  const [isShaking, setIsShaking] = useState(false);
   const influences = objectRef?.current?.morphTargetInfluences;
   const [isBlinking, setIsBlinking] = useState(false);
   const blinkStartTime = useRef(0);
   const BLINK_DURATION = 0.15; // Duración de cierre y apertura de ojos
   const BLINK_INTERVAL = useRef(Math.random() * 5 + 3); // Tiempo entre parpadeos
   const triggerConfetti = useConfettiStore((state) => state.triggerConfetti);
+  const isScrolling = useScrollStore((state) => state.isScrolling);
 
   const handleAvatarClick = () => {
     // Calcula el próximo índice del sombrero
@@ -58,18 +60,15 @@ export function Francisco({ props }) {
     // rotation: clicked ? [-0.18, 0, 0] : [0, 0, 0],
     rotation: clicked
       ? [-0.18, 0, 0]
-      : // TODO: hacer la animación de sacudida de cabeza
-      // : isShaking
-      // ? [0, 0.2, 0]
-      triggerConfetti
+      : triggerConfetti
       ? [0, Math.PI / 0.5, 0]
+      : isScrolling
+      ? [0, Math.sin(Date.now() / 100) * 0.2, 0]
       : [0, 0, 0],
     config: { tension: 250, friction: 20 },
     onRest: () => {
       if (clicked) {
         setClicked(false); // Resetear clic después de la animación
-        setIsShaking(true); // Iniciar sacudida de cabeza
-        setTimeout(() => setIsShaking(false), 1000); // Detener sacudida después de 1 segundo
       }
     },
   });

@@ -10,12 +10,22 @@ import { PopUpAbout } from "./components/About/PopUpAbout";
 import gsap from "gsap";
 import { useHatBackground } from "./hooks/useBackground";
 import { useHatStore } from "./stores/useHatStore";
+import { useScrollDetector } from "./hooks/useScrollDetector";
+import { useScrollStore } from "./stores/useScroll";
 
 function App() {
   const [dialogText, setDialogText] = useState(null);
-  // const [hatName, setHatName] = useState('NoneHat');
   const { getGradientBackground } = useHatBackground();
   const { hatName } = useHatStore();
+  useScrollDetector();
+  const isScrolling = useScrollStore((state) => state.isScrolling);
+
+  useEffect(() => {
+    if (!isScrolling) return;
+    setDialogText('Nope, everything is here! 🙃')
+    setTimeout(() => setDialogText(''), 1800); // Duración del confeti
+
+  }, [isScrolling])
 
   useEffect(() => {
     gsap.to(".main-container", {
@@ -37,7 +47,6 @@ function App() {
       <RRSS setDialogText={setDialogText} />
       <WeatherData setDialogText={setDialogText} hatName={hatName} />
       {dialogText && <DialogBox text={dialogText} />}
-
     </div >
   );
 }

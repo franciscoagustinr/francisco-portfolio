@@ -1,9 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
-import { GetWeather } from "../utilities/GetWeather";
+import { GetWeather } from "../utils/GetWeather";
 import gsap from "gsap";
 import ConfettiExplosion from "react-confetti-explosion";
 import { useConfettiStore } from "../stores/useTriggerConfetti-Talk";
 import { useHatBackground } from "../hooks/useBackground";
+import { useScrollStore } from "../stores/useScroll";
+import { applyBounceEffect } from "../utils/applyBounceEffect";
 // import BlackArrowSvg from "../assets/arrow-black.svg";
 
 const WeatherData = ({ setDialogText, hatName }) => {
@@ -14,6 +16,11 @@ const WeatherData = ({ setDialogText, hatName }) => {
     (state) => state.setTriggerConfetti
   );
   const { getHexBackground } = useHatBackground();
+  const isScrolling = useScrollStore((state) => state.isScrolling);
+
+  useEffect(() => {
+    applyBounceEffect(".weatherContainer", isScrolling);
+  }, [isScrolling]);
 
   useEffect(() => {
     gsap.to(".bg-talk", {
@@ -85,7 +92,7 @@ const WeatherData = ({ setDialogText, hatName }) => {
 
       <div
         ref={weatherRefContainer}
-        className="w-72 absolute xsm:right-3 sm:right-5 md:right-5 lg:right-[4%] top-11 z-30 text-[#FAFAFA]"
+        className="weatherContainer w-72 absolute xsm:right-3 sm:right-5 md:right-5 lg:right-[4%] top-11 z-30 text-[#FAFAFA]"
       >
         {weatherData ? (
           <div className="text-right font-sans text-sm tracking-tight uppercase  ">
