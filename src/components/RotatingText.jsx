@@ -23,23 +23,23 @@ const RotatingText = () => {
         chars,
         {
           opacity: 0,
-          y: 80,
-          rotateX: -90,
+          y: 40,
+          rotateX: -20,
         },
         {
           opacity: 1,
           y: 0,
           rotateX: 0,
-          duration: 0.5,
+          duration: 0.4,
           stagger: 0.02, // Stagger the animation for each character
         }
       ).to(
         chars,
         {
           opacity: 0,
-          y: -80,
+          y: -50,
           rotateX: 90,
-          duration: 0.5,
+          duration: 0.4,
           stagger: 0.02, // Apply stagger to make them disappear progressively
         },
         "+=1" // Delay before starting this animation
