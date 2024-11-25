@@ -63,7 +63,7 @@ export function Francisco({ props }) {
       : triggerConfetti
       ? [0, Math.PI / 0.5, 0]
       : isScrolling
-      ? [0, Math.sin(Date.now() / 100) * 0.2, 0]
+      ? [0, Math.sin(Date.now() / 100) * 0.4, 0]
       : [0, 0, 0],
     config: { tension: 250, friction: 20 },
     onRest: () => {

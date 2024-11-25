@@ -10,10 +10,10 @@ export const Scene = () => {
   const [time, setTime] = useState(0);
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    const intervalScrollReaction = setInterval(() => {
       setTime((prevTime) => prevTime + 0.05);
-    }, 16); // Update every frame (60 FPS)
-    return () => clearInterval(interval);
+    }, 16);
+    return () => clearInterval(intervalScrollReaction);
   }, []);
 
   return (
