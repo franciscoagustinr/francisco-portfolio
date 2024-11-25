@@ -2,7 +2,7 @@ import gsap from "gsap";
 import React, { useState, useEffect, useRef } from "react";
 
 const RotatingText = () => {
-  const titles = ["Loading", "Processing", "Finalizing", "Complete"];
+  const titles = ["Hi!", "Hola!", "Bonjour!", "こんにちは!"];
   const [currentIndex, setCurrentIndex] = useState(0);
   const textRef = useRef(null);
 
@@ -23,23 +23,23 @@ const RotatingText = () => {
         chars,
         {
           opacity: 0,
-          y: 40,
+          y: 20,
           rotateX: -20,
         },
         {
           opacity: 1,
           y: 0,
           rotateX: 0,
-          duration: 0.4,
+          duration: 0.2,
           stagger: 0.02, // Stagger the animation for each character
         }
       ).to(
         chars,
         {
           opacity: 0,
-          y: -50,
+          y: -30,
           rotateX: 90,
-          duration: 0.4,
+          duration: 0.2,
           stagger: 0.02, // Apply stagger to make them disappear progressively
         },
         "+=1" // Delay before starting this animation

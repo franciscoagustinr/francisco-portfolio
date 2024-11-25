@@ -15,10 +15,10 @@ export const LoadingBar = () => {
           const newProgress = prev + randomIncrement;
           return newProgress > 100 ? 100 : newProgress; // Asegurar que no exceda 100
         });
-      }, 100); // Actualizar cada 200ms
+      }, 250);
 
       return () => clearInterval(interval); // Limpieza del intervalo
-    }, 1000); // Retrasar el inicio 200ms
+    }, 1000);
 
     return () => clearTimeout(timeout); // Limpieza del timeout al desmontar
   }, []);
