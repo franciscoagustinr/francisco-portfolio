@@ -8,6 +8,7 @@ import { useConfettiStore } from "../../stores/useTriggerConfetti-Talk";
 import { useHatStore } from "../../stores/useHatStore";
 import { useScrollStore } from "../../stores/useScroll";
 import { applyBounceEffect } from "../../utils/applyBounceEffect";
+import { usePreloader } from "../../stores/usePreloader";
 
 export function Francisco({ props }) {
   const { nodes, materials } = useGLTF("/models/F-model7.glb");
@@ -27,8 +28,10 @@ export function Francisco({ props }) {
   const BLINK_INTERVAL = useRef(Math.random() * 5 + 3); // Tiempo entre parpadeos
   const triggerConfetti = useConfettiStore((state) => state.triggerConfetti);
   const isScrolling = useScrollStore((state) => state.isScrolling);
+  const isLoading = usePreloader((state) => state.isLoading);
 
   const handleAvatarClick = () => {
+    if (isLoading) return;
     // Calcula el próximo índice del sombrero
     const nextHatIndex = (currentHatIndex + 1) % hatNames.length;
     // Actualiza el índice del sombrero
@@ -56,7 +59,7 @@ export function Francisco({ props }) {
 
   const { scale, position, rotation } = useSpring({
     scale: clicked ? [0.95, 0.95, 0.95] : [1, 1, 1],
-    position: clicked ? [0, 0, -0.05] : [0, 0, 0],
+    position: clicked ? [0, 0, -0.05] : isLoading ? [0, 0.7, 0] : [0, 0, 0],
     // rotation: clicked ? [-0.18, 0, 0] : [0, 0, 0],
     rotation: clicked
       ? [-0.18, 0, 0]
@@ -74,6 +77,7 @@ export function Francisco({ props }) {
   });
 
   useEffect(() => {
+    if (isLoading) return;
     const handleMouseMove = (e) => {
       const cursorIcon =
         e.clientX < window.innerWidth / 2
@@ -91,9 +95,10 @@ export function Francisco({ props }) {
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
     };
-  }, [hovered]);
+  }, [hovered, isLoading]);
 
   useFrame((state) => {
+    if (isLoading) return;
     const time = state.clock.getElapsedTime();
     if (clicked) return;
 
@@ -138,18 +143,19 @@ export function Francisco({ props }) {
     }
   });
 
-  // useEffect(() => {
-  //   if (avatarRef.current) {
-  //     avatarRef.current.traverse((child) => {
-  //       if (child.isMesh) {
-  //         if (child.material) {
-  //           child.material.wireframe = true; // Activa el wireframe
-  //           child.material.color.set("#D8FFDD");
-  //         }
-  //       }
-  //     });
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (!isLoading) return;
+    if (avatarRef.current) {
+      avatarRef.current.traverse((child) => {
+        if (child.isMesh) {
+          if (child.material) {
+            child.material.wireframe = true; // Activa el wireframe
+            child.material.color.set("#D8FFDD");
+          }
+        }
+      });
+    }
+  }, [isLoading]);
 
   return (
     <animated.group scale={scale} position={position} rotation={rotation}>

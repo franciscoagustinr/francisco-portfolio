@@ -33,12 +33,17 @@ module.exports = {
           "50%": { transform: "rotate(0eg)" },
           "75%": { transform: "rotate(-8deg)" },
           "100%": { transform: "rotate(0deg)" },
+        },
+        load: {
+          "0%": { width: '0%' },
+          "100%": { width: '100%' },
         }
       },
       animation: {
         blink: 'blink 0.8s infinite',
         wavingHand: "wave 1.5s ease-in-out infinite",
-        shake: "shake 0.8s linear infinite"
+        shake: "shake 0.8s linear infinite",
+        loader: "load linear infinite",
       },
       cursor: {
         contact:
