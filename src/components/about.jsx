@@ -15,7 +15,7 @@ export const About = ({ setDialogText }) => {
 
   return (
     <div
-      className="picture-container absolute top-6 left-2 cursor-pointer max-h-20 z-30"
+      className="picture-container cursor-pointer max-h-20 z-30"
       onClick={openPopUp}
     >
       <div

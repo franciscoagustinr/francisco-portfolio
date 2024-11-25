@@ -1,13 +1,23 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import React, { useCallback, useMemo, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { Text } from "@react-three/drei";
 import { useMousePosition } from "../../utils/mousePosition";
+import gsap from "gsap";
+import { usePreloader } from "../../stores/usePreloader";
 // import gsap from "gsap";
 
 export const TextTitle = () => {
   const mousePosition = useMousePosition();
   const FONT_SIZE = 2.8;
   const BASE_SPACING = FONT_SIZE * 0.45;
+  const titleRef = useRef(null);
+  const isLoading = usePreloader((state) => state.isLoading);
 
   // Mantenemos un estado de colores separado para cada palabra
   const [franciscoColors, setFranciscoColors] = useState(
@@ -136,9 +146,20 @@ export const TextTitle = () => {
     ]
   );
 
+  useEffect(() => {
+    if (isLoading) return;
+    const tl = gsap.timeline({ delay: 1 });
+    tl.fromTo(
+      titleRef.current.scale,
+      { x: 0, y: 0, z: 0 },
+      { x: 1, y: 1, z: 1, duration: 2, ease: "power3.out" }
+    );
+  }, [isLoading]);
+
   return (
     <>
       <group
+        ref={titleRef}
         position={[
           ((mousePosition.x / window.innerWidth) * 2) / 8,
           (-(mousePosition.y / window.innerHeight) * 2) / 8,

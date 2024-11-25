@@ -30,7 +30,7 @@ const RotatingText = () => {
           opacity: 1,
           y: 0,
           rotateX: 0,
-          duration: 0.2,
+          duration: 0.1,
           stagger: 0.02, // Stagger the animation for each character
         }
       ).to(
@@ -39,7 +39,7 @@ const RotatingText = () => {
           opacity: 0,
           y: -30,
           rotateX: 90,
-          duration: 0.2,
+          duration: 0.1,
           stagger: 0.02, // Apply stagger to make them disappear progressively
         },
         "+=1" // Delay before starting this animation
@@ -48,8 +48,11 @@ const RotatingText = () => {
   }, [currentIndex]); // Re-run animation when the title changes
 
   return (
-    <div className="absolute z-50 top-[28%] left-[47%] text-center">
-      <p ref={textRef} className="text-white text-2xl font-bold leading-none">
+    <div className="absolute z-50 top-[28%] w-full text-center">
+      <p
+        ref={textRef}
+        className="text-white tracking-wider font-RecoletaBlack text-center text-4xl font-bold leading-none"
+      >
         {titles[currentIndex].split("").map((char, index) => (
           <span key={index} className="inline-block">
             {char}

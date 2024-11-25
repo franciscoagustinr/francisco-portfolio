@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Html, useGLTF, Wireframe } from "@react-three/drei";
+import { Html, useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { useHats } from "./Hats";
 import ConfettiExplosion from "react-confetti-explosion";
@@ -7,8 +7,8 @@ import { useSpring, animated } from "@react-spring/three";
 import { useConfettiStore } from "../../stores/useTriggerConfetti-Talk";
 import { useHatStore } from "../../stores/useHatStore";
 import { useScrollStore } from "../../stores/useScroll";
-import { applyBounceEffect } from "../../utils/applyBounceEffect";
 import { usePreloader } from "../../stores/usePreloader";
+import gsap from "gsap";
 
 export function Francisco({ props }) {
   const { nodes, materials } = useGLTF("/models/F-model7.glb");
@@ -59,7 +59,7 @@ export function Francisco({ props }) {
 
   const { scale, position, rotation } = useSpring({
     scale: clicked ? [0.95, 0.95, 0.95] : [1, 1, 1],
-    position: clicked ? [0, 0, -0.05] : isLoading ? [0, 0.7, 0] : [0, 0, 0],
+    position: clicked ? [0, 0, -0.05] : [0, 0, 0],
     // rotation: clicked ? [-0.18, 0, 0] : [0, 0, 0],
     rotation: clicked
       ? [-0.18, 0, 0]
@@ -144,13 +144,39 @@ export function Francisco({ props }) {
   });
 
   useEffect(() => {
-    if (!isLoading) return;
     if (avatarRef.current) {
       avatarRef.current.traverse((child) => {
         if (child.isMesh) {
-          if (child.material) {
-            child.material.wireframe = true; // Activa el wireframe
-            child.material.color.set("#D8FFDD");
+          const material = child.material;
+          if (material) {
+            // Guarda el color original
+            if (!material.originalColor) {
+              material.originalColor = material.color.clone();
+            }
+
+            // Cambia a wireframe con animación
+            if (isLoading) {
+              material.wireframe = true;
+              gsap.to(material.color, {
+                r: 0.847, // Valor equivalente al rojo de #D8FFDD
+                g: 1,
+                b: 0.867,
+                duration: 0,
+                ease: "power2.out",
+              });
+            } else {
+              // Anima de vuelta al color original y desactiva wireframe al final
+              gsap.to(material.color, {
+                r: material.originalColor.r,
+                g: material.originalColor.g,
+                b: material.originalColor.b,
+                duration: 0.5,
+                ease: "power2.in",
+                onComplete: () => {
+                  material.wireframe = false; // Desactiva wireframe al final de la animación
+                },
+              });
+            }
           }
         }
       });
@@ -180,6 +206,7 @@ export function Francisco({ props }) {
             </div>
           </Html>
         )}
+
         <group name="avatar-skin" position={[0, 1.041, 0]} scale={0.411}>
           <group position={[-0.021, 0.106, -0.023]}>
             <mesh

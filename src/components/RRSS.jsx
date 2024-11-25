@@ -25,7 +25,7 @@ export const RRSS = ({ setDialogText }) => {
       gsap.set(el, { x: 0, y: 0, scale: 1 });
       const box = el.getBoundingClientRect();
       x = box.left + box.width / 2;
-      y = box.top + box.height / 2;
+      y = box.top + box.height / 2 - 35;
       width = box.width;
     };
 

@@ -99,7 +99,7 @@ export const ChatSimulator = () => {
     () => [
       "Hi there! <span class='text-xl animate-wavingHand inline-block'>👋🏻</span> I’m Francisco Agustín Rodríguez —but you can call me Fran.",
       "I’m a front-end developer hailing from Buenos Aires, Argentina <span class='text-xl '>🇦🇷</span>",
-      "I bring websites to life by creating interactive <span class='text-xl '>🕹️</span> visually stunning experiences <span class='text-xl '>🎨</span> with a focus on seamless motion and user-friendly design <span class='text-xl '>✨</span>",
+      "I bring websites to life by creating interactive <span class='text-xl inline-block animate-shake'>🕹️</span> visually stunning experiences <span class='text-xl '>🎨</span> with a focus on seamless motion and user-friendly design <span class='text-xl '>✨</span>",
       "This is my teammate <span class='text-xl inline-block animate-bounce duration-150'>👇🏻</span><span class='text-xl inline-block animate-bounce delay-150 duration-300'>👇🏻</span>",
       "img",
       "Beto, my loyal sidekick <span class='text-2xl inline-block animate-shake '>🐶</span> He keeps the creativity flowing! <span class='text-xl '>💫</span>",

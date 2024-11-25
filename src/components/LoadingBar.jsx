@@ -1,7 +1,16 @@
 import React, { useEffect, useState } from "react";
+import { usePreloader } from "../stores/usePreloader";
 
 export const LoadingBar = () => {
   const [progress, setProgress] = useState(0);
+  const stopLoader = usePreloader((state) => state.stopLoader);
+
+  useEffect(() => {
+    if (progress === 100) {
+      stopLoader();
+    }
+    console.log(progress);
+  }, [progress, stopLoader]);
 
   useEffect(() => {
     const timeout = setTimeout(() => {

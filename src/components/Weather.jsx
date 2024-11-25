@@ -92,7 +92,7 @@ const WeatherData = ({ setDialogText, hatName }) => {
 
       <div
         ref={weatherRefContainer}
-        className="weatherContainer w-72 absolute xsm:right-3 sm:right-5 md:right-5 lg:right-[4%] top-11 z-30 text-[#FAFAFA]"
+        className="weatherContainer w-72  text-[#FAFAFA]"
       >
         {weatherData ? (
           <div className="text-right font-sans text-sm tracking-tight uppercase  ">
@@ -111,7 +111,7 @@ const WeatherData = ({ setDialogText, hatName }) => {
                 onClick={handleTriggerConfetti}
               >
                 <span
-                  className={`bg-talk after:bg-[var(--bg-after)] font-semibold select-none pointer-events-none relative text-white flex flex-row items-center after:content-[''] after:absolute after:!left-1.5 after:!bottom-[-2px] after:!w-24 after:!h-4 after:z-[-1] after:!transition-all after:!duration-150 group-hover:scale-110 group-hover:after:!-left-1 group-hover:after:!bottom-[-3px] group-hover:after:!rotate-3 group-hover:after:!w-[6.4rem] group-hover:after:shadow-md group-hover:after:!h-6 font-RecoletaBlack tracking-wide transition-all duration-200  `}
+                  className={`bg-talk after:bg-[var(--bg-after)] font-semibold select-none pointer-events-none relative text-white flex flex-row items-center after:content-[''] after:absolute after:!left-1.5 after:!bottom-[-2px] after:!w-24 after:!h-4 after:z-[-1] after:!transition-all after:!duration-150 group-hover:scale-110 group-hover:after:!-left-1 group-hover:after:!bottom-[-3px] group-hover:after:!rotate-3 group-hover:after:!w-[6.7rem] group-hover:after:shadow-md group-hover:after:!h-6 font-RecoletaBlack tracking-wide transition-all duration-200  `}
                 >
                   lets talk!
                   <svg
@@ -120,7 +120,7 @@ const WeatherData = ({ setDialogText, hatName }) => {
                     height="16"
                     viewBox="0 0 24 24"
                     fill="#fafafa"
-                    className="group-hover:translate-x-1 group-hover:drop-shadow-sm transition-all duration-150"
+                    className="group-hover:translate-x-1.5 group-hover:drop-shadow-sm transition-all duration-150"
                   >
                     <path d="M11.293 4.707L17.586 11H4v2h13.586l-6.293 6.293 1.414 1.414L21.414 12l-8.707-8.707-1.414 1.414z" />
                   </svg>
@@ -140,13 +140,15 @@ export default WeatherData;
 
 export const ConfettiExplosionTalk = () => {
   return (
-    <div className="absolute !inset-0">
-      <ConfettiExplosion
-        force={0.2}
-        particleCount={40}
-        width={600}
-        duration={1500}
-      />
-    </div>
+    <>
+      <div className="absolute  ">
+        <ConfettiExplosion
+          force={0.2}
+          particleCount={40}
+          width={600}
+          duration={1500}
+        />
+      </div>
+    </>
   );
 };
