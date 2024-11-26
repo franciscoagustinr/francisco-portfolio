@@ -99,12 +99,12 @@ export const RRSS = ({ setDialogText }) => {
 
   return (
     <>
-      <div className={`absolute bottom-4 right-14`}>
+      <div className={`absolute bottom-4 4xl:bottom-12 right-14 4xl:right-20`}>
         <img
           ref={linkedinRef}
           src={LinkedinLogo}
           alt="github-logo"
-          className="w-14 h-auto select-none cursor-pointer "
+          className="w-14 4xl:w-44 h-auto select-none cursor-pointer "
           onClick={() => {
             window.open(
               "https://www.linkedin.com/in/franciscoagustinr/",
@@ -124,12 +124,12 @@ export const RRSS = ({ setDialogText }) => {
           }}
         />
       </div>
-      <div className="absolute bottom-4 right-36">
+      <div className="absolute bottom-4 4xl:bottom-12 right-36 4xl:right-80">
         <img
           ref={githubRef}
           src={GithubLogo}
           alt="github-logo"
-          className="reflection select-none w-14  h-auto cursor-pointer"
+          className="reflection select-none w-14 4xl:w-44 h-auto cursor-pointer"
           onClick={() => {
             window.open("https://github.com/franciscoagustinr", "_blank");
           }}
@@ -141,12 +141,12 @@ export const RRSS = ({ setDialogText }) => {
           }}
         />
       </div>
-      <div className="absolute left-5 bottom-3">
+      <div className="absolute left-5 4xl:left-14 bottom-3 4xl:bottom-12">
         <img
           ref={coffeeRef}
           src={CoffeeCup}
           alt="Coffee Cup"
-          className=" select-none w-20 -rotate-12 cursor-pointer relative"
+          className=" select-none w-20 4xl:w-56 -rotate-12 cursor-pointer relative"
           onClick={() => {
             window.open("https://cafecito.app/franciscoagustinr", "_blank");
           }}

@@ -48,10 +48,10 @@ const RotatingText = () => {
   }, [currentIndex]); // Re-run animation when the title changes
 
   return (
-    <div className="absolute z-50 top-[28%] w-full text-center">
+    <div className="absolute z-50 top-[28%] 4xl:top-[26%] w-full text-center">
       <p
         ref={textRef}
-        className="text-white tracking-wider font-RecoletaBlack text-center text-4xl font-bold leading-none"
+        className="text-white tracking-wider font-RecoletaBlack text-center text-4xl 4xl:text-8xl 4xl:pl-36 font-bold leading-none"
       >
         {titles[currentIndex].split("").map((char, index) => (
           <span key={index} className="inline-block">

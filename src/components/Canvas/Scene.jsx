@@ -11,6 +11,10 @@ export const Scene = () => {
   const [time, setTime] = useState(0);
   const isLoading = usePreloader((state) => state.isLoading);
 
+  const meshResponsivePosition =
+    window.innerWidth >= 4000 ? [0, 0, 0] : [-0.2, -4.3, 0];
+  const meshResponsiveScale = window.innerWidth >= 4000 ? 2 : 1.7;
+
   useEffect(() => {
     const intervalScrollReaction = setInterval(() => {
       setTime((prevTime) => prevTime + 0.05);
@@ -41,7 +45,7 @@ export const Scene = () => {
           floatingRange={[1, 1.1]}
         >
           <Center position={[0, -1.2, 1]} rotation={[0, 0, 0]}>
-            <mesh position={[-0.2, -4.3, 0]} scale={1.7}>
+            <mesh position={meshResponsivePosition} scale={meshResponsiveScale}>
               <Francisco />
             </mesh>
           </Center>

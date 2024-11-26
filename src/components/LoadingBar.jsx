@@ -33,7 +33,8 @@ export const LoadingBar = () => {
   }, []);
 
   return (
-    <div className="absolute z-50 top-[80%] left-[38%] w-[350px] h-[18px] border-2 border-white rounded-full p-0.5">
+    // <div className="absolute z-50 top-[80%] left-[38%] 4xl:left-[37%] w-[350px] 4xl:w-[30%] h-[18px] border-2 border-white rounded-full p-0.5">
+    <div className=" z-50 mt-[30%] left-1/2  w-[350px] 4xl:w-[30%] h-[18px] border-2 border-white rounded-full p-0.5">
       <div
         // className={`loader h-[10px] bg-white rounded-full shadow-[0_10px_40px_-10px_rgba(255,255,255,1)] w-[${progress}]`}
         className={`loader h-[10px] bg-white rounded-full shadow-[0_10px_40px_-10px_rgba(255,255,255,1)]`}

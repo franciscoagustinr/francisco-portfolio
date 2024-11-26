@@ -3,12 +3,12 @@ import React from "react";
 export const HandwrittenTexts = () => {
   return (
     <>
-      <div className="absolute right-24 z-30 top-52 pointer-events-none select-none animate-pulse  ">
-        <div className="relative text-white -rotate-45 font-HomemadeApple flex">
+      <div className="absolute right-24 z-30 top-52 4xl:top-[33rem] pointer-events-none select-none animate-pulse  ">
+        <div className="relative text-white -rotate-45 font-HomemadeApple 4xl:text-5xl flex">
           stay in contact
           <svg
             fill="#fafafa"
-            className="w-12 rotate-[40deg] -top-6 relative left-7"
+            className="w-12 4xl:w-36 rotate-[40deg] -top-6 relative left-7"
             viewBox="0 0 367.339 367.34"
           >
             <g>
@@ -36,15 +36,15 @@ export const HandwrittenTexts = () => {
           </svg>
         </div>
       </div>
-      <div className="absolute left-20 z-30 top-32 pointer-events-none select-none">
-        <div className="relative text-white rotate-[4deg] font-HomemadeApple flex">
+      <div className="absolute left-20 4xl:left-80 z-30 top-32 4xl:top-72 pointer-events-none select-none">
+        <div className="relative text-white rotate-[4deg] font-HomemadeApple 4xl:text-5xl flex">
           <svg
             fill="#fafafa"
             viewBox="-10.78 -10.78 380.73 380.73"
             transform="matrix(-1, 0, 0, 1, 0, 0)rotate(0)"
             stroke="#fff"
             strokeWidth="0.00359171"
-            className="w-11 -top-3 -rotate-[30deg] relative -left-5 scale-x-[-1] "
+            className="w-11 4xl:w-36 -top-3 -rotate-[30deg] relative -left-5 scale-x-[-1] "
           >
             <g strokeWidth="0"></g>
             <g

@@ -9,6 +9,7 @@ import { useHatStore } from "../../stores/useHatStore";
 import { useScrollStore } from "../../stores/useScroll";
 import { usePreloader } from "../../stores/usePreloader";
 import gsap from "gsap";
+import { usePopupStore } from "../../stores/usePopUp";
 
 export function Francisco({ props }) {
   const { nodes, materials } = useGLTF("/models/F-model7.glb");
@@ -29,6 +30,7 @@ export function Francisco({ props }) {
   const triggerConfetti = useConfettiStore((state) => state.triggerConfetti);
   const isScrolling = useScrollStore((state) => state.isScrolling);
   const isLoading = usePreloader((state) => state.isLoading);
+  const isPopUpOpen = usePopupStore((state) => state.isPopUpOpen);
 
   const handleAvatarClick = () => {
     if (isLoading) return;
@@ -65,7 +67,7 @@ export function Francisco({ props }) {
       ? [-0.18, 0, 0]
       : triggerConfetti
       ? [0, Math.PI / 0.5, 0]
-      : isScrolling
+      : isScrolling && !isPopUpOpen
       ? [0, Math.sin(Date.now() / 100) * 0.4, 0]
       : [0, 0, 0],
     config: { tension: 250, friction: 20 },

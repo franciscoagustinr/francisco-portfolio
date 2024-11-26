@@ -28,7 +28,10 @@ export const WorksContainer = ({ hatName }) => {
                 <div className="relative left-[15rem]">
                   <div
                     style={{
-                      left: (mousePosition.x / Math.PI - 250) / 4,
+                      left:
+                        window.innerWidth >= 4000
+                          ? (mousePosition.x / Math.PI - 250 * 3.2) / 4
+                          : (mousePosition.x / Math.PI - 250) / 4,
                     }}
                     className="absolute"
                   >
@@ -61,14 +64,14 @@ export const WorksContainer = ({ hatName }) => {
                   </div>
                   <div className=" -translate-x-9 group-hover:-translate-x-0 transition-all duration-[210ms] ease-linear">
                     <h2
-                      className={`uppercase group-hover:brightness-150 font-KarlaExtraBold text-base text-[#fff] group-hover:text-[var(--dynamic-color)] transition-all duration-200 ease-linear max-w-fit px-2 pl-0`}
+                      className={`uppercase group-hover:brightness-150 font-KarlaExtraBold text-base 4xl:text-lg text-[#fff] group-hover:text-[var(--dynamic-color)] transition-all duration-200 ease-linear max-w-fit px-2 pl-0`}
                     >
                       {work.name}
                     </h2>
-                    <p className="font-sans font-light uppercase text-xs text-[#fff] ">
+                    <p className="font-sans font-light uppercase text-xs 4xl:text-xs text-[#fff] ">
                       {work.description}
                     </p>
-                    <p className="font-sans font-semibold text-xs text-[#fff] tracking-wide">
+                    <p className="font-sans font-semibold text-xs 4xl:text-xs text-[#fff] tracking-wide">
                       {work.technologies}
                     </p>
                   </div>
@@ -77,13 +80,13 @@ export const WorksContainer = ({ hatName }) => {
             </div>
           );
         })}
-      <div className="mt-8 px-2 flex items-center justify-around ">
+      <div className="mt-8 4xl:mt-5 px-2 flex items-center justify-around ">
         <button
-          className={`cursor-contact  hover:bg-white hover:text-[var(--dynamic-color)] transition-all duration-200 hover:scale-125 hover:-rotate-2 hover:shadow-lg px-6 py-2 rounded-full uppercase bg-[var(--dynamic-color)] text-white font-RecoletaBlack tracking-wide`}
+          className={`cursor-contact  hover:bg-white hover:text-[var(--dynamic-color)] transition-all duration-200 hover:scale-125 hover:-rotate-2 hover:shadow-lg px-6 py-2 rounded-full uppercase bg-[var(--dynamic-color)] text-white font-RecoletaBlack 4xl:text-lg tracking-wide`}
         >
           Let's chat!
         </button>
-        <button className="cursor-resume  hover:bg-white hover:text-[var(--dynamic-color)] transition-all duration-200 hover:scale-125 hover:-rotate-2 hover:shadow-lg px-6 py-2 rounded-full uppercase bg-[var(--dynamic-color)] text-white font-RecoletaBlack tracking-wide">
+        <button className="cursor-resume  hover:bg-white hover:text-[var(--dynamic-color)] transition-all duration-200 hover:scale-125 hover:-rotate-2 hover:shadow-lg px-6 py-2 rounded-full uppercase bg-[var(--dynamic-color)] text-white font-RecoletaBlack 4xl:text-lg tracking-wide">
           Get resume!
         </button>
       </div>

@@ -23,21 +23,17 @@ export const PopUpAbout = ({ hatName }) => {
 
   return (
     isPopUpOpen && (
-      // <div className="fixed inset-0 bg-gray-400 bg-opacity-50 flex items-center justify-center z-50">
       <div className="fixed inset-0 flex items-center justify-center z-50 bg-gray-50 bg-opacity-5 backdrop-blur-md ">
         <div
           ref={popupRef}
-          // className="relative h-4/5 w-auto bg-sky-200 border border-solid border-sky-600 rounded-2xl z-20 overflow-y-scroll"
-          // className="relative top-2 h-auto w-auto bg-sky-200 border border-solid border-sky-600 rounded-2xl z-20 overflow-y-scroll"
-          className="shadow-2xl relative top-2 h-[43rem] w-auto bg-gray-600 bg-opacity-20 border border-solid border-gray-100 rounded-2xl z-20 overflow-y-scroll"
-          // className="relative h-[calc(100%-5px)] w-[calc(100%-5px)] bg-sky-200 border border-solid border-sky-600 rounded-2xl z-20 overflow-y-scroll"
+          className="shadow-2xl relative top-2 h-[43rem] 4xl:scale-[2.9] w-auto 4xl:!w-[70rem] bg-gray-600 bg-opacity-20 border border-solid border-gray-100 rounded-2xl z-20 overflow-y-scroll"
         >
           <IconCross
             className="absolute right-2 top-2 cursor-pointer z-50"
             onClick={closePopUp}
           />
-          <div className="relative flex gap-4 pt-2.5 mx-4 mr-8 pb-1 min-h-full">
-            <div className="flex flex-col justify-end gap-3 text-black w-[440px]">
+          <div className="relative flex 4xl:justify-between gap-4 pt-2.5 mx-4 mr-8 pb-1 min-h-full">
+            <div className="flex flex-col 4xl:flex-1 justify-end gap-3 text-black w-[440px]">
               <ChatSimulator />
             </div>
             <div className="sticky top-8 flex flex-col items-center justify-start w-[450px] rounded-lg h-full">
@@ -156,7 +152,7 @@ export const ChatSimulator = () => {
       {visibleMessages.map((message, index) => (
         <div
           key={index}
-          className={`shadow-sm appear-animation relative rounded-2xl rounded-bl-md bg-[#ffffff] py-2 text-sm pl-3 pr-2 cursor-pointer select-none max-w-max transition-all duration-300 ease-in-out
+          className={`shadow-sm appear-animation relative rounded-2xl rounded-bl-md bg-[#ffffff] py-2 text-sm 4xl:text-lg pl-3 pr-2 cursor-pointer select-none max-w-max transition-all duration-300 ease-in-out
             hover:!scale-[1.009] font-KarlaLight ${
               reactions[index].emoji ? "mb-5" : "mb-2"
             } `}

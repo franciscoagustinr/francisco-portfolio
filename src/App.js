@@ -15,6 +15,7 @@ import { useScrollDetector } from "./hooks/useScrollDetector";
 import { useScrollStore } from "./stores/useScroll";
 import { usePreloader } from "./stores/usePreloader";
 import RotatingText from "./components/RotatingText";
+import { usePopupStore } from "./stores/usePopUp";
 
 function App() {
   const [dialogText, setDialogText] = useState(null);
@@ -23,12 +24,13 @@ function App() {
   useScrollDetector();
   const isScrolling = useScrollStore((state) => state.isScrolling);
   const isLoading = usePreloader((state) => state.isLoading);
+  const isPopUpOpen = usePopupStore((state) => state.isPopUpOpen);
 
   useEffect(() => {
-    if (!isScrolling) return;
+    if (!isScrolling || isPopUpOpen) return;
     setDialogText('Nope, everything is here! 🙃')
     setTimeout(() => setDialogText(''), 1800);
-  }, [isScrolling])
+  }, [isScrolling, isPopUpOpen])
 
   useEffect(() => {
     if (isLoading) return;
@@ -68,8 +70,10 @@ function App() {
       <Scene />
       {isLoading && (
         <>
-          <LoadingBar />
-          <RotatingText />
+          <div className="w-full inset-0 absolute flex items-center justify-center">
+            <LoadingBar />
+            <RotatingText />
+          </div>
         </>
       )}
 
@@ -92,7 +96,7 @@ function App() {
           <div className="rrss">
             <RRSS setDialogText={setDialogText} />
           </div>
-          <div className="weather absolute xsm:right-3 sm:right-5 md:right-5 lg:right-[4%] top-11 z-30">
+          <div className="weather absolute xsm:right-3 sm:right-5 md:right-5 lg:right-[4%] 4xl:right-[2%] top-11 4xl:top-40 z-30">
             <WeatherData setDialogText={setDialogText} hatName={hatName} />
           </div>
           {dialogText && <DialogBox text={dialogText} />}
