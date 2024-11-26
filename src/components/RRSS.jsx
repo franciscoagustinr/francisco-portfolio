@@ -104,7 +104,7 @@ export const RRSS = ({ setDialogText }) => {
           ref={linkedinRef}
           src={LinkedinLogo}
           alt="github-logo"
-          className="w-14 4xl:w-44 h-auto select-none cursor-pointer "
+          className="w-14 4xl:w-44 h-auto select-none cursor-pointer drop-shadow-lg "
           onClick={() => {
             window.open(
               "https://www.linkedin.com/in/franciscoagustinr/",
@@ -129,7 +129,7 @@ export const RRSS = ({ setDialogText }) => {
           ref={githubRef}
           src={GithubLogo}
           alt="github-logo"
-          className="reflection select-none w-14 4xl:w-44 h-auto cursor-pointer"
+          className="reflection select-none w-14 4xl:w-44 h-auto cursor-pointer drop-shadow-lg"
           onClick={() => {
             window.open("https://github.com/franciscoagustinr", "_blank");
           }}
@@ -146,7 +146,7 @@ export const RRSS = ({ setDialogText }) => {
           ref={coffeeRef}
           src={CoffeeCup}
           alt="Coffee Cup"
-          className=" select-none w-20 4xl:w-56 -rotate-12 cursor-pointer relative"
+          className=" select-none w-20 4xl:w-56 -rotate-12 cursor-pointer drop-shadow-lg relative"
           onClick={() => {
             window.open("https://cafecito.app/franciscoagustinr", "_blank");
           }}
