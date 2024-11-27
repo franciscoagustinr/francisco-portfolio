@@ -172,7 +172,7 @@ export function Francisco({ props }) {
                 r: material.originalColor.r,
                 g: material.originalColor.g,
                 b: material.originalColor.b,
-                duration: 0.5,
+                duration: 1,
                 ease: "power2.in",
                 onComplete: () => {
                   material.wireframe = false; // Desactiva wireframe al final de la animación
