@@ -10,6 +10,7 @@ import { useScrollStore } from "../../stores/useScroll";
 import { usePreloader } from "../../stores/usePreloader";
 import gsap from "gsap";
 import { usePopupStore } from "../../stores/usePopUp";
+import { incrementCounter } from "../../utils/incrementCounter";
 
 export function Francisco({ props }) {
   const { nodes, materials } = useGLTF("/models/F-model7.glb");
@@ -32,17 +33,14 @@ export function Francisco({ props }) {
   const isLoading = usePreloader((state) => state.isLoading);
   const isPopUpOpen = usePopupStore((state) => state.isPopUpOpen);
 
-  const handleAvatarClick = () => {
+  const handleAvatarClick = (e) => {
+    e.stopPropagation();
     if (isLoading) return;
-    // Calcula el próximo índice del sombrero
+    // incrementCounter();
     const nextHatIndex = (currentHatIndex + 1) % hatNames.length;
-    // Actualiza el índice del sombrero
     setCurrentHatIndex(nextHatIndex);
-    // Obtiene el nombre del sombrero correspondiente al nuevo índice
     const nextHatName = hatNames[nextHatIndex];
-    // Actualiza el estado global de `hatName`
     setHatName(nextHatName);
-    // Animaciones y lógica adicional
     setIsExploding(true);
     setClicked(true);
     influences[0] = 1;
@@ -83,8 +81,8 @@ export function Francisco({ props }) {
     const handleMouseMove = (e) => {
       const cursorIcon =
         e.clientX < window.innerWidth / 2
-          ? "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='75' height='90' viewport='0 0 100 100' style='fill:black;font-size:45px;'><text y='50%'>👉🏻</text></svg>\") 16 0, auto"
-          : "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='75' height='90' viewport='0 0 100 100' style='fill:black;font-size:45px;'><text y='50%'>👈🏻</text></svg>\") 16 0, auto";
+          ? "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='75' height='90' viewport='0 0 100 100' style='fill:black;font-size:45px;'><text y='30%'>👉🏻</text></svg>\") 16 0, auto"
+          : "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='75' height='90' viewport='0 0 100 100' style='fill:black;font-size:45px;'><text y='30%'>👈🏻</text></svg>\") 16 0, auto";
       document.body.style.cursor = hovered ? cursorIcon : "auto";
     };
 

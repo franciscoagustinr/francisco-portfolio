@@ -16,6 +16,7 @@ import { useScrollStore } from "./stores/useScroll";
 import { usePreloader } from "./stores/usePreloader";
 import RotatingText from "./components/RotatingText";
 import { usePopupStore } from "./stores/usePopUp";
+import { getClickCount } from "./utils/getClickCount";
 
 function App() {
   const [dialogText, setDialogText] = useState(null);
@@ -40,6 +41,7 @@ function App() {
       ease: "power4.in",
     });
   }, [getGradientBackground, hatName, isLoading]);
+
   useEffect(() => {
     if (isLoading) return;
     gsap.fromTo(
@@ -64,6 +66,10 @@ function App() {
     );
 
   }, [isLoading]);
+
+  useEffect(() => {
+    getClickCount();
+  }, [])
 
   return (
     <div className={`main-container h-screen ${isLoading && 'bg-[#101720]'}`}>

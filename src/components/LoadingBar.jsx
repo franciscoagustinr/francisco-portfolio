@@ -9,7 +9,6 @@ export const LoadingBar = () => {
     if (progress === 100) {
       stopLoader();
     }
-    console.log(progress);
   }, [progress, stopLoader]);
 
   useEffect(() => {
