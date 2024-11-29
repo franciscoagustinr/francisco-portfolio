@@ -8,6 +8,10 @@ export const WorksContainer = ({ hatName }) => {
   const { getHexBackground } = useHatBackground();
   const dynamicColor = getHexBackground(hatName);
 
+  const handleCV = () => {
+    window.open("./CV_FranciscoAgustinRodriguez.pdf", "_blank");
+  };
+
   return (
     <div
       style={{
@@ -91,7 +95,10 @@ export const WorksContainer = ({ hatName }) => {
             Let's chat!
           </a>
         </button>
-        <button className="cursor-resume  hover:bg-white hover:text-[var(--dynamic-color)] transition-all duration-200 hover:scale-125 hover:-rotate-2 hover:shadow-lg px-6 py-2 rounded-full uppercase bg-[var(--dynamic-color)] text-white font-RecoletaBlack 4xl:text-lg tracking-wide">
+        <button
+          onClick={handleCV}
+          className="cursor-resume  hover:bg-white hover:text-[var(--dynamic-color)] transition-all duration-200 hover:scale-125 hover:-rotate-2 hover:shadow-lg px-6 py-2 rounded-full uppercase bg-[var(--dynamic-color)] text-white font-RecoletaBlack 4xl:text-lg tracking-wide"
+        >
           Get resume!
         </button>
       </div>

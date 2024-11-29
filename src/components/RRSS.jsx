@@ -115,7 +115,7 @@ export const RRSS = ({ setDialogText }) => {
           }}
           onMouseEnter={() => {
             setDialogText(
-              "Where connections bloom <span class='text-xl inline-block'> 🌱</span>"
+              "Where connections bloom <span class='text-2xl inline-block animate-pulse'> 🌱</span>"
             );
           }}
           onMouseLeave={() => {
@@ -134,7 +134,7 @@ export const RRSS = ({ setDialogText }) => {
           }}
           onMouseEnter={() => {
             setDialogText(
-              "Check out my most exciting projects! <span class='text-xl inline-block'>🚀</span>"
+              "Check out my most exciting projects! <span class='text-2xl inline-block animate-ping'>🚀</span>"
             );
           }}
           onMouseLeave={() => {
@@ -153,7 +153,7 @@ export const RRSS = ({ setDialogText }) => {
           }}
           onMouseEnter={() => {
             setDialogText(
-              "Invite me a coffee! <span class='text-xl inline-block'>🙂 </span>"
+              "Invite me a coffee! <span class='text-2xl inline-block animate-spin'>🙂 </span>"
             );
           }}
           onMouseLeave={() => {

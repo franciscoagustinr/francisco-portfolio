@@ -34,9 +34,9 @@ export function Francisco({ props }) {
   const isPopUpOpen = usePopupStore((state) => state.isPopUpOpen);
 
   const handleAvatarClick = (e) => {
+    if (isLoading || clicked) return;
     e.stopPropagation();
-    if (isLoading) return;
-    // incrementCounter();
+    incrementCounter();
     const nextHatIndex = (currentHatIndex + 1) % hatNames.length;
     setCurrentHatIndex(nextHatIndex);
     const nextHatName = hatNames[nextHatIndex];
@@ -170,7 +170,7 @@ export function Francisco({ props }) {
                 r: material.originalColor.r,
                 g: material.originalColor.g,
                 b: material.originalColor.b,
-                duration: 1,
+                duration: 1.2,
                 ease: "power2.in",
                 onComplete: () => {
                   material.wireframe = false; // Desactiva wireframe al final de la animación

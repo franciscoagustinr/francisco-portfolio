@@ -11,6 +11,7 @@ export const Count = () => {
   const countIndicatorContainerRef = useRef();
   const isLoading = usePreloader((state) => state.isLoading);
   const { hatName } = useHatStore();
+  const isScrolling = useScrollStore((state) => state.isScrolling);
 
   useEffect(() => {
     const fetchClickCount = async () => {
@@ -20,44 +21,11 @@ export const Count = () => {
       }
     };
     fetchClickCount();
-  }, []);
-
-  const isScrolling = useScrollStore((state) => state.isScrolling);
+  }, [hatName]);
 
   useEffect(() => {
     applyBounceEffect(countIndicatorContainerRef.current, isScrolling);
   }, [isScrolling]);
-
-  // useEffect(() => {
-  //   if (isLoading) return;
-
-  //   // Animación para cada letra individualmente
-  //   const letters = document.querySelectorAll(".countIndicator");
-  //   letters.forEach((letter, index) => {
-  //     gsap.to(letter, {
-  //       scale: 3, // Aumentar el tamaño de la letra
-  //       rotation: index / 2 === 0 ? 720 : -720, // Rotar la letra
-  //       opacity: 0, // Hacer desaparecer la letra
-  //       x: "random(-200, 200)", // Desplazar la letra aleatoriamente en X
-  //       y: "random(-200, 200)", // Desplazar la letra aleatoriamente en Y
-  //       duration: 1, // Duración de la animación
-  //       delay: index * 0.05, // Retraso incremental para cada letra
-  //       ease: "power4.out", // Suavizado de la animación
-  //       onComplete: () => {
-  //         // Regresar a la posición original después de la explosión
-  //         gsap.to(letter, {
-  //           scale: 1,
-  //           opacity: 1,
-  //           rotation: 0,
-  //           x: 0,
-  //           y: 0,
-  //           duration: 0,
-  //           ease: "power4.in",
-  //         });
-  //       },
-  //     });
-  //   });
-  // }, [hatName, isLoading]);
 
   useEffect(() => {
     if (isLoading) return;
@@ -100,13 +68,11 @@ export const Count = () => {
   return (
     <div
       ref={countIndicatorContainerRef}
-      className="w-fit py-1 px-2 bg-white bg-opacity-50 m-2 mb-4 rounded-md select-none relative"
+      className="w-fit py-1 px-2 bg-white bg-opacity-50 m-2 mb-4 rounded-md select-none relative min-w-[270px]"
     >
       <p className="font-KarlaLight text-base ">
         Times people changed my look:
-        {/* <span className="font-Karla ml-1"> */}
-        <span className="countIndicator font-RecoletaBlack ml-1 text-lg inline-block ">
-          {/* {clickCount !== null && clickCount} */}
+        <span className="countIndicator font-RecoletaBlack ml-1.5 text-lg inline-block text-center">
           {clickCount !== null && splitTextIntoLetters(clickCount.toString())}
         </span>
       </p>

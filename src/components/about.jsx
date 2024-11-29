@@ -22,7 +22,7 @@ export const About = ({ setDialogText }) => {
         className={`group relative max-h-20 transition-all duration-200`}
         onMouseEnter={() =>
           setDialogText(
-            "Know more about me! <span class='text-xl inline-block'>😄</span>"
+            "Know more about me! <span class='text-2xl inline-block animate-bounce'>😄</span>"
           )
         }
         onMouseLeave={() => setDialogText("")}

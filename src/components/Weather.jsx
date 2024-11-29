@@ -108,7 +108,7 @@ const WeatherData = ({ setDialogText, hatName }) => {
                 className="group"
                 onMouseEnter={() =>
                   setDialogText(
-                    "<span class='text-xl inline-block'>🎉 🎈</span> YAY! <span class='text-xl inline-block'>🎉 🎈</span>"
+                    "<span class='text-2xl inline-block'>🎉</span> <span class='text-2xl inline-block animate-shake'>🎈</span> YAY! <span class='text-2xl inline-block animate-shake'>🎈</span><span class='text-2xl inline-block'>🎉</span>"
                   )
                 }
                 onMouseLeave={() => setDialogText("")}
