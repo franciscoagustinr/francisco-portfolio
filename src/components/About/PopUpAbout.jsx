@@ -2,17 +2,45 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import FranciscoWithBeto from "../../assets/FranciscoWithBeto.JPG";
 import { WorksContainer } from "./WorksContainer";
 import { usePopupStore } from "../../stores/usePopUp";
+import gsap from "gsap";
 
 export const PopUpAbout = ({ hatName }) => {
   const popupRef = useRef();
   const closePopUp = usePopupStore((state) => state.closePopUp);
   const isPopUpOpen = usePopupStore((state) => state.isPopUpOpen);
 
-  const handleClickOutside = (e) => {
-    if (popupRef.current && !popupRef.current.contains(e.target)) {
-      closePopUp();
+  const closePopup = () => {
+    if (popupRef.current) {
+      // Animate to the target position
+      gsap.to(popupRef.current, {
+        top: "0.5rem", // Tailwind top-6
+        left: "0.5rem", // Tailwind left-2
+        scale: 0, // Optional: Shrink effect
+        opacity: 0, // Fade out
+        duration: 0.5, // Animation duration in seconds
+        onComplete: () => {
+          closePopUp(); // Hide the popup after animation
+        },
+      });
     }
   };
+
+  const handleClickOutside = (e) => {
+    if (popupRef.current && !popupRef.current.contains(e.target)) {
+      // closePopUp();
+      closePopup();
+    }
+  };
+
+  useEffect(() => {
+    if (isPopUpOpen && popupRef.current) {
+      gsap.fromTo(
+        popupRef.current,
+        { scale: 0, opacity: 0, rotation: -180 },
+        { scale: 1, opacity: 1, rotation: 0, duration: 1, ease: "bounce.out" }
+      );
+    }
+  }, [isPopUpOpen]);
 
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);

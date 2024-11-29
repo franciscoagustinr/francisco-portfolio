@@ -85,12 +85,6 @@ function App() {
 
       {!isLoading && (
         <>
-          {/* <Marquee />
-          <About setDialogText={setDialogText} />
-          <PopUpAbout hatName={hatName} />
-          <HandwrittenTexts />
-          <RRSS setDialogText={setDialogText} />
-          <WeatherData setDialogText={setDialogText} hatName={hatName} /> */}
           <Marquee />
           <div className="handwrittenTexts absolute z-50 top-0 w-full">
             <HandwrittenTexts />
