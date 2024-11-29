@@ -106,7 +106,11 @@ const WeatherData = ({ setDialogText, hatName }) => {
               <a
                 href="mailto:rodriguezfranciscoa@hotmail.com?subject=Wanna talk!"
                 className="group"
-                onMouseEnter={() => setDialogText("🎉 🎈 YAY! 🎉 🎈")}
+                onMouseEnter={() =>
+                  setDialogText(
+                    "<span class='text-xl inline-block'>🎉 🎈</span> YAY! <span class='text-xl inline-block'>🎉 🎈</span>"
+                  )
+                }
                 onMouseLeave={() => setDialogText("")}
                 onClick={handleTriggerConfetti}
               >

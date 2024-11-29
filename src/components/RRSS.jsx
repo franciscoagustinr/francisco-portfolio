@@ -114,7 +114,9 @@ export const RRSS = ({ setDialogText }) => {
             );
           }}
           onMouseEnter={() => {
-            setDialogText("Where connections bloom 🌱");
+            setDialogText(
+              "Where connections bloom <span class='text-xl inline-block'> 🌱</span>"
+            );
           }}
           onMouseLeave={() => {
             setDialogText("");
@@ -131,7 +133,9 @@ export const RRSS = ({ setDialogText }) => {
             window.open("https://github.com/franciscoagustinr", "_blank");
           }}
           onMouseEnter={() => {
-            setDialogText("Check out my most exciting projects! 🚀");
+            setDialogText(
+              "Check out my most exciting projects! <span class='text-xl inline-block'>🚀</span>"
+            );
           }}
           onMouseLeave={() => {
             setDialogText("");
@@ -148,7 +152,9 @@ export const RRSS = ({ setDialogText }) => {
             window.open("https://cafecito.app/franciscoagustinr", "_blank");
           }}
           onMouseEnter={() => {
-            setDialogText("Invite me a coffee! 🙂 ");
+            setDialogText(
+              "Invite me a coffee! <span class='text-xl inline-block'>🙂 </span>"
+            );
           }}
           onMouseLeave={() => {
             setDialogText("");

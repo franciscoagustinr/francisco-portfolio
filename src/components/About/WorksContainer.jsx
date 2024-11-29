@@ -84,7 +84,12 @@ export const WorksContainer = ({ hatName }) => {
         <button
           className={`cursor-contact  hover:bg-white hover:text-[var(--dynamic-color)] transition-all duration-200 hover:scale-125 hover:-rotate-2 hover:shadow-lg px-6 py-2 rounded-full uppercase bg-[var(--dynamic-color)] text-white font-RecoletaBlack 4xl:text-lg tracking-wide`}
         >
-          Let's chat!
+          <a
+            className="cursor-contact  "
+            href="mailto:rodriguezfranciscoa@hotmail.com?subject=Wanna talk!"
+          >
+            Let's chat!
+          </a>
         </button>
         <button className="cursor-resume  hover:bg-white hover:text-[var(--dynamic-color)] transition-all duration-200 hover:scale-125 hover:-rotate-2 hover:shadow-lg px-6 py-2 rounded-full uppercase bg-[var(--dynamic-color)] text-white font-RecoletaBlack 4xl:text-lg tracking-wide">
           Get resume!
