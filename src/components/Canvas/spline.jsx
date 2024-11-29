@@ -3,7 +3,7 @@ import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 
 export function SplineModels(props) {
-  const { nodes, materials } = useGLTF("./spline.gltf");
+  const { nodes, materials } = useGLTF("./models/spline.gltf");
   const splineModelsRef = useRef();
 
   useFrame((state) => {

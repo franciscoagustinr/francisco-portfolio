@@ -1,10 +1,10 @@
-import React, { Suspense, useEffect, useRef, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 
 import { Center, ContactShadows, Environment, Float } from "@react-three/drei";
 import { TextTitle } from "./Text";
 import { Francisco } from "./francisco";
-import { SplineModels } from "./spline";
+// import { SplineModels } from "./spline";
 import { usePreloader } from "../../stores/usePreloader";
 
 export const Scene = () => {
@@ -23,8 +23,7 @@ export const Scene = () => {
   }, []);
 
   return (
-    // <Canvas dpr={[1.5, 2]} className="bg-[rgb(53,190,214)] ">
-    <Canvas dpr={[1.5, 2]} className="">
+    <Canvas dpr={[1.5, 2]}>
       <Suspense fallback={null}>
         <ambientLight intensity={1} position={[0, 0, 0]} />
         <Environment preset="warehouse" />
