@@ -12,7 +12,7 @@ export const getClickCount = async () => {
     if (docSnap.exists()) {
       // Accede al campo 'count' del documento
       const count = docSnap.data().count;
-      console.log("Cantidad de clics:", count);
+      //   console.log("Cantidad de clics:", count);
       return count;
     } else {
       console.log("No se encontró el documento.");

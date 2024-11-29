@@ -17,6 +17,7 @@ import { usePreloader } from "./stores/usePreloader";
 import RotatingText from "./components/RotatingText";
 import { usePopupStore } from "./stores/usePopUp";
 import { getClickCount } from "./utils/getClickCount";
+import { Count } from "./components/count";
 
 function App() {
   const [dialogText, setDialogText] = useState(null);
@@ -98,6 +99,9 @@ function App() {
           </div>
           <div className="weather absolute xsm:right-3 sm:right-5 md:right-5 lg:right-[4%] 4xl:right-[2%] top-11 4xl:top-40 z-30">
             <WeatherData setDialogText={setDialogText} hatName={hatName} />
+          </div>
+          <div className="absolute bottom-0 flex justify-center w-full">
+            <Count />
           </div>
           {dialogText && <DialogBox text={dialogText} />}
         </>
