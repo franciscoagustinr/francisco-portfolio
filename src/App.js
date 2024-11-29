@@ -100,7 +100,7 @@ function App() {
           <div className="weather absolute xsm:right-3 sm:right-5 md:right-5 lg:right-[4%] 4xl:right-[2%] top-11 4xl:top-40 z-30">
             <WeatherData setDialogText={setDialogText} hatName={hatName} />
           </div>
-          <div className="absolute bottom-0 flex justify-center w-full">
+          <div className="absolute bottom-0 !z-10 w-full pointer-events-none flex items-center justify-center">
             <Count />
           </div>
           {dialogText && <DialogBox text={dialogText} />}

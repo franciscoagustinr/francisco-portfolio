@@ -26,7 +26,7 @@ export const Count = () => {
   return (
     <div
       ref={countIndicatorRef}
-      className="py-1 px-2 bg-white bg-opacity-50 m-2 rounded-md select-none "
+      className="w-fit py-1 px-2 bg-white bg-opacity-50 m-2 rounded-md select-none relative"
     >
       <p className="font-KarlaLight text-base ">
         Times people changed my look:

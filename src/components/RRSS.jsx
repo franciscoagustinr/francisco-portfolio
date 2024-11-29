@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import GithubLogo from "../assets/github.png";
 import LinkedinLogo from "../assets/linkedin.png";
-import gsap from "gsap";
 import CoffeeCup from "../assets/coffee-cup.png";
+import gsap from "gsap";
 import { useScrollStore } from "../stores/useScroll";
 import { applyBounceEffect } from "../utils/applyBounceEffect";
 
@@ -31,7 +31,7 @@ export const RRSS = ({ setDialogText }) => {
 
     const onMouseMove = (e) => {
       let isHover = false;
-      const hoverArea = hover ? 1.3 : 0.7;
+      const hoverArea = hover ? 1.3 : 1;
       const deltaX = e.clientX - x;
       const deltaY = e.clientY - y;
       const distance = Math.sqrt(deltaX ** 2 + deltaY ** 2);
@@ -99,23 +99,20 @@ export const RRSS = ({ setDialogText }) => {
 
   return (
     <>
-      <div className={`absolute bottom-4 4xl:bottom-12 right-14 4xl:right-20`}>
+      <div
+        className={`z-40 absolute bottom-4 4xl:bottom-12 right-14 4xl:right-20`}
+      >
         <img
           ref={linkedinRef}
           src={LinkedinLogo}
           alt="github-logo"
-          className="w-14 4xl:w-44 h-auto select-none cursor-pointer drop-shadow-lg "
+          className="w-14 4xl:w-44 h-auto select-none cursor-pointer drop-shadow-lg"
           onClick={() => {
             window.open(
               "https://www.linkedin.com/in/franciscoagustinr/",
               "_blank"
             );
           }}
-          // onMouseEnter={
-          //   (() => setDialogText("Where connections bloom 🌱");
-          //   setIsHoverRRSS(true))
-          // }
-          // onMouseLeave={() => setDialogText(""), setIsHoverRRSS(false)}
           onMouseEnter={() => {
             setDialogText("Where connections bloom 🌱");
           }}
@@ -129,7 +126,7 @@ export const RRSS = ({ setDialogText }) => {
           ref={githubRef}
           src={GithubLogo}
           alt="github-logo"
-          className="reflection select-none w-14 4xl:w-44 h-auto cursor-pointer drop-shadow-lg"
+          className="select-none w-14 4xl:w-44 h-auto cursor-pointer drop-shadow-lg "
           onClick={() => {
             window.open("https://github.com/franciscoagustinr", "_blank");
           }}
@@ -146,7 +143,7 @@ export const RRSS = ({ setDialogText }) => {
           ref={coffeeRef}
           src={CoffeeCup}
           alt="Coffee Cup"
-          className=" select-none w-20 4xl:w-56 -rotate-12 cursor-pointer drop-shadow-lg relative"
+          className=" select-none w-20 4xl:w-56 -rotate-12 cursor-pointer drop-shadow-lg"
           onClick={() => {
             window.open("https://cafecito.app/franciscoagustinr", "_blank");
           }}
