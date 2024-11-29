@@ -17,6 +17,8 @@ export const TextTitle = () => {
   const FONT_SIZE = 2.8;
   const BASE_SPACING = FONT_SIZE * 0.45;
   const titleRef = useRef(null);
+  const FranciscoRef = useRef(null);
+  const AgustinRef = useRef(null);
   const isLoading = usePreloader((state) => state.isLoading);
 
   // Mantenemos un estado de colores separado para cada palabra
@@ -148,11 +150,21 @@ export const TextTitle = () => {
 
   useEffect(() => {
     if (isLoading) return;
-    const tl = gsap.timeline({ delay: 1 });
+    const tl = gsap.timeline({ delay: 0 });
     tl.fromTo(
-      titleRef.current.scale,
-      { x: 0, y: 0, z: 0 },
-      { x: 1, y: 1, z: 1, duration: 2, ease: "power3.out" }
+      FranciscoRef.current.rotation,
+      { x: 3, y: 1, z: 1, duration: 0.2, ease: "power3.in", delay: 0 },
+      { x: 0, y: 0, z: 0 }
+    );
+
+    // Animación para AgustinRef
+    tl.fromTo(
+      AgustinRef.current.rotation,
+      { x: -3, y: 1, z: -1, duration: 0.2, ease: "power3.in", delay: 0 },
+      { x: 0, y: 0, z: 0 }
+      // titleRef.current.scale,
+      // { x: 0, y: 0, z: 0 },
+      // { x: 1, y: 1, z: 1, duration: 2, ease: "power3.out" }
     );
   }, [isLoading]);
 
@@ -166,7 +178,7 @@ export const TextTitle = () => {
           0,
         ]}
       >
-        <mesh position={[-5.5, -0.3, 0]} scale={1.2}>
+        <mesh position={[-5.5, -0.3, 0]} scale={1.2} ref={FranciscoRef}>
           {generateTextElements(
             // "フランシスコ",
             "FRANCISCO",
@@ -174,7 +186,7 @@ export const TextTitle = () => {
             setFranciscoColors
           )}
         </mesh>
-        <mesh position={[-4.2, -3.6, 0]} scale={1.2}>
+        <mesh position={[-4.2, -3.6, 0]} scale={1.2} ref={AgustinRef}>
           {/* {generateTextElements("アグティン", agustinColors, setAgustinColors)} */}
           {generateTextElements("AGUSTIN", agustinColors, setAgustinColors)}
         </mesh>
