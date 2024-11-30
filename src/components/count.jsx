@@ -72,7 +72,7 @@ export const Count = () => {
     >
       <p className="font-KarlaLight text-base ">
         Times people changed my look:
-        <span className="countIndicator font-RecoletaBlack ml-1.5 text-lg inline-block text-center">
+        <span className="countIndicator font-RecoletaBlack ml-1.5 text-lg inline-block text-center tracking-wide">
           {clickCount !== null && splitTextIntoLetters(clickCount.toString())}
         </span>
       </p>

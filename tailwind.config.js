@@ -10,7 +10,6 @@ module.exports = {
         HomemadeApple: ['HomemadeApple', 'sans-serif'],
         KarlaExtraBold: ['KarlaExtraBold', 'sans-serif'],
         RecoletaBlack: ['RecoletaBlack', 'sans-serif'],
-        GiantBoss: ['GiantBoss', 'sans-serif'],
       },
       keyframes: {
         blink: {
