@@ -100,13 +100,13 @@ export const RRSS = ({ setDialogText }) => {
   return (
     <>
       <div
-        className={`z-40 absolute bottom-4 4xl:bottom-12 right-14 4xl:right-20`}
+        className={`z-40 absolute bottom-2 lg:bottom-4 4xl:bottom-12 lg:right-14 right-2 4xl:right-20`}
       >
         <img
           ref={linkedinRef}
           src={LinkedinLogo}
           alt="github-logo"
-          className="w-14 4xl:w-44 h-auto select-none cursor-pointer drop-shadow-lg"
+          className="lg:w-14 w-12 4xl:w-44 h-auto select-none cursor-pointer drop-shadow-lg"
           onClick={() => {
             window.open(
               "https://www.linkedin.com/in/franciscoagustinr/",
@@ -123,12 +123,12 @@ export const RRSS = ({ setDialogText }) => {
           }}
         />
       </div>
-      <div className="absolute bottom-4 4xl:bottom-12 right-36 4xl:right-80">
+      <div className="absolute lg:bottom-4 bottom-2 4xl:bottom-12 lg:right-36 right-16 4xl:right-80">
         <img
           ref={githubRef}
           src={GithubLogo}
           alt="github-logo"
-          className="select-none w-14 4xl:w-44 h-auto cursor-pointer drop-shadow-lg "
+          className="select-none lg:w-14 w-12 4xl:w-44 h-auto cursor-pointer drop-shadow-lg "
           onClick={() => {
             window.open("https://github.com/franciscoagustinr", "_blank");
           }}
@@ -142,12 +142,12 @@ export const RRSS = ({ setDialogText }) => {
           }}
         />
       </div>
-      <div className="absolute left-5 4xl:left-14 bottom-3 4xl:bottom-12">
+      <div className="absolute lg:left-5 left-1 4xl:left-14 lg:bottom-3 bottom-2 4xl:bottom-12">
         <img
           ref={coffeeRef}
           src={CoffeeCup}
           alt="Coffee Cup"
-          className=" select-none w-20 4xl:w-56 -rotate-12 cursor-pointer drop-shadow-lg"
+          className=" select-none lg:w-20 w-12 4xl:w-56 -rotate-12 cursor-pointer drop-shadow-lg"
           onClick={() => {
             window.open("https://cafecito.app/franciscoagustinr", "_blank");
           }}

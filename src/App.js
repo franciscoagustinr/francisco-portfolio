@@ -91,13 +91,13 @@ function App() {
             <HandwrittenTexts />
           </div>
           <PopUpAbout hatName={hatName} />
-          <div className="about absolute top-6 left-2 ">
+          <div className="about absolute lg:top-6 top-4 lg:left-2 -left-4 ">
             <About setDialogText={setDialogText} />
           </div>
           <div className="rrss">
             <RRSS setDialogText={setDialogText} />
           </div>
-          <div className="weather absolute xsm:right-3 sm:right-5 md:right-5 lg:right-[4%] 4xl:right-[2%] top-11 4xl:top-40 z-30">
+          <div className="weather absolute lg:right-16 right-3.5 4xl:right-[2%] top-11 4xl:top-40 z-30">
             <WeatherData setDialogText={setDialogText} hatName={hatName} />
           </div>
           <div className="absolute bottom-0 !z-10 w-full pointer-events-none flex items-center justify-center">

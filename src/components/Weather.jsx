@@ -92,7 +92,7 @@ const WeatherData = ({ setDialogText, hatName }) => {
 
       <div
         ref={weatherRefContainer}
-        className="weatherContainer w-72 4xl:w-auto text-[#FAFAFA]"
+        className="weatherContainer w-56 lg:w-72 4xl:w-auto text-[#FAFAFA]"
       >
         {weatherData ? (
           <div className="text-right font-sans text-sm 4xl:text-5xl tracking-tight uppercase  ">
