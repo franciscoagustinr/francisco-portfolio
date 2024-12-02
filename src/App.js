@@ -97,7 +97,7 @@ function App() {
           <div className="rrss">
             <RRSS setDialogText={setDialogText} />
           </div>
-          <div className="weather absolute lg:right-16 right-3.5 4xl:right-[2%] top-11 4xl:top-40 z-30">
+          <div className="weather absolute lg:right-16 right-3.5 4xl:right-[2%] top-8 4xl:top-40 z-30">
             <WeatherData setDialogText={setDialogText} hatName={hatName} />
           </div>
           <div className="absolute bottom-0 !z-10 w-full pointer-events-none flex items-center justify-center">

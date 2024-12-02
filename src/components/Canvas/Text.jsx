@@ -20,8 +20,12 @@ export const TextTitle = () => {
   const FranciscoRef = useRef(null);
   const AgustinRef = useRef(null);
   const isLoading = usePreloader((state) => state.isLoading);
+  const franciscoPosition =
+    window.innerWidth < 768 ? [-2.01, 0.3, 0] : [-5.5, -0.3, 0];
+  const agustinPosition =
+    window.innerWidth < 768 ? [-1.5, -2.3, 0] : [-4.2, -3.6, 0];
+  const textScale = window.innerWidth < 768 ? 0.4 : 1.2;
 
-  // Mantenemos un estado de colores separado para cada palabra
   const [franciscoColors, setFranciscoColors] = useState(
     Array("FRANCISCO".length).fill("black")
   );
@@ -178,7 +182,7 @@ export const TextTitle = () => {
           0,
         ]}
       >
-        <mesh position={[-5.5, -0.3, 0]} scale={1.2} ref={FranciscoRef}>
+        <mesh position={franciscoPosition} scale={textScale} ref={FranciscoRef}>
           {generateTextElements(
             // "フランシスコ",
             "FRANCISCO",
@@ -186,7 +190,7 @@ export const TextTitle = () => {
             setFranciscoColors
           )}
         </mesh>
-        <mesh position={[-4.2, -3.6, 0]} scale={1.2} ref={AgustinRef}>
+        <mesh position={agustinPosition} scale={textScale} ref={AgustinRef}>
           {/* {generateTextElements("アグティン", agustinColors, setAgustinColors)} */}
           {generateTextElements("AGUSTIN", agustinColors, setAgustinColors)}
         </mesh>
