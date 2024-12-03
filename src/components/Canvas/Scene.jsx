@@ -1,13 +1,13 @@
-import React, { Suspense, useEffect, useState } from "react";
-import { Canvas } from "@react-three/fiber";
+import React, { Suspense, useEffect, useState } from 'react';
+import { Canvas } from '@react-three/fiber';
 
-import { Center, ContactShadows, Environment, Float } from "@react-three/drei";
-import { TextTitle } from "./Text";
-import { Francisco } from "./francisco";
+import { Center, ContactShadows, Environment, Float } from '@react-three/drei';
+import { TextTitle } from './Text';
+import { Francisco } from './francisco';
 // import { SplineModels } from "./spline";
-import { usePreloader } from "../../stores/usePreloader";
+import { usePreloader } from '../../stores/usePreloader';
 
-export const Scene = () => {
+export const Scene = ({ setDialogText }) => {
   const [time, setTime] = useState(0);
   const isLoading = usePreloader((state) => state.isLoading);
 
@@ -45,7 +45,7 @@ export const Scene = () => {
         >
           <Center position={[0, -1.2, 1]} rotation={[0, 0, 0]}>
             <mesh position={meshResponsivePosition} scale={meshResponsiveScale}>
-              <Francisco />
+              <Francisco setDialogText={setDialogText} />
             </mesh>
           </Center>
         </Float>

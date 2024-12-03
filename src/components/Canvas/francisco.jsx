@@ -12,7 +12,7 @@ import gsap from 'gsap';
 import { usePopupStore } from '../../stores/usePopUp';
 import { incrementCounter } from '../../utils/incrementCounter';
 
-export function Francisco({ props }) {
+export function Francisco({ props, setDialogText }) {
   const { nodes, materials } = useGLTF('/models/F-model7.glb');
   const hats = useHats(nodes, materials);
   const hatNames = Object.keys(hats);
@@ -176,6 +176,17 @@ export function Francisco({ props }) {
                   material.wireframe = false; // Desactiva wireframe al final de la animación
                 },
               });
+              setTimeout(() => {
+                setDialogText('Welcome to my page! ✨🙂 ');
+                influences[0] = 1;
+                influences[1] = 1;
+
+                setTimeout(() => {
+                  influences[0] = 0;
+                  influences[1] = 0;
+                  setDialogText('');
+                }, 1000);
+              }, 1300);
             }
           }
         }

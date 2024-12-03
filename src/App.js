@@ -74,7 +74,7 @@ function App() {
 
   return (
     <div className={`main-container h-screen ${isLoading && 'bg-[#101720]'}`}>
-      <Scene />
+      <Scene setDialogText={setDialogText} />
       {isLoading && (
         <>
           <div className="w-full inset-0 absolute flex items-center justify-center">
