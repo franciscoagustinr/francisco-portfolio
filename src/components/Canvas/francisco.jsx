@@ -1,19 +1,19 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Html, useGLTF } from "@react-three/drei";
-import { useFrame } from "@react-three/fiber";
-import { useHats } from "./Hats";
-import ConfettiExplosion from "react-confetti-explosion";
-import { useSpring, animated } from "@react-spring/three";
-import { useConfettiStore } from "../../stores/useTriggerConfetti-Talk";
-import { useHatStore } from "../../stores/useHatStore";
-import { useScrollStore } from "../../stores/useScroll";
-import { usePreloader } from "../../stores/usePreloader";
-import gsap from "gsap";
-import { usePopupStore } from "../../stores/usePopUp";
-import { incrementCounter } from "../../utils/incrementCounter";
+import React, { useEffect, useRef, useState } from 'react';
+import { Html, useGLTF } from '@react-three/drei';
+import { useFrame } from '@react-three/fiber';
+import { useHats } from './Hats';
+import ConfettiExplosion from 'react-confetti-explosion';
+import { useSpring, animated } from '@react-spring/three';
+import { useConfettiStore } from '../../stores/useTriggerConfetti-Talk';
+import { useHatStore } from '../../stores/useHatStore';
+import { useScrollStore } from '../../stores/useScroll';
+import { usePreloader } from '../../stores/usePreloader';
+import gsap from 'gsap';
+import { usePopupStore } from '../../stores/usePopUp';
+import { incrementCounter } from '../../utils/incrementCounter';
 
 export function Francisco({ props }) {
-  const { nodes, materials } = useGLTF("/models/F-model7.glb");
+  const { nodes, materials } = useGLTF('/models/F-model7.glb');
   const hats = useHats(nodes, materials);
   const hatNames = Object.keys(hats);
   const { setHatName } = useHatStore(); // Accede al estado global del sombrero
@@ -64,10 +64,10 @@ export function Francisco({ props }) {
     rotation: clicked
       ? [-0.18, 0, 0]
       : triggerConfetti
-      ? [0, Math.PI / 0.5, 0]
-      : isScrolling && !isPopUpOpen
-      ? [0, Math.sin(Date.now() / 100) * 0.4, 0]
-      : [0, 0, 0],
+        ? [0, Math.PI / 0.5, 0]
+        : isScrolling && !isPopUpOpen
+          ? [0, Math.sin(Date.now() / 100) * 0.4, 0]
+          : [0, 0, 0],
     config: { tension: 250, friction: 20 },
     onRest: () => {
       if (clicked) {
@@ -83,17 +83,17 @@ export function Francisco({ props }) {
         e.clientX < window.innerWidth / 2
           ? "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='75' height='90' viewport='0 0 100 100' style='fill:black;font-size:45px;'><text y='30%'>👉🏻</text></svg>\") 16 0, auto"
           : "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='75' height='90' viewport='0 0 100 100' style='fill:black;font-size:45px;'><text y='30%'>👈🏻</text></svg>\") 16 0, auto";
-      document.body.style.cursor = hovered ? cursorIcon : "auto";
+      document.body.style.cursor = hovered ? cursorIcon : 'auto';
     };
 
     if (hovered) {
-      window.addEventListener("mousemove", handleMouseMove);
+      window.addEventListener('mousemove', handleMouseMove);
     } else {
-      document.body.style.cursor = "auto";
+      document.body.style.cursor = 'auto';
     }
 
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener('mousemove', handleMouseMove);
     };
   }, [hovered, isLoading]);
 
@@ -162,7 +162,7 @@ export function Francisco({ props }) {
                 g: 1,
                 b: 0.867,
                 duration: 0,
-                ease: "power2.out",
+                ease: 'power2.out',
               });
             } else {
               // Anima de vuelta al color original y desactiva wireframe al final
@@ -171,7 +171,7 @@ export function Francisco({ props }) {
                 g: material.originalColor.g,
                 b: material.originalColor.b,
                 duration: 1.2,
-                ease: "power2.in",
+                ease: 'power2.in',
                 onComplete: () => {
                   material.wireframe = false; // Desactiva wireframe al final de la animación
                 },
@@ -242,7 +242,7 @@ export function Francisco({ props }) {
               castShadow
               receiveShadow
               geometry={nodes.Object_0002_3.geometry}
-              material={materials["piel.oscura"]}
+              material={materials['piel.oscura']}
               morphTargetDictionary={nodes.Object_0002_3.morphTargetDictionary}
               morphTargetInfluences={nodes.Object_0002_3.morphTargetInfluences}
             />
@@ -379,7 +379,7 @@ export function Francisco({ props }) {
           castShadow
           receiveShadow
           geometry={nodes.aro_der_1.geometry}
-          material={materials["piercing.001"]}
+          material={materials['piercing.001']}
           position={[0.445, 1.647, -0.065]}
           rotation={[2.117, 0.003, 1.53]}
           scale={0.039}
@@ -395,7 +395,7 @@ export function Francisco({ props }) {
           castShadow
           receiveShadow
           geometry={nodes.aro_der_2.geometry}
-          material={materials["piercing.002"]}
+          material={materials['piercing.002']}
           position={[0.495, 1.644, -0.064]}
           rotation={[2.124, 0.003, 1.53]}
           scale={0.039}
@@ -411,7 +411,7 @@ export function Francisco({ props }) {
           castShadow
           receiveShadow
           geometry={nodes.bolita_aro.geometry}
-          material={materials["piercing.002"]}
+          material={materials['piercing.002']}
           position={[0.497, 1.614, 0.018]}
           rotation={[-3.012, -0.3, -0.922]}
           scale={0.02}
@@ -427,7 +427,7 @@ export function Francisco({ props }) {
           castShadow
           receiveShadow
           geometry={nodes.bolita_aro_2.geometry}
-          material={materials["piercing.003"]}
+          material={materials['piercing.003']}
           position={[0.503, 1.626, -0.034]}
           rotation={[2.971, -0.162, -0.775]}
           scale={0.02}
@@ -443,7 +443,7 @@ export function Francisco({ props }) {
           castShadow
           receiveShadow
           geometry={nodes.aro_izq.geometry}
-          material={materials["piercing.004"]}
+          material={materials['piercing.004']}
           position={[-0.469, 1.636, -0.078]}
           rotation={[2.117, 0.003, 1.53]}
           scale={0.039}
@@ -459,7 +459,7 @@ export function Francisco({ props }) {
           castShadow
           receiveShadow
           geometry={nodes.chiva.geometry}
-          material={materials["Material.004"]}
+          material={materials['Material.004']}
           position={[-0.117, 1.544, 0.377]}
           rotation={[-0.142, 0.018, 0.012]}
           scale={0.066}
@@ -468,7 +468,7 @@ export function Francisco({ props }) {
           castShadow
           receiveShadow
           geometry={nodes.bigote.geometry}
-          material={materials["moustache.004"]}
+          material={materials['moustache.004']}
           position={[-0.084, 1.703, 0.462]}
           scale={-0.024}
         />
@@ -485,7 +485,7 @@ export function Francisco({ props }) {
           castShadow
           receiveShadow
           geometry={nodes.ojo_izquierdo.geometry}
-          material={materials["eyes.001"]}
+          material={materials['eyes.001']}
           position={[-0.216, 1.814, 0.277]}
           rotation={[0, 0, -Math.PI]}
           scale={[-0.137, -0.137, -0.097]}
@@ -494,7 +494,7 @@ export function Francisco({ props }) {
           castShadow
           receiveShadow
           geometry={nodes.iris_izquierdo.geometry}
-          material={materials["pulp.001"]}
+          material={materials['pulp.001']}
           position={[-0.201, 1.819, 0.361]}
           rotation={[-Math.PI, 0, 3.107]}
           scale={[0.055, 0.085, 0.041]}
@@ -503,7 +503,7 @@ export function Francisco({ props }) {
           castShadow
           receiveShadow
           geometry={nodes.iris_derecho.geometry}
-          material={materials["pulp.003"]}
+          material={materials['pulp.003']}
           position={[0.19, 1.817, 0.368]}
           rotation={[-Math.PI, 0.087, -Math.PI]}
           scale={[0.055, 0.085, 0.041]}
@@ -531,7 +531,7 @@ export function Francisco({ props }) {
             castShadow
             receiveShadow
             geometry={nodes.Object_4003.geometry}
-            material={materials["Material.007"]}
+            material={materials['Material.007']}
             position={[-0.023, 0.116, 0.001]}
             scale={[1.025, 1, 1.07]}
           />
@@ -541,4 +541,4 @@ export function Francisco({ props }) {
   );
 }
 
-useGLTF.preload("/models/F-model7.glb");
+useGLTF.preload('/models/F-model7.glb');

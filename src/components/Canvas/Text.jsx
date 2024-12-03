@@ -5,11 +5,11 @@ import React, {
   useMemo,
   useRef,
   useState,
-} from "react";
-import { Text } from "@react-three/drei";
-import { useMousePosition } from "../../utils/mousePosition";
-import gsap from "gsap";
-import { usePreloader } from "../../stores/usePreloader";
+} from 'react';
+import { Text } from '@react-three/drei';
+import { useMousePosition } from '../../utils/mousePosition';
+import gsap from 'gsap';
+import { usePreloader } from '../../stores/usePreloader';
 // import gsap from "gsap";
 
 export const TextTitle = () => {
@@ -20,17 +20,16 @@ export const TextTitle = () => {
   const FranciscoRef = useRef(null);
   const AgustinRef = useRef(null);
   const isLoading = usePreloader((state) => state.isLoading);
-  const franciscoPosition =
-    window.innerWidth < 768 ? [-2.01, 0.3, 0] : [-5.5, -0.3, 0];
-  const agustinPosition =
-    window.innerWidth < 768 ? [-1.5, -2.3, 0] : [-4.2, -3.6, 0];
-  const textScale = window.innerWidth < 768 ? 0.4 : 1.2;
+  const isMobile = window.innerWidth < 768;
+  const franciscoPosition = isMobile ? [-2.01, 0.3, 0] : [-5.5, -0.3, 0];
+  const agustinPosition = isMobile ? [-1.5, -2.3, 0] : [-4.2, -3.6, 0];
+  const textScale = isMobile ? 0.4 : 1.2;
 
   const [franciscoColors, setFranciscoColors] = useState(
-    Array("FRANCISCO".length).fill("black")
+    Array('FRANCISCO'.length).fill('black')
   );
   const [agustinColors, setAgustinColors] = useState(
-    Array("AGUSTIN".length).fill("black")
+    Array('AGUSTIN'.length).fill('black')
   );
 
   const letterSpacingMap = useMemo(
@@ -50,21 +49,21 @@ export const TextTitle = () => {
 
   const letterColors = useMemo(
     () => ({
-      F: "#FFE484",
-      R: "#FFAA79",
-      A: "#B4FAFA",
-      a: "#B4FAFA",
-      N: "#FF787D",
-      C: "#EFB1ED",
-      I: "#FFE484",
-      i: "#FFE484",
-      S: "#B4FAFA",
-      secondC: "#FF787D",
-      O: "#EFB1ED",
-      secondI: "#FFE484",
-      G: "#FFAA79",
-      U: "#FFE484",
-      T: "#FFAA79",
+      F: '#FFE484',
+      R: '#FFAA79',
+      A: '#B4FAFA',
+      a: '#B4FAFA',
+      N: '#FF787D',
+      C: '#EFB1ED',
+      I: '#FFE484',
+      i: '#FFE484',
+      S: '#B4FAFA',
+      secondC: '#FF787D',
+      O: '#EFB1ED',
+      secondI: '#FFE484',
+      G: '#FFAA79',
+      U: '#FFE484',
+      T: '#FFAA79',
       //F: "#FFD449", // Más fuerte que #FFE484
       //R: "#FF7745", // Más fuerte que #FFAA79
       //A: "#6FF2F2", // Más fuerte que #B4FAFA
@@ -90,7 +89,7 @@ export const TextTitle = () => {
 
   const handlePointerOut = useCallback((index, setColors) => {
     setColors((prevColors) =>
-      prevColors.map((c, i) => (i === index ? "black" : c))
+      prevColors.map((c, i) => (i === index ? 'black' : c))
     );
   }, []);
 
@@ -99,22 +98,22 @@ export const TextTitle = () => {
       let xPosition = 0;
       const letterCount = {};
 
-      return text.split("").map((letter, index) => {
+      return text.split('').map((letter, index) => {
         letterCount[letter] = (letterCount[letter] || 0) + 1;
-        const isSecondC = letter === "C" && letterCount[letter] === 2;
-        const isSecondI = letter === "I" && letterCount[letter] === 2;
+        const isSecondC = letter === 'C' && letterCount[letter] === 2;
+        const isSecondI = letter === 'I' && letterCount[letter] === 2;
 
         const letterSpacing = isSecondC
           ? letterSpacingMap.secondC
           : isSecondI
-          ? letterSpacingMap.secondI
-          : letterSpacingMap[letter] || BASE_SPACING;
+            ? letterSpacingMap.secondI
+            : letterSpacingMap[letter] || BASE_SPACING;
 
         const color = isSecondC
           ? letterColors.secondC
           : isSecondI
-          ? letterColors.secondI
-          : letterColors[letter] || undefined;
+            ? letterColors.secondI
+            : letterColors[letter] || undefined;
 
         const element = (
           <Text
@@ -129,7 +128,7 @@ export const TextTitle = () => {
             // font="./fonts/Yorkmade.otf"
             // font="./fonts/ToronoKugelSans.otf"
             // fillOpacity={0.2}
-            fillOpacity={colors[index] !== "black" ? 1 : 0.2}
+            fillOpacity={colors[index] !== 'black' ? 1 : 0.2}
             rotation={[0, 0, 0]}
             onPointerOver={() => handlePointerOver(index, color, setColors)}
             onPointerOut={() => handlePointerOut(index, setColors)}
@@ -157,14 +156,14 @@ export const TextTitle = () => {
     const tl = gsap.timeline({ delay: 0 });
     tl.fromTo(
       FranciscoRef.current.rotation,
-      { x: 3, y: 1, z: 1, duration: 0.2, ease: "power3.in", delay: 0 },
+      { x: 3, y: 1, z: 1, duration: 0.2, ease: 'power3.in', delay: 0 },
       { x: 0, y: 0, z: 0 }
     );
 
     // Animación para AgustinRef
     tl.fromTo(
       AgustinRef.current.rotation,
-      { x: -3, y: 1, z: -1, duration: 0.2, ease: "power3.in", delay: 0 },
+      { x: -3, y: 1, z: -1, duration: 0.2, ease: 'power3.in', delay: 0 },
       { x: 0, y: 0, z: 0 }
       // titleRef.current.scale,
       // { x: 0, y: 0, z: 0 },
@@ -176,23 +175,27 @@ export const TextTitle = () => {
     <>
       <group
         ref={titleRef}
-        position={[
-          ((mousePosition.x / window.innerWidth) * 2) / 8,
-          (-(mousePosition.y / window.innerHeight) * 2) / 8,
-          0,
-        ]}
+        position={
+          isMobile
+            ? [0.13, 0, 0]
+            : [
+                ((mousePosition.x / window.innerWidth) * 2) / 8,
+                (-(mousePosition.y / window.innerHeight) * 2) / 8,
+                0,
+              ]
+        }
       >
         <mesh position={franciscoPosition} scale={textScale} ref={FranciscoRef}>
           {generateTextElements(
             // "フランシスコ",
-            "FRANCISCO",
+            'FRANCISCO',
             franciscoColors,
             setFranciscoColors
           )}
         </mesh>
         <mesh position={agustinPosition} scale={textScale} ref={AgustinRef}>
           {/* {generateTextElements("アグティン", agustinColors, setAgustinColors)} */}
-          {generateTextElements("AGUSTIN", agustinColors, setAgustinColors)}
+          {generateTextElements('AGUSTIN', agustinColors, setAgustinColors)}
         </mesh>
       </group>
     </>

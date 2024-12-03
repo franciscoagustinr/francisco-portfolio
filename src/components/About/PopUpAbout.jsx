@@ -1,8 +1,8 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
-import FranciscoWithBeto from "../../assets/FranciscoWithBeto.JPG";
-import { WorksContainer } from "./WorksContainer";
-import { usePopupStore } from "../../stores/usePopUp";
-import gsap from "gsap";
+import React, { useEffect, useMemo, useRef, useState } from 'react';
+import FranciscoWithBeto from '../../assets/FranciscoWithBeto.JPG';
+import { WorksContainer } from './WorksContainer';
+import { usePopupStore } from '../../stores/usePopUp';
+import gsap from 'gsap';
 
 export const PopUpAbout = ({ hatName }) => {
   const popupRef = useRef();
@@ -13,8 +13,8 @@ export const PopUpAbout = ({ hatName }) => {
     if (popupRef.current) {
       // Animate to the target position
       gsap.to(popupRef.current, {
-        top: "0.5rem", // Tailwind top-6
-        left: "0.5rem", // Tailwind left-2
+        top: '0.5rem', // Tailwind top-6
+        left: '0.5rem', // Tailwind left-2
         scale: 0, // Optional: Shrink effect
         opacity: 0, // Fade out
         duration: 0.5, // Animation duration in seconds
@@ -37,77 +37,73 @@ export const PopUpAbout = ({ hatName }) => {
       gsap.fromTo(
         popupRef.current,
         { scale: 0, opacity: 0, rotation: -180 },
-        { scale: 1, opacity: 1, rotation: 0, duration: 1, ease: "bounce.out" }
+        { scale: 1, opacity: 1, rotation: 0, duration: 1, ease: 'bounce.out' }
       );
     }
   }, [isPopUpOpen]);
 
   useEffect(() => {
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener('mousedown', handleClickOutside);
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
 
   return (
     isPopUpOpen && (
-      <div className="fixed inset-0 flex items-center justify-center z-50 bg-gray-50 bg-opacity-5 backdrop-blur-md ">
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-50 bg-opacity-5 backdrop-blur-md">
         <div
           ref={popupRef}
-          className="shadow-2xl relative top-2 h-[43rem] 4xl:scale-[2.9] w-auto 4xl:!w-[70rem] bg-gray-600 bg-opacity-20 border border-solid border-gray-100 rounded-2xl z-20 overflow-y-scroll"
+          className="relative top-0 z-20 mx-1 h-[45rem] w-auto overflow-x-hidden overflow-y-scroll rounded-2xl border border-solid border-gray-100 bg-gray-600 bg-opacity-20 shadow-2xl lg:top-2 lg:h-[43rem] 4xl:!w-[70rem] 4xl:scale-[2.9]"
         >
           <IconCross
-            className="absolute right-2 top-2 cursor-pointer z-50"
+            className="absolute right-2 top-2 z-50 cursor-pointer"
             onClick={closePopUp}
           />
-          <div className="relative flex 4xl:justify-between gap-4 pt-2.5 mx-4 mr-8 pb-1 min-h-full">
-            <div className="flex flex-col 4xl:flex-1 justify-end gap-3 text-black w-[440px]">
+          <div className="relative mx-4 flex min-h-full flex-col gap-1 pb-1 pt-2.5 lg:mr-8 lg:flex-row lg:gap-4 4xl:justify-between">
+            <div className="hidden flex-col justify-end gap-3 text-black md:visible lg:flex lg:w-[440px] 4xl:flex-1">
               <ChatSimulator />
             </div>
-            <div className="sticky top-8 flex flex-col items-center justify-start w-[450px] rounded-lg h-full">
-              <h2 className="select-none relative text-center font-RecoletaBlack text-7xl tracking-wider -rotate-3 leading-[4.2rem] text-[#fff]">
-                {Array.from("Selected").map((letter, index) => (
+            <div className="sticky top-8 flex h-full flex-col items-center justify-start rounded-lg lg:w-[450px]">
+              <h2 className="relative -rotate-3 select-none pt-1 text-center font-RecoletaBlack text-6xl leading-[3rem] tracking-wider text-[#fff] lg:pt-0 lg:text-7xl lg:leading-[4.2rem]">
+                {Array.from('Selected').map((letter, index) => (
                   <span
                     key={index}
-                    className={`inline-block transition-all duration-150 hover:scale-150 
-                      ${index % 2 === 0 ? "hover:rotate-6" : "hover:-rotate-12"}
-                      ${
-                        [
-                          "hover:text-[#f7d65f]",
-                          "hover:text-[#e18754]",
-                          "hover:text-[#54f0f0]",
-                          "hover:text-[#db7c45]",
-                          "hover:text-[#ef4d53]",
-                          "hover:text-[#dd5ad9]",
-                          "hover:text-[#d97e4a]",
-                          "hover:text-[#eecb4b]",
-                        ][index % 7]
-                      }`}
+                    className={`inline-block transition-all duration-150 hover:scale-150 ${index % 2 === 0 ? 'hover:rotate-6' : 'hover:-rotate-12'} ${
+                      [
+                        'hover:text-[#f7d65f]',
+                        'hover:text-[#e18754]',
+                        'hover:text-[#54f0f0]',
+                        'hover:text-[#db7c45]',
+                        'hover:text-[#ef4d53]',
+                        'hover:text-[#dd5ad9]',
+                        'hover:text-[#d97e4a]',
+                        'hover:text-[#eecb4b]',
+                      ][index % 7]
+                    }`}
                   >
                     {letter}
                   </span>
                 ))}
                 <br />
-                {Array.from("Works").map((letter, index) => (
+                {Array.from('Works').map((letter, index) => (
                   <span
                     key={index}
-                    className={`inline-block transition-all duration-150 hover:scale-150 
-                      ${index % 2 === 0 ? "hover:rotate-6" : "hover:-rotate-6"}
-                      ${
-                        [
-                          "hover:text-[#c0ef3d]",
-                          "hover:text-[#fb8039]",
-                          "hover:text-[#3effff]",
-                          "hover:text-[#df4c51]",
-                          "hover:text-[#f265ee]",
-                        ][index % 7]
-                      }`}
+                    className={`inline-block transition-all duration-150 hover:scale-150 ${index % 2 === 0 ? 'hover:rotate-6' : 'hover:-rotate-6'} ${
+                      [
+                        'hover:text-[#c0ef3d]',
+                        'hover:text-[#fb8039]',
+                        'hover:text-[#3effff]',
+                        'hover:text-[#df4c51]',
+                        'hover:text-[#f265ee]',
+                      ][index % 7]
+                    }`}
                   >
                     {letter}
                   </span>
                 ))}
               </h2>
-              <div className=" w-full px-6 mt-5">
+              <div className="mt-2 px-2 lg:mt-5 lg:w-full lg:px-6">
                 <WorksContainer hatName={hatName} />
               </div>
             </div>
@@ -125,7 +121,7 @@ export const ChatSimulator = () => {
       "I’m a front-end developer hailing from Buenos Aires, Argentina <span class='text-xl '>🇦🇷</span>",
       "I bring websites to life by creating interactive <span class='text-xl inline-block animate-shake'>🕹️</span> visually stunning experiences <span class='text-xl '>🎨</span> with a focus on seamless motion and user-friendly design <span class='text-xl '>✨</span>",
       "This is my teammate <span class='text-xl inline-block animate-bounce duration-150'>👇🏻</span><span class='text-xl inline-block animate-bounce delay-150 duration-300'>👇🏻</span>",
-      "img",
+      'img',
       "Beto, my loyal sidekick <span class='text-2xl inline-block animate-shake '>🐶</span> He keeps the creativity flowing! <span class='text-xl '>💫</span>",
       "Let’s connect <span class='text-xl animate-bounce inline-block'>🤝🏻</span> share some laughs <span class='text-xl animate-spin inline-block'>🙂</span> and turn your ideas into reality! <span class='text-xl inline-block'>🚀</span> ",
     ],
@@ -134,7 +130,7 @@ export const ChatSimulator = () => {
   const [reactions, setReactions] = useState(
     messages.map(() => ({ emoji: null, count: 0 }))
   );
-  const emojiReactions = ["😄", "⭐️⭐️⭐️", "🤓", "🌈", "😍", "💖", "✨"];
+  const emojiReactions = ['😄', '⭐️⭐️⭐️', '🤓', '🌈', '😍', '💖', '✨'];
 
   const endOfMessagesRef = useRef();
   const [count, setCount] = useState(0);
@@ -145,7 +141,7 @@ export const ChatSimulator = () => {
       return prevReactions.map((reaction, i) =>
         i === index
           ? {
-              emoji: reaction.emoji || emojiReactions[index] || "",
+              emoji: reaction.emoji || emojiReactions[index] || '',
               count: reaction.count + 1,
             }
           : reaction
@@ -171,23 +167,22 @@ export const ChatSimulator = () => {
 
   useEffect(() => {
     if (endOfMessagesRef.current && visibleMessages) {
-      endOfMessagesRef.current.scrollIntoView({ behavior: "smooth" });
+      endOfMessagesRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   }, [visibleMessages.length, showTypingDots]);
 
   return (
-    <div className="h-full flex flex-col justify-end bg-transparent">
+    <div className="flex h-full flex-col justify-end bg-transparent">
       {visibleMessages.map((message, index) => (
         <div
           key={index}
-          className={`shadow-sm appear-animation relative rounded-2xl rounded-bl-md bg-[#ffffff] py-2 text-sm 4xl:text-lg pl-3 pr-2 cursor-pointer select-none max-w-max transition-all duration-300 ease-in-out
-            hover:!scale-[1.009] font-KarlaLight ${
-              reactions[index].emoji ? "mb-5" : "mb-2"
-            } `}
+          className={`appear-animation relative max-w-max cursor-pointer select-none rounded-2xl rounded-bl-md bg-[#ffffff] py-2 pl-3 pr-2 font-KarlaLight text-sm shadow-sm transition-all duration-300 ease-in-out hover:!scale-[1.009] 4xl:text-lg ${
+            reactions[index].emoji ? 'mb-5' : 'mb-2'
+          } `}
           onClick={() => handleReaction(index)}
         >
-          <div className="absolute bottom-0 -left-1 rotate-90 w-0 h-0 border-t-8 border-l-8 border-t-white border-l-transparent " />
-          {message === "img" ? (
+          <div className="absolute -left-1 bottom-0 h-0 w-0 rotate-90 border-l-8 border-t-8 border-l-transparent border-t-white" />
+          {message === 'img' ? (
             <div className="-ml-1 max-w-[340px]">
               {/* <ArcCard /> */}
               <img
@@ -200,11 +195,11 @@ export const ChatSimulator = () => {
             <div dangerouslySetInnerHTML={{ __html: message }} />
           )}
           {reactions[index].emoji && (
-            <span className="appear-animation duration-0 absolute border border-gray-300 -bottom-3.5 right-2 text-md bg-white py-0.5 px-2 rounded-full shadow-sm ">
+            <span className="appear-animation text-md absolute -bottom-3.5 right-2 rounded-full border border-gray-300 bg-white px-2 py-0.5 shadow-sm duration-0">
               {reactions[index].emoji}
               <span
                 key={`${index}-${reactions[index].count}`}
-                className="ml-0.5 text-xs text-gray-500 appear-animation pl-0.5 relative"
+                className="appear-animation relative ml-0.5 pl-0.5 text-xs text-gray-500"
               >
                 {reactions[index].count}
               </span>
@@ -214,8 +209,8 @@ export const ChatSimulator = () => {
       ))}
       {count < messages.length && showTypingDots && (
         <>
-          <div className="appear-animation relative rounded-2xl rounded-bl-md bg-[#ffffff] p-0 text-sm my-2 max-w-16">
-            <span className="typing-animation flex justify-center items-center">
+          <div className="appear-animation relative my-2 max-w-16 rounded-2xl rounded-bl-md bg-[#ffffff] p-0 text-sm">
+            <span className="typing-animation flex items-center justify-center">
               <TypingDots />
             </span>
           </div>
@@ -230,7 +225,7 @@ export const IconCross = ({ className, onClick }) => {
   return (
     <>
       <svg
-        className={`w-6 ${className} hover:scale-150 transition-all duration-150 `}
+        className={`w-6 ${className} transition-all duration-150 hover:scale-150`}
         viewBox="0 -0.5 25 25"
         fill="#000"
         onClick={onClick}
@@ -250,7 +245,7 @@ export const TypingDots = () => {
       <svg height="30" width="40">
         <circle className="animate-blink" cx="10" cy="20" r="3" fill="grey" />
         <circle
-          className="animate-blink delay-250ms "
+          className="animate-blink delay-250ms"
           cx="20"
           cy="20"
           r="3"
@@ -265,44 +260,5 @@ export const TypingDots = () => {
         />
       </svg>
     </>
-  );
-};
-
-export const ArcCard = () => {
-  const boundingRef = useRef();
-
-  return (
-    <div className="flex flex-col [perspective: 800px]">
-      <div
-        onMouseLeave={() => (boundingRef.current = null)}
-        onMouseEnter={(ev) => {
-          boundingRef.current = ev.currentTarget.getBoundingClientRect();
-        }}
-        onMouseMove={(ev) => {
-          if (!boundingRef.current) return;
-          const x = ev.clientX - boundingRef.current.left;
-          const y = ev.clientY - boundingRef.current.top;
-          const xPercentage = x / boundingRef.current.width;
-          const yPercentage = y / boundingRef.current.height;
-          const xRotation = (xPercentage - 0.5) * 20;
-          const yRotation = (0.5 - yPercentage) * 20;
-
-          ev.currentTarget.style.setProperty("--x-rotation", `${yRotation}deg`);
-          ev.currentTarget.style.setProperty("--y-rotation", `${xRotation}deg`);
-          ev.currentTarget.style.setProperty("--x", `${xPercentage * 100}%`);
-          ev.currentTarget.style.setProperty("--y", `${yPercentage * 100}%`);
-        }}
-        className="group relative w-full rounded-xl bg-[#fff] p-1 transition-transform ease-out hover:[transform:rotateX(var(--x-rotation))_rotateY(var(--y-rotation))_scale(1.03)]"
-      >
-        <div className="max-w-[340px]">
-          <img
-            src={FranciscoWithBeto}
-            alt="Beto & Me"
-            className="w-full rounded-lg"
-          />
-        </div>
-        <div className="pointer-events-none absolute inset-0 group-hover:bg-[radial-gradient(at_var(--x)_var(--y),rgba(255,255,255,0.3)_20%,transparent_80%)]" />
-      </div>
-    </div>
   );
 };
