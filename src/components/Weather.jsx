@@ -1,11 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
-import { GetWeather } from "../utils/GetWeather";
-import gsap from "gsap";
-import ConfettiExplosion from "react-confetti-explosion";
-import { useConfettiStore } from "../stores/useTriggerConfetti-Talk";
-import { useHatBackground } from "../hooks/useBackground";
-import { useScrollStore } from "../stores/useScroll";
-import { applyBounceEffect } from "../utils/applyBounceEffect";
+import React, { useEffect, useRef, useState } from 'react';
+import { GetWeather } from '../utils/GetWeather';
+import gsap from 'gsap';
+import ConfettiExplosion from 'react-confetti-explosion';
+import { useConfettiStore } from '../stores/useTriggerConfetti-Talk';
+import { useHatBackground } from '../hooks/useBackground';
+import { useScrollStore } from '../stores/useScroll';
+import { applyBounceEffect } from '../utils/applyBounceEffect';
 // import BlackArrowSvg from "../assets/arrow-black.svg";
 
 const WeatherData = ({ setDialogText, hatName }) => {
@@ -19,22 +19,22 @@ const WeatherData = ({ setDialogText, hatName }) => {
   const isScrolling = useScrollStore((state) => state.isScrolling);
 
   useEffect(() => {
-    applyBounceEffect(".weatherContainer", isScrolling);
+    applyBounceEffect('.weatherContainer', isScrolling);
   }, [isScrolling]);
 
   useEffect(() => {
-    gsap.to(".bg-talk", {
-      "--bg-after": getHexBackground(hatName), // Función que devuelve el color o gradiente según `hatName`
+    gsap.to('.bg-talk', {
+      '--bg-after': getHexBackground(hatName), // Función que devuelve el color o gradiente según `hatName`
       duration: 0.9,
       // ease: "power2.inOut",
-      ease: "power1.in",
+      ease: 'power1.in',
     });
   }, [hatName]);
 
   useEffect(() => {
     GetWeather(setWeatherData);
     document.documentElement.style.setProperty(
-      "--bg-after",
+      '--bg-after',
       getHexBackground(hatName)
     );
   }, [hatName]); //todo: improve
@@ -42,16 +42,16 @@ const WeatherData = ({ setDialogText, hatName }) => {
   const clima =
     weatherData && weatherData.temperature2m
       ? weatherData.temperature2m <= 10
-        ? "☁️"
+        ? '☁️'
         : weatherData.temperature2m <= 15
-        ? "🌥️"
-        : weatherData.temperature2m <= 24
-        ? "🌤️"
-        : weatherData.temperature2m >= 25
-        ? "🌞"
-        : weatherData.temperature2m >= 32
-        ? "🔥"
-        : ""
+          ? '🌥️'
+          : weatherData.temperature2m <= 24
+            ? '🌤️'
+            : weatherData.temperature2m >= 25
+              ? '🌞'
+              : weatherData.temperature2m >= 32
+                ? '🔥'
+                : ''
       : null;
 
   const handleTriggerConfetti = () => {
@@ -92,17 +92,17 @@ const WeatherData = ({ setDialogText, hatName }) => {
 
       <div
         ref={weatherRefContainer}
-        className="weatherContainer w-56 lg:w-72 4xl:w-auto text-[#FAFAFA]"
+        className="weatherContainer w-56 text-[#FAFAFA] lg:w-72 4xl:w-auto"
       >
         {weatherData ? (
-          <div className="text-right font-sans text-sm 4xl:text-5xl tracking-tight uppercase  ">
+          <div className="text-right font-sans text-sm uppercase tracking-tight 4xl:text-5xl">
             <p className="">
-              {weatherData.temperature2m}°C{" "}
-              {weatherData && weatherData.isDay === 0 ? "🌙" : clima}{" "}
+              {weatherData.temperature2m}°C{' '}
+              {weatherData && weatherData.isDay === 0 ? '🌙' : clima}{' '}
               <b className="pl-0.5">Buenos Aires, ARG 🇦🇷</b> {weatherData.time}
             </p>
 
-            <div className="mt-0 flex flex-row justify-end items-center gap-2 pb-[3px] ">
+            <div className="mt-0 flex flex-row items-center justify-end gap-2 pb-[3px]">
               <a
                 href="mailto:rodriguezfranciscoa@hotmail.com?subject=Wanna talk!"
                 className="group"
@@ -111,18 +111,18 @@ const WeatherData = ({ setDialogText, hatName }) => {
                     "<span class='text-2xl inline-block'>🎉</span> <span class='text-2xl inline-block animate-shake'>🎈</span> YAY! <span class='text-2xl inline-block animate-shake'>🎈</span><span class='text-2xl inline-block'>🎉</span>"
                   )
                 }
-                onMouseLeave={() => setDialogText("")}
+                onMouseLeave={() => setDialogText('')}
                 onClick={handleTriggerConfetti}
               >
                 <span
-                  className={`bg-talk 4xl:mt-2 after:bg-[var(--bg-after)] font-semibold select-none pointer-events-none relative text-white flex flex-row items-center after:content-[''] after:absolute after:!left-1.5 4xl:after:!left-5 after:!bottom-[-2px] after:!w-24 4xl:after:!w-[17rem] after:!h-4 4xl:after:!h-8 after:z-[-1] after:!transition-all after:!duration-150 group-hover:scale-110 group-hover:after:!-left-1 4xl:group-hover:after:!-left-4 group-hover:after:!bottom-[-3px] group-hover:after:!rotate-3 group-hover:after:!w-[6.7rem] 4xl:group-hover:after:!w-[22.5rem] group-hover:after:shadow-md group-hover:after:!h-6 4xl:group-hover:after:!h-[4.2rem] font-RecoletaBlack tracking-wide transition-all duration-200  `}
+                  className={`bg-talk pointer-events-none relative flex select-none flex-row items-center font-RecoletaBlack font-semibold tracking-wide text-white transition-all duration-200 after:absolute after:!bottom-[-2px] after:!left-1.5 after:z-[-1] after:!h-4 after:!w-24 after:bg-[var(--bg-after)] after:!transition-all after:!duration-150 after:content-[''] group-hover:scale-110 group-hover:after:!-left-1 group-hover:after:!bottom-[-3px] group-hover:after:!h-6 group-hover:after:!w-[6.7rem] group-hover:after:!rotate-3 group-hover:after:shadow-md 4xl:mt-2 4xl:after:!left-5 4xl:after:!h-8 4xl:after:!w-[17rem] 4xl:group-hover:after:!-left-4 4xl:group-hover:after:!h-[4.2rem] 4xl:group-hover:after:!w-[22.5rem]`}
                 >
                   lets talk!
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                     fill="#fafafa"
-                    className="group-hover:translate-x-1.5 w-4 4xl:w-14 group-hover:drop-shadow-sm transition-all duration-150"
+                    className="w-4 transition-all duration-150 group-hover:translate-x-1.5 group-hover:drop-shadow-sm 4xl:w-14"
                   >
                     <path d="M11.293 4.707L17.586 11H4v2h13.586l-6.293 6.293 1.414 1.414L21.414 12l-8.707-8.707-1.414 1.414z" />
                   </svg>
@@ -131,7 +131,7 @@ const WeatherData = ({ setDialogText, hatName }) => {
             </div>
           </div>
         ) : (
-          ""
+          ''
         )}
       </div>
     </>
@@ -143,7 +143,7 @@ export default WeatherData;
 export const ConfettiExplosionTalk = () => {
   return (
     <>
-      <div className="absolute  ">
+      <div className="absolute">
         <ConfettiExplosion
           force={0.2}
           particleCount={40}

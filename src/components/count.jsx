@@ -1,10 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
-import { getClickCount } from "../utils/getClickCount";
-import { useScrollStore } from "../stores/useScroll";
-import { applyBounceEffect } from "../utils/applyBounceEffect";
-import { usePreloader } from "../stores/usePreloader";
-import gsap from "gsap";
-import { useHatStore } from "../stores/useHatStore";
+import React, { useEffect, useRef, useState } from 'react';
+import { getClickCount } from '../utils/getClickCount';
+import { useScrollStore } from '../stores/useScroll';
+import { applyBounceEffect } from '../utils/applyBounceEffect';
+import { usePreloader } from '../stores/usePreloader';
+import gsap from 'gsap';
+import { useHatStore } from '../stores/useHatStore';
 
 export const Count = () => {
   const [clickCount, setClickCount] = useState(null);
@@ -31,17 +31,17 @@ export const Count = () => {
     if (isLoading) return;
 
     // Dividir el texto en letras
-    const letters = document.querySelectorAll(".exploding-letter");
+    const letters = document.querySelectorAll('.exploding-letter');
     letters.forEach((letter, index) => {
       gsap.to(letter, {
         scale: 3,
         rotation: index % 2 === 0 ? 720 : -720,
         opacity: 0,
-        x: "random(-200, 200)",
+        x: 'random(-200, 200)',
         y: -50,
         duration: 0.8,
         delay: 0.05,
-        ease: "power4.out",
+        ease: 'power4.out',
         onComplete: () => {
           gsap.to(letter, {
             scale: 1,
@@ -50,7 +50,7 @@ export const Count = () => {
             x: 0,
             y: 0,
             duration: 0,
-            ease: "power4.in",
+            ease: 'power4.in',
           });
         },
       });
@@ -58,7 +58,7 @@ export const Count = () => {
   }, [hatName, isLoading]);
 
   const splitTextIntoLetters = (text) => {
-    return text.split("").map((letter, index) => (
+    return text.split('').map((letter, index) => (
       <span key={index} className="exploding-letter inline-block">
         {letter}
       </span>
@@ -68,11 +68,11 @@ export const Count = () => {
   return (
     <div
       ref={countIndicatorContainerRef}
-      className="w-fit py-1 px-2 bg-white bg-opacity-50 m-2 lg:mb-4 mb-20 rounded-md select-none relative min-w-[270px]"
+      className="relative m-2 mb-20 w-fit min-w-[270px] select-none rounded-md bg-white bg-opacity-50 px-2 py-1 lg:mb-4"
     >
-      <p className="font-KarlaLight text-base ">
+      <p className="font-KarlaLight text-base">
         Times people changed my look:
-        <span className="countIndicator font-RecoletaBlack ml-1.5 lg:text-lg text-sm inline-block text-center tracking-wide">
+        <span className="countIndicator ml-1.5 inline-block text-center font-RecoletaBlack text-sm tracking-wide lg:text-lg">
           {clickCount !== null && splitTextIntoLetters(clickCount.toString())}
         </span>
       </p>
