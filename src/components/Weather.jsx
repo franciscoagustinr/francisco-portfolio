@@ -63,7 +63,7 @@ const WeatherData = ({ setDialogText, hatName }) => {
     <>
       {triggerConfetti && (
         <>
-          <div className="absolute left-1/2 top-0">
+          <div className="absolute left-0 top-0 md:-left-[50%] lg:-left-[180%]">
             <ConfettiExplosion
               force={0.2}
               particleCount={200}
@@ -71,7 +71,7 @@ const WeatherData = ({ setDialogText, hatName }) => {
               duration={1700}
             />
           </div>
-          <div className="absolute left-1/3 top-1/3">
+          <div className="absolute left-0 top-1/3 lg:-left-1/3">
             <ConfettiExplosion
               force={0.5}
               particleCount={120}
@@ -79,7 +79,7 @@ const WeatherData = ({ setDialogText, hatName }) => {
               duration={1800}
             />
           </div>
-          <div className="absolute right-1/3 top-1/3">
+          <div className="absolute right-1/3 top-1/3 md:left-0">
             <ConfettiExplosion
               force={0.5}
               particleCount={120}
