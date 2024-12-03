@@ -36,7 +36,7 @@ export const HandwrittenTexts = () => {
           </svg>
         </div>
       </div>
-      <div className="pointer-events-none absolute left-12 top-[7.3rem] z-30 select-none md:left-16 md:top-[8.3rem] lg:left-20 4xl:left-80 4xl:top-72">
+      <div className="pointer-events-none absolute left-12 top-32 z-30 select-none md:left-16 md:top-[8.3rem] lg:left-20 4xl:left-80 4xl:top-72">
         <div className="relative flex rotate-[2deg] font-HomemadeApple text-sm text-white lg:rotate-[4deg] lg:text-base 4xl:text-5xl">
           <svg
             fill="#fafafa"

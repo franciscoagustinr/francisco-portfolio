@@ -96,7 +96,7 @@ const WeatherData = ({ setDialogText, hatName }) => {
       >
         {weatherData ? (
           <div className="text-right font-sans text-sm uppercase tracking-tight 4xl:text-5xl">
-            <p className="">
+            <p className="select-none">
               {weatherData.temperature2m}°C{' '}
               {weatherData && weatherData.isDay === 0 ? '🌙' : clima}{' '}
               <b className="pl-0.5">Buenos Aires, ARG 🇦🇷</b> {weatherData.time}
