@@ -3,7 +3,7 @@ import React from 'react';
 export const HandwrittenTexts = () => {
   return (
     <>
-      <div className="pointer-events-none invisible absolute top-48 z-30 animate-pulse select-none md:visible md:right-20 md:top-32 4xl:top-[33rem]">
+      <div className="pointer-events-none invisible absolute top-48 z-30 animate-pulse select-none md:visible md:right-20 md:top-32 lg:right-28 4xl:top-[33rem]">
         <div className="relative flex -rotate-45 font-HomemadeApple text-white md:-rotate-12 4xl:text-5xl">
           stay in contact
           <svg
