@@ -25,14 +25,14 @@ export const TextTitle = () => {
   const franciscoPosition = isMobile
     ? [-2.01, 0.3, 0]
     : isTablet
-      ? [-4.8, -0.3, 0]
+      ? [-4, -0.3, 0]
       : [-5.5, -0.3, 0];
   const agustinPosition = isMobile
     ? [-1.5, -2.3, 0]
     : isTablet
-      ? [-3.4, -3.6, 0]
+      ? [-2.9, -3.6, 0]
       : [-4.2, -3.6, 0];
-  const textScale = isMobile ? 0.4 : isTablet ? 1 : 1.2;
+  const textScale = isMobile ? 0.4 : isTablet ? 0.8 : 1.2;
 
   const [franciscoColors, setFranciscoColors] = useState(
     Array('FRANCISCO'.length).fill('black')
