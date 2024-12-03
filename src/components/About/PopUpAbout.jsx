@@ -96,7 +96,7 @@ export const PopUpAbout = ({ hatName }) => {
                         'hover:text-[#3effff]',
                         'hover:text-[#df4c51]',
                         'hover:text-[#f265ee]',
-                      ][index % 7]
+                      ][index % 5]
                     }`}
                   >
                     {letter}
