@@ -7,7 +7,7 @@ export const LoadingBar = () => {
 
   useEffect(() => {
     if (progress === 100) {
-      // stopLoader();
+      stopLoader();
     }
   }, [progress, stopLoader]);
 
