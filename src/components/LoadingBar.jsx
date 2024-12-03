@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { usePreloader } from "../stores/usePreloader";
+import React, { useEffect, useState } from 'react';
+import { usePreloader } from '../stores/usePreloader';
 
 export const LoadingBar = () => {
   const [progress, setProgress] = useState(0);
@@ -7,7 +7,7 @@ export const LoadingBar = () => {
 
   useEffect(() => {
     if (progress === 100) {
-      stopLoader();
+      // stopLoader();
     }
   }, [progress, stopLoader]);
 
@@ -32,11 +32,9 @@ export const LoadingBar = () => {
   }, []);
 
   return (
-    // <div className="absolute z-50 top-[80%] left-[38%] 4xl:left-[37%] w-[350px] 4xl:w-[30%] h-[18px] border-2 border-white rounded-full p-0.5">
-    <div className=" z-50 mt-[30%] left-1/2  w-[350px] 4xl:w-[30%] h-[18px] border-2 border-white rounded-full p-0.5">
+    <div className="left-1/2 z-50 mt-[29rem] h-[18px] w-11/12 rounded-full border-2 border-white p-0.5 md:w-[350px] 2xl:mt-[35rem] 2xl:w-2/6 4xl:mt-[80rem]">
       <div
-        // className={`loader h-[10px] bg-white rounded-full shadow-[0_10px_40px_-10px_rgba(255,255,255,1)] w-[${progress}]`}
-        className={`loader h-[10px] bg-white rounded-full shadow-[0_10px_40px_-10px_rgba(255,255,255,1)]`}
+        className={`loader h-[10px] rounded-full bg-white shadow-[0_10px_40px_-10px_rgba(255,255,255,1)]`}
         style={{ width: `${progress}%` }}
       />
     </div>
