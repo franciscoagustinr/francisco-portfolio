@@ -54,14 +54,14 @@ export const PopUpAbout = ({ hatName }) => {
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-50 bg-opacity-5 backdrop-blur-md">
         <div
           ref={popupRef}
-          className="relative top-0 z-20 mx-1 h-[45rem] w-auto overflow-x-hidden overflow-y-scroll rounded-2xl border border-solid border-gray-100 bg-gray-600 bg-opacity-20 shadow-2xl lg:top-2 lg:h-[43rem] 4xl:!w-[70rem] 4xl:scale-[2.9]"
+          className="relative top-0 z-20 mx-1 h-[45rem] w-auto overflow-x-hidden overflow-y-scroll rounded-2xl border border-solid border-gray-100 bg-gray-600 bg-opacity-20 shadow-2xl md:h-[43rem] lg:top-2 4xl:!w-[70rem] 4xl:scale-[2.9]"
         >
           <IconCross
             className="absolute right-2 top-2 z-50 cursor-pointer"
             onClick={closePopUp}
           />
-          <div className="relative mx-4 flex min-h-full flex-col gap-1 pb-1 pt-2.5 lg:mr-8 lg:flex-row lg:gap-4 4xl:justify-between">
-            <div className="hidden flex-col justify-end gap-3 text-black md:visible lg:flex lg:w-[440px] 4xl:flex-1">
+          <div className="relative mx-4 flex min-h-full flex-col gap-1 pb-1 pt-2.5 md:flex-row lg:mr-8 lg:gap-4 4xl:justify-between">
+            <div className="hidden flex-col justify-end gap-3 text-black md:flex md:w-[390px] lg:w-[440px] 4xl:flex-1">
               <ChatSimulator />
             </div>
             <div className="sticky top-8 flex h-full flex-col items-center justify-start rounded-lg lg:w-[450px]">
@@ -103,7 +103,7 @@ export const PopUpAbout = ({ hatName }) => {
                   </span>
                 ))}
               </h2>
-              <div className="mt-2 px-2 lg:mt-5 lg:w-full lg:px-6">
+              <div className="mt-2 px-2 md:mt-8 lg:w-full lg:px-6">
                 <WorksContainer hatName={hatName} />
               </div>
             </div>

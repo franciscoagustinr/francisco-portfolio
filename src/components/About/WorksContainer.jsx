@@ -22,7 +22,10 @@ export const WorksContainer = ({ hatName }) => {
         Works.map((work) => {
           const rotateClass = work.id % 2 === 0 ? '-rotate-12' : 'rotate-12';
           return (
-            <div key={work.id} className="group relative mb-0.5 lg:mb-2">
+            <div
+              key={work.id}
+              className="group relative mb-0.5 md:mb-1 lg:mb-2"
+            >
               <a
                 href={work.url}
                 target="_blank"

@@ -68,11 +68,11 @@ export const Count = () => {
   return (
     <div
       ref={countIndicatorContainerRef}
-      className="relative m-2 mb-20 w-fit min-w-[270px] select-none rounded-md bg-white bg-opacity-50 px-2 py-1 lg:mb-4"
+      className="relative m-2 mb-20 w-fit min-w-[270px] select-none rounded-md bg-white bg-opacity-50 px-2 py-1 md:mb-4"
     >
       <p className="font-KarlaLight text-base">
         Times people changed my look:
-        <span className="countIndicator ml-1.5 inline-block text-center font-RecoletaBlack text-sm tracking-wide lg:text-lg">
+        <span className="countIndicator ml-1.5 inline-block text-center font-RecoletaBlack text-sm tracking-wide md:text-base lg:text-lg">
           {clickCount !== null && splitTextIntoLetters(clickCount.toString())}
         </span>
       </p>

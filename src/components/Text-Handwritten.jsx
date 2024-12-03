@@ -1,14 +1,14 @@
-import React from "react";
+import React from 'react';
 
 export const HandwrittenTexts = () => {
   return (
     <>
-      <div className="absolute invisible md:visible lg:right-20 z-30 top-48 4xl:top-[33rem] pointer-events-none select-none animate-pulse  ">
-        <div className="relative text-white -rotate-45 font-HomemadeApple 4xl:text-5xl flex">
+      <div className="pointer-events-none invisible absolute top-48 z-30 animate-pulse select-none md:visible md:right-20 md:top-32 4xl:top-[33rem]">
+        <div className="relative flex -rotate-45 font-HomemadeApple text-white md:-rotate-12 4xl:text-5xl">
           stay in contact
           <svg
             fill="#fafafa"
-            className="w-12 4xl:w-36 rotate-[40deg] -top-6 relative left-7"
+            className="relative -top-6 left-7 w-12 rotate-[40deg] md:left-4 md:rotate-12 4xl:w-36"
             viewBox="0 0 367.339 367.34"
           >
             <g>
@@ -36,15 +36,15 @@ export const HandwrittenTexts = () => {
           </svg>
         </div>
       </div>
-      <div className="absolute lg:left-20 left-12 4xl:left-80 z-30 lg:top-[8.3rem] top-[7.3rem] 4xl:top-72 pointer-events-none select-none">
-        <div className="relative text-white lg:rotate-[4deg] rotate-[2deg] font-HomemadeApple text-sm lg:text-base 4xl:text-5xl flex">
+      <div className="pointer-events-none absolute left-12 top-[7.3rem] z-30 select-none md:left-16 md:top-[8.3rem] lg:left-20 4xl:left-80 4xl:top-72">
+        <div className="relative flex rotate-[2deg] font-HomemadeApple text-sm text-white lg:rotate-[4deg] lg:text-base 4xl:text-5xl">
           <svg
             fill="#fafafa"
             viewBox="-10.78 -10.78 380.73 380.73"
             transform="matrix(-1, 0, 0, 1, 0, 0)rotate(0)"
             stroke="#fff"
             strokeWidth="0.00359171"
-            className="lg:w-11 w-9 4xl:w-36 -top-3 lg:-rotate-[20deg] rotate-[-10deg] relative lg:-left-5 -left-4 scale-x-[-1] "
+            className="relative -left-4 -top-3 w-9 rotate-[-10deg] scale-x-[-1] md:-rotate-[20deg] lg:-left-5 lg:w-11 4xl:w-36"
           >
             <g strokeWidth="0"></g>
             <g
@@ -54,15 +54,15 @@ export const HandwrittenTexts = () => {
               strokeWidth="0.718342"
             ></g>
             <g>
-              {" "}
+              {' '}
               <g>
-                {" "}
+                {' '}
                 <g>
-                  {" "}
-                  <path d="M351.689,201.729c-0.612-46.512-6.732-95.472-18.972-140.76c-3.061-9.792-17.748-6.12-15.301,4.284 c9.792,40.392,15.912,81.396,17.748,123.013c1.837,41.615,2.448,97.308-27.54,129.743c-15.3,16.524-42.84,15.912-63.647,17.137 c-30.601,1.836-61.812,1.224-92.412-0.612c-30.6-1.224-61.812-4.284-92.412-7.956c-16.524-1.836-43.452-11.016-58.14-3.06 c-1.224,0.611-1.224,2.447-0.612,3.06c11.016,14.076,42.228,13.464,58.752,15.912c36.72,4.896,72.828,7.344,109.548,9.18 c44.675,1.836,114.443,11.017,149.939-22.644C351.077,299.649,351.689,242.121,351.689,201.729z"></path>{" "}
-                  <path d="M338.225,8.949c-4.284-6.12-11.628-4.896-14.688,1.836c-8.567,20.808-22.031,39.78-30.6,60.588 c-2.448,6.12,6.732,9.18,9.792,4.284c9.792-15.912,18.972-31.824,28.764-47.736c2.448,4.896,4.896,9.792,7.345,14.688 c3.06,7.956,3.672,15.912,7.344,23.256c2.447,5.508,9.792,3.06,11.628-1.224C363.929,47.505,348.017,23.025,338.225,8.949z"></path>{" "}
-                </g>{" "}
-              </g>{" "}
+                  {' '}
+                  <path d="M351.689,201.729c-0.612-46.512-6.732-95.472-18.972-140.76c-3.061-9.792-17.748-6.12-15.301,4.284 c9.792,40.392,15.912,81.396,17.748,123.013c1.837,41.615,2.448,97.308-27.54,129.743c-15.3,16.524-42.84,15.912-63.647,17.137 c-30.601,1.836-61.812,1.224-92.412-0.612c-30.6-1.224-61.812-4.284-92.412-7.956c-16.524-1.836-43.452-11.016-58.14-3.06 c-1.224,0.611-1.224,2.447-0.612,3.06c11.016,14.076,42.228,13.464,58.752,15.912c36.72,4.896,72.828,7.344,109.548,9.18 c44.675,1.836,114.443,11.017,149.939-22.644C351.077,299.649,351.689,242.121,351.689,201.729z"></path>{' '}
+                  <path d="M338.225,8.949c-4.284-6.12-11.628-4.896-14.688,1.836c-8.567,20.808-22.031,39.78-30.6,60.588 c-2.448,6.12,6.732,9.18,9.792,4.284c9.792-15.912,18.972-31.824,28.764-47.736c2.448,4.896,4.896,9.792,7.345,14.688 c3.06,7.956,3.672,15.912,7.344,23.256c2.447,5.508,9.792,3.06,11.628-1.224C363.929,47.505,348.017,23.025,338.225,8.949z"></path>{' '}
+                </g>{' '}
+              </g>{' '}
             </g>
           </svg>
           can see my works here

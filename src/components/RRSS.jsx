@@ -1,10 +1,10 @@
-import React, { useEffect, useRef } from "react";
-import GithubLogo from "../assets/github.png";
-import LinkedinLogo from "../assets/linkedin.png";
-import CoffeeCup from "../assets/coffee-cup.png";
-import gsap from "gsap";
-import { useScrollStore } from "../stores/useScroll";
-import { applyBounceEffect } from "../utils/applyBounceEffect";
+import React, { useEffect, useRef } from 'react';
+import GithubLogo from '../assets/github.png';
+import LinkedinLogo from '../assets/linkedin.png';
+import CoffeeCup from '../assets/coffee-cup.png';
+import gsap from 'gsap';
+import { useScrollStore } from '../stores/useScroll';
+import { applyBounceEffect } from '../utils/applyBounceEffect';
 
 export const RRSS = ({ setDialogText }) => {
   const githubRef = useRef(null);
@@ -53,8 +53,8 @@ export const RRSS = ({ setDialogText }) => {
         x: (mouseX - x) * 0.5,
         y: (mouseY - y) * 0.4,
         scale: 1.4,
-        rotate: el === el.coffeeRef ? "-" : "10deg",
-        ease: "power1",
+        rotate: el === el.coffeeRef ? '-' : '10deg',
+        ease: 'power1',
         duration: 0.2,
       });
     };
@@ -64,20 +64,20 @@ export const RRSS = ({ setDialogText }) => {
         x: 0,
         y: 0,
         scale: 1,
-        rotate: "0deg",
-        ease: "elastic.out(1.2, 0.4)",
+        rotate: '0deg',
+        ease: 'elastic.out(1.2, 0.4)',
         duration: 0.5,
       });
       el.style.zIndex = 1;
     };
 
     calculatePosition();
-    window.addEventListener("mousemove", onMouseMove);
-    window.addEventListener("resize", calculatePosition);
+    window.addEventListener('mousemove', onMouseMove);
+    window.addEventListener('resize', calculatePosition);
 
     return () => {
-      window.removeEventListener("mousemove", onMouseMove);
-      window.removeEventListener("resize", calculatePosition);
+      window.removeEventListener('mousemove', onMouseMove);
+      window.removeEventListener('resize', calculatePosition);
     };
   };
 
@@ -100,17 +100,17 @@ export const RRSS = ({ setDialogText }) => {
   return (
     <>
       <div
-        className={`z-40 absolute bottom-2 lg:bottom-4 4xl:bottom-12 lg:right-14 right-2 4xl:right-20`}
+        className={`absolute bottom-2 right-2 z-40 lg:bottom-4 lg:right-14 4xl:bottom-12 4xl:right-20`}
       >
         <img
           ref={linkedinRef}
           src={LinkedinLogo}
           alt="github-logo"
-          className="lg:w-14 w-12 4xl:w-44 h-auto select-none cursor-pointer drop-shadow-lg"
+          className="h-auto w-12 cursor-pointer select-none drop-shadow-lg md:w-14 4xl:w-44"
           onClick={() => {
             window.open(
-              "https://www.linkedin.com/in/franciscoagustinr/",
-              "_blank"
+              'https://www.linkedin.com/in/franciscoagustinr/',
+              '_blank'
             );
           }}
           onMouseEnter={() => {
@@ -119,18 +119,18 @@ export const RRSS = ({ setDialogText }) => {
             );
           }}
           onMouseLeave={() => {
-            setDialogText("");
+            setDialogText('');
           }}
         />
       </div>
-      <div className="absolute lg:bottom-4 bottom-2 4xl:bottom-12 lg:right-36 right-16 4xl:right-80">
+      <div className="absolute bottom-2 right-16 md:right-20 lg:bottom-4 lg:right-36 4xl:bottom-12 4xl:right-80">
         <img
           ref={githubRef}
           src={GithubLogo}
           alt="github-logo"
-          className="select-none lg:w-14 w-12 4xl:w-44 h-auto cursor-pointer drop-shadow-lg "
+          className="h-auto w-12 cursor-pointer select-none drop-shadow-lg md:w-14 4xl:w-44"
           onClick={() => {
-            window.open("https://github.com/franciscoagustinr", "_blank");
+            window.open('https://github.com/franciscoagustinr', '_blank');
           }}
           onMouseEnter={() => {
             setDialogText(
@@ -138,18 +138,18 @@ export const RRSS = ({ setDialogText }) => {
             );
           }}
           onMouseLeave={() => {
-            setDialogText("");
+            setDialogText('');
           }}
         />
       </div>
-      <div className="absolute lg:left-5 left-1 4xl:left-14 lg:bottom-3 bottom-2 4xl:bottom-12">
+      <div className="absolute bottom-2 left-1 lg:bottom-3 lg:left-5 4xl:bottom-12 4xl:left-14">
         <img
           ref={coffeeRef}
           src={CoffeeCup}
           alt="Coffee Cup"
-          className=" select-none lg:w-20 w-12 4xl:w-56 -rotate-12 cursor-pointer drop-shadow-lg"
+          className="w-12 -rotate-12 cursor-pointer select-none drop-shadow-lg md:w-16 lg:w-20 4xl:w-56"
           onClick={() => {
-            window.open("https://cafecito.app/franciscoagustinr", "_blank");
+            window.open('https://cafecito.app/franciscoagustinr', '_blank');
           }}
           onMouseEnter={() => {
             setDialogText(
@@ -157,7 +157,7 @@ export const RRSS = ({ setDialogText }) => {
             );
           }}
           onMouseLeave={() => {
-            setDialogText("");
+            setDialogText('');
           }}
         />
       </div>

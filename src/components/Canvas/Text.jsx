@@ -21,9 +21,18 @@ export const TextTitle = () => {
   const AgustinRef = useRef(null);
   const isLoading = usePreloader((state) => state.isLoading);
   const isMobile = window.innerWidth < 768;
-  const franciscoPosition = isMobile ? [-2.01, 0.3, 0] : [-5.5, -0.3, 0];
-  const agustinPosition = isMobile ? [-1.5, -2.3, 0] : [-4.2, -3.6, 0];
-  const textScale = isMobile ? 0.4 : 1.2;
+  const isTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
+  const franciscoPosition = isMobile
+    ? [-2.01, 0.3, 0]
+    : isTablet
+      ? [-4.8, -0.3, 0]
+      : [-5.5, -0.3, 0];
+  const agustinPosition = isMobile
+    ? [-1.5, -2.3, 0]
+    : isTablet
+      ? [-3.4, -3.6, 0]
+      : [-4.2, -3.6, 0];
+  const textScale = isMobile ? 0.4 : isTablet ? 1 : 1.2;
 
   const [franciscoColors, setFranciscoColors] = useState(
     Array('FRANCISCO'.length).fill('black')
@@ -187,14 +196,12 @@ export const TextTitle = () => {
       >
         <mesh position={franciscoPosition} scale={textScale} ref={FranciscoRef}>
           {generateTextElements(
-            // "フランシスコ",
             'FRANCISCO',
             franciscoColors,
             setFranciscoColors
           )}
         </mesh>
         <mesh position={agustinPosition} scale={textScale} ref={AgustinRef}>
-          {/* {generateTextElements("アグティン", agustinColors, setAgustinColors)} */}
           {generateTextElements('AGUSTIN', agustinColors, setAgustinColors)}
         </mesh>
       </group>
