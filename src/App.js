@@ -19,6 +19,7 @@ import { usePopupStore } from "./stores/usePopUp";
 import { getClickCount } from "./utils/getClickCount";
 import { Count } from "./components/count";
 
+
 function App() {
   const [dialogText, setDialogText] = useState(null);
   const { getGradientBackground } = useHatBackground();
@@ -68,8 +69,10 @@ function App() {
 
   }, [isLoading]);
 
+
   useEffect(() => {
     getClickCount();
+    console.log("%c❤️ SITE MADE WITH LOVE BY FRANCISCO AGUSTIN ❤️", "background-color: #047692; color: white; padding: 20px;");
   }, [])
 
   return (
