@@ -1,13 +1,13 @@
-import { fetchWeatherApi } from "openmeteo";
+import { fetchWeatherApi } from 'openmeteo';
 
 export const GetWeather = (setWeatherData) => {
   const params = {
     latitude: -34.6131,
     longitude: -58.3772,
-    current: ["temperature_2m", "is_day"],
-    timeformat: "unixtime",
+    current: ['temperature_2m', 'is_day'],
+    timeformat: 'unixtime',
   };
-  const url = "https://api.open-meteo.com/v1/gfs";
+  const url = 'https://api.open-meteo.com/v1/gfs';
 
   fetchWeatherApi(url, params)
     .then((responses) => {
@@ -27,26 +27,11 @@ export const GetWeather = (setWeatherData) => {
             // Convertir el tiempo Unix a formato AM/PM
             const date = new Date(unixTime * 1000); // Multiplicamos por 1000 para convertir segundos en milisegundos
 
-            // const hours = date.getHours();
-            // const minutes = date.getMinutes();
-            // const ampm = hours >= 12 ? "PM" : "AM";
-            // const formattedHours = hours % 12 || 12;
-            // const formattedTime = `${formattedHours}:
-            // ${minutes < 10 ? "0" : ""}
-            // ${minutes} ${ampm}`;
-
-            // // // Guardar los datos actualizados en el estado
-            // const updatedWeatherData = {
-            //   time: formattedTime,
-            //   temperature2m: current.variables(0).value().toFixed(),
-            //   isDay: current.variables(1).value(),
-            // };
-
             function getFormattedTime() {
               const date = new Date();
               const hours = date.getHours();
               const minutes = date.getMinutes();
-              const ampm = hours >= 12 ? "PM" : "AM";
+              const ampm = hours >= 12 ? 'PM' : 'AM';
               const formattedHours = hours % 12 || 12;
               const formattedMinutes = formatMinutes(minutes);
               const formattedTime = `${formattedHours}:${formattedMinutes} ${ampm}`;
@@ -72,10 +57,10 @@ export const GetWeather = (setWeatherData) => {
           console.error("No valid 'response' data available.");
         }
       } else {
-        console.error("No weather data available.");
+        console.error('No weather data available.');
       }
     })
     .catch((error) => {
-      console.error("Error fetching weather data:", error);
+      console.error('Error fetching weather data:', error);
     });
 };

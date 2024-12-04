@@ -3,21 +3,21 @@ import { DialogBox } from './components/DialogBox';
 import { Marquee } from './components/Marquee';
 import { RRSS } from './components/RRSS';
 import { Scene } from './components/canvas/Scene';
-import WeatherData from './components/Weather';
 import { About } from './components/About';
 import { LoadingBar } from './components/LoadingBar';
 import { HandwrittenTexts } from './components/TextHandwritten';
 import { PopUpAbout } from './components/about/PopUpAbout';
-import gsap from 'gsap';
 import { useHatBackground } from './hooks/useBackground';
 import { useHatStore } from './stores/useHatStore';
 import { useScrollDetector } from './hooks/useScrollDetector';
 import { useScrollStore } from './stores/useScroll';
 import { usePreloader } from './stores/usePreloader';
-import RotatingText from './components/RotatingText';
 import { usePopupStore } from './stores/usePopUp';
 import { getClickCount } from './utils/getClickCount';
 import { Count } from './components/Count';
+import WeatherData from './components/Weather';
+import gsap from 'gsap';
+import RotatingText from './components/RotatingText';
 
 function App() {
   const [dialogText, setDialogText] = useState(null);

@@ -23,15 +23,6 @@ const WeatherData = ({ setDialogText, hatName }) => {
   }, [isScrolling]);
 
   useEffect(() => {
-    gsap.to('.bg-talk', {
-      '--bg-after': getHexBackground(hatName), // Función que devuelve el color o gradiente según `hatName`
-      duration: 0.9,
-      // ease: "power2.inOut",
-      ease: 'power1.in',
-    });
-  }, [hatName]);
-
-  useEffect(() => {
     GetWeather(setWeatherData);
     document.documentElement.style.setProperty(
       '--bg-after',

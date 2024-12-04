@@ -1,5 +1,5 @@
-import { useFBX } from "@react-three/drei";
-import React, { useMemo } from "react";
+import { useGLTF } from '@react-three/drei';
+import React, { useMemo } from 'react';
 
 export const ChineseHat = ({ nodes, materials }) => (
   <>
@@ -44,14 +44,14 @@ export const MickeyHat = ({ nodes, materials }) => (
           castShadow
           receiveShadow
           geometry={nodes.Sphere005_Material001_0.geometry}
-          material={materials["Material.001"]}
+          material={materials['Material.001']}
           position={[0, 41.205, 0.581]}
         />
         <mesh
           castShadow
           receiveShadow
           geometry={nodes.Cylinder005_Material001_0.geometry}
-          material={materials["Material.001"]}
+          material={materials['Material.001']}
           position={[15, 70, 92]}
           scale={1.05}
         />
@@ -102,13 +102,13 @@ export const OktopusHat = ({ nodes, materials }) => (
               castShadow
               receiveShadow
               geometry={nodes.Sphere001_Material001_0.geometry}
-              material={materials["Material.002"]}
+              material={materials['Material.002']}
             />
             <mesh
               castShadow
               receiveShadow
               geometry={nodes.Sphere001_Material003_0.geometry}
-              material={materials["Material.003"]}
+              material={materials['Material.003']}
             />
           </group>
           <group
@@ -120,13 +120,13 @@ export const OktopusHat = ({ nodes, materials }) => (
               castShadow
               receiveShadow
               geometry={nodes.Sphere002_Material001_0.geometry}
-              material={materials["Material.002"]}
+              material={materials['Material.002']}
             />
             <mesh
               castShadow
               receiveShadow
               geometry={nodes.Sphere002_Material003_0.geometry}
-              material={materials["Material.003"]}
+              material={materials['Material.003']}
             />
           </group>
           <group
@@ -138,13 +138,13 @@ export const OktopusHat = ({ nodes, materials }) => (
               castShadow
               receiveShadow
               geometry={nodes.Sphere003_Material001_0.geometry}
-              material={materials["Material.002"]}
+              material={materials['Material.002']}
             />
             <mesh
               castShadow
               receiveShadow
               geometry={nodes.Sphere003_Material003_0.geometry}
-              material={materials["Material.003"]}
+              material={materials['Material.003']}
             />
           </group>
           <group
@@ -156,13 +156,13 @@ export const OktopusHat = ({ nodes, materials }) => (
               castShadow
               receiveShadow
               geometry={nodes.Sphere004_Material001_0.geometry}
-              material={materials["Material.002"]}
+              material={materials['Material.002']}
             />
             <mesh
               castShadow
               receiveShadow
               geometry={nodes.Sphere004_Material003_0.geometry}
-              material={materials["Material.003"]}
+              material={materials['Material.003']}
             />
           </group>
           <group
@@ -174,13 +174,13 @@ export const OktopusHat = ({ nodes, materials }) => (
               castShadow
               receiveShadow
               geometry={nodes.Sphere005_Material001_0001.geometry}
-              material={materials["Material.002"]}
+              material={materials['Material.002']}
             />
             <mesh
               castShadow
               receiveShadow
               geometry={nodes.Sphere005_Material003_0.geometry}
-              material={materials["Material.003"]}
+              material={materials['Material.003']}
             />
           </group>
           <group
@@ -192,13 +192,13 @@ export const OktopusHat = ({ nodes, materials }) => (
               castShadow
               receiveShadow
               geometry={nodes.Sphere006_Material001_0.geometry}
-              material={materials["Material.002"]}
+              material={materials['Material.002']}
             />
             <mesh
               castShadow
               receiveShadow
               geometry={nodes.Sphere006_Material003_0.geometry}
-              material={materials["Material.003"]}
+              material={materials['Material.003']}
             />
           </group>
           <group
@@ -210,13 +210,13 @@ export const OktopusHat = ({ nodes, materials }) => (
               castShadow
               receiveShadow
               geometry={nodes.Sphere007_Material001_0.geometry}
-              material={materials["Material.002"]}
+              material={materials['Material.002']}
             />
             <mesh
               castShadow
               receiveShadow
               geometry={nodes.Sphere007_Material003_0.geometry}
-              material={materials["Material.003"]}
+              material={materials['Material.003']}
             />
           </group>
           <group
@@ -228,26 +228,26 @@ export const OktopusHat = ({ nodes, materials }) => (
               castShadow
               receiveShadow
               geometry={nodes.Sphere008_Material001_0.geometry}
-              material={materials["Material.002"]}
+              material={materials['Material.002']}
             />
             <mesh
               castShadow
               receiveShadow
               geometry={nodes.Sphere008_Material003_0.geometry}
-              material={materials["Material.003"]}
+              material={materials['Material.003']}
             />
           </group>
           <mesh
             castShadow
             receiveShadow
             geometry={nodes.Sphere_Material001_0.geometry}
-            material={materials["Material.002"]}
+            material={materials['Material.002']}
           />
           <mesh
             castShadow
             receiveShadow
             geometry={nodes.Sphere009_Material002_0.geometry}
-            material={materials["Material.005"]}
+            material={materials['Material.005']}
             position={[0.356, -0.819, 0.234]}
             rotation={[1.456, 0, 0]}
             scale={0.165}
@@ -256,7 +256,7 @@ export const OktopusHat = ({ nodes, materials }) => (
             castShadow
             receiveShadow
             geometry={nodes.Torus_Material002_0.geometry}
-            material={materials["Material.005"]}
+            material={materials['Material.005']}
             position={[0, -0.976, 0.13]}
             rotation={[1.236, 0, 0]}
             scale={0.081}
@@ -279,7 +279,7 @@ export const CowboyHat = ({ nodes, materials }) => (
           castShadow
           receiveShadow
           geometry={nodes.Object_6.geometry}
-          material={materials["Material.009"]}
+          material={materials['Material.009']}
           position={[-0.008, -0.075, 0.041]}
           scale={1.033}
         />
@@ -287,7 +287,7 @@ export const CowboyHat = ({ nodes, materials }) => (
           castShadow
           receiveShadow
           geometry={nodes.Object_4001.geometry}
-          material={materials["Material.008"]}
+          material={materials['Material.008']}
           position={[-0.008, -0.075, 0.041]}
           scale={1.033}
         />
@@ -296,21 +296,62 @@ export const CowboyHat = ({ nodes, materials }) => (
   </>
 );
 
-useFBX.preload("./models/batman-hat.fbx");
-export const BatmanHat = () => {
-  const batmanHat = useFBX("./models/batman-hat.fbx");
+export const BatmanHat = (props) => {
+  const { nodes, materials } = useGLTF('./models/batmanHat.glb');
   return (
-    <>
-      <primitive
-        object={batmanHat}
-        dispose={null}
+    <group {...props} dispose={null}>
+      <group
         scale={0.00045}
-        position={[0, 2.035, 0.13]}
+        position={[0, 2.3, 0.13]}
         rotation={[-0.1, 3.2, 0]}
-      />
-    </>
+      >
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh.geometry}
+          material={materials.dbl_Layer0_001}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh_1.geometry}
+          material={materials.dbl_Layer0_002}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh_2.geometry}
+          material={materials.dbl_Layer0_003}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh_3.geometry}
+          material={materials.dbl_Layer0_004}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh_4.geometry}
+          material={materials.dbl_Layer0_005}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh_5.geometry}
+          material={materials.dbl_Layer0_006}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh_6.geometry}
+          material={materials.dbl_Layer0_007}
+        />
+      </group>
+    </group>
   );
 };
+useGLTF.preload('./models/batmanHat.glb');
 
 export const useHats = (nodes, materials) => {
   return useMemo(
