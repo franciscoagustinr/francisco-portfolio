@@ -1,8 +1,8 @@
-import gsap from "gsap";
-import React, { useState, useEffect, useRef } from "react";
+import gsap from 'gsap';
+import React, { useState, useEffect, useRef } from 'react';
 
 const RotatingText = () => {
-  const titles = ["Hi!", "Hola!", "Bonjour!", "こんにちは!"];
+  const titles = ['Hi!', 'Hola!', 'Bonjour!', 'Ciao!', 'こんにちは!'];
   const [currentIndex, setCurrentIndex] = useState(0);
   const textRef = useRef(null);
 
@@ -16,7 +16,7 @@ const RotatingText = () => {
 
   useEffect(() => {
     if (textRef.current) {
-      const chars = textRef.current.querySelectorAll("span"); // Select all characters
+      const chars = textRef.current.querySelectorAll('span'); // Select all characters
       const tl = gsap.timeline();
 
       tl.fromTo(
@@ -42,18 +42,18 @@ const RotatingText = () => {
           duration: 0.1,
           stagger: 0.02, // Apply stagger to make them disappear progressively
         },
-        "+=1" // Delay before starting this animation
+        '+=1' // Delay before starting this animation
       );
     }
   }, [currentIndex]); // Re-run animation when the title changes
 
   return (
-    <div className="absolute z-50 top-[28%] 4xl:top-[26%] w-full text-center">
+    <div className="absolute top-[28%] z-50 w-full text-center 4xl:top-[26%]">
       <p
         ref={textRef}
-        className="text-white tracking-wider font-RecoletaBlack text-center text-4xl 4xl:text-8xl 4xl:pl-36 font-bold leading-none"
+        className="text-center font-RecoletaBlack text-4xl font-bold leading-none tracking-wider text-white 4xl:pl-36 4xl:text-8xl"
       >
-        {titles[currentIndex].split("").map((char, index) => (
+        {titles[currentIndex].split('').map((char, index) => (
           <span key={index} className="inline-block">
             {char}
           </span>
