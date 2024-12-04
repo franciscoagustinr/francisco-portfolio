@@ -1,4 +1,5 @@
-<h2>Hi! I'm Francisco 👋🏻 <img src='/src/assets/francisco-photo.png' alt='Francisco' width='200' height='100' /> Welcome to my portfolio!</h2> 
+<h1>Hi! I'm Francisco 👋🏻 <img src='/src/assets/francisco-photo.png' alt='Francisco' width='200' height='200' /></h1> 
+<h2> Welcome to my portfolio!</h2> 
 <h3>front-end developer 🚀</h3>
 
 <p>
