@@ -59,13 +59,32 @@ function App() {
     );
     gsap.fromTo(
       '.about',
-      { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, duration: 1, ease: 'power3.out', delay: 1.5 }
+      { opacity: 0, y: 20, rotation: -180 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        rotation: 0,
+        ease: 'power3.out',
+        delay: 1.5,
+      }
     );
     gsap.fromTo(
       '.weather',
       { opacity: 0, y: 20 },
       { opacity: 1, y: 0, duration: 1, ease: 'power3.out', delay: 1.5 }
+    );
+    gsap.fromTo(
+      '.count-container',
+      {
+        opacity: 0,
+      },
+      {
+        opacity: 1,
+        duration: 2,
+        delay: 2,
+        ease: 'power2.out',
+      }
     );
   }, [isLoading]);
 
@@ -105,7 +124,7 @@ function App() {
           <div className="weather absolute right-3.5 top-8 z-30 lg:right-16 4xl:right-[2%] 4xl:top-40">
             <WeatherData setDialogText={setDialogText} hatName={hatName} />
           </div>
-          <div className="pointer-events-none absolute bottom-0 !z-10 flex w-full items-center justify-center">
+          <div className="count-container pointer-events-none absolute bottom-0 !z-10 flex w-full items-center justify-center">
             <Count />
           </div>
           <div className="absolute -right-[8.7%] top-1/2 -rotate-90 select-none">

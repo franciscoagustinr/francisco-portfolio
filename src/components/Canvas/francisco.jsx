@@ -11,6 +11,7 @@ import { usePreloader } from '../../stores/usePreloader';
 import gsap from 'gsap';
 import { usePopupStore } from '../../stores/usePopUp';
 import { incrementCounter } from '../../utils/incrementCounter';
+import { Howl } from 'howler';
 
 export function Francisco({ props, setDialogText }) {
   const { nodes, materials } = useGLTF('/models/F-model7.glb');
@@ -33,10 +34,19 @@ export function Francisco({ props, setDialogText }) {
   const isLoading = usePreloader((state) => state.isLoading);
   const isPopUpOpen = usePopupStore((state) => state.isPopUpOpen);
 
+  const playSound = () => {
+    const sound = new Howl({
+      src: ['src/assets/pop.mp3'],
+      volume: 0.5,
+    });
+    sound.play();
+  };
+
   const handleAvatarClick = (e) => {
     if (isLoading || clicked) return;
     e.stopPropagation();
     incrementCounter();
+    playSound();
     const nextHatIndex = (currentHatIndex + 1) % hatNames.length;
     setCurrentHatIndex(nextHatIndex);
     const nextHatName = hatNames[nextHatIndex];
