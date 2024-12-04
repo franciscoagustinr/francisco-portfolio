@@ -1,24 +1,23 @@
-import { useEffect, useRef, useState } from "react";
-import { DialogBox } from "./components/dialog-box";
-import { Marquee } from "./components/marquee-freelance";
-import { RRSS } from "./components/RRSS";
-import { Scene } from "./components/Canvas/Scene";
-import WeatherData from "./components/Weather";
-import { About } from "./components/about";
-import { LoadingBar } from "./components/LoadingBar";
-import { HandwrittenTexts } from "./components/Text-Handwritten";
-import { PopUpAbout } from "./components/About/PopUpAbout";
-import gsap from "gsap";
-import { useHatBackground } from "./hooks/useBackground";
-import { useHatStore } from "./stores/useHatStore";
-import { useScrollDetector } from "./hooks/useScrollDetector";
-import { useScrollStore } from "./stores/useScroll";
-import { usePreloader } from "./stores/usePreloader";
-import RotatingText from "./components/RotatingText";
-import { usePopupStore } from "./stores/usePopUp";
-import { getClickCount } from "./utils/getClickCount";
-import { Count } from "./components/count";
-
+import { useEffect, useRef, useState } from 'react';
+import { DialogBox } from './components/dialog-box';
+import { Marquee } from './components/marquee-freelance';
+import { RRSS } from './components/RRSS';
+import { Scene } from './components/Canvas/Scene';
+import WeatherData from './components/Weather';
+import { About } from './components/about';
+import { LoadingBar } from './components/LoadingBar';
+import { HandwrittenTexts } from './components/Text-Handwritten';
+import { PopUpAbout } from './components/About/PopUpAbout';
+import gsap from 'gsap';
+import { useHatBackground } from './hooks/useBackground';
+import { useHatStore } from './stores/useHatStore';
+import { useScrollDetector } from './hooks/useScrollDetector';
+import { useScrollStore } from './stores/useScroll';
+import { usePreloader } from './stores/usePreloader';
+import RotatingText from './components/RotatingText';
+import { usePopupStore } from './stores/usePopUp';
+import { getClickCount } from './utils/getClickCount';
+import { Count } from './components/count';
 
 function App() {
   const [dialogText, setDialogText] = useState(null);
@@ -31,56 +30,59 @@ function App() {
 
   useEffect(() => {
     if (!isScrolling || isPopUpOpen) return;
-    setDialogText('Nope, everything is here! 🙃')
+    setDialogText(
+      "Nope, everything is here! <span class='inline-block text-xl'>🙃</span>"
+    );
     setTimeout(() => setDialogText(''), 1800);
-  }, [isScrolling, isPopUpOpen])
+  }, [isScrolling, isPopUpOpen]);
 
   useEffect(() => {
     if (isLoading) return;
-    gsap.to(".main-container", {
+    gsap.to('.main-container', {
       background: getGradientBackground(hatName),
       duration: 1,
-      ease: "power4.in",
+      ease: 'power4.in',
     });
   }, [getGradientBackground, hatName, isLoading]);
 
   useEffect(() => {
     if (isLoading) return;
     gsap.fromTo(
-      ".rrss",
+      '.rrss',
       { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, duration: 1, ease: "power3.out", delay: 0.8 }
+      { opacity: 1, y: 0, duration: 1, ease: 'power3.out', delay: 0.8 }
     );
     gsap.fromTo(
-      ".handwrittenTexts",
+      '.handwrittenTexts',
       { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, duration: 1, ease: "power3.out", delay: 1.1 }
+      { opacity: 1, y: 0, duration: 1, ease: 'power3.out', delay: 1.1 }
     );
     gsap.fromTo(
-      ".about",
+      '.about',
       { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, duration: 1, ease: "power3.out", delay: 1.5 }
+      { opacity: 1, y: 0, duration: 1, ease: 'power3.out', delay: 1.5 }
     );
     gsap.fromTo(
-      ".weather",
+      '.weather',
       { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, duration: 1, ease: "power3.out", delay: 1.5 }
+      { opacity: 1, y: 0, duration: 1, ease: 'power3.out', delay: 1.5 }
     );
-
   }, [isLoading]);
-
 
   useEffect(() => {
     getClickCount();
-    console.log("%c❤️ SITE MADE WITH LOVE BY FRANCISCO AGUSTIN ❤️", "background-color: #047692; color: white; padding: 20px;");
-  }, [])
+    console.log(
+      '%c❤️ SITE MADE WITH LOVE BY FRANCISCO AGUSTIN ❤️',
+      'background-color: #047692; color: white; padding: 20px;'
+    );
+  }, []);
 
   return (
     <div className={`main-container h-screen ${isLoading && 'bg-[#101720]'}`}>
       <Scene setDialogText={setDialogText} />
       {isLoading && (
         <>
-          <div className="w-full inset-0 absolute flex items-center justify-center">
+          <div className="absolute inset-0 flex w-full items-center justify-center">
             <LoadingBar />
             <RotatingText />
           </div>
@@ -90,23 +92,23 @@ function App() {
       {!isLoading && (
         <>
           <Marquee />
-          <div className="handwrittenTexts absolute z-50 top-0 w-full">
+          <div className="handwrittenTexts absolute top-0 z-50 w-full">
             <HandwrittenTexts />
           </div>
           <PopUpAbout hatName={hatName} />
-          <div className="about absolute lg:top-6 top-4 lg:left-2 -left-4 ">
+          <div className="about absolute -left-4 top-4 lg:left-2 lg:top-6">
             <About setDialogText={setDialogText} />
           </div>
           <div className="rrss">
             <RRSS setDialogText={setDialogText} />
           </div>
-          <div className="weather absolute lg:right-16 right-3.5 4xl:right-[2%] top-8 4xl:top-40 z-30">
+          <div className="weather absolute right-3.5 top-8 z-30 lg:right-16 4xl:right-[2%] 4xl:top-40">
             <WeatherData setDialogText={setDialogText} hatName={hatName} />
           </div>
-          <div className="absolute bottom-0 !z-10 w-full pointer-events-none flex items-center justify-center">
+          <div className="pointer-events-none absolute bottom-0 !z-10 flex w-full items-center justify-center">
             <Count />
           </div>
-          <div className="absolute -right-[8.7%] top-1/2 -rotate-90 select-none ">
+          <div className="absolute -right-[8.7%] top-1/2 -rotate-90 select-none">
             <p className="text-xs text-white opacity-45">
               Francisco Agustin © 2025 - All rights reserved.
             </p>
@@ -114,8 +116,7 @@ function App() {
           {dialogText && <DialogBox text={dialogText} />}
         </>
       )}
-
-    </div >
+    </div>
   );
 }
 
