@@ -13,13 +13,13 @@ export const PopUpAbout = ({ hatName }) => {
     if (popupRef.current) {
       // Animate to the target position
       gsap.to(popupRef.current, {
-        top: '0.5rem', // Tailwind top-6
-        left: '0.5rem', // Tailwind left-2
-        scale: 0, // Optional: Shrink effect
-        opacity: 0, // Fade out
-        duration: 0.5, // Animation duration in seconds
+        top: '0.5rem',
+        left: '0.5rem',
+        scale: 0,
+        opacity: 0,
+        duration: 0.5,
         onComplete: () => {
-          closePopUp(); // Hide the popup after animation
+          closePopUp();
         },
       });
     }
@@ -27,7 +27,6 @@ export const PopUpAbout = ({ hatName }) => {
 
   const handleClickOutside = (e) => {
     if (popupRef.current && !popupRef.current.contains(e.target)) {
-      // closePopUp();
       closePopup();
     }
   };
@@ -58,7 +57,7 @@ export const PopUpAbout = ({ hatName }) => {
         >
           <IconCross
             className="absolute right-2 top-2 z-50 cursor-pointer"
-            onClick={closePopUp}
+            onClick={closePopup}
           />
           <div className="relative mx-4 flex min-h-full flex-col gap-1 pb-1 pt-2.5 md:flex-row lg:mr-8 lg:gap-4 4xl:justify-between">
             <div className="hidden flex-col justify-end gap-3 text-black md:flex md:w-[390px] lg:w-[440px] 4xl:flex-1">
