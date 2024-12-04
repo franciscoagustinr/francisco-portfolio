@@ -1,14 +1,14 @@
-import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore"; // Cambia a Firestore
+import { initializeApp } from 'firebase/app';
+import { getFirestore } from 'firebase/firestore'; // Cambia a Firestore
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAH2GqiWqePOTQRaw9M-VS3WMogA68ruxI",
-  authDomain: "franciscoagustin-portfolio.firebaseapp.com",
-  projectId: "franciscoagustin-portfolio",
-  storageBucket: "franciscoagustin-portfolio.firebasestorage.app",
-  messagingSenderId: "686754198370",
-  appId: "1:686754198370:web:9d954f08268c29559b723b",
-  measurementId: "G-B4KM3FTL6M",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
 };
 
 const app = initializeApp(firebaseConfig);
