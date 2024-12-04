@@ -1,5 +1,5 @@
 import React from 'react';
-import { Works } from '../../utils/Works';
+import { Works } from '../../utils/works';
 import { useMousePosition } from '../../utils/mousePosition';
 import { useHatBackground } from '../../hooks/useBackground';
 
