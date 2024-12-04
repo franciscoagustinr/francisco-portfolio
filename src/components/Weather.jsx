@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { GetWeather } from '../utils/GetWeather';
+import { GetWeather } from '../utils/getWeather';
 import gsap from 'gsap';
 import ConfettiExplosion from 'react-confetti-explosion';
 import { useConfettiStore } from '../stores/useTriggerConfetti-Talk';

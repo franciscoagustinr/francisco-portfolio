@@ -13,7 +13,7 @@ import { usePopupStore } from '../../stores/usePopUp';
 import { incrementCounter } from '../../utils/incrementCounter';
 import { Howl } from 'howler';
 
-export function Francisco({ props, setDialogText }) {
+export const Francisco = ({ props, setDialogText }) => {
   const { nodes, materials } = useGLTF('/models/F-model7.glb');
   const hats = useHats(nodes, materials);
   const hatNames = Object.keys(hats);
@@ -562,6 +562,6 @@ export function Francisco({ props, setDialogText }) {
       </group>
     </animated.group>
   );
-}
+};
 
 useGLTF.preload('/models/F-model7.glb');

@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
-import { DialogBox } from './components/dialog-box';
-import { Marquee } from './components/marquee-freelance';
+import { DialogBox } from './components/DialogBox';
+import { Marquee } from './components/Marquee';
 import { RRSS } from './components/RRSS';
-import { Scene } from './components/Canvas/Scene';
+import { Scene } from './components/canvas/Scene';
 import WeatherData from './components/Weather';
-import { About } from './components/about';
+import { About } from './components/About';
 import { LoadingBar } from './components/LoadingBar';
-import { HandwrittenTexts } from './components/Text-Handwritten';
-import { PopUpAbout } from './components/About/PopUpAbout';
+import { HandwrittenTexts } from './components/TextHandwritten';
+import { PopUpAbout } from './components/about/PopUpAbout';
 import gsap from 'gsap';
 import { useHatBackground } from './hooks/useBackground';
 import { useHatStore } from './stores/useHatStore';
@@ -17,7 +17,7 @@ import { usePreloader } from './stores/usePreloader';
 import RotatingText from './components/RotatingText';
 import { usePopupStore } from './stores/usePopUp';
 import { getClickCount } from './utils/getClickCount';
-import { Count } from './components/count';
+import { Count } from './components/Count';
 
 function App() {
   const [dialogText, setDialogText] = useState(null);

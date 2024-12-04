@@ -3,8 +3,7 @@ import { Canvas } from '@react-three/fiber';
 
 import { Center, ContactShadows, Environment, Float } from '@react-three/drei';
 import { TextTitle } from './Text';
-import { Francisco } from './francisco';
-// import { SplineModels } from "./spline";
+import { Francisco } from './Francisco';
 import { usePreloader } from '../../stores/usePreloader';
 
 export const Scene = ({ setDialogText }) => {
@@ -27,9 +26,6 @@ export const Scene = ({ setDialogText }) => {
       <Suspense fallback={null}>
         <ambientLight intensity={1} position={[0, 0, 0]} />
         <Environment preset="warehouse" />
-        {/* <mesh scale={1}>
-          <SplineModels />
-        </mesh> */}
         <ContactShadows
           position={[0, -1.55, 0.15]}
           opacity={0.35}
