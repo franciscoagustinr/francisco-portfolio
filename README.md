@@ -1,4 +1,4 @@
-<h2> Welcome to my portfolio! <img src='../francisco/src/assets/francisco-photo.png' alt='Francisco'/> </h2> 
+<h2> Welcome to my portfolio! <img src='../src/assets/francisco-photo.png' alt='Francisco'/> </h2> 
 <h3>front-end developer 🚀</h3>
 
 <p>
