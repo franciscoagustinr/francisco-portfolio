@@ -106,6 +106,11 @@ function App() {
           <div className="absolute bottom-0 !z-10 w-full pointer-events-none flex items-center justify-center">
             <Count />
           </div>
+          <div className="absolute -right-[8.7%] top-1/2 -rotate-90 select-none ">
+            <p className="text-xs text-white opacity-45">
+              Francisco Agustin © 2025 - All rights reserved.
+            </p>
+          </div>
           {dialogText && <DialogBox text={dialogText} />}
         </>
       )}
