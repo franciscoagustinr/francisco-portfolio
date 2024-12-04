@@ -3,28 +3,28 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "Karla";
-  src: url("../public/fonts/Karla-Regular.ttf") format("truetype");
+  font-family: 'Karla';
+  src: url('../public/fonts/Karla-Regular.ttf') format('truetype');
 }
 @font-face {
-  font-family: "KarlaLight";
-  src: url("../public/fonts/Karla-Light.ttf") format("truetype");
+  font-family: 'KarlaLight';
+  src: url('../public/fonts/Karla-Light.ttf') format('truetype');
 }
 @font-face {
-  font-family: "KarlaExtraBold";
-  src: url("../public/fonts/Karla-ExtraBold.ttf") format("truetype");
+  font-family: 'KarlaExtraBold';
+  src: url('../public/fonts/Karla-ExtraBold.ttf') format('truetype');
 }
 @font-face {
-  font-family: "Inter";
-  src: url("../public/fonts/Inter.ttf") format("truetype");
+  font-family: 'Inter';
+  src: url('../public/fonts/Inter.ttf') format('truetype');
 }
 @font-face {
-  font-family: "HomemadeApple";
-  src: url("../public/fonts/HomemadeApple-Regular.ttf") format("truetype");
+  font-family: 'HomemadeApple';
+  src: url('../public/fonts/HomemadeApple-Regular.ttf') format('truetype');
 }
 @font-face {
-  font-family: "RecoletaBlack";
-  src: url("../public/fonts/Recoleta-Black.ttf") format("truetype");
+  font-family: 'RecoletaBlack';
+  src: url('../public/fonts/Recoleta-Black.ttf') format('truetype');
 }
 
 @keyframes marquee {
@@ -53,7 +53,7 @@
 .dialog_box:after,
 .dialog_box:before {
   border: solid transparent;
-  content: "";
+  content: '';
   height: 0;
   width: 0;
   position: absolute;
@@ -113,31 +113,3 @@
 .appear-animation {
   animation: appearAnimation 0.2s ease forwards;
 }
-
-/* .NoneHat {
-  background: rgb(53, 190, 214);
-}
-.OktopusHat {
-  background: linear-gradient(to bottom right, #ee43be, #9e2ba8);
-}
-.BatmanHat {
-  background: linear-gradient(to bottom, #1d2167, #0f0f0f);
-}
-.ChineseHat {
-  background: linear-gradient(to bottom right, #b99c70, #8a7345);
-}
-.MickeyHat {
-  background: linear-gradient(to bottom, #bed95f, #f2ba52);
-}
-.CowboyHat {
-  background: linear-gradient(to bottom right, #f6bc4e, #f2a65e);
-}
-.SharkHat {
-  background: linear-gradient(to bottom left, #047692, #0476ff);
-} */
-
-/* .bg-talk::after {
-  content: "";
-  background: var(--bg-after);
-  transition: background 0.35s ease-in;
-} */
