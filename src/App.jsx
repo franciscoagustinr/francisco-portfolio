@@ -127,9 +127,10 @@ function App() {
           <div className="count-container pointer-events-none absolute bottom-0 !z-10 flex w-full items-center justify-center">
             <Count />
           </div>
-          <div className="absolute -right-[7.8rem] top-1/2 -rotate-90 select-none">
-            <p className="text-xs text-white opacity-45">
-              Francisco Agustin © 2025 - All rights reserved.
+          <div className="absolute -right-[3rem] top-1/2 -rotate-90 select-none">
+            <p className="font-mono text-xs text-white opacity-45">
+              ALL RIGHTS RESERVED.
+              {/* Francisco Agustin © 2025 - All rights reserved. */}
             </p>
           </div>
           {dialogText && <DialogBox text={dialogText} />}
