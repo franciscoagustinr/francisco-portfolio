@@ -18,6 +18,7 @@ import { Count } from './components/Count';
 import WeatherData from './components/Weather';
 import gsap from 'gsap';
 import RotatingText from './components/RotatingText';
+import { MusicIcon } from './components/MusicIcon';
 
 function App() {
   const [dialogText, setDialogText] = useState(null);
@@ -127,8 +128,11 @@ function App() {
           <div className="count-container pointer-events-none absolute bottom-0 !z-10 flex w-full items-center justify-center">
             <Count />
           </div>
+          <div className="absolute bottom-36 right-12 z-10">
+            <MusicIcon />
+          </div>
           <div className="absolute -right-[3rem] top-1/2 -rotate-90 select-none">
-            <p className="font-mono text-xs text-white opacity-45">
+            <p className="font-mono text-xs text-white opacity-0">
               ALL RIGHTS RESERVED.
               {/* Francisco Agustin © 2025 - All rights reserved. */}
             </p>
