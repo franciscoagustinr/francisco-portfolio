@@ -68,9 +68,9 @@ export const Count = () => {
   return (
     <div
       ref={countIndicatorContainerRef}
-      className="relative m-2 mb-20 w-fit min-w-[270px] select-none rounded-md bg-white bg-opacity-50 px-2 py-1 md:mb-4"
+      className="shiny-hover group relative m-2 mb-20 w-fit min-w-[270px] scale-125 select-none rounded-lg border border-black bg-white bg-opacity-50 p-2.5 px-2 py-1 shadow-sm duration-200 hover:scale-150 md:mb-4"
     >
-      <p className="font-KarlaLight text-base">
+      <p className="font-Karla text-base">
         Times people changed my look:
         <span className="countIndicator ml-1.5 inline-block text-center font-RecoletaBlack text-base tracking-wide lg:text-lg">
           {clickCount !== null && splitTextIntoLetters(clickCount.toString())}

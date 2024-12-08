@@ -141,7 +141,7 @@ function App() {
           <div className="weather absolute right-3.5 top-8 z-30 lg:right-16 4xl:right-[2%] 4xl:top-40">
             <WeatherData setDialogText={setDialogText} hatName={hatName} />
           </div>
-          <div className="count-container pointer-events-none absolute bottom-0 !z-10 flex w-full items-center justify-center">
+          <div className="count-container absolute bottom-0 !z-10 flex w-full items-center justify-center">
             <Count />
           </div>
           <div
