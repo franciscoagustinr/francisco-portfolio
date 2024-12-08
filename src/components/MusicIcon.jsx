@@ -79,7 +79,7 @@ export const MusicIcon = ({ setDialogText }) => {
     <>
       <img
         src={!isMusicPlaying ? SoundOff : SoundOn}
-        className={`w-16 cursor-pointer ${isMusicPlaying && 'animate-pulse'} transition-all hover:scale-125`}
+        className={`w-16 cursor-pointer ${isMusicPlaying && 'animate-pulse'} transition-all hover:scale-125 active:scale-150`}
         alt="Music On Icon"
         onClick={toggleMusic}
         onMouseEnter={() => {
