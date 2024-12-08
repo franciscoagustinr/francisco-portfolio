@@ -6,7 +6,7 @@ import { Howl } from 'howler';
 import { useMusicPlaying } from '../stores/useMusicPlaying';
 import gsap from 'gsap';
 
-export const MusicIcon = () => {
+export const MusicIcon = ({ setDialogText }) => {
   const isMusicPlaying = useMusicPlaying((state) => state.isMusicPlaying);
   const playMusic = useMusicPlaying((state) => state.playMusic);
   const stopMusic = useMusicPlaying((state) => state.stopMusic);
@@ -82,6 +82,14 @@ export const MusicIcon = () => {
         className={`w-16 cursor-pointer ${isMusicPlaying && 'animate-pulse'} transition-all hover:scale-125`}
         alt="Music On Icon"
         onClick={toggleMusic}
+        onMouseEnter={() => {
+          setDialogText(
+            "Let the good vibes play! <span class='text-2xl inline-block animate-shake'>🕺🏻</span>"
+          );
+        }}
+        onMouseLeave={() => {
+          setDialogText('');
+        }}
       />
 
       {isMusicPlaying && (

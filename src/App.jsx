@@ -134,7 +134,7 @@ function App() {
             <Count />
           </div>
           <div className="music-icon absolute bottom-36 right-12 z-10">
-            <MusicIcon />
+            <MusicIcon setDialogText={setDialogText} />
           </div>
           <div className="absolute -right-[3rem] top-1/2 -rotate-90 select-none">
             <p className="font-mono text-xs text-white opacity-0">
