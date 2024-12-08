@@ -12,6 +12,7 @@ import gsap from 'gsap';
 import { usePopupStore } from '../../stores/usePopUp';
 import { incrementCounter } from '../../utils/incrementCounter';
 import { Howl } from 'howler';
+import { useMusicPlaying } from '../../stores/useMusicPlaying';
 
 export const Francisco = ({ props, setDialogText }) => {
   const { nodes, materials } = useGLTF('/models/F-model7.glb');
@@ -33,6 +34,7 @@ export const Francisco = ({ props, setDialogText }) => {
   const isScrolling = useScrollStore((state) => state.isScrolling);
   const isLoading = usePreloader((state) => state.isLoading);
   const isPopUpOpen = usePopupStore((state) => state.isPopUpOpen);
+  const isMusicPlaying = useMusicPlaying((state) => state.isMusicPlaying);
 
   const playSound = () => {
     const sound = new Howl({
@@ -69,7 +71,15 @@ export const Francisco = ({ props, setDialogText }) => {
 
   const { scale, position, rotation } = useSpring({
     scale: clicked ? [0.95, 0.95, 0.95] : [1, 1, 1],
-    position: clicked ? [0, 0, -0.05] : [0, 0, 0],
+    position: clicked
+      ? [0, 0, -0.05]
+      : isMusicPlaying
+        ? [
+            Math.sin(Date.now() / 500) * 0.2, // Movimiento lateral con una oscilación
+            0,
+            0,
+          ]
+        : [0, 0, 0],
     // rotation: clicked ? [-0.18, 0, 0] : [0, 0, 0],
     rotation: clicked
       ? [-0.18, 0, 0]
@@ -77,7 +87,13 @@ export const Francisco = ({ props, setDialogText }) => {
         ? [0, Math.PI / 0.5, 0]
         : isScrolling && !isPopUpOpen
           ? [0, Math.sin(Date.now() / 100) * 0.4, 0]
-          : [0, 0, 0],
+          : isMusicPlaying
+            ? [
+                0,
+                0,
+                Math.sin(Date.now() / 500) * 0.1, // Inclinación pequeña al final de cada movimiento
+              ]
+            : [0, 0, 0],
     config: { tension: 250, friction: 20 },
     onRest: () => {
       if (clicked) {
