@@ -36,6 +36,14 @@ module.exports = {
         load: {
           "0%": { width: '0%' },
           "100%": { width: '100%' },
+        },
+        shine: {
+          " 0% ": {
+            left: "-110%",
+          },
+          "100%": {
+            left: "110%",
+          }
         }
       },
       animation: {
@@ -43,6 +51,7 @@ module.exports = {
         wavingHand: "wave 1.5s ease-in-out infinite",
         shake: "shake 0.8s linear infinite",
         loader: "load linear infinite",
+        shine: "shine linear infinite",
       },
       cursor: {
         contact:

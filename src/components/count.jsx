@@ -68,14 +68,19 @@ export const Count = () => {
   return (
     <div
       ref={countIndicatorContainerRef}
-      className="shiny-hover group relative m-2 mb-20 w-fit min-w-[270px] scale-125 select-none rounded-lg border border-black bg-white bg-opacity-50 p-2.5 px-2 py-1 shadow-sm duration-200 hover:scale-150 md:mb-4"
+      className="relative m-2 mb-20 w-fit min-w-[270px] scale-125 select-none rounded-lg border border-black bg-white bg-opacity-50 p-2.5 px-2 py-1 shadow-sm duration-200 hover:scale-150 md:mb-4"
     >
-      <p className="font-Karla text-base">
-        Times people changed my look:
-        <span className="countIndicator ml-1.5 inline-block text-center font-RecoletaBlack text-base tracking-wide lg:text-lg">
-          {clickCount !== null && splitTextIntoLetters(clickCount.toString())}
-        </span>
-      </p>
+      <div className="relative h-full w-full overflow-visible">
+        <p className="font-Karla text-base">
+          Times people changed my look:
+          <span className="ml-1.5 inline-block text-center font-RecoletaBlack text-base tracking-wide lg:text-lg">
+            {clickCount !== null && splitTextIntoLetters(clickCount.toString())}
+          </span>
+        </p>
+      </div>
+      <div className="pointer-events-none absolute left-0 top-0 h-full w-full overflow-hidden rounded-lg">
+        <div className="absolute left-[-100%] top-0 h-full w-[30%] skew-x-[-20deg] animate-[shine_5s_infinite] bg-gradient-to-r from-white/20 via-white/60 to-white/20"></div>
+      </div>
     </div>
   );
 };
