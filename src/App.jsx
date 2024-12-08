@@ -54,7 +54,7 @@ function App() {
       { opacity: 1, y: 0, duration: 1, ease: 'power3.out', delay: 0.8 }
     );
     gsap.fromTo(
-      '.handwrittenTexts',
+      '.handwritten-texts',
       { opacity: 0, y: 20 },
       { opacity: 1, y: 0, duration: 1, ease: 'power3.out', delay: 1.1 }
     );
@@ -87,6 +87,11 @@ function App() {
         ease: 'power2.out',
       }
     );
+    gsap.fromTo(
+      '.music-icon',
+      { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 1, ease: 'power3.out', delay: 1 }
+    );
   }, [isLoading]);
 
   useEffect(() => {
@@ -112,7 +117,7 @@ function App() {
       {!isLoading && (
         <>
           <Marquee />
-          <div className="handwrittenTexts absolute top-0 z-50 w-full">
+          <div className="handwritten-texts absolute top-0 z-50 w-full">
             <HandwrittenTexts />
           </div>
           <PopUpAbout hatName={hatName} />
@@ -128,7 +133,7 @@ function App() {
           <div className="count-container pointer-events-none absolute bottom-0 !z-10 flex w-full items-center justify-center">
             <Count />
           </div>
-          <div className="absolute bottom-36 right-12 z-10">
+          <div className="music-icon absolute bottom-36 right-12 z-10">
             <MusicIcon />
           </div>
           <div className="absolute -right-[3rem] top-1/2 -rotate-90 select-none">
