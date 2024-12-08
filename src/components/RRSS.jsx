@@ -20,7 +20,7 @@ export const RRSS = ({ setDialogText }) => {
   const playHoverSound = () => {
     const sound = new Howl({
       src: ['src/assets/elastic.mp3'],
-      volume: 0.02,
+      volume: 0.06,
     });
     sound.play();
   };

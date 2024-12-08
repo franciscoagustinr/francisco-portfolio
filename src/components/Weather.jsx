@@ -55,7 +55,7 @@ const WeatherData = ({ setDialogText, hatName }) => {
   const playConfettiSound = () => {
     const sound = new Howl({
       src: ['src/assets/woo-hoo.mp3'],
-      volume: 0.02,
+      volume: 0.07,
     });
     sound.play();
   };

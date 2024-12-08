@@ -20,10 +20,8 @@ export const MusicIcon = ({ setDialogText }) => {
       stopMusic();
     } else {
       const newSound = new Howl({
-        volume: 0.03,
+        volume: 0.07,
         src: ['src/assets/home-music.mp3'],
-        // src: ['src/assets/lofi-guitar.mp3'],
-        // volume: 0.2,
         loop: true,
         rate: 0.9,
       });
