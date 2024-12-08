@@ -212,7 +212,7 @@ export const Francisco = ({ props, setDialogText }) => {
               });
               setTimeout(() => {
                 setDialogText(
-                  "Thanks for your visit! <span class='inline-block text-2xl'>✨🙂</span> "
+                  "Welcome! <span class='inline-block text-2xl'>✨🙂</span> "
                 );
                 influences[0] = 1;
                 influences[1] = 1;
