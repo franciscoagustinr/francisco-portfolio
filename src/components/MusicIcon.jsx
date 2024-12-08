@@ -42,7 +42,7 @@ export const MusicIcon = ({ setDialogText }) => {
 
         // Animación principal (movimiento y ondulación)
         tl.to(note, {
-          y: -90,
+          y: -50,
           duration: 2,
           ease: 'power1.in',
           opacity: 1,
@@ -56,7 +56,7 @@ export const MusicIcon = ({ setDialogText }) => {
 
         // Transición final (desvanecimiento y reducción de escala)
         tl.to(note, {
-          y: -105,
+          y: -60,
           scale: 0,
           opacity: 0,
           duration: 0.5,
@@ -98,13 +98,13 @@ export const MusicIcon = ({ setDialogText }) => {
             ref={noteRef}
             src={MusicalNote}
             alt="Musical Note Icon"
-            className="pointer-events-none absolute -left-4 bottom-20 w-7 opacity-0"
+            className="pointer-events-none absolute -left-4 bottom-20 w-5 opacity-0"
           />
           <img
             ref={noteTwoRef}
             src={MusicalNote}
             alt="Musical Note Icon"
-            className="pointer-events-none absolute bottom-16 left-10 w-7 opacity-0"
+            className="pointer-events-none absolute bottom-16 left-10 w-5 opacity-0"
           />
         </>
       )}
