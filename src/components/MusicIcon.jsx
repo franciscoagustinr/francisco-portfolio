@@ -79,7 +79,7 @@ export const MusicIcon = () => {
     <>
       <img
         src={!isMusicPlaying ? SoundOff : SoundOn}
-        className={`w-16 cursor-pointer ${isMusicPlaying && 'animate-pulse'} `}
+        className={`w-16 cursor-pointer ${isMusicPlaying && 'animate-pulse'} transition-all hover:scale-125`}
         alt="Music On Icon"
         onClick={toggleMusic}
       />
