@@ -39,14 +39,14 @@ export const Francisco = ({ props, setDialogText }) => {
   const playClickSound = () => {
     const sound = new Howl({
       src: ['src/assets/pop.mp3'],
-      volume: 0.5,
+      volume: 0.05,
     });
     sound.play();
   };
   const playHoverSound = () => {
     const sound = new Howl({
       src: ['src/assets/bubble-pop-avatar.mp3'],
-      volume: 0.05,
+      volume: 0.02,
     });
     sound.play();
   };
