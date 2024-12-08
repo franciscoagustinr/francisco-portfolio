@@ -30,12 +30,12 @@ export const About = ({ setDialogText }) => {
         <img
           src={FranciscoPhoto}
           alt="Francisco"
-          className="opacity-1 relative !w-24 select-none transition-all duration-300 ease-in-out group-hover:opacity-0 4xl:top-12 4xl:!w-[19rem]"
+          className="opacity-1 relative -top-3 !w-28 select-none transition-all duration-300 ease-in-out group-hover:opacity-0 4xl:top-12 4xl:!w-[19rem]"
         />
         <img
           src={FranciscoFunPhoto}
           alt="Francisco"
-          className="relative -top-[5.5rem] left-2 !w-24 select-none opacity-0 transition-all duration-300 ease-in-out group-hover:scale-125 group-hover:opacity-100 md:-top-[5.5rem] md:left-2 lg:-top-[5.8rem] 4xl:-top-[15rem] 4xl:left-8 4xl:!w-72"
+          className="relative -top-[5.5rem] left-2 !w-24 select-none opacity-0 transition-all duration-300 ease-in-out group-hover:scale-150 group-hover:opacity-100 md:-top-[5.5rem] md:left-2 lg:-top-[7rem] 4xl:-top-[15rem] 4xl:left-8 4xl:!w-72"
         />
       </div>
     </div>
