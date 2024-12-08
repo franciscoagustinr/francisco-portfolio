@@ -17,9 +17,18 @@ export const RRSS = ({ setDialogText }) => {
   ];
   const isScrolling = useScrollStore((state) => state.isScrolling);
 
+  const playHoverSound = () => {
+    const sound = new Howl({
+      src: ['src/assets/elastic.mp3'],
+      volume: 0.02,
+    });
+    sound.play();
+  };
+
   const initHoverEffect = (el) => {
     let hover = false;
     let x, y, width;
+    let hasPlayedSound = false;
 
     const calculatePosition = () => {
       gsap.set(el, { x: 0, y: 0, scale: 1 });
@@ -52,10 +61,16 @@ export const RRSS = ({ setDialogText }) => {
       gsap.to(el, {
         x: (mouseX - x) * 0.5,
         y: (mouseY - y) * 0.4,
-        scale: 1.4,
+        scale: 1.5,
         rotate: el === el.coffeeRef ? '-' : '10deg',
         ease: 'power1',
         duration: 0.2,
+        onStart: () => {
+          if (!hasPlayedSound) {
+            playHoverSound(); // Reproduce el sonido solo la primera vez
+            hasPlayedSound = true;
+          }
+        },
       });
     };
 
@@ -67,6 +82,9 @@ export const RRSS = ({ setDialogText }) => {
         rotate: '0deg',
         ease: 'elastic.out(1.2, 0.4)',
         duration: 0.5,
+        onStart: () => {
+          hasPlayedSound = false; // Reinicia la bandera para permitir que el sonido se reproduzca nuevamente
+        },
       });
       el.style.zIndex = 1;
     };

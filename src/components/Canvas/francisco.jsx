@@ -36,10 +36,17 @@ export const Francisco = ({ props, setDialogText }) => {
   const isPopUpOpen = usePopupStore((state) => state.isPopUpOpen);
   const isMusicPlaying = useMusicPlaying((state) => state.isMusicPlaying);
 
-  const playSound = () => {
+  const playClickSound = () => {
     const sound = new Howl({
       src: ['src/assets/pop.mp3'],
       volume: 0.5,
+    });
+    sound.play();
+  };
+  const playHoverSound = () => {
+    const sound = new Howl({
+      src: ['src/assets/bubble-pop-avatar.mp3'],
+      volume: 0.05,
     });
     sound.play();
   };
@@ -48,7 +55,7 @@ export const Francisco = ({ props, setDialogText }) => {
     if (isLoading || clicked) return;
     e.stopPropagation();
     incrementCounter();
-    playSound();
+    playClickSound();
     const nextHatIndex = (currentHatIndex + 1) % hatNames.length;
     setCurrentHatIndex(nextHatIndex);
     const nextHatName = hatNames[nextHatIndex];
@@ -114,6 +121,7 @@ export const Francisco = ({ props, setDialogText }) => {
 
     if (hovered) {
       window.addEventListener('mousemove', handleMouseMove);
+      playHoverSound();
     } else {
       document.body.style.cursor = 'auto';
     }

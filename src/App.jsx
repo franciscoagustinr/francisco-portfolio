@@ -102,6 +102,14 @@ function App() {
     );
   }, []);
 
+  const playHoverSound = () => {
+    const sound = new Howl({
+      src: ['src/assets/bubble-pop-buttons.mp3'],
+      volume: 0.005,
+    });
+    sound.play();
+  };
+
   return (
     <div className={`main-container h-screen ${isLoading && 'bg-[#101720]'}`}>
       <Scene setDialogText={setDialogText} />
@@ -121,7 +129,10 @@ function App() {
             <HandwrittenTexts />
           </div>
           <PopUpAbout hatName={hatName} />
-          <div className="about absolute -left-4 top-4 lg:left-2 lg:top-6">
+          <div
+            onMouseEnter={playHoverSound}
+            className="about absolute -left-4 top-4 lg:left-2 lg:top-6"
+          >
             <About setDialogText={setDialogText} />
           </div>
           <div className="rrss">
@@ -133,7 +144,10 @@ function App() {
           <div className="count-container pointer-events-none absolute bottom-0 !z-10 flex w-full items-center justify-center">
             <Count />
           </div>
-          <div className="music-icon absolute bottom-36 right-12 z-10">
+          <div
+            onMouseEnter={playHoverSound}
+            className="music-icon absolute bottom-36 right-12 z-10"
+          >
             <MusicIcon setDialogText={setDialogText} />
           </div>
           <div className="absolute -right-[3rem] top-1/2 -rotate-90 select-none">

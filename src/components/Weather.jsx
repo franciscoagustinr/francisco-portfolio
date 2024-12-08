@@ -45,8 +45,24 @@ const WeatherData = ({ setDialogText, hatName }) => {
                 : ''
       : null;
 
+  const playHoverSound = () => {
+    const sound = new Howl({
+      src: ['src/assets/bubble-pop-buttons.mp3'],
+      volume: 0.005,
+    });
+    sound.play();
+  };
+  const playConfettiSound = () => {
+    const sound = new Howl({
+      src: ['src/assets/woo-hoo.mp3'],
+      volume: 0.02,
+    });
+    sound.play();
+  };
+
   const handleTriggerConfetti = () => {
     setTriggerConfetti(true);
+    playConfettiSound();
     setTimeout(() => setTriggerConfetti(false), 1500); // Duración del confeti
   };
 
@@ -97,11 +113,12 @@ const WeatherData = ({ setDialogText, hatName }) => {
               <a
                 href="mailto:rodriguezfranciscoa@hotmail.com?subject=Wanna talk!"
                 className="group"
-                onMouseEnter={() =>
+                onMouseEnter={() => (
                   setDialogText(
                     "<span class='text-2xl inline-block'>🎉</span> <span class='text-2xl inline-block animate-shake'>🎈</span> YAY! <span class='text-2xl inline-block animate-shake'>🎈</span><span class='text-2xl inline-block'>🎉</span>"
-                  )
-                }
+                  ),
+                  playHoverSound()
+                )}
                 onMouseLeave={() => setDialogText('')}
                 onClick={handleTriggerConfetti}
               >
