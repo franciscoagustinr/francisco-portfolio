@@ -68,9 +68,9 @@ export const Count = () => {
   return (
     <div
       ref={countIndicatorContainerRef}
-      className="relative m-2 mb-20 w-fit min-w-[270px] scale-125 select-none rounded-lg border border-black bg-white bg-opacity-50 p-2.5 px-2 py-1 shadow-sm duration-200 hover:scale-150 md:mb-4"
+      className="relative z-30 m-2 mb-20 w-fit min-w-[270px] scale-125 select-none rounded-lg border border-black bg-white bg-opacity-50 p-2.5 px-2 py-1 shadow-sm duration-200 hover:scale-150 md:mb-4"
     >
-      <div className="relative h-full w-full overflow-visible">
+      <div className="relative h-full overflow-visible">
         <p className="font-Karla text-base">
           Times people changed my look:
           <span className="ml-1.5 inline-block text-center font-RecoletaBlack text-base tracking-wide lg:text-lg">

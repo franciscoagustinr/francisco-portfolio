@@ -118,13 +118,13 @@ export const RRSS = ({ setDialogText }) => {
   return (
     <>
       <div
-        className={`absolute bottom-2 right-2 z-40 lg:bottom-4 lg:right-14 4xl:bottom-12 4xl:right-20`}
+        className={`absolute bottom-2 right-2 z-50 lg:bottom-4 lg:right-14 4xl:bottom-12 4xl:right-20`}
       >
         <img
           ref={linkedinRef}
           src={LinkedinLogo}
           alt="github-logo"
-          className="h-auto w-12 cursor-pointer select-none drop-shadow-lg md:w-14 4xl:w-44"
+          className="z-50 h-auto w-12 cursor-pointer select-none drop-shadow-lg md:w-14 4xl:w-44"
           onClick={() => {
             window.open(
               'https://www.linkedin.com/in/franciscoagustinr/',
@@ -141,12 +141,12 @@ export const RRSS = ({ setDialogText }) => {
           }}
         />
       </div>
-      <div className="absolute bottom-2 right-16 md:right-20 lg:bottom-4 lg:right-36 4xl:bottom-12 4xl:right-80">
+      <div className="absolute bottom-2 right-16 z-50 md:right-20 lg:bottom-4 lg:right-36 4xl:bottom-12 4xl:right-80">
         <img
           ref={githubRef}
           src={GithubLogo}
           alt="github-logo"
-          className="h-auto w-12 cursor-pointer select-none drop-shadow-lg md:w-14 4xl:w-44"
+          className="z-50 h-auto w-12 cursor-pointer select-none drop-shadow-lg md:w-14 4xl:w-44"
           onClick={() => {
             window.open('https://github.com/franciscoagustinr', '_blank');
           }}
@@ -160,12 +160,12 @@ export const RRSS = ({ setDialogText }) => {
           }}
         />
       </div>
-      <div className="absolute bottom-2 left-1 lg:bottom-3 lg:left-5 4xl:bottom-12 4xl:left-14">
+      <div className="absolute bottom-2 left-1 z-50 lg:bottom-3 lg:left-5 4xl:bottom-12 4xl:left-14">
         <img
           ref={coffeeRef}
           src={CoffeeCup}
           alt="Coffee Cup"
-          className="w-12 -rotate-12 cursor-pointer select-none drop-shadow-lg md:w-16 lg:w-20 4xl:w-56"
+          className="z-50 w-12 -rotate-12 cursor-pointer select-none drop-shadow-lg md:w-16 lg:w-20 4xl:w-56"
           onClick={() => {
             window.open('https://cafecito.app/franciscoagustinr', '_blank');
           }}
