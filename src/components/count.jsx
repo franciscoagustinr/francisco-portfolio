@@ -9,6 +9,7 @@ import { useHatStore } from '../stores/useHatStore';
 export const Count = () => {
   const [clickCount, setClickCount] = useState(null);
   const countIndicatorContainerRef = useRef();
+  const [isAnimatingCount, setIsAnimatingCount] = useState(false);
   const isLoading = usePreloader((state) => state.isLoading);
   const { hatName } = useHatStore();
   const isScrolling = useScrollStore((state) => state.isScrolling);
@@ -55,6 +56,9 @@ export const Count = () => {
         },
       });
     });
+    setIsAnimatingCount(true);
+    const timeout = setTimeout(() => setIsAnimatingCount(false), 1000);
+    return () => clearTimeout(timeout);
   }, [hatName, isLoading]);
 
   const splitTextIntoLetters = (text) => {
@@ -68,12 +72,14 @@ export const Count = () => {
   return (
     <div
       ref={countIndicatorContainerRef}
-      className="relative z-30 m-2 mb-20 w-fit min-w-[270px] scale-125 select-none rounded-lg border border-black bg-white bg-opacity-50 p-2.5 px-2 py-1 shadow-sm duration-200 hover:scale-150 md:mb-4"
+      className={`relative z-30 m-2 mb-20 w-fit min-w-[290px] scale-125 select-none rounded-lg border border-black bg-white bg-opacity-50 px-2.5 py-1 pr-0.5 shadow-md duration-200 hover:scale-150 md:mb-4 ${
+        isAnimatingCount && 'animate-ping'
+      }`}
     >
       <div className="relative h-full overflow-visible">
-        <p className="font-Karla text-base">
+        <p className="flex items-center justify-center font-Karla text-base">
           Times people changed my look:
-          <span className="ml-1.5 inline-block text-center font-RecoletaBlack text-base tracking-wide lg:text-lg">
+          <span className="mx-2 inline-block text-center font-RecoletaBlack text-base tracking-wide lg:text-lg">
             {clickCount !== null && splitTextIntoLetters(clickCount.toString())}
           </span>
         </p>
