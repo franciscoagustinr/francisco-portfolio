@@ -35,6 +35,28 @@
     transform: translateX(-50%);
   }
 }
+@keyframes marquee404 {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-30%);
+  }
+}
+@keyframes marquee404-text {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(13%);
+  }
+}
+.marquee404 {
+  animation: marquee404 20s linear infinite;
+}
+.marquee404-text {
+  animation: marquee404-text 20s linear infinite;
+}
 
 .marquee-container {
   display: flex;

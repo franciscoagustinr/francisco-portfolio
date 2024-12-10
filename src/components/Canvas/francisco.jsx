@@ -13,6 +13,7 @@ import { usePopupStore } from '../../stores/usePopUp';
 import { incrementCounter } from '../../utils/incrementCounter';
 import { Howl } from 'howler';
 import { useMusicPlaying } from '../../stores/useMusicPlaying';
+import { useError404 } from '../../stores/useError404';
 
 export const Francisco = ({ props, setDialogText }) => {
   const { nodes, materials } = useGLTF('/models/F-model7.glb');
@@ -35,6 +36,7 @@ export const Francisco = ({ props, setDialogText }) => {
   const isLoading = usePreloader((state) => state.isLoading);
   const isPopUpOpen = usePopupStore((state) => state.isPopUpOpen);
   const isMusicPlaying = useMusicPlaying((state) => state.isMusicPlaying);
+  const isErrorPage = useError404((state) => state.isErrorPage);
 
   const playClickSound = () => {
     const sound = new Howl({
@@ -52,7 +54,7 @@ export const Francisco = ({ props, setDialogText }) => {
   };
 
   const handleAvatarClick = (e) => {
-    if (isLoading || clicked) return;
+    if (isLoading || clicked || isErrorPage) return;
     e.stopPropagation();
     incrementCounter();
     playClickSound();
@@ -177,25 +179,91 @@ export const Francisco = ({ props, setDialogText }) => {
     }
   });
 
+  // useEffect(() => {
+  //   if (avatarRef.current) {
+  //     avatarRef.current.traverse((child) => {
+  //       if (child.isMesh) {
+  //         const material = child.material;
+  //         if (material) {
+  //           // Guarda el color original
+  //           if (!material.originalColor) {
+  //             material.originalColor = material.color.clone();
+  //           }
+
+  //           // Cambia a wireframe con animación
+  //           if (isLoading) {
+  //             material.wireframe = true;
+  //             gsap.to(material.color, {
+  //               r: 0.847, // Valor equivalente al rojo de #D8FFDD
+  //               g: 1,
+  //               b: 0.867,
+  //               duration: 0,
+  //               ease: 'power2.out',
+  //             });
+  //           } else {
+  //             // Anima de vuelta al color original y desactiva wireframe al final
+  //             gsap.to(material.color, {
+  //               r: material.originalColor.r,
+  //               g: material.originalColor.g,
+  //               b: material.originalColor.b,
+  //               duration: 1.2,
+  //               ease: 'power2.in',
+  //               onComplete: () => {
+  //                 material.wireframe = false; // Desactiva wireframe al final de la animación
+  //               },
+  //             });
+  //             setTimeout(() => {
+  //               setDialogText(
+  //                 "Welcome! <span class='inline-block text-2xl'>✨🙂</span> "
+  //               );
+  //               influences[0] = 1;
+  //               influences[1] = 1;
+
+  //               setTimeout(() => {
+  //                 influences[0] = 0;
+  //                 influences[1] = 0;
+  //                 setDialogText('');
+  //               }, 1000);
+  //             }, 1300);
+  //           }
+  //         }
+  //       }
+  //     });
+  //   }
+  // }, [isLoading]);
+
   useEffect(() => {
     if (avatarRef.current) {
       avatarRef.current.traverse((child) => {
         if (child.isMesh) {
           const material = child.material;
+
           if (material) {
-            // Guarda el color original
+            // Guarda el color original si aún no está guardado
             if (!material.originalColor) {
               material.originalColor = material.color.clone();
             }
 
-            // Cambia a wireframe con animación
-            if (isLoading) {
+            if (isErrorPage) {
+              // Cambia al color original y desactiva wireframe inmediatamente
+              gsap.to(material.color, {
+                r: material.originalColor.r,
+                g: material.originalColor.g,
+                b: material.originalColor.b,
+                duration: 0.8,
+                ease: 'power2.inOut',
+                onComplete: () => {
+                  material.wireframe = false; // Desactiva wireframe
+                },
+              });
+            } else if (isLoading) {
+              // Cambia a wireframe con animación
               material.wireframe = true;
               gsap.to(material.color, {
                 r: 0.847, // Valor equivalente al rojo de #D8FFDD
                 g: 1,
                 b: 0.867,
-                duration: 0,
+                duration: 0.8,
                 ease: 'power2.out',
               });
             } else {
@@ -228,7 +296,7 @@ export const Francisco = ({ props, setDialogText }) => {
         }
       });
     }
-  }, [isLoading]);
+  }, [isLoading, isErrorPage]);
 
   return (
     <animated.group scale={scale} position={position} rotation={rotation}>
