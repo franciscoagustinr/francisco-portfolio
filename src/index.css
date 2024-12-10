@@ -108,3 +108,24 @@
 .appear-animation {
   animation: appearAnimation 0.2s ease forwards;
 }
+
+.gradient-text {
+  background: linear-gradient(-45deg, #33cfff, #00bcf5, #d84831, #de6654);
+  background-size: 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: animate 5s ease-in-out infinite;
+}
+@keyframes animate {
+  0% {
+    background-position: 0 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}

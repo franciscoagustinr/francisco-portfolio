@@ -41,7 +41,7 @@ export const Count = () => {
         x: 'random(-200, 200)',
         y: -50,
         duration: 0.8,
-        delay: 0.05,
+        delay: 0.05 * index,
         ease: 'power4.out',
         onComplete: () => {
           gsap.to(letter, {
@@ -63,7 +63,7 @@ export const Count = () => {
 
   const splitTextIntoLetters = (text) => {
     return text.split('').map((letter, index) => (
-      <span key={index} className="exploding-letter inline-block">
+      <span key={index} className="exploding-letter gradient-text inline-block">
         {letter}
       </span>
     ));
