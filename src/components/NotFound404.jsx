@@ -27,7 +27,7 @@ export const NotFound = () => {
           {` Page not found - `.repeat(30)}
         </p>
         <button
-          className="button-home-page relative top-40 z-50 rounded-xl bg-cyan-500 px-5 py-2 font-Inter text-xl tracking-tight text-white shadow-sm transition-all hover:rotate-2 hover:scale-110"
+          className="button-home-page relative top-40 z-50 rounded-xl bg-cyan-500 px-5 py-2 font-Inter text-xl tracking-tight text-white shadow-sm transition-all hover:rotate-2 hover:scale-110 active:scale-125"
           onClick={goToHome}
         >
           GO TO HOMEPAGE
