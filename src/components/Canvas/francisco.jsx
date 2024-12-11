@@ -143,7 +143,7 @@ export const Francisco = ({ props, setDialogText }) => {
     const cursorY = pointer.y; // Y normalizado entre -1 y 1
 
     // follow cursor
-    const lookAtX = (cursorX * Math.PI) / 7; // Eje Y
+    const lookAtX = (cursorX * Math.PI) / 6; // Eje Y
     const lookAtY = (cursorY * Math.PI) / -50; // Eje X
 
     // Suavizar la rotación
@@ -151,7 +151,7 @@ export const Francisco = ({ props, setDialogText }) => {
       avatarRef.current.rotation.y +=
         (lookAtX - avatarRef.current.rotation.y) * 0.1; // Interpolación suave
       avatarRef.current.rotation.x +=
-        (lookAtY - avatarRef.current.rotation.x) * 0.05; // Interpolación suave
+        (lookAtY - avatarRef.current.rotation.x) * 0.5; // Interpolación suave
     }
 
     if (objectRef.current) {
