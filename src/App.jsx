@@ -56,7 +56,7 @@ function App() {
     gsap.fromTo(
       '.handwritten-texts',
       { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, duration: 1, ease: 'power3.out', delay: 1.1 }
+      { opacity: 1, y: 0, duration: 1, ease: 'power3.out', delay: 1.2 }
     );
     gsap.fromTo(
       '.about',
@@ -67,13 +67,13 @@ function App() {
         duration: 1,
         rotation: 0,
         ease: 'power3.out',
-        delay: 1.5,
+        delay: 1.4,
       }
     );
     gsap.fromTo(
       '.weather',
       { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, duration: 1, ease: 'power3.out', delay: 1.5 }
+      { opacity: 1, y: 0, duration: 1, ease: 'power3.out', delay: 1.4 }
     );
     gsap.fromTo(
       '.count-container',
@@ -83,14 +83,14 @@ function App() {
       {
         opacity: 1,
         duration: 2,
-        delay: 2,
+        delay: 0.9,
         ease: 'power2.out',
       }
     );
     gsap.fromTo(
       '.music-icon',
       { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, duration: 1, ease: 'power3.out', delay: 1 }
+      { opacity: 1, y: 0, duration: 1, ease: 'power3.out', delay: 1.1 }
     );
   }, [isLoading]);
 
