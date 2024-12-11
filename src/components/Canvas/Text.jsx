@@ -133,10 +133,6 @@ export const TextTitle = () => {
             letterSpacing={-0.025}
             color={colors[index]}
             font="./fonts/Anton-Regular.ttf"
-            // font="./fonts/KIDOBOLD.ttf"
-            // font="./fonts/Yorkmade.otf"
-            // font="./fonts/ToronoKugelSans.otf"
-            // fillOpacity={0.2}
             fillOpacity={colors[index] !== 'black' ? 1 : 0.2}
             rotation={[0, 0, 0]}
             onPointerOver={() => handlePointerOver(index, color, setColors)}
@@ -188,8 +184,8 @@ export const TextTitle = () => {
           isMobile
             ? [0.13, 0, 0]
             : [
-                ((mousePosition.x / window.innerWidth) * 2) / 8,
-                (-(mousePosition.y / window.innerHeight) * 2) / 8,
+                (-(mousePosition.x / window.innerWidth) * 2) / 8,
+                ((mousePosition.y / window.innerHeight) * 2) / 8,
                 0,
               ]
         }
