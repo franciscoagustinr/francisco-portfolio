@@ -100,7 +100,7 @@ export const Francisco = ({ props, setDialogText }) => {
             ? [
                 0,
                 0,
-                Math.sin(Date.now() / 500) * 0.1, // Inclinación pequeña al final de cada movimiento
+                Math.sin(Date.now() / 500) * 0.13, // Inclinación pequeña al final de cada movimiento
               ]
             : [0, 0, 0],
     config: { tension: 250, friction: 20 },
