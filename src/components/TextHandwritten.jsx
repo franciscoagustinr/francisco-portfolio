@@ -3,8 +3,8 @@ import React from 'react';
 export const HandwrittenTexts = () => {
   return (
     <>
-      <div className="pointer-events-none invisible absolute top-48 z-30 animate-pulse select-none md:visible md:right-20 md:top-32 lg:right-28 4xl:top-[33rem]">
-        <div className="relative flex -rotate-45 font-HomemadeApple text-white md:-rotate-12 4xl:text-5xl">
+      <div className="pointer-events-none invisible absolute top-48 z-30 animate-pulse select-none md:visible md:right-20 md:top-32 lg:right-28 lg:top-28 2xl:right-36 2xl:top-40 4xl:top-[33rem]">
+        <div className="relative flex -rotate-45 font-HomemadeApple text-white md:-rotate-6 2xl:text-xl 4xl:text-5xl">
           stay in contact
           <svg
             fill="#fafafa"
@@ -36,8 +36,8 @@ export const HandwrittenTexts = () => {
           </svg>
         </div>
       </div>
-      <div className="pointer-events-none absolute left-12 top-32 z-30 select-none md:left-16 md:top-[8rem] lg:left-20 4xl:left-80 4xl:top-72">
-        <div className="relative flex rotate-[2deg] font-HomemadeApple text-sm text-white lg:rotate-[-4deg] lg:text-base 4xl:text-5xl">
+      <div className="pointer-events-none absolute left-12 top-32 z-30 select-none md:left-16 md:top-[7rem] lg:left-20 xl:top-[8rem] 2xl:left-28 2xl:top-[11rem] 4xl:left-80 4xl:top-72">
+        <div className="relative flex rotate-[2deg] font-HomemadeApple text-sm text-white md:rotate-[-6deg] lg:rotate-[-4deg] lg:text-base 2xl:text-xl 4xl:text-5xl">
           <svg
             fill="#fafafa"
             viewBox="-10.78 -10.78 380.73 380.73"

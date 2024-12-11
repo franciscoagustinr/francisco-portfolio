@@ -13,6 +13,7 @@ export const MusicIcon = ({ setDialogText }) => {
   const [sound, setSound] = useState();
   const noteRef = useRef(null); // Referencia para la nota musical
   const noteTwoRef = useRef(null); // Referencia para la nota musical
+  const isMobile = window.innerWidth < 768;
 
   const toggleMusic = () => {
     if (isMusicPlaying && sound) {
@@ -42,7 +43,7 @@ export const MusicIcon = ({ setDialogText }) => {
 
         // Animación principal (movimiento y ondulación)
         tl.to(note, {
-          y: -50,
+          y: isMobile ? -15 : -50,
           duration: 2,
           ease: 'power1.in',
           opacity: 1,
@@ -56,7 +57,7 @@ export const MusicIcon = ({ setDialogText }) => {
 
         // Transición final (desvanecimiento y reducción de escala)
         tl.to(note, {
-          y: -60,
+          y: isMobile ? -15 : -60,
           scale: 0,
           opacity: 0,
           duration: 1,
@@ -77,14 +78,14 @@ export const MusicIcon = ({ setDialogText }) => {
     <>
       <img
         src={!isMusicPlaying ? SoundOff : SoundOn}
-        className={`w-16 cursor-pointer ${isMusicPlaying && 'animate-pulse'} transition-all hover:scale-125 active:scale-150`}
+        className={`w-10 cursor-pointer md:w-12 lg:w-16 2xl:w-20 ${isMusicPlaying && 'animate-pulse'} transition-all hover:scale-125 active:scale-150`}
         alt="Music On Icon"
         onClick={toggleMusic}
         onMouseEnter={() => {
           setDialogText(
             !isMusicPlaying
-              ? "Let the good vibes play! <span class='text-2xl inline-block animate-shake'>🕺🏻</span>"
-              : "Moment of calm?  <span class='text-2xl inline-block'>🦭</span>"
+              ? "Let the good vibes play! <span class='text-2xl 2xl:text-4xl inline-block animate-shake'>🕺🏻</span>"
+              : "Moment of calm?  <span class='text-2xl 2xl:text-4xl inline-block'>🦭</span>"
           );
         }}
         onMouseLeave={() => {
@@ -98,13 +99,13 @@ export const MusicIcon = ({ setDialogText }) => {
             ref={noteRef}
             src={MusicalNote}
             alt="Musical Note Icon"
-            className="pointer-events-none absolute -left-4 bottom-20 w-5 opacity-0"
+            className="pointer-events-none absolute -left-4 bottom-7 w-5 opacity-0 md:bottom-20"
           />
           <img
             ref={noteTwoRef}
             src={MusicalNote}
             alt="Musical Note Icon"
-            className="pointer-events-none absolute bottom-16 left-10 w-5 opacity-0"
+            className="pointer-events-none absolute bottom-7 left-5 w-5 opacity-0 md:bottom-16 lg:left-10"
           />
         </>
       )}

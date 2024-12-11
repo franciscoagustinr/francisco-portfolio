@@ -99,10 +99,10 @@ const WeatherData = ({ setDialogText, hatName }) => {
 
       <div
         ref={weatherRefContainer}
-        className="weatherContainer w-56 text-[#FAFAFA] md:w-72 4xl:w-auto"
+        className="weatherContainer w-56 text-[#FAFAFA] md:w-72 2xl:w-auto"
       >
         {weatherData ? (
-          <div className="text-right font-sans text-sm uppercase tracking-tight 4xl:text-5xl">
+          <div className="text-right font-sans text-sm uppercase tracking-tight 2xl:text-xl 4xl:text-5xl">
             <p className="select-none">
               {weatherData.temperature2m}°C{' '}
               {weatherData && weatherData.isDay === 0 ? '🌙' : clima}{' '}
@@ -115,7 +115,7 @@ const WeatherData = ({ setDialogText, hatName }) => {
                 className="group"
                 onMouseEnter={() => (
                   setDialogText(
-                    "<span class='text-2xl inline-block'>🎉</span> <span class='text-2xl inline-block animate-shake'>🎈</span> YAY! <span class='text-2xl inline-block animate-shake'>🎈</span><span class='text-2xl inline-block'>🎉</span>"
+                    "<span class='text-2xl 2xl:text-4xl inline-block'>🎉</span> <span class='text-2xl 2xl:text-4xl inline-block animate-shake'>🎈</span> YAY! <span class='text-2xl 2xl:text-4xl inline-block animate-shake'>🎈</span><span class='text-2xl 2xl:text-4xl inline-block'>🎉</span>"
                   ),
                   playHoverSound()
                 )}

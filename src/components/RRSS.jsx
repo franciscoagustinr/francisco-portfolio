@@ -124,7 +124,7 @@ export const RRSS = ({ setDialogText }) => {
           ref={linkedinRef}
           src={LinkedinLogo}
           alt="github-logo"
-          className="z-50 h-auto w-12 cursor-pointer select-none drop-shadow-lg md:w-14 4xl:w-44"
+          className="z-50 h-auto w-12 cursor-pointer select-none drop-shadow-lg md:w-14 2xl:w-20 4xl:w-44"
           onClick={() => {
             window.open(
               'https://www.linkedin.com/in/franciscoagustinr/',
@@ -133,7 +133,7 @@ export const RRSS = ({ setDialogText }) => {
           }}
           onMouseEnter={() => {
             setDialogText(
-              "Where connections bloom <span class='text-2xl inline-block animate-pulse'> 🌱</span>"
+              "Where connections bloom <span class='text-2xl 2xl:text-4xl inline-block animate-pulse'> 🌱</span>"
             );
           }}
           onMouseLeave={() => {
@@ -141,18 +141,18 @@ export const RRSS = ({ setDialogText }) => {
           }}
         />
       </div>
-      <div className="absolute bottom-2 right-16 z-50 md:right-20 lg:bottom-4 lg:right-36 4xl:bottom-12 4xl:right-80">
+      <div className="absolute bottom-2 right-16 z-50 md:right-20 lg:bottom-4 lg:right-36 2xl:right-44 4xl:bottom-12 4xl:right-80">
         <img
           ref={githubRef}
           src={GithubLogo}
           alt="github-logo"
-          className="z-50 h-auto w-12 cursor-pointer select-none drop-shadow-lg md:w-14 4xl:w-44"
+          className="z-50 h-auto w-12 cursor-pointer select-none drop-shadow-lg md:w-14 2xl:w-20 4xl:w-44"
           onClick={() => {
             window.open('https://github.com/franciscoagustinr', '_blank');
           }}
           onMouseEnter={() => {
             setDialogText(
-              "Check out my most exciting projects! <span class='text-2xl inline-block animate-ping'>🚀</span>"
+              "Check out my most exciting projects! <span class='text-2xl 2xl:text-4xl inline-block animate-ping'>🚀</span>"
             );
           }}
           onMouseLeave={() => {
@@ -165,13 +165,13 @@ export const RRSS = ({ setDialogText }) => {
           ref={coffeeRef}
           src={CoffeeCup}
           alt="Coffee Cup"
-          className="z-50 w-12 -rotate-12 cursor-pointer select-none drop-shadow-lg md:w-16 lg:w-20 4xl:w-56"
+          className="z-50 w-12 -rotate-12 cursor-pointer select-none drop-shadow-lg md:w-16 lg:w-20 2xl:w-24 4xl:w-56"
           onClick={() => {
             window.open('https://cafecito.app/franciscoagustinr', '_blank');
           }}
           onMouseEnter={() => {
             setDialogText(
-              "Invite me a coffee! <span class='text-2xl inline-block animate-spin'>🙂 </span>"
+              "Invite me a coffee! <span class='text-2xl 2xl:text-4xl inline-block animate-spin'>🙂 </span>"
             );
           }}
           onMouseLeave={() => {

@@ -32,7 +32,7 @@ function App() {
   useEffect(() => {
     if (!isScrolling || isPopUpOpen) return;
     setDialogText(
-      "Nope, everything is here! <span class='inline-block text-xl'>🙃</span>"
+      "Nope, everything is here! <span class='inline-block 2xl:text-4xl text-xl'>🙃</span>"
     );
     setTimeout(() => setDialogText(''), 1800);
   }, [isScrolling, isPopUpOpen]);
@@ -138,15 +138,15 @@ function App() {
           <div className="rrss">
             <RRSS setDialogText={setDialogText} />
           </div>
-          <div className="weather absolute right-3.5 top-8 z-30 lg:right-16 4xl:right-[2%] 4xl:top-40">
+          <div className="weather absolute right-3.5 top-8 z-30 lg:right-16 2xl:top-10 4xl:right-[2%] 4xl:top-40">
             <WeatherData setDialogText={setDialogText} hatName={hatName} />
           </div>
-          <div className="count-container absolute bottom-2 left-[calc(100%-59%)] z-10">
+          <div className="count-container absolute bottom-2 left-1/2 z-10 -translate-x-1/2 transform">
             <Count />
           </div>
           <div
             onMouseEnter={playHoverSound}
-            className="music-icon absolute bottom-36 right-12 z-10"
+            className="music-icon absolute right-2.5 top-36 z-10 md:bottom-36 md:right-2 md:top-auto lg:right-12 2xl:right-10"
           >
             <MusicIcon setDialogText={setDialogText} />
           </div>
