@@ -36,15 +36,15 @@ export const HandwrittenTexts = () => {
           </svg>
         </div>
       </div>
-      <div className="pointer-events-none absolute left-12 top-32 z-30 select-none md:left-16 md:top-[8.3rem] lg:left-20 4xl:left-80 4xl:top-72">
-        <div className="relative flex rotate-[2deg] font-HomemadeApple text-sm text-white lg:rotate-[4deg] lg:text-base 4xl:text-5xl">
+      <div className="pointer-events-none absolute left-12 top-32 z-30 select-none md:left-16 md:top-[8rem] lg:left-20 4xl:left-80 4xl:top-72">
+        <div className="relative flex rotate-[2deg] font-HomemadeApple text-sm text-white lg:rotate-[-4deg] lg:text-base 4xl:text-5xl">
           <svg
             fill="#fafafa"
             viewBox="-10.78 -10.78 380.73 380.73"
             transform="matrix(-1, 0, 0, 1, 0, 0)rotate(0)"
             stroke="#fff"
             strokeWidth="0.00359171"
-            className="relative -left-4 -top-3 w-9 rotate-[-10deg] scale-x-[-1] md:-rotate-[20deg] lg:-left-5 lg:w-11 4xl:w-36"
+            className="relative -left-4 -top-5 w-9 rotate-[-10deg] scale-x-[-1] md:-rotate-[5deg] lg:-left-3 lg:w-11 4xl:w-36"
           >
             <g strokeWidth="0"></g>
             <g
