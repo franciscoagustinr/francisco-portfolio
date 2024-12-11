@@ -59,8 +59,8 @@ export const MusicIcon = ({ setDialogText }) => {
           y: -60,
           scale: 0,
           opacity: 0,
-          duration: 0.5,
-          ease: 'power1.out',
+          duration: 1,
+          ease: 'power4.out',
         });
 
         // Restaurar al estado inicial antes de repetir
@@ -68,8 +68,8 @@ export const MusicIcon = ({ setDialogText }) => {
       };
 
       // Animar ambas notas
-      animateNote(noteRef.current, 20, 0, 2);
-      animateNote(noteTwoRef.current, 15, 2, 2);
+      animateNote(noteRef.current, 10, 0, 2);
+      animateNote(noteTwoRef.current, 10, 2.5, 2);
     }
   }, [isMusicPlaying]);
 
