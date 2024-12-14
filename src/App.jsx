@@ -152,10 +152,9 @@ function App() {
           >
             <MusicIcon setDialogText={setDialogText} />
           </div>
-          <div className="absolute -right-[3rem] top-1/2 -rotate-90 select-none">
-            <p className="font-mono text-xs text-white opacity-0">
+          <div className="absolute -right-[3.5rem] top-1/2 -rotate-90 select-none">
+            <p className="font-mono text-xs text-white opacity-30">
               ALL RIGHTS RESERVED.
-              {/* Francisco Agustin © 2025 - All rights reserved. */}
             </p>
           </div>
           {dialogText && <DialogBox text={dialogText} />}
