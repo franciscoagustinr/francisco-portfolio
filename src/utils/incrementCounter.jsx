@@ -3,10 +3,8 @@ import { db } from './firebaseConfig'; // Importa la configuración de Firebase
 
 export const incrementCounter = async () => {
   try {
-    // Referencia al documento donde se guarda el contador
     const counterRef = doc(db, 'clickCounters', 'avatarClickCount');
 
-    // Incrementa el valor en 1
     await updateDoc(counterRef, {
       count: increment(1),
     });

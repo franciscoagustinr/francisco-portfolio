@@ -11,7 +11,6 @@ export const PopUpAbout = ({ hatName }) => {
 
   const closePopup = () => {
     if (popupRef.current) {
-      // Animate to the target position
       gsap.to(popupRef.current, {
         top: '0.5rem',
         left: '0.5rem',
@@ -154,8 +153,8 @@ export const ChatSimulator = () => {
     const interval = setInterval(() => {
       if (count < messages.length) {
         setCount((prevCount) => prevCount + 1);
-        setShowTypingDots(false); // Ocultar typingDots mientras se muestra un mensaje
-        setTimeout(() => setShowTypingDots(true), 400); // Mostrar typingDots después de un tiempo
+        setShowTypingDots(false);
+        setTimeout(() => setShowTypingDots(true), 400);
       } else {
         clearInterval(interval);
       }

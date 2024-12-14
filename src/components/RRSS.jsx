@@ -67,7 +67,7 @@ export const RRSS = ({ setDialogText }) => {
         duration: 0.2,
         onStart: () => {
           if (!hasPlayedSound) {
-            playHoverSound(); // Reproduce el sonido solo la primera vez
+            playHoverSound();
             hasPlayedSound = true;
           }
         },
@@ -83,7 +83,7 @@ export const RRSS = ({ setDialogText }) => {
         ease: 'elastic.out(1.2, 0.4)',
         duration: 0.5,
         onStart: () => {
-          hasPlayedSound = false; // Reinicia la bandera para permitir que el sonido se reproduzca nuevamente
+          hasPlayedSound = false;
         },
       });
       el.style.zIndex = 1;

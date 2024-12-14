@@ -47,11 +47,7 @@ export const Scene = ({ setDialogText }) => {
         </Float>
         {!isLoading && (
           <>
-            <mesh
-              position={[0, 0, -2]}
-              scale={1.45}
-              // rotation-x={-Math.PI / 2}
-            >
+            <mesh position={[0, 0, -2]} scale={1.45}>
               <TextTitle />
             </mesh>
           </>

@@ -10,7 +10,6 @@ import { Text } from '@react-three/drei';
 import { useMousePosition } from '../../utils/mousePosition';
 import gsap from 'gsap';
 import { usePreloader } from '../../stores/usePreloader';
-// import gsap from "gsap";
 
 export const TextTitle = () => {
   const mousePosition = useMousePosition();
@@ -73,19 +72,6 @@ export const TextTitle = () => {
       G: '#FFAA79',
       U: '#FFE484',
       T: '#FFAA79',
-      //F: "#FFD449", // Más fuerte que #FFE484
-      //R: "#FF7745", // Más fuerte que #FFAA79
-      //A: "#6FF2F2", // Más fuerte que #B4FAFA
-      //N: "#FF3B41", // Más fuerte que #FF787D
-      //C: "#E16FE5", // Más fuerte que #EFB1ED
-      //I: "#FFD449", // Más fuerte que #FFE484
-      //S: "#6FF2F2", // Más fuerte que #B4FAFA
-      //secondC: "#FF3B41", // Más fuerte que #FF787D
-      //O: "#E16FE5", // Más fuerte que #EFB1ED
-      //secondI: "#FFD449", // Más fuerte que #FFE484
-      //G: "#FF7745", // Más fuerte que #FFAA79
-      //U: "#FFD449", // Más fuerte que #FFE484
-      //T: "#FF7745", // Más fuerte que #FFAA79
     }),
     []
   );
@@ -165,14 +151,10 @@ export const TextTitle = () => {
       { x: 0, y: 0, z: 0 }
     );
 
-    // Animación para AgustinRef
     tl.fromTo(
       AgustinRef.current.rotation,
       { x: -3, y: 1, z: -1, duration: 0.2, ease: 'power3.in', delay: 0 },
       { x: 0, y: 0, z: 0 }
-      // titleRef.current.scale,
-      // { x: 0, y: 0, z: 0 },
-      // { x: 1, y: 1, z: 1, duration: 2, ease: "power3.out" }
     );
   }, [isLoading]);
 

@@ -16,19 +16,19 @@ export const LoadingBar = () => {
       const interval = setInterval(() => {
         setProgress((prev) => {
           if (prev >= 100) {
-            clearInterval(interval); // Detener al llegar al 100%
+            clearInterval(interval);
             return 100;
           }
-          const randomIncrement = Math.floor(Math.random() * 10) + 1; // Generar un valor aleatorio entre 1 y 10
+          const randomIncrement = Math.floor(Math.random() * 10) + 1;
           const newProgress = prev + randomIncrement;
-          return newProgress > 100 ? 100 : newProgress; // Asegurar que no exceda 100
+          return newProgress > 100 ? 100 : newProgress;
         });
       }, 250);
 
-      return () => clearInterval(interval); // Limpieza del intervalo
+      return () => clearInterval(interval);
     }, 1000);
 
-    return () => clearTimeout(timeout); // Limpieza del timeout al desmontar
+    return () => clearTimeout(timeout);
   }, []);
 
   return (

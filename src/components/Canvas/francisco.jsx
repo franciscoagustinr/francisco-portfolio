@@ -19,7 +19,7 @@ export const Francisco = ({ props, setDialogText }) => {
   const { nodes, materials } = useGLTF('/models/F-model7.glb');
   const hats = useHats(nodes, materials);
   const hatNames = Object.keys(hats);
-  const { setHatName } = useHatStore(); // Accede al estado global del sombrero
+  const { setHatName } = useHatStore();
   const objectRef = useRef();
   const avatarRef = useRef();
   const [currentHatIndex, setCurrentHatIndex] = useState(0);
@@ -29,8 +29,8 @@ export const Francisco = ({ props, setDialogText }) => {
   const influences = objectRef?.current?.morphTargetInfluences;
   const [isBlinking, setIsBlinking] = useState(false);
   const blinkStartTime = useRef(0);
-  const BLINK_DURATION = 0.15; // Duración de cierre y apertura de ojos
-  const BLINK_INTERVAL = useRef(Math.random() * 5 + 3); // Tiempo entre parpadeos
+  const BLINK_DURATION = 0.15;
+  const BLINK_INTERVAL = useRef(Math.random() * 5 + 3);
   const triggerConfetti = useConfettiStore((state) => state.triggerConfetti);
   const isScrolling = useScrollStore((state) => state.isScrolling);
   const isLoading = usePreloader((state) => state.isLoading);
@@ -83,13 +83,9 @@ export const Francisco = ({ props, setDialogText }) => {
     position: clicked
       ? [0, 0, -0.05]
       : isMusicPlaying
-        ? [
-            Math.sin(Date.now() / 500) * 0.2, // Movimiento lateral con una oscilación
-            0,
-            0,
-          ]
+        ? [Math.sin(Date.now() / 500) * 0.2, 0, 0]
         : [0, 0, 0],
-    // rotation: clicked ? [-0.18, 0, 0] : [0, 0, 0],
+
     rotation: clicked
       ? [-0.18, 0, 0]
       : triggerConfetti
@@ -97,16 +93,12 @@ export const Francisco = ({ props, setDialogText }) => {
         : isScrolling && !isPopUpOpen
           ? [0, Math.sin(Date.now() / 100) * 0.4, 0]
           : isMusicPlaying
-            ? [
-                0,
-                0,
-                Math.sin(Date.now() / 500) * 0.13, // Inclinación pequeña al final de cada movimiento
-              ]
+            ? [0, 0, Math.sin(Date.now() / 500) * 0.13]
             : [0, 0, 0],
     config: { tension: 250, friction: 20 },
     onRest: () => {
       if (clicked) {
-        setClicked(false); // Resetear clic después de la animación
+        setClicked(false);
       }
     },
   });
@@ -139,98 +131,39 @@ export const Francisco = ({ props, setDialogText }) => {
     if (clicked) return;
 
     const { pointer } = state;
-    const cursorX = pointer.x; // X normalizado entre -1 y 1
-    const cursorY = pointer.y; // Y normalizado entre -1 y 1
+    const cursorX = pointer.x;
+    const cursorY = pointer.y;
 
-    // follow cursor
-    const lookAtX = (cursorX * Math.PI) / 6; // Eje Y
-    const lookAtY = (cursorY * Math.PI) / -50; // Eje X
+    const lookAtX = (cursorX * Math.PI) / 6;
+    const lookAtY = (cursorY * Math.PI) / -50;
 
-    // Suavizar la rotación
     if (avatarRef.current) {
       avatarRef.current.rotation.y +=
-        (lookAtX - avatarRef.current.rotation.y) * 0.1; // Interpolación suave
+        (lookAtX - avatarRef.current.rotation.y) * 0.1;
       avatarRef.current.rotation.x +=
-        (lookAtY - avatarRef.current.rotation.x) * 0.5; // Interpolación suave
+        (lookAtY - avatarRef.current.rotation.x) * 0.5;
     }
 
     if (objectRef.current) {
-      // Si el parpadeo ha comenzado
       if (isBlinking) {
         const elapsedBlinkTime = time - blinkStartTime.current;
 
         if (elapsedBlinkTime < BLINK_DURATION) {
-          // Fase de cierre de ojos
           const blinkProgress = elapsedBlinkTime / BLINK_DURATION;
-          influences[0] = Math.sin(Math.PI * blinkProgress); // Suaviza el cierre
+          influences[0] = Math.sin(Math.PI * blinkProgress);
           influences[1] = Math.sin(Math.PI * blinkProgress);
         } else {
-          // Parpadeo terminado, restablecer influencias y programar el siguiente parpadeo
           influences[0] = 0;
           influences[1] = 0;
           setIsBlinking(false);
-          BLINK_INTERVAL.current = Math.random() * 5 + 3; // Próximo parpadeo entre 3 y 8 segundos
+          BLINK_INTERVAL.current = Math.random() * 5 + 3;
         }
       } else if (time - blinkStartTime.current > BLINK_INTERVAL.current) {
-        // Comienza un nuevo parpadeo
         setIsBlinking(true);
         blinkStartTime.current = time;
       }
     }
   });
-
-  // useEffect(() => {
-  //   if (avatarRef.current) {
-  //     avatarRef.current.traverse((child) => {
-  //       if (child.isMesh) {
-  //         const material = child.material;
-  //         if (material) {
-  //           // Guarda el color original
-  //           if (!material.originalColor) {
-  //             material.originalColor = material.color.clone();
-  //           }
-
-  //           // Cambia a wireframe con animación
-  //           if (isLoading) {
-  //             material.wireframe = true;
-  //             gsap.to(material.color, {
-  //               r: 0.847, // Valor equivalente al rojo de #D8FFDD
-  //               g: 1,
-  //               b: 0.867,
-  //               duration: 0,
-  //               ease: 'power2.out',
-  //             });
-  //           } else {
-  //             // Anima de vuelta al color original y desactiva wireframe al final
-  //             gsap.to(material.color, {
-  //               r: material.originalColor.r,
-  //               g: material.originalColor.g,
-  //               b: material.originalColor.b,
-  //               duration: 1.2,
-  //               ease: 'power2.in',
-  //               onComplete: () => {
-  //                 material.wireframe = false; // Desactiva wireframe al final de la animación
-  //               },
-  //             });
-  //             setTimeout(() => {
-  //               setDialogText(
-  //                 "Welcome! <span class='inline-block text-2xl'>✨🙂</span> "
-  //               );
-  //               influences[0] = 1;
-  //               influences[1] = 1;
-
-  //               setTimeout(() => {
-  //                 influences[0] = 0;
-  //                 influences[1] = 0;
-  //                 setDialogText('');
-  //               }, 1000);
-  //             }, 1300);
-  //           }
-  //         }
-  //       }
-  //     });
-  //   }
-  // }, [isLoading]);
 
   useEffect(() => {
     if (avatarRef.current) {
@@ -239,13 +172,11 @@ export const Francisco = ({ props, setDialogText }) => {
           const material = child.material;
 
           if (material) {
-            // Guarda el color original si aún no está guardado
             if (!material.originalColor) {
               material.originalColor = material.color.clone();
             }
 
             if (isErrorPage) {
-              // Cambia al color original y desactiva wireframe inmediatamente
               gsap.to(material.color, {
                 r: material.originalColor.r,
                 g: material.originalColor.g,
@@ -253,21 +184,19 @@ export const Francisco = ({ props, setDialogText }) => {
                 duration: 0.8,
                 ease: 'power2.inOut',
                 onComplete: () => {
-                  material.wireframe = false; // Desactiva wireframe
+                  material.wireframe = false;
                 },
               });
             } else if (isLoading) {
-              // Cambia a wireframe con animación
               material.wireframe = true;
               gsap.to(material.color, {
-                r: 0.847, // Valor equivalente al rojo de #D8FFDD
+                r: 0.847,
                 g: 1,
                 b: 0.867,
                 duration: 0.8,
                 ease: 'power2.out',
               });
             } else {
-              // Anima de vuelta al color original y desactiva wireframe al final
               gsap.to(material.color, {
                 r: material.originalColor.r,
                 g: material.originalColor.g,
@@ -275,7 +204,7 @@ export const Francisco = ({ props, setDialogText }) => {
                 duration: 1.2,
                 ease: 'power2.in',
                 onComplete: () => {
-                  material.wireframe = false; // Desactiva wireframe al final de la animación
+                  material.wireframe = false;
                 },
               });
               setTimeout(() => {

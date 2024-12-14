@@ -6,7 +6,6 @@ import { useConfettiStore } from '../stores/useTriggerConfetti-Talk';
 import { useHatBackground } from '../hooks/useBackground';
 import { useScrollStore } from '../stores/useScroll';
 import { applyBounceEffect } from '../utils/applyBounceEffect';
-// import BlackArrowSvg from "../assets/arrow-black.svg";
 
 const WeatherData = ({ setDialogText, hatName }) => {
   const [weatherData, setWeatherData] = useState(null);
@@ -24,16 +23,12 @@ const WeatherData = ({ setDialogText, hatName }) => {
 
   useEffect(() => {
     GetWeather(setWeatherData);
-    // document.documentElement.style.setProperty(
-    //   '--bg-after',
-    //   getHexBackground(hatName)
-    // );
     gsap.to(document.documentElement, {
       duration: 0.8,
       '--bg-after': getHexBackground(hatName),
       ease: 'power1.inOut',
     });
-  }, [hatName]); //todo: improve
+  }, [hatName]);
 
   const clima =
     weatherData && weatherData.temperature2m
@@ -68,7 +63,7 @@ const WeatherData = ({ setDialogText, hatName }) => {
   const handleTriggerConfetti = () => {
     setTriggerConfetti(true);
     playConfettiSound();
-    setTimeout(() => setTriggerConfetti(false), 1500); // Duración del confeti
+    setTimeout(() => setTriggerConfetti(false), 1500);
   };
 
   return (

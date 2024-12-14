@@ -31,7 +31,6 @@ export const Count = () => {
   useEffect(() => {
     if (isLoading) return;
 
-    // Dividir el texto en letras
     const letters = document.querySelectorAll('.exploding-letter');
     letters.forEach((letter, index) => {
       gsap.to(letter, {

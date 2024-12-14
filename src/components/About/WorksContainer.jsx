@@ -66,7 +66,6 @@ export const WorksContainer = ({ hatName }) => {
                         fillRule="evenodd"
                         clipRule="evenodd"
                         d="M13.0855 5.5714L14 6.49971L13.0858 7.42892L7.60055 13L6.68634 12.0714L11.5902 7.09018H1.29288H0.646521H0V-5.45053e-05H1.29288V5.77693H11.4595L6.68636 0.928618L7.60057 0L13.0855 5.5714Z"
-                        // fill="#fff"
                         fill={'var(--dynamic-color)'}
                       />
                     </svg>

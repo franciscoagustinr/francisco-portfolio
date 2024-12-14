@@ -9,14 +9,14 @@ const RotatingText = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % titles.length);
-    }, 2000); // Change title every 2 seconds
+    }, 2000);
 
     return () => clearInterval(interval);
   }, [titles.length]);
 
   useEffect(() => {
     if (textRef.current) {
-      const chars = textRef.current.querySelectorAll('span'); // Select all characters
+      const chars = textRef.current.querySelectorAll('span');
       const tl = gsap.timeline();
 
       tl.fromTo(
@@ -31,7 +31,7 @@ const RotatingText = () => {
           y: 0,
           rotateX: 0,
           duration: 0.1,
-          stagger: 0.02, // Stagger the animation for each character
+          stagger: 0.02,
         }
       ).to(
         chars,
@@ -40,12 +40,12 @@ const RotatingText = () => {
           y: -30,
           rotateX: 90,
           duration: 0.1,
-          stagger: 0.02, // Apply stagger to make them disappear progressively
+          stagger: 0.02,
         },
-        '+=1' // Delay before starting this animation
+        '+=1'
       );
     }
-  }, [currentIndex]); // Re-run animation when the title changes
+  }, [currentIndex]);
 
   return (
     <div className="absolute top-[28%] z-50 w-full text-center 4xl:top-[26%]">

@@ -11,8 +11,8 @@ export const MusicIcon = ({ setDialogText }) => {
   const playMusic = useMusicPlaying((state) => state.playMusic);
   const stopMusic = useMusicPlaying((state) => state.stopMusic);
   const [sound, setSound] = useState();
-  const noteRef = useRef(null); // Referencia para la nota musical
-  const noteTwoRef = useRef(null); // Referencia para la nota musical
+  const noteRef = useRef(null);
+  const noteTwoRef = useRef(null);
   const isMobile = window.innerWidth < 768;
 
   const toggleMusic = () => {
@@ -41,7 +41,6 @@ export const MusicIcon = ({ setDialogText }) => {
           delay: delay,
         });
 
-        // Animación principal (movimiento y ondulación)
         tl.to(note, {
           y: isMobile ? -15 : -50,
           duration: 2,
@@ -55,7 +54,6 @@ export const MusicIcon = ({ setDialogText }) => {
           },
         });
 
-        // Transición final (desvanecimiento y reducción de escala)
         tl.to(note, {
           y: isMobile ? -15 : -60,
           scale: 0,
@@ -64,11 +62,9 @@ export const MusicIcon = ({ setDialogText }) => {
           ease: 'power4.out',
         });
 
-        // Restaurar al estado inicial antes de repetir
         tl.set(note, { scale: 0, opacity: 0 });
       };
 
-      // Animar ambas notas
       animateNote(noteRef.current, 10, 0, 2);
       animateNote(noteTwoRef.current, 10, 2.5, 2);
     }
