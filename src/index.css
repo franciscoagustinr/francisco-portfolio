@@ -27,80 +27,35 @@
   src: url('../public/fonts/Recoleta-Black.ttf') format('truetype');
 }
 
-@keyframes marquee {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-@keyframes marquee404 {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-30%);
-  }
-}
-@keyframes marquee404-text {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(13%);
-  }
-}
-.marquee404 {
-  animation: marquee404 20s linear infinite;
-}
-.marquee404-text {
-  animation: marquee404-text 20s linear infinite;
-}
-
-.marquee-container {
-  display: flex;
-  overflow: hidden;
-}
-
-.marquee {
-  display: inline-flex;
-  min-width: 100%;
-  animation: marquee 15s linear infinite;
-}
-.marquee-container:hover .marquee {
-  animation-play-state: paused;
-}
-
-.dialog_box:after,
+/* .dialog_box:after,
 .dialog_box:before {
   border: solid transparent;
   content: '';
   height: 0;
   width: 0;
   position: absolute;
-}
-.dialog_box:after {
+} */
+/* .dialog_box:after {
   border-width: 5px;
-}
-.dialog_box:before {
+} */
+/* .dialog_box:before {
   border-width: 8px;
-}
-.dialog_box.left:after,
+} */
+/* .dialog_box.left:after,
 .dialog_box.left:before {
   right: 100%;
   top: 50%;
-}
-.dialog_box.left:after {
+} */
+/* .dialog_box.left:after {
   border-color: transparent #f4f4f4 transparent transparent;
   margin-top: -5px;
-}
-.dialog_box.left:before {
+} */
+/* .dialog_box.left:before {
   border-color: transparent #000 transparent transparent;
   margin-top: -8px;
-}
+} */
 
-@keyframes dialog-box {
+/* @keyframes dialog-box {
   0% {
     opacity: 0;
     transform: translateX(-5%);
@@ -113,41 +68,4 @@
 
 .dialog_box {
   animation: dialog-box 200ms ease-out;
-}
-
-/* POP UP ABOUT */
-@keyframes appearAnimation {
-  0% {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.appear-animation {
-  animation: appearAnimation 0.2s ease forwards;
-}
-
-.gradient-text {
-  background: linear-gradient(-45deg, #33cfff, #00bcf5, #d84831, #de6654);
-  background-size: 300%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: animate 5s ease-in-out infinite;
-}
-@keyframes animate {
-  0% {
-    background-position: 0 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0 50%;
-  }
-}
+} */

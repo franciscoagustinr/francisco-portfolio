@@ -63,7 +63,10 @@ export const Count = () => {
 
   const splitTextIntoLetters = (text) => {
     return text.split('').map((letter, index) => (
-      <span key={index} className="exploding-letter gradient-text inline-block">
+      <span
+        key={index}
+        className="exploding-letter bg-gradient-text bg-300% animate-gradientText inline-block bg-clip-text text-transparent"
+      >
         {letter}
       </span>
     ));

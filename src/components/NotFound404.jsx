@@ -13,17 +13,17 @@ export const NotFound = () => {
       </div>
       <div className="absolute text-center">
         <div className="relative -top-52 z-50 flex flex-col gap-1">
-          <span className="gradient-text font-RecoletaBlack text-8xl text-black 4xl:text-4xl">
+          <span className="bg-gradient-text bg-300% animate-gradientText bg-clip-text font-RecoletaBlack text-8xl text-black text-transparent 4xl:text-4xl">
             Oops!
           </span>
           <span className="font-KarlaLight text-base text-black 4xl:text-4xl">
             Look like you're lost
           </span>
         </div>
-        <p className="marquee404 relative top-5 flex whitespace-nowrap py-1 font-KarlaExtraBold text-6xl font-bold text-red-500 4xl:py-3 4xl:text-4xl">
+        <p className="animate-marquee404 relative top-5 flex whitespace-nowrap py-1 font-KarlaExtraBold text-6xl font-bold text-red-500 4xl:py-3 4xl:text-4xl">
           {` 404 —`.repeat(30)}
         </p>
-        <p className="marquee404-text relative top-7 font-KarlaLight text-base">
+        <p className="animate-marquee404Text relative top-7 font-KarlaLight text-base">
           {` Page not found - `.repeat(30)}
         </p>
         <button

@@ -44,7 +44,32 @@ module.exports = {
           "100%": {
             left: "110%",
           }
-        }
+        },
+        marquee: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
+        marquee404: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-30%)' },
+        },
+        marquee404Text: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(13%)' },
+        },
+        dialogBox: {
+          '0%': { opacity: '0', transform: 'translateX(-5%)' },
+          '100%': { opacity: '1', transform: 'translateX(0)' },
+        },
+        appearAnimation: {
+          '0%': { opacity: '0', transform: 'translateY(10px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        gradientColorText: {
+          '0%': { 'background-position': '0 50%' },
+          '50%': { 'background-position': '100% 50%' },
+          '100%': { 'background-position': '0 50%' },
+        },
       },
       animation: {
         blink: 'blink 0.8s infinite',
@@ -52,6 +77,12 @@ module.exports = {
         shake: "shake 0.8s linear infinite",
         loader: "load linear infinite",
         shine: "shine linear infinite",
+        marquee: 'marquee 15s linear infinite',
+        marquee404: 'marquee404 20s linear infinite',
+        marquee404Text: 'marquee404Text 20s linear infinite',
+        dialogBox: 'dialogBox 200ms ease-out',
+        appear: 'appearAnimation 0.2s ease forwards',
+        gradientText: 'gradientColorText 5s ease-in-out infinite'
       },
       cursor: {
         contact:
@@ -62,7 +93,13 @@ module.exports = {
       screens: {
         '3xl': '1920px',
         '4xl': '4000px',
-      }
+      },
+      backgroundSize: {
+        '300%': '300%',
+      },
+      backgroundImage: {
+        'gradient-text': 'linear-gradient(-45deg, #33cfff, #00bcf5, #d84831, #de6654)',
+      },
     },
   },
   plugins: [

@@ -175,7 +175,7 @@ export const ChatSimulator = () => {
       {visibleMessages.map((message, index) => (
         <div
           key={index}
-          className={`appear-animation relative max-w-max cursor-pointer select-none rounded-2xl rounded-bl-md bg-[#ffffff] py-2 pl-3 pr-2 font-KarlaLight text-sm shadow-sm transition-all duration-300 ease-in-out hover:!scale-[1.009] 4xl:text-lg ${
+          className={`animate-appear relative max-w-max cursor-pointer select-none rounded-2xl rounded-bl-md bg-[#ffffff] py-2 pl-3 pr-2 font-KarlaLight text-sm shadow-sm transition-all duration-300 ease-in-out hover:!scale-[1.009] 4xl:text-lg ${
             reactions[index].emoji ? 'mb-5' : 'mb-2'
           } `}
           onClick={() => handleReaction(index)}
@@ -194,11 +194,11 @@ export const ChatSimulator = () => {
             <div dangerouslySetInnerHTML={{ __html: message }} />
           )}
           {reactions[index].emoji && (
-            <span className="appear-animation text-md absolute -bottom-3.5 right-2 rounded-full border border-gray-300 bg-white px-2 py-0.5 shadow-sm duration-0">
+            <span className="animate-appear text-md absolute -bottom-3.5 right-2 rounded-full border border-gray-300 bg-white px-2 py-0.5 shadow-sm duration-0">
               {reactions[index].emoji}
               <span
                 key={`${index}-${reactions[index].count}`}
-                className="appear-animation relative ml-0.5 pl-0.5 text-xs text-gray-500"
+                className="animate-appear relative ml-0.5 pl-0.5 text-xs text-gray-500"
               >
                 {reactions[index].count}
               </span>
@@ -208,7 +208,7 @@ export const ChatSimulator = () => {
       ))}
       {count < messages.length && showTypingDots && (
         <>
-          <div className="appear-animation relative my-2 max-w-16 rounded-2xl rounded-bl-md bg-[#ffffff] p-0 text-sm">
+          <div className="animate-appear relative my-2 max-w-16 rounded-2xl rounded-bl-md bg-[#ffffff] p-0 text-sm">
             <span className="typing-animation flex items-center justify-center">
               <TypingDots />
             </span>
