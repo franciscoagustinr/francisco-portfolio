@@ -183,11 +183,13 @@ export const TextTitle = () => {
         position={
           isMobile
             ? [0.13, 0, 0]
-            : [
-                (-(mousePosition.x / window.innerWidth) * 2) / 8,
-                ((mousePosition.y / window.innerHeight) * 2) / 8,
-                0,
-              ]
+            : isTablet
+              ? [0.25, 0, 0]
+              : [
+                  (-(mousePosition.x / window.innerWidth) * 2) / 8,
+                  ((mousePosition.y / window.innerHeight) * 2) / 8,
+                  0,
+                ]
         }
       >
         <mesh position={franciscoPosition} scale={textScale} ref={FranciscoRef}>

@@ -3,12 +3,12 @@ import React from 'react';
 export const HandwrittenTexts = () => {
   return (
     <>
-      <div className="pointer-events-none invisible absolute top-48 z-30 animate-pulse select-none md:visible md:right-20 md:top-32 lg:right-28 lg:top-28 2xl:right-36 2xl:top-40 4xl:top-[33rem]">
-        <div className="relative flex -rotate-45 font-HomemadeApple text-white md:-rotate-6 2xl:text-xl 4xl:text-5xl">
+      <div className="3xl:right-36 3xl:top-40 pointer-events-none invisible absolute top-48 z-30 animate-pulse select-none md:visible md:right-20 md:top-32 lg:right-28 lg:top-[7.5rem] 4xl:top-[27rem]">
+        <div className="3xl:text-xl relative flex -rotate-45 font-HomemadeApple text-white md:-rotate-6 4xl:text-5xl">
           stay in contact
           <svg
             fill="#fafafa"
-            className="relative -top-6 left-7 w-12 rotate-[40deg] md:left-4 md:rotate-12 4xl:w-36"
+            className="relative -top-6 left-7 w-12 rotate-[40deg] md:left-4 md:rotate-12 4xl:-top-24 4xl:w-32 4xl:-rotate-45"
             viewBox="0 0 367.339 367.34"
           >
             <g>
@@ -36,15 +36,15 @@ export const HandwrittenTexts = () => {
           </svg>
         </div>
       </div>
-      <div className="pointer-events-none absolute left-12 top-32 z-30 select-none md:left-16 md:top-[7rem] lg:left-20 xl:top-[8rem] 2xl:left-28 2xl:top-[11rem] 4xl:left-80 4xl:top-72">
-        <div className="relative flex rotate-[2deg] font-HomemadeApple text-sm text-white md:rotate-[-6deg] lg:rotate-[-4deg] lg:text-base 2xl:text-xl 4xl:text-5xl">
+      <div className="3xl:left-28 3xl:top-[11rem] pointer-events-none absolute left-12 top-32 z-30 select-none md:left-16 md:top-[7rem] lg:left-20 lg:top-[7.5rem] xl:top-[8rem] 4xl:left-64 4xl:top-[22rem]">
+        <div className="3xl:text-xl relative flex rotate-[2deg] font-HomemadeApple text-sm text-white md:rotate-[-6deg] lg:rotate-[-4deg] lg:text-base 4xl:-rotate-[15deg] 4xl:text-5xl">
           <svg
             fill="#fafafa"
             viewBox="-10.78 -10.78 380.73 380.73"
             transform="matrix(-1, 0, 0, 1, 0, 0)rotate(0)"
             stroke="#fff"
             strokeWidth="0.00359171"
-            className="relative -left-4 -top-5 w-9 rotate-[-10deg] scale-x-[-1] md:-rotate-[5deg] lg:-left-3 lg:w-11 4xl:w-36"
+            className="relative -left-4 -top-5 w-9 rotate-[-10deg] scale-x-[-1] md:-rotate-[5deg] lg:-left-3 lg:w-11 4xl:-left-7 4xl:-top-24 4xl:w-36"
           >
             <g strokeWidth="0"></g>
             <g

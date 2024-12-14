@@ -78,14 +78,14 @@ export const MusicIcon = ({ setDialogText }) => {
     <>
       <img
         src={!isMusicPlaying ? SoundOff : SoundOn}
-        className={`w-10 cursor-pointer md:w-12 lg:w-16 2xl:w-20 ${isMusicPlaying && 'animate-pulse'} transition-all hover:scale-125 active:scale-150`}
+        className={`3xl:w-20 w-10 cursor-pointer md:w-12 lg:w-16 4xl:w-44 ${isMusicPlaying && 'animate-pulse'} transition-all hover:scale-125 active:scale-150`}
         alt="Music On Icon"
         onClick={toggleMusic}
         onMouseEnter={() => {
           setDialogText(
             !isMusicPlaying
-              ? "Let the good vibes play! <span class='text-2xl 2xl:text-4xl inline-block animate-shake'>🕺🏻</span>"
-              : "Moment of calm?  <span class='text-2xl 2xl:text-4xl inline-block'>🦭</span>"
+              ? "Let the good vibes play! <span class='text-2xl 3xl:text-4xl 4xl:text-7xl inline-block animate-shake'>🕺🏻</span>"
+              : "Moment of calm?  <span class='text-2xl 3xl:text-4xl 4xl:text-7xl inline-block'>🦭</span>"
           );
         }}
         onMouseLeave={() => {

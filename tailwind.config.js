@@ -60,6 +60,7 @@ module.exports = {
           "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='75' height='auto' viewBox='0 0 100 100' style='fill:black;font-size:45px;'%3E%3Ctext y='50%25'%3E%F0%9F%93%9D%3C/text%3E%3C/svg%3E\") 16 20, auto"
       },
       screens: {
+        '3xl': '1920px',
         '4xl': '4000px',
       }
     },
