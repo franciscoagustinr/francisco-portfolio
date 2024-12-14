@@ -32,7 +32,7 @@ export const About = ({ setDialogText }) => {
         <img
           src={FranciscoPhoto}
           alt="Francisco"
-          className={`opacity-1 3xl:left-0 3xl:!w-44 relative -top-3 !w-28 select-none transition-all duration-300 ease-in-out group-hover:opacity-0 4xl:top-2 4xl:!w-[22rem] ${isMusicPlaying && 'animate-shake'}`}
+          className={`opacity-1 3xl:left-0 3xl:!w-44 relative -top-3 !w-28 select-none transition-all duration-300 ease-in-out group-hover:opacity-0 4xl:top-2 4xl:!w-[22rem] ${isMusicPlaying && 'animate-shakeTwo'}`}
         />
         <img
           src={FranciscoFunPhoto}

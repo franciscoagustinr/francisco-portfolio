@@ -75,6 +75,7 @@ module.exports = {
         blink: 'blink 0.8s infinite',
         wavingHand: "wave 1.5s ease-in-out infinite",
         shake: "shake 0.8s linear infinite",
+        shakeTwo: "shake 1.5s linear infinite",
         loader: "load linear infinite",
         shine: "shine linear infinite",
         marquee: 'marquee 15s linear infinite',
