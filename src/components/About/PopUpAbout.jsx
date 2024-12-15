@@ -8,6 +8,8 @@ export const PopUpAbout = ({ hatName }) => {
   const popupRef = useRef();
   const closePopUp = usePopupStore((state) => state.closePopUp);
   const isPopUpOpen = usePopupStore((state) => state.isPopUpOpen);
+  const is3XL = window.innerWidth >= 1920 && window.innerWidth <= 3999;
+  const is4XL = window.innerWidth >= 4000;
 
   const closePopup = () => {
     if (popupRef.current) {
@@ -35,7 +37,13 @@ export const PopUpAbout = ({ hatName }) => {
       gsap.fromTo(
         popupRef.current,
         { scale: 0, opacity: 0, rotation: -180 },
-        { scale: 1, opacity: 1, rotation: 0, duration: 1, ease: 'bounce.out' }
+        {
+          scale: is3XL ? 1.5 : is4XL ? 2.9 : 1,
+          opacity: 1,
+          rotation: 0,
+          duration: 1,
+          ease: 'bounce.out',
+        }
       );
     }
   }, [isPopUpOpen]);
@@ -52,7 +60,7 @@ export const PopUpAbout = ({ hatName }) => {
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-50 bg-opacity-5 backdrop-blur-md">
         <div
           ref={popupRef}
-          className="3xl:!scale-[1.5] relative top-0 z-20 mx-1 h-[45rem] w-auto overflow-x-hidden overflow-y-scroll rounded-2xl border border-solid border-gray-100 bg-gray-600 bg-opacity-20 shadow-2xl md:h-[43rem] lg:top-2 4xl:!w-[70rem] 4xl:!scale-[2.9]"
+          className="relative top-0 z-20 mx-1 h-[50rem] w-auto overflow-x-hidden overflow-y-scroll rounded-2xl border border-solid border-gray-100 bg-gray-600 bg-opacity-20 shadow-2xl md:h-[43rem] lg:top-2 4xl:!w-[70rem]"
         >
           <IconCross
             className="absolute right-2 top-2 z-50 cursor-pointer"
@@ -101,7 +109,7 @@ export const PopUpAbout = ({ hatName }) => {
                   </span>
                 ))}
               </h2>
-              <div className="mt-4 px-2 md:mt-8 lg:w-full lg:px-6">
+              <div className="mt-4 px-2 md:mt-8 lg:w-full lg:px-6 4xl:mt-6">
                 <WorksContainer hatName={hatName} />
               </div>
             </div>
