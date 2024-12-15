@@ -123,14 +123,14 @@ const WeatherData = ({ setDialogText, hatName }) => {
                 onClick={handleTriggerConfetti}
               >
                 <span
-                  className={`bg-talk pointer-events-none relative flex select-none flex-row items-center font-RecoletaBlack font-semibold tracking-wide text-white transition-all duration-200 after:absolute after:!bottom-[-2px] after:!left-1.5 after:z-[-1] after:!h-4 after:!w-24 after:bg-[var(--bg-after)] after:!transition-all after:!duration-150 after:content-[''] group-hover:scale-110 group-hover:after:!-left-1 group-hover:after:!bottom-[-3px] group-hover:after:!h-6 group-hover:after:!w-[6.7rem] group-hover:after:!rotate-3 group-hover:after:shadow-md 4xl:mt-2 4xl:after:!left-5 4xl:after:!h-8 4xl:after:!w-[17rem] 4xl:group-hover:after:!-left-4 4xl:group-hover:after:!h-[4.2rem] 4xl:group-hover:after:!w-[22.5rem]`}
+                  className={`bg-talk pointer-events-none relative flex select-none flex-row items-center font-RecoletaBlack font-semibold tracking-wide text-white transition-all duration-200 after:absolute after:!bottom-[-2px] after:!left-1.5 after:z-[-1] after:!h-4 after:!w-24 after:bg-[var(--bg-after)] after:!transition-all after:!duration-150 after:content-[''] group-hover:scale-110 group-hover:after:!-left-1 group-hover:after:!bottom-[-3px] group-hover:after:!h-6 group-hover:after:!w-[6.7rem] group-hover:after:!rotate-3 group-hover:after:shadow-md 2xl:after:!w-[7.6rem] 2xl:group-hover:after:!h-8 2xl:group-hover:after:!w-[9.3rem] 4xl:mt-2 4xl:after:!left-5 4xl:after:!h-8 4xl:after:!w-[17rem] 4xl:group-hover:after:!-left-4 4xl:group-hover:after:!h-[4.2rem] 4xl:group-hover:after:!w-[22.5rem]`}
                 >
                   lets talk!
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                     fill="#fafafa"
-                    className="w-4 transition-all duration-150 group-hover:translate-x-1.5 group-hover:drop-shadow-sm 4xl:w-14"
+                    className="w-4 transition-all duration-150 group-hover:translate-x-1.5 group-hover:drop-shadow-sm 2xl:w-5 4xl:w-14"
                   >
                     <path d="M11.293 4.707L17.586 11H4v2h13.586l-6.293 6.293 1.414 1.414L21.414 12l-8.707-8.707-1.414 1.414z" />
                   </svg>
