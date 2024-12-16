@@ -3,11 +3,15 @@
 <br/>
 
 <div align="center">
-  <img src="../assets/francisco-portfolio-preview.png" alt="Francisco">
+  <img src="https://github.com/franciscoagustinr/franciscoagustinr.github.io/blob/main/assets/francisco-portfolio-preview.png" alt="Francisco Agustin Portfolio Preview">
   <br/>
 </div>
 <br/>
-
+<div align="center">
+  <p align='center'>
+    The above source code is in this repo: https://github.com/franciscoagustinr/francisco-portfolio
+  </p>
+</div>
 Here you’ll find a selection of my best projects, showcasing my skills as a front-end developer and my passion for creating modern, user-centric web applications.
 
 ### <img valign='bottom' src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Rocket.png" alt="Rocket" width="30" height="30" /> **Live Demo <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Backhand%20Index%20Pointing%20Down%20Medium-Light%20Skin%20Tone.png" alt="Backhand Index Pointing Down Medium-Light Skin Tone" width="30" height="30" />**
@@ -58,6 +62,5 @@ If you like what you see or want to collaborate, reach out!
 <div align="center">
   Thanks for your visit! <img valign='bottom' src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Sparkling%20Heart.png" alt="Sparkling Heart" width="25" height="25" />
   <br/>
-  <br/>
-  <img src="../assets/francisco-fun-photo.png" alt="Francisco">
+  <img src="https://github.com/franciscoagustinr/franciscoagustinr.github.io/blob/main/assets/francisco-fun-photo-BhdS0O4o.png" alt="Francisco" width='200'>
 </div>
