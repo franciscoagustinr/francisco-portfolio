@@ -232,6 +232,7 @@ export const ChatSimulator = () => {
                     key={`${index}-star-${idx}`}
                     src={reactions[index].emoji.src}
                     alt="emoji"
+                    loading="eager"
                     className="mr-0.5 inline-block w-4 object-contain"
                   />
                 ))
@@ -239,6 +240,7 @@ export const ChatSimulator = () => {
                 <img
                   src={reactions[index].emoji.src}
                   alt="emoji"
+                  loading="eager"
                   className="inline-block w-4 object-contain"
                 />
               )}

@@ -211,7 +211,7 @@ export const Francisco = ({ props, setDialogText }) => {
               });
               setTimeout(() => {
                 setDialogText(
-                  `Welcome! <img src=${Sparkles} class='inline-block w-6'/><img src=${SmileFace} class='inline-block w-6'/> `
+                  `Welcome! <img loading="eager" src=${Sparkles} class='inline-block w-6'/><img loading="eager" src=${SmileFace} class='inline-block w-6'/> `
                 );
                 influences[0] = 1;
                 influences[1] = 1;
