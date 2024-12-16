@@ -113,7 +113,7 @@ function App() {
 
   return (
     <div
-      className={`main-container h-screen !overflow-hidden ${isLoading && 'bg-[#101720]'}`}
+      className={`main-container h-dvh !overflow-hidden ${isLoading && 'bg-[#101720]'}`}
     >
       <Scene setDialogText={setDialogText} />
       {isLoading && (
