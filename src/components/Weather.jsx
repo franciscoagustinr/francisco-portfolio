@@ -47,14 +47,14 @@ const WeatherData = ({ setDialogText, hatName }) => {
 
   const playHoverSound = () => {
     const sound = new Howl({
-      src: ['src/assets/sounds/bubble-pop-buttons.mp3'],
+      src: ['assets/sounds/bubble-pop-buttons.mp3'],
       volume: 0.005,
     });
     sound.play();
   };
   const playConfettiSound = () => {
     const sound = new Howl({
-      src: ['src/assets/sounds/woo-hoo.mp3'],
+      src: ['assets/sounds/woo-hoo.mp3'],
       volume: 0.07,
     });
     sound.play();

@@ -104,7 +104,7 @@ function App() {
 
   const playHoverSound = () => {
     const sound = new Howl({
-      src: ['src/assets/sounds/bubble-pop-buttons.mp3'],
+      src: ['assets/sounds/bubble-pop-buttons.mp3'],
       volume: 0.01,
     });
     sound.play();

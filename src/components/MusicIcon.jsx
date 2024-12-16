@@ -22,7 +22,7 @@ export const MusicIcon = ({ setDialogText }) => {
     } else {
       const newSound = new Howl({
         volume: 0.07,
-        src: ['src/assets/sounds/home-music.mp3'],
+        src: ['assets/sounds/home-music.mp3'],
         loop: true,
         rate: 0.9,
       });
