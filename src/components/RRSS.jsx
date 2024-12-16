@@ -133,7 +133,7 @@ export const RRSS = ({ setDialogText }) => {
           }}
           onMouseEnter={() => {
             setDialogText(
-              "Where connections bloom <span class='text-2xl 3xl:text-4xl 4xl:text-7xl inline-block animate-pulse'> 🌱</span>"
+              "Where connections bloom <img src='../src/assets/images/seeding.png' class='inline-block w-6 animate-pulse'/>"
             );
           }}
           onMouseLeave={() => {
@@ -152,7 +152,7 @@ export const RRSS = ({ setDialogText }) => {
           }}
           onMouseEnter={() => {
             setDialogText(
-              "Check out my most exciting projects! <span class='text-2xl 3xl:text-4xl 4xl:text-7xl inline-block animate-ping'>🚀</span>"
+              "Check out my most exciting projects! <img src='../src/assets/images/rocket.png' class='inline-block w-6 animate-ping'/>"
             );
           }}
           onMouseLeave={() => {
@@ -171,7 +171,7 @@ export const RRSS = ({ setDialogText }) => {
           }}
           onMouseEnter={() => {
             setDialogText(
-              "Invite me a coffee! <span class='text-2xl 3xl:text-4xl 4xl:text-7xl inline-block animate-spin'>🙂 </span>"
+              "Invite me a coffee! <img src='../src/assets/images/slightly-smiling-face.png' class='inline-block w-6 animate-spin'/>"
             );
           }}
           onMouseLeave={() => {

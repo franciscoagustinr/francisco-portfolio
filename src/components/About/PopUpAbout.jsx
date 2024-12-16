@@ -123,21 +123,28 @@ export const PopUpAbout = ({ hatName }) => {
 export const ChatSimulator = () => {
   const messages = useMemo(
     () => [
-      "Hi there! <span class='text-xl animate-wavingHand inline-block'>👋🏻</span> I’m Francisco Agustín Rodríguez —but you can call me Fran.",
-      "I’m a front-end developer hailing from Buenos Aires, Argentina <span class='text-xl '>🇦🇷</span>",
-      "I bring websites to life by creating interactive <span class='text-xl inline-block animate-shake'>🕹️</span> visually stunning experiences <span class='text-xl '>🎨</span> with a focus on seamless motion and user-friendly design <span class='text-xl '>✨</span>",
-      "This is my teammate <span class='text-xl inline-block animate-bounce duration-150'>👇🏻</span><span class='text-xl inline-block animate-bounce delay-150 duration-300'>👇🏻</span>",
+      "Hi there! <img src='../src/assets/images/waving-hand.png' class='inline-block w-5 animate-wavingHand'/> I’m Francisco Agustín Rodríguez —but you can call me Fran.",
+      "I’m a front-end developer hailing from Buenos Aires, Argentina <img src='../src/assets/images/flag-argentina.png' class='inline-block w-5'/>",
+      "I bring websites to life by creating interactive <img src='../src/assets/images/joystick.png' class='inline-block w-5 animate-shake'/> visually stunning experiences <img src='../src/assets/images/artist-palette.png' class='inline-block w-5'/> with a focus on seamless motion and user-friendly design <img src='../src/assets/images/sparkles.png' class='inline-block w-5 animate-pulse'/>",
+      "This is my teammate <img src='../src/assets/images/backhand-pointing-down.png' class='inline-block w-5 animate-bounce duration-150'/> <img src='../src/assets/images/backhand-pointing-down.png' class='inline-block w-5 animate-bounce duration-150'/>",
       'img',
-      "Beto, my loyal sidekick <span class='text-2xl inline-block animate-shake '>🐶</span> He keeps the creativity flowing! <span class='text-xl '>💫</span>",
-      "Let’s connect <span class='text-xl animate-bounce inline-block'>🤝🏻</span> share some laughs <span class='text-xl animate-spin inline-block'>🙂</span> and turn your ideas into reality! <span class='text-xl inline-block'>🚀</span> ",
+      "Beto, my loyal sidekick <img src='../src/assets/images/dog.png' class='inline-block w-5 animate-shake'/>  He keeps the creativity flowing! <img src='../src/assets/images/dizzy.png' class='inline-block w-5'/>",
+      "Let’s connect <img src='../src/assets/images/handshake.png' class='animate-bounce inline-block w-5'/> share some laughs <img src='../src/assets/images/upside-down-face.png' class='animate-spin inline-block w-5'/> and turn your ideas into reality! <img src='../src/assets/images/rocket.png' class='inline-block w-5'/> ",
     ],
     []
   );
   const [reactions, setReactions] = useState(
     messages.map(() => ({ emoji: null, count: 0 }))
   );
-  const emojiReactions = ['😄', '⭐️⭐️⭐️', '🤓', '🌈', '😍', '💖', '✨'];
-
+  const emojiReactions = [
+    '../src/assets/images/grinning-face.png',
+    '../src/assets/images/star.png',
+    '../src/assets/images/nerd-face.png',
+    '../src/assets/images/rainbow.png',
+    '../src/assets/images/smiling-face-love.png',
+    '../src/assets/images/sparkling-heart.png',
+    '../src/assets/images/sparkles.png',
+  ];
   const endOfMessagesRef = useRef();
   const [count, setCount] = useState(0);
   const [showTypingDots, setShowTypingDots] = useState(true);
@@ -147,7 +154,8 @@ export const ChatSimulator = () => {
       return prevReactions.map((reaction, i) =>
         i === index
           ? {
-              emoji: reaction.emoji || emojiReactions[index] || '',
+              // emoji: reaction.emoji || emojiReactions[index] || '',
+              emoji: emojiReactions[index],
               count: reaction.count + 1,
             }
           : reaction
@@ -202,7 +210,23 @@ export const ChatSimulator = () => {
           )}
           {reactions[index].emoji && (
             <span className="text-md absolute -bottom-3.5 right-2 animate-appear rounded-full border border-gray-300 bg-white px-2 py-0.5 shadow-sm duration-0">
-              {reactions[index].emoji}
+              {reactions[index].emoji.includes('star.png') ? (
+                Array.from({ length: 3 }).map((_, idx) => (
+                  <img
+                    key={`${index}-star-${idx}`}
+                    src={reactions[index].emoji}
+                    alt="emoji"
+                    className="mr-0.5 inline-block w-4 object-contain"
+                  />
+                ))
+              ) : (
+                <img
+                  src={reactions[index].emoji}
+                  alt="emoji"
+                  className="inline-block w-4 object-contain"
+                />
+              )}
+
               <span
                 key={`${index}-${reactions[index].count}`}
                 className="relative ml-0.5 animate-appear pl-0.5 text-xs text-gray-500"

@@ -80,8 +80,8 @@ export const MusicIcon = ({ setDialogText }) => {
         onMouseEnter={() => {
           setDialogText(
             !isMusicPlaying
-              ? "Let the good vibes play! <span class='text-2xl 3xl:text-4xl 4xl:text-7xl inline-block animate-shake'>🕺🏻</span>"
-              : "Moment of calm?  <span class='text-2xl 3xl:text-4xl 4xl:text-7xl inline-block'>🦭</span>"
+              ? `Let the good vibes play! <img src='../src/assets/images/man-dancing.png' class='inline-block w-6 animate-shake'/>`
+              : `Moment of calm? <img src='../src/assets/images/seal.png' class='inline-block w-6'/>`
           );
         }}
         onMouseLeave={() => {

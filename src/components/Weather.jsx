@@ -115,7 +115,7 @@ const WeatherData = ({ setDialogText, hatName }) => {
                 className="group"
                 onMouseEnter={() => (
                   setDialogText(
-                    "<span class='text-2xl 3xl:text-4xl 4xl:text-7xl inline-block'>🎉</span> <span class='text-2xl 3xl:text-4xl 4xl:text-7xl inline-block animate-shake'>🎈</span> YAY! <span class='text-2xl 3xl:text-4xl 4xl:text-7xl inline-block animate-shake'>🎈</span><span class='text-2xl 3xl:text-4xl 4xl:text-7xl inline-block'>🎉</span>"
+                    "<img src='../src/assets/images/party.png' class='inline-block w-6'/> <img src='../src/assets/images/balloon.png' class='inline-block w-6 animate-shake'/> YAY! <img src='../src/assets/images/balloon.png' class='inline-block w-6 animate-shake'/><img src='../src/assets/images/party.png' class='inline-block w-6'/>"
                   ),
                   playHoverSound()
                 )}
