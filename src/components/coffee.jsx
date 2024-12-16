@@ -1,19 +1,19 @@
-import React from "react";
-import CoffeeCup from "../assets/coffee-cup.png";
+import React from 'react';
+import CoffeeCup from '../assets/images/coffee-cup.png';
 
 export const Coffee = ({ setDialogText }) => {
   return (
     <>
-      <div className="absolute left-1 bottom-2">
+      <div className="absolute bottom-2 left-1">
         <img
           src={CoffeeCup}
           alt="Coffee Cup"
-          className="shake select-none w-24 -rotate-12 cursor-pointer relative"
+          className="shake relative w-24 -rotate-12 cursor-pointer select-none"
           onClick={() => {
-            window.open("https://cafecito.app/franciscoagustinr", "_blank");
+            window.open('https://cafecito.app/franciscoagustinr', '_blank');
           }}
-          onMouseEnter={() => setDialogText("Invite me a coffee! 🙂 ")}
-          onMouseLeave={() => setDialogText("")}
+          onMouseEnter={() => setDialogText('Invite me a coffee! 🙂 ')}
+          onMouseLeave={() => setDialogText('')}
         />
       </div>
     </>

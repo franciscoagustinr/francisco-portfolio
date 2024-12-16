@@ -1,5 +1,5 @@
 import { doc, updateDoc, increment } from 'firebase/firestore';
-import { db } from './firebaseConfig'; // Importa la configuración de Firebase
+import { db } from './firebaseConfig';
 
 export const incrementCounter = async () => {
   try {

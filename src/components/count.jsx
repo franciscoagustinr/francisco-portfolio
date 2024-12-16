@@ -3,8 +3,8 @@ import { getClickCount } from '../utils/getClickCount';
 import { useScrollStore } from '../stores/useScroll';
 import { applyBounceEffect } from '../utils/applyBounceEffect';
 import { usePreloader } from '../stores/usePreloader';
-import gsap from 'gsap';
 import { useHatStore } from '../stores/useHatStore';
+import gsap from 'gsap';
 
 export const Count = () => {
   const [clickCount, setClickCount] = useState(null);
@@ -64,7 +64,7 @@ export const Count = () => {
     return text.split('').map((letter, index) => (
       <span
         key={index}
-        className="exploding-letter bg-gradient-text bg-300% animate-gradientText inline-block bg-clip-text text-transparent"
+        className="exploding-letter inline-block animate-gradientText bg-gradient-text bg-300% bg-clip-text text-transparent"
       >
         {letter}
       </span>
@@ -74,14 +74,14 @@ export const Count = () => {
   return (
     <div
       ref={countIndicatorContainerRef}
-      className={`3xl:px-3 3xl:py-2 relative z-30 m-2 mb-20 w-fit min-w-[250px] scale-125 select-none rounded-lg border border-black bg-white bg-opacity-50 px-2 py-1 pr-0.5 shadow-md duration-200 md:mb-4 md:hover:scale-150 lg:min-w-[290px] lg:px-2.5 4xl:bottom-16 4xl:scale-[2.7] 4xl:hover:scale-[3.2] ${
+      className={`relative z-30 m-2 mb-20 w-fit min-w-[250px] scale-125 select-none rounded-lg border border-black bg-white bg-opacity-50 px-2 py-1 pr-0.5 shadow-md duration-200 md:mb-4 md:hover:scale-150 lg:min-w-[290px] lg:px-2.5 3xl:px-3 3xl:py-2 4xl:bottom-16 4xl:scale-[2.7] 4xl:hover:scale-[3.2] ${
         isAnimatingCount && 'animate-ping'
       }`}
     >
       <div className="relative h-full overflow-visible">
-        <p className="3xl:text-2xl flex items-center justify-center font-Karla text-sm md:text-base">
+        <p className="flex items-center justify-center font-Karla text-sm md:text-base 3xl:text-2xl">
           Times people changed my look:
-          <span className="3xl:text-3xl ml-1 inline-block text-nowrap pr-1.5 text-center font-RecoletaBlack text-base tracking-wide lg:ml-2 lg:pr-0 lg:text-lg">
+          <span className="ml-1 inline-block text-nowrap pr-1.5 text-center font-RecoletaBlack text-base tracking-wide lg:ml-2 lg:pr-0 lg:text-lg 3xl:text-3xl">
             {clickCount !== null && splitTextIntoLetters(clickCount.toString())}
           </span>
         </p>

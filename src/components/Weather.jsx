@@ -47,14 +47,14 @@ const WeatherData = ({ setDialogText, hatName }) => {
 
   const playHoverSound = () => {
     const sound = new Howl({
-      src: ['src/assets/bubble-pop-buttons.mp3'],
+      src: ['src/assets/sounds/bubble-pop-buttons.mp3'],
       volume: 0.005,
     });
     sound.play();
   };
   const playConfettiSound = () => {
     const sound = new Howl({
-      src: ['src/assets/woo-hoo.mp3'],
+      src: ['src/assets/sounds/woo-hoo.mp3'],
       volume: 0.07,
     });
     sound.play();
@@ -99,10 +99,10 @@ const WeatherData = ({ setDialogText, hatName }) => {
 
       <div
         ref={weatherRefContainer}
-        className="weatherContainer 3xl:w-auto w-56 text-[#FAFAFA] md:w-72"
+        className="weatherContainer w-56 text-[#FAFAFA] md:w-72 3xl:w-auto"
       >
         {weatherData ? (
-          <div className="3xl:text-xl text-right font-sans text-sm uppercase tracking-tight 4xl:text-5xl">
+          <div className="text-right font-sans text-sm uppercase tracking-tight 3xl:text-xl 4xl:text-5xl">
             <p className="select-none">
               {weatherData.temperature2m}°C{' '}
               {weatherData && weatherData.isDay === 0 ? '🌙' : clima}{' '}

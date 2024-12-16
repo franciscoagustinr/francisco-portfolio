@@ -1,9 +1,9 @@
-import PortfolioPreview from '../assets/Portfolio2023Preview.jpg';
-import ShurikenPreview from '../assets/ShurikenPreview.png';
-import CrypcollPreview from '../assets/CrypcollPreview.png';
-import LuvlyPreview from '../assets/LuvlyPreview.png';
-import DisneyPreview from '../assets/DisneyPreview.jpg';
-import RMRPreview from '../assets/RMRPreview.jpg';
+import PortfolioPreview from '../assets/images/Portfolio2023Preview.jpg';
+import ShurikenPreview from '../assets/images/ShurikenPreview.png';
+import CrypcollPreview from '../assets/images/CrypcollPreview.png';
+import LuvlyPreview from '../assets/images/LuvlyPreview.png';
+import DisneyPreview from '../assets/images/DisneyPreview.jpg';
+import RMRPreview from '../assets/images/RMRPreview.jpg';
 
 export const Works = [
   {

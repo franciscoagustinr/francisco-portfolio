@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
-import GithubLogo from '../assets/github.png';
-import LinkedinLogo from '../assets/linkedin.png';
-import CoffeeCup from '../assets/coffee-cup.png';
+import GithubLogo from '../assets/images/github.png';
+import LinkedinLogo from '../assets/images/linkedin.png';
+import CoffeeCup from '../assets/images/coffee-cup.png';
 import gsap from 'gsap';
 import { useScrollStore } from '../stores/useScroll';
 import { applyBounceEffect } from '../utils/applyBounceEffect';
@@ -19,7 +19,7 @@ export const RRSS = ({ setDialogText }) => {
 
   const playHoverSound = () => {
     const sound = new Howl({
-      src: ['src/assets/elastic.mp3'],
+      src: ['src/assets/sounds/elastic.mp3'],
       volume: 0.06,
     });
     sound.play();
@@ -124,7 +124,7 @@ export const RRSS = ({ setDialogText }) => {
           ref={linkedinRef}
           src={LinkedinLogo}
           alt="github-logo"
-          className="3xl:w-20 z-50 h-auto w-12 cursor-pointer select-none drop-shadow-lg md:w-14 4xl:w-44"
+          className="z-50 h-auto w-12 cursor-pointer select-none drop-shadow-lg md:w-14 3xl:w-20 4xl:w-44"
           onClick={() => {
             window.open(
               'https://www.linkedin.com/in/franciscoagustinr/',
@@ -141,12 +141,12 @@ export const RRSS = ({ setDialogText }) => {
           }}
         />
       </div>
-      <div className="3xl:right-44 absolute bottom-2 right-16 z-50 md:right-20 lg:bottom-4 lg:right-36 4xl:bottom-12 4xl:right-80">
+      <div className="absolute bottom-2 right-16 z-50 md:right-20 lg:bottom-4 lg:right-36 3xl:right-44 4xl:bottom-12 4xl:right-80">
         <img
           ref={githubRef}
           src={GithubLogo}
           alt="github-logo"
-          className="3xl:w-20 z-50 h-auto w-12 cursor-pointer select-none drop-shadow-lg md:w-14 4xl:w-44"
+          className="z-50 h-auto w-12 cursor-pointer select-none drop-shadow-lg md:w-14 3xl:w-20 4xl:w-44"
           onClick={() => {
             window.open('https://github.com/franciscoagustinr', '_blank');
           }}
@@ -165,7 +165,7 @@ export const RRSS = ({ setDialogText }) => {
           ref={coffeeRef}
           src={CoffeeCup}
           alt="Coffee Cup"
-          className="3xl:w-24 z-50 w-12 -rotate-12 cursor-pointer select-none drop-shadow-lg md:w-16 lg:w-20 4xl:w-56"
+          className="z-50 w-12 -rotate-12 cursor-pointer select-none drop-shadow-lg md:w-16 lg:w-20 3xl:w-24 4xl:w-56"
           onClick={() => {
             window.open('https://cafecito.app/franciscoagustinr', '_blank');
           }}

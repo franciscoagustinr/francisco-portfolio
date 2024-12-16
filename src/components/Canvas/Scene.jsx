@@ -1,6 +1,5 @@
 import React, { Suspense, useEffect, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
-
 import { Center, ContactShadows, Environment, Float } from '@react-three/drei';
 import { TextTitle } from './Text';
 import { Francisco } from './Francisco';

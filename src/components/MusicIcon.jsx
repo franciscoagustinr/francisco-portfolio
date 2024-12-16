@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
-import SoundOn from '../assets/Speaker.png';
-import SoundOff from '../assets/SpeakerMuted.png';
-import MusicalNote from '../assets/MusicalNote.png';
+import SoundOn from '../assets/images/Speaker.png';
+import SoundOff from '../assets/images/SpeakerMuted.png';
+import MusicalNote from '../assets/images/MusicalNote.png';
 import { Howl } from 'howler';
 import { useMusicPlaying } from '../stores/useMusicPlaying';
 import gsap from 'gsap';
@@ -22,7 +22,7 @@ export const MusicIcon = ({ setDialogText }) => {
     } else {
       const newSound = new Howl({
         volume: 0.07,
-        src: ['src/assets/home-music.mp3'],
+        src: ['src/assets/sounds/home-music.mp3'],
         loop: true,
         rate: 0.9,
       });
@@ -74,7 +74,7 @@ export const MusicIcon = ({ setDialogText }) => {
     <>
       <img
         src={!isMusicPlaying ? SoundOff : SoundOn}
-        className={`3xl:w-20 w-10 cursor-pointer md:w-12 lg:w-16 4xl:w-44 ${isMusicPlaying && 'animate-pulse'} transition-all hover:scale-125 active:scale-150`}
+        className={`w-10 cursor-pointer md:w-12 lg:w-16 3xl:w-20 4xl:w-44 ${isMusicPlaying && 'animate-pulse'} transition-all hover:scale-125 active:scale-150`}
         alt="Music On Icon"
         onClick={toggleMusic}
         onMouseEnter={() => {

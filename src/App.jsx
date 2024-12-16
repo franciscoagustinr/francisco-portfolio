@@ -104,7 +104,7 @@ function App() {
 
   const playHoverSound = () => {
     const sound = new Howl({
-      src: ['src/assets/bubble-pop-buttons.mp3'],
+      src: ['src/assets/sounds/bubble-pop-buttons.mp3'],
       volume: 0.01,
     });
     sound.play();
@@ -140,7 +140,7 @@ function App() {
           <div className="rrss">
             <RRSS setDialogText={setDialogText} />
           </div>
-          <div className="weather 3xl:top-10 absolute right-3.5 top-8 z-30 lg:right-16 4xl:right-[2%] 4xl:top-28">
+          <div className="weather absolute right-3.5 top-8 z-30 lg:right-16 3xl:top-10 4xl:right-[2%] 4xl:top-28">
             <WeatherData setDialogText={setDialogText} hatName={hatName} />
           </div>
           <div className="count-container absolute bottom-2 left-1/2 z-10 -translate-x-1/2 transform">
@@ -148,7 +148,7 @@ function App() {
           </div>
           <div
             onMouseEnter={playHoverSound}
-            className="music-icon 3xl:right-10 absolute right-2.5 top-36 z-10 md:bottom-36 md:right-2 md:top-auto lg:right-12 4xl:bottom-96"
+            className="music-icon absolute right-2.5 top-36 z-10 md:bottom-36 md:right-2 md:top-auto lg:right-12 3xl:right-10 4xl:bottom-96"
           >
             <MusicIcon setDialogText={setDialogText} />
           </div>
