@@ -32,7 +32,7 @@ function App() {
   useEffect(() => {
     if (!isScrolling || isPopUpOpen) return;
     setDialogText(
-      "Nope, everything is here! <img src='../src/assets/images/upside-down-face.png' class='inline-block w-6'/>"
+      "Nope, everything is here! <img src='../assets/images/upside-down-face.png' class='inline-block w-6'/>"
     );
     setTimeout(() => setDialogText(''), 1800);
   }, [isScrolling, isPopUpOpen]);

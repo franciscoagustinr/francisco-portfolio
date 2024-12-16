@@ -123,13 +123,13 @@ export const PopUpAbout = ({ hatName }) => {
 export const ChatSimulator = () => {
   const messages = useMemo(
     () => [
-      "Hi there! <img src='../src/assets/images/waving-hand.png' class='inline-block w-5 animate-wavingHand'/> I’m Francisco Agustín Rodríguez —but you can call me Fran.",
-      "I’m a front-end developer hailing from Buenos Aires, Argentina <img src='../src/assets/images/flag-argentina.png' class='inline-block w-5'/>",
-      "I bring websites to life by creating interactive <img src='../src/assets/images/joystick.png' class='inline-block w-5 animate-shake'/> visually stunning experiences <img src='../src/assets/images/artist-palette.png' class='inline-block w-5'/> with a focus on seamless motion and user-friendly design <img src='../src/assets/images/sparkles.png' class='inline-block w-5 animate-pulse'/>",
-      "This is my teammate <img src='../src/assets/images/backhand-pointing-down.png' class='inline-block w-5 animate-bounce duration-150'/> <img src='../src/assets/images/backhand-pointing-down.png' class='inline-block w-5 animate-bounce duration-150'/>",
+      "Hi there! <img src='../assets/images/waving-hand.png' class='inline-block w-5 animate-wavingHand'/> I’m Francisco Agustín Rodríguez —but you can call me Fran.",
+      "I’m a front-end developer hailing from Buenos Aires, Argentina <img src='../assets/images/flag-argentina.png' class='inline-block w-5'/>",
+      "I bring websites to life by creating interactive <img src='../assets/images/joystick.png' class='inline-block w-5 animate-shake'/> visually stunning experiences <img src='../assets/images/artist-palette.png' class='inline-block w-5'/> with a focus on seamless motion and user-friendly design <img src='../assets/images/sparkles.png' class='inline-block w-5 animate-pulse'/>",
+      "This is my teammate <img src='../assets/images/backhand-pointing-down.png' class='inline-block w-5 animate-bounce duration-150'/> <img src='../assets/images/backhand-pointing-down.png' class='inline-block w-5 animate-bounce duration-150'/>",
       'img',
-      "Beto, my loyal sidekick <img src='../src/assets/images/dog.png' class='inline-block w-5 animate-shake'/>  He keeps the creativity flowing! <img src='../src/assets/images/dizzy.png' class='inline-block w-5'/>",
-      "Let’s connect <img src='../src/assets/images/handshake.png' class='animate-bounce inline-block w-5'/> share some laughs <img src='../src/assets/images/upside-down-face.png' class='animate-spin inline-block w-5'/> and turn your ideas into reality! <img src='../src/assets/images/rocket.png' class='inline-block w-5'/> ",
+      "Beto, my loyal sidekick <img src='../assets/images/dog.png' class='inline-block w-5 animate-shake'/>  He keeps the creativity flowing! <img src='../assets/images/dizzy.png' class='inline-block w-5'/>",
+      "Let’s connect <img src='../assets/images/handshake.png' class='animate-bounce inline-block w-5'/> share some laughs <img src='../assets/images/upside-down-face.png' class='animate-spin inline-block w-5'/> and turn your ideas into reality! <img src='../assets/images/rocket.png' class='inline-block w-5'/> ",
     ],
     []
   );
@@ -137,13 +137,13 @@ export const ChatSimulator = () => {
     messages.map(() => ({ emoji: null, count: 0 }))
   );
   const emojiReactions = [
-    '../src/assets/images/grinning-face.png',
-    '../src/assets/images/star.png',
-    '../src/assets/images/nerd-face.png',
-    '../src/assets/images/rainbow.png',
-    '../src/assets/images/smiling-face-love.png',
-    '../src/assets/images/sparkling-heart.png',
-    '../src/assets/images/sparkles.png',
+    '../assets/images/grinning-face.png',
+    '../assets/images/star.png',
+    '../assets/images/nerd-face.png',
+    '../assets/images/rainbow.png',
+    '../assets/images/smiling-face-love.png',
+    '../assets/images/sparkling-heart.png',
+    '../assets/images/sparkles.png',
   ];
   const endOfMessagesRef = useRef();
   const [count, setCount] = useState(0);

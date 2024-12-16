@@ -3,7 +3,7 @@
 <br/>
 
 <div align="center">
-  <img src="../src/assets/francisco-portfolio-preview.png" alt="Francisco">
+  <img src="../assets/francisco-portfolio-preview.png" alt="Francisco">
   <br/>
 </div>
 <br/>
@@ -59,5 +59,5 @@ If you like what you see or want to collaborate, reach out!
   Thanks for your visit! <img valign='bottom' src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Sparkling%20Heart.png" alt="Sparkling Heart" width="25" height="25" />
   <br/>
   <br/>
-  <img src="../src/assets/francisco-fun-photo.png" alt="Francisco">
+  <img src="../assets/francisco-fun-photo.png" alt="Francisco">
 </div>
