@@ -154,13 +154,13 @@ export const ChatSimulator = () => {
     messages.map(() => ({ emoji: null, count: 0 }))
   );
   const emojiReactions = [
-    `${GrinningFace}`,
-    `${Star}`,
-    `${Nerd}`,
-    `${Rainbow}`,
-    `${FaceLove}`,
-    `${SparklingHeart}`,
-    `${Sparkles}`,
+    { id: 'grinningFace', src: `${GrinningFace}` },
+    { id: 'star', src: `${Star}` },
+    { id: 'nerd', src: `${Nerd}` },
+    { id: 'rainbow', src: `${Rainbow}` },
+    { id: 'faceLove', src: `${FaceLove}` },
+    { id: 'sparklingHeart', src: `${SparklingHeart}` },
+    { id: 'sparkles', src: `${Sparkles}` },
   ];
   const endOfMessagesRef = useRef();
   const [count, setCount] = useState(0);
@@ -226,18 +226,18 @@ export const ChatSimulator = () => {
           )}
           {reactions[index].emoji && (
             <span className="text-md absolute -bottom-3.5 right-2 animate-appear rounded-full border border-gray-300 bg-white px-2 py-0.5 shadow-sm duration-0">
-              {reactions[index].emoji.includes('star.png' || 'Star') ? (
+              {reactions[index].emoji.id === 'star' ? (
                 Array.from({ length: 3 }).map((_, idx) => (
                   <img
                     key={`${index}-star-${idx}`}
-                    src={reactions[index].emoji}
+                    src={reactions[index].emoji.src}
                     alt="emoji"
                     className="mr-0.5 inline-block w-4 object-contain"
                   />
                 ))
               ) : (
                 <img
-                  src={reactions[index].emoji}
+                  src={reactions[index].emoji.src}
                   alt="emoji"
                   className="inline-block w-4 object-contain"
                 />
