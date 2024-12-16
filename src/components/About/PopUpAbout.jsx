@@ -55,7 +55,7 @@ export const PopUpAbout = ({ hatName }) => {
         popupRef.current,
         { scale: 0, opacity: 0, rotation: -180 },
         {
-          scale: is3XL ? 1.5 : is4XL ? 2.9 : 1,
+          scale: is3XL ? 1.15 : is4XL ? 1.2 : 1,
           opacity: 1,
           rotation: 0,
           duration: 1,
@@ -77,7 +77,7 @@ export const PopUpAbout = ({ hatName }) => {
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-50 bg-opacity-5 backdrop-blur-md">
         <div
           ref={popupRef}
-          className="no-scrollbar relative top-0 z-20 mx-1 h-[45rem] w-auto overflow-x-hidden overflow-y-scroll rounded-2xl border border-solid border-gray-100 bg-gray-600 bg-opacity-20 shadow-2xl md:h-[43rem] lg:top-2 4xl:!w-[70rem]"
+          className="no-scrollbar relative top-0 z-20 mx-1 h-[45rem] w-auto overflow-x-hidden overflow-y-scroll rounded-2xl border border-solid border-gray-100 bg-gray-600 bg-opacity-20 shadow-2xl will-change-transform md:h-[43rem] lg:top-2 4xl:!w-[70rem]"
         >
           <IconCross
             className="absolute right-2 top-2 z-50 cursor-pointer"
@@ -140,13 +140,25 @@ export const PopUpAbout = ({ hatName }) => {
 export const ChatSimulator = () => {
   const messages = useMemo(
     () => [
-      `Hi there! <img src=${WavingHand} class='inline-block w-5 animate-wavingHand'/> I’m Francisco Agustín Rodríguez —but you can call me Fran.`,
-      `I’m a front-end developer hailing from Buenos Aires, Argentina <img src=${FlagArgentina} class='inline-block w-5'/>`,
-      `I bring websites to life by creating interactive <img src=${Joystick} class='inline-block w-5 animate-shake'/> visually stunning experiences <img src=${Palette} class='inline-block w-5'/> with a focus on seamless motion and user-friendly design <img src=${Sparkles} class='inline-block w-5 animate-pulse'/>`,
-      `This is my teammate <img src=${HandPointingDown} class='inline-block w-5 animate-bounce duration-150'/> <img src=${HandPointingDown} class='inline-block w-5 animate-bounce duration-150'/>`,
+      `Hi there! <img src=${WavingHand} class='inline-block w-5 aspect-square
+object-contain animate-wavingHand'/> I’m Francisco Agustín Rodríguez —but you can call me Fran.`,
+      `I’m a front-end developer hailing from Buenos Aires, Argentina <img src=${FlagArgentina} class='inline-block w-5 aspect-square
+object-contain'/>`,
+      `I bring websites to life by creating interactive <img src=${Joystick} class='inline-block w-5 aspect-square
+object-contain animate-shake'/> visually stunning experiences <img src=${Palette} class='inline-block w-5 aspect-square
+object-contain'/> with a focus on seamless motion and user-friendly design <img src=${Sparkles} class='inline-block w-5 aspect-square
+object-contain animate-pulse'/>`,
+      `This is my teammate <img src=${HandPointingDown} class='inline-block w-5 aspect-square
+object-contain animate-bounce duration-150'/> <img src=${HandPointingDown} class='inline-block w-5 aspect-square
+object-contain animate-bounce duration-150'/>`,
       'img',
-      `Beto, my loyal sidekick <img src=${Dog} class='inline-block w-5 animate-shake'/>  He keeps the creativity flowing! <img src=${Dizzy} class='inline-block w-5'/>`,
-      `Let’s connect <img src=${Handshake} class='animate-bounce inline-block w-5'/> share some laughs <img src=${UpsideDownFace} class='animate-spin inline-block w-5'/> and turn your ideas into reality! <img src=${Rocket} class='inline-block w-5'/> `,
+      `Beto, my loyal sidekick <img src=${Dog} class='inline-block w-5 aspect-square
+object-contain animate-shake'/>  He keeps the creativity flowing! <img src=${Dizzy} class='inline-block w-5 aspect-square
+object-contain'/>`,
+      `Let’s connect <img src=${Handshake} class='animate-bounce inline-block w-5 aspect-square
+object-contain'/> share some laughs <img src=${UpsideDownFace} class='animate-spin inline-block w-5 aspect-square
+object-contain'/> and turn your ideas into reality! <img src=${Rocket} class='inline-block w-5 aspect-square
+object-contain'/> `,
     ],
     []
   );
@@ -206,7 +218,7 @@ export const ChatSimulator = () => {
       {visibleMessages.map((message, index) => (
         <div
           key={index}
-          className={`relative max-w-max animate-appear cursor-pointer select-none rounded-2xl rounded-bl-md bg-[#ffffff] py-2 pl-3 pr-2 font-KarlaLight text-sm shadow-sm transition-all duration-300 ease-in-out hover:!scale-[1.009] 4xl:text-lg ${
+          className={`relative max-w-max animate-appear cursor-pointer select-none rounded-2xl rounded-bl-md bg-[#ffffff] py-2 pl-3 pr-2 font-KarlaLight text-sm shadow-sm transition-all duration-300 ease-in-out hover:!scale-[1.009] 3xl:text-base ${
             reactions[index].emoji ? 'mb-5' : 'mb-2'
           } `}
           onClick={() => handleReaction(index)}
@@ -214,18 +226,17 @@ export const ChatSimulator = () => {
           <div className="absolute -left-1 bottom-0 h-0 w-0 rotate-90 border-l-8 border-t-8 border-l-transparent border-t-white" />
           {message === 'img' ? (
             <div className="-ml-1 max-w-[340px]">
-              {/* <ArcCard /> */}
               <img
                 src={FranciscoWithBeto}
                 alt="Beto & Me"
-                className="w-full rounded-lg"
+                className="aspect-square w-full rounded-lg"
               />
             </div>
           ) : (
             <div dangerouslySetInnerHTML={{ __html: message }} />
           )}
           {reactions[index].emoji && (
-            <span className="text-md absolute -bottom-3.5 right-2 animate-appear rounded-full border border-gray-300 bg-white px-2 py-0.5 shadow-sm duration-0">
+            <span className="text-md absolute -bottom-3.5 right-2 flex animate-appear items-center justify-center rounded-full border border-gray-300 bg-white px-2 py-0.5 shadow-sm duration-0">
               {reactions[index].emoji.id === 'star' ? (
                 Array.from({ length: 3 }).map((_, idx) => (
                   <img
@@ -233,7 +244,7 @@ export const ChatSimulator = () => {
                     src={reactions[index].emoji.src}
                     alt="emoji"
                     loading="eager"
-                    className="mr-0.5 inline-block w-4 object-contain"
+                    className="mr-0.5 inline-block aspect-square w-4 object-contain 3xl:w-5"
                   />
                 ))
               ) : (
@@ -241,7 +252,7 @@ export const ChatSimulator = () => {
                   src={reactions[index].emoji.src}
                   alt="emoji"
                   loading="eager"
-                  className="inline-block w-4 object-contain"
+                  className="inline-block aspect-square w-4 object-contain 3xl:w-5"
                 />
               )}
 
