@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import FranciscoPhoto from '../assets/images/francisco-photo.png';
 import FranciscoFunPhoto from '../assets/images/francisco-fun-photo.png';
+import GrinningFace from '../assets/images/grinning-face.png';
 import { usePopupStore } from '../stores/usePopUp';
 import { useScrollStore } from '../stores/useScroll';
 import { applyBounceEffect } from '../utils/applyBounceEffect';
@@ -24,7 +25,7 @@ export const About = ({ setDialogText }) => {
         className={`group relative max-h-20 transition-all duration-200`}
         onMouseEnter={() =>
           setDialogText(
-            "Know more about me! <img src='../assets/images/grinning-face.png' class='inline-block w-6 animate-bounce'/>"
+            `Know more about me! <img src=${GrinningFace} class='inline-block w-6 animate-bounce'/>`
           )
         }
         onMouseLeave={() => setDialogText('')}

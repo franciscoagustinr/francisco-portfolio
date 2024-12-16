@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import SoundOn from '../assets/images/Speaker.png';
 import SoundOff from '../assets/images/SpeakerMuted.png';
 import MusicalNote from '../assets/images/MusicalNote.png';
+import Dancing from '../assets/images/man-dancing.png';
+import Seal from '../assets/images/seal.png';
 import { Howl } from 'howler';
 import { useMusicPlaying } from '../stores/useMusicPlaying';
 import gsap from 'gsap';
@@ -80,8 +82,8 @@ export const MusicIcon = ({ setDialogText }) => {
         onMouseEnter={() => {
           setDialogText(
             !isMusicPlaying
-              ? `Let the good vibes play! <img src='../assets/images/man-dancing.png' class='inline-block w-6 animate-shake'/>`
-              : `Moment of calm? <img src='../assets/images/seal.png' class='inline-block w-6'/>`
+              ? `Let the good vibes play! <img src=${Dancing} class='inline-block w-6 animate-shake'/>`
+              : `Moment of calm? <img src=${Seal} class='inline-block w-6'/>`
           );
         }}
         onMouseLeave={() => {

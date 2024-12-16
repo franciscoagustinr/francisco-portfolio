@@ -19,6 +19,7 @@ import WeatherData from './components/Weather';
 import gsap from 'gsap';
 import RotatingText from './components/RotatingText';
 import { MusicIcon } from './components/MusicIcon';
+import UpsideDownSmile from './assets/images/upside-down-face.png';
 
 function App() {
   const [dialogText, setDialogText] = useState(null);
@@ -32,7 +33,7 @@ function App() {
   useEffect(() => {
     if (!isScrolling || isPopUpOpen) return;
     setDialogText(
-      "Nope, everything is here! <img src='../assets/images/upside-down-face.png' class='inline-block w-6'/>"
+      `Nope, everything is here! <img src=${UpsideDownSmile} class='inline-block w-6'/>`
     );
     setTimeout(() => setDialogText(''), 1800);
   }, [isScrolling, isPopUpOpen]);

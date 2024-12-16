@@ -2,6 +2,9 @@ import React, { useEffect, useRef } from 'react';
 import GithubLogo from '../assets/images/github.png';
 import LinkedinLogo from '../assets/images/linkedin.png';
 import CoffeeCup from '../assets/images/coffee-cup.png';
+import Seeding from '../assets/images/seeding.png';
+import Rocket from '../assets/images/rocket.png';
+import SmileFace from '../assets/images/slightly-smiling-face.png';
 import gsap from 'gsap';
 import { useScrollStore } from '../stores/useScroll';
 import { applyBounceEffect } from '../utils/applyBounceEffect';
@@ -133,7 +136,7 @@ export const RRSS = ({ setDialogText }) => {
           }}
           onMouseEnter={() => {
             setDialogText(
-              "Where connections bloom <img src='../assets/images/seeding.png' class='inline-block w-6 animate-pulse'/>"
+              `Where connections bloom <img src=${Seeding} class='inline-block w-6 animate-pulse'/>`
             );
           }}
           onMouseLeave={() => {
@@ -152,7 +155,7 @@ export const RRSS = ({ setDialogText }) => {
           }}
           onMouseEnter={() => {
             setDialogText(
-              "Check out my most exciting projects! <img src='../assets/images/rocket.png' class='inline-block w-6 animate-ping'/>"
+              `Check out my most exciting projects! <img src=${Rocket} class='inline-block w-6 animate-ping'/>`
             );
           }}
           onMouseLeave={() => {
@@ -171,7 +174,7 @@ export const RRSS = ({ setDialogText }) => {
           }}
           onMouseEnter={() => {
             setDialogText(
-              "Invite me a coffee! <img src='../assets/images/slightly-smiling-face.png' class='inline-block w-6 animate-spin'/>"
+              `Invite me a coffee! <img src=${SmileFace} class='inline-block w-6 animate-spin'/>`
             );
           }}
           onMouseLeave={() => {

@@ -1,5 +1,22 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import FranciscoWithBeto from '../../assets/images/FranciscoWithBeto.JPG';
+import WavingHand from '../../assets/images/waving-hand.png';
+import FlagArgentina from '../../assets/images/flag-argentina.png';
+import Joystick from '../../assets/images/joystick.png';
+import Palette from '../../assets/images/artist-palette.png';
+import Sparkles from '../../assets/images/sparkles.png';
+import HandPointingDown from '../../assets/images/backhand-pointing-down.png';
+import Dog from '../../assets/images/dog.png';
+import Dizzy from '../../assets/images/dizzy.png';
+import Handshake from '../../assets/images/handshake.png';
+import UpsideDownFace from '../../assets/images/upside-down-face.png';
+import Rocket from '../../assets/images/rocket.png';
+import GrinningFace from '../../assets/images/grinning-face.png';
+import Star from '../../assets/images/star.png';
+import Nerd from '../../assets/images/nerd-face.png';
+import Rainbow from '../../assets/images/rainbow.png';
+import FaceLove from '../../assets/images/smiling-face-love.png';
+import SparklingHeart from '../../assets/images/sparkling-heart.png';
 import { WorksContainer } from './WorksContainer';
 import { usePopupStore } from '../../stores/usePopUp';
 import gsap from 'gsap';
@@ -123,13 +140,13 @@ export const PopUpAbout = ({ hatName }) => {
 export const ChatSimulator = () => {
   const messages = useMemo(
     () => [
-      "Hi there! <img src='../assets/images/waving-hand.png' class='inline-block w-5 animate-wavingHand'/> I’m Francisco Agustín Rodríguez —but you can call me Fran.",
-      "I’m a front-end developer hailing from Buenos Aires, Argentina <img src='../assets/images/flag-argentina.png' class='inline-block w-5'/>",
-      "I bring websites to life by creating interactive <img src='../assets/images/joystick.png' class='inline-block w-5 animate-shake'/> visually stunning experiences <img src='../assets/images/artist-palette.png' class='inline-block w-5'/> with a focus on seamless motion and user-friendly design <img src='../assets/images/sparkles.png' class='inline-block w-5 animate-pulse'/>",
-      "This is my teammate <img src='../assets/images/backhand-pointing-down.png' class='inline-block w-5 animate-bounce duration-150'/> <img src='../assets/images/backhand-pointing-down.png' class='inline-block w-5 animate-bounce duration-150'/>",
+      `Hi there! <img src=${WavingHand} class='inline-block w-5 animate-wavingHand'/> I’m Francisco Agustín Rodríguez —but you can call me Fran.`,
+      `I’m a front-end developer hailing from Buenos Aires, Argentina <img src=${FlagArgentina} class='inline-block w-5'/>`,
+      `I bring websites to life by creating interactive <img src=${Joystick} class='inline-block w-5 animate-shake'/> visually stunning experiences <img src=${Palette} class='inline-block w-5'/> with a focus on seamless motion and user-friendly design <img src=${Sparkles} class='inline-block w-5 animate-pulse'/>`,
+      `This is my teammate <img src=${HandPointingDown} class='inline-block w-5 animate-bounce duration-150'/> <img src=${HandPointingDown} class='inline-block w-5 animate-bounce duration-150'/>`,
       'img',
-      "Beto, my loyal sidekick <img src='../assets/images/dog.png' class='inline-block w-5 animate-shake'/>  He keeps the creativity flowing! <img src='../assets/images/dizzy.png' class='inline-block w-5'/>",
-      "Let’s connect <img src='../assets/images/handshake.png' class='animate-bounce inline-block w-5'/> share some laughs <img src='../assets/images/upside-down-face.png' class='animate-spin inline-block w-5'/> and turn your ideas into reality! <img src='../assets/images/rocket.png' class='inline-block w-5'/> ",
+      `Beto, my loyal sidekick <img src=${Dog} class='inline-block w-5 animate-shake'/>  He keeps the creativity flowing! <img src=${Dizzy} class='inline-block w-5'/>`,
+      `Let’s connect <img src=${Handshake} class='animate-bounce inline-block w-5'/> share some laughs <img src=${UpsideDownFace} class='animate-spin inline-block w-5'/> and turn your ideas into reality! <img src=${Rocket} class='inline-block w-5'/> `,
     ],
     []
   );
@@ -137,13 +154,13 @@ export const ChatSimulator = () => {
     messages.map(() => ({ emoji: null, count: 0 }))
   );
   const emojiReactions = [
-    '../assets/images/grinning-face.png',
-    '../assets/images/star.png',
-    '../assets/images/nerd-face.png',
-    '../assets/images/rainbow.png',
-    '../assets/images/smiling-face-love.png',
-    '../assets/images/sparkling-heart.png',
-    '../assets/images/sparkles.png',
+    `${GrinningFace}`,
+    `${Star}`,
+    `${Nerd}`,
+    `${Rainbow}`,
+    `${FaceLove}`,
+    `${SparklingHeart}`,
+    `${Sparkles}`,
   ];
   const endOfMessagesRef = useRef();
   const [count, setCount] = useState(0);
@@ -154,7 +171,6 @@ export const ChatSimulator = () => {
       return prevReactions.map((reaction, i) =>
         i === index
           ? {
-              // emoji: reaction.emoji || emojiReactions[index] || '',
               emoji: emojiReactions[index],
               count: reaction.count + 1,
             }
@@ -210,7 +226,7 @@ export const ChatSimulator = () => {
           )}
           {reactions[index].emoji && (
             <span className="text-md absolute -bottom-3.5 right-2 animate-appear rounded-full border border-gray-300 bg-white px-2 py-0.5 shadow-sm duration-0">
-              {reactions[index].emoji.includes('star.png') ? (
+              {reactions[index].emoji.includes('star.png' || 'Star') ? (
                 Array.from({ length: 3 }).map((_, idx) => (
                   <img
                     key={`${index}-star-${idx}`}

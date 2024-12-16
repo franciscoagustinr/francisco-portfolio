@@ -6,6 +6,8 @@ import { useConfettiStore } from '../stores/useTriggerConfetti-Talk';
 import { useHatBackground } from '../hooks/useBackground';
 import { useScrollStore } from '../stores/useScroll';
 import { applyBounceEffect } from '../utils/applyBounceEffect';
+import Party from '../assets/images/party.png';
+import Balloon from '../assets/images/balloon.png';
 
 const WeatherData = ({ setDialogText, hatName }) => {
   const [weatherData, setWeatherData] = useState(null);
@@ -115,7 +117,7 @@ const WeatherData = ({ setDialogText, hatName }) => {
                 className="group"
                 onMouseEnter={() => (
                   setDialogText(
-                    "<img src='../assets/images/party.png' class='inline-block w-6'/> <img src='../assets/images/balloon.png' class='inline-block w-6 animate-shake'/> YAY! <img src='../assets/images/balloon.png' class='inline-block w-6 animate-shake'/><img src='../assets/images/party.png' class='inline-block w-6'/>"
+                    `<img src=${Party} class='inline-block w-6'/> <img src=${Balloon} class='inline-block w-6 animate-shake'/> YAY! <img src=${Balloon} class='inline-block w-6 animate-shake'/><img src=${Party} class='inline-block w-6'/>`
                   ),
                   playHoverSound()
                 )}

@@ -14,6 +14,8 @@ import { incrementCounter } from '../../utils/incrementCounter';
 import { Howl } from 'howler';
 import { useMusicPlaying } from '../../stores/useMusicPlaying';
 import { useError404 } from '../../stores/useError404';
+import Sparkles from '../../assets/images/sparkles.png';
+import SmileFace from '../../assets/images/slightly-smiling-face.png';
 
 export const Francisco = ({ props, setDialogText }) => {
   const { nodes, materials } = useGLTF('/models/F-model7.glb');
@@ -209,7 +211,7 @@ export const Francisco = ({ props, setDialogText }) => {
               });
               setTimeout(() => {
                 setDialogText(
-                  "Welcome! <img src='../assets/images/sparkles.png' class='inline-block w-6'/><img src='../assets/images/slightly-smiling-face.png' class='inline-block w-6'/> "
+                  `Welcome! <img src=${Sparkles} class='inline-block w-6'/><img src=${SmileFace} class='inline-block w-6'/> `
                 );
                 influences[0] = 1;
                 influences[1] = 1;
