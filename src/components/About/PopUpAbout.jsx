@@ -25,6 +25,7 @@ export const PopUpAbout = ({ hatName }) => {
   const popupRef = useRef();
   const closePopUp = usePopupStore((state) => state.closePopUp);
   const isPopUpOpen = usePopupStore((state) => state.isPopUpOpen);
+  const isMobileXS = window.innerWidth <= 375;
   const is3XL = window.innerWidth >= 1920 && window.innerWidth <= 3999;
   const is4XL = window.innerWidth >= 4000;
 
@@ -77,7 +78,7 @@ export const PopUpAbout = ({ hatName }) => {
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-50 bg-opacity-5 backdrop-blur-md">
         <div
           ref={popupRef}
-          className="no-scrollbar relative top-0 z-20 mx-1 h-[45rem] w-auto overflow-x-hidden overflow-y-scroll rounded-2xl border border-solid border-gray-100 bg-gray-600 bg-opacity-20 shadow-2xl will-change-transform md:h-[43rem] lg:top-2 4xl:!w-[70rem]"
+          className={`no-scrollbar relative top-0 z-20 mx-1 h-[40rem] w-auto overflow-x-hidden overflow-y-scroll rounded-2xl border border-solid border-gray-100 bg-gray-600 bg-opacity-20 shadow-2xl will-change-transform md:h-[43rem] lg:top-2 4xl:!w-[70rem] ${isMobileXS && 'h-[37rem]'}`}
         >
           <IconCross
             className="absolute right-2 top-2 z-50 cursor-pointer"

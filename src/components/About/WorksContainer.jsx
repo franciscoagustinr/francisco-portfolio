@@ -89,7 +89,7 @@ export const WorksContainer = ({ hatName }) => {
           );
         })}
       <div
-        className={`flex items-center justify-around gap-5 px-2 pb-2 md:mt-6 md:pb-0 lg:mt-8 lg:gap-0 4xl:mt-5 ${isMobileXS ? 'mt-4' : isMobile ? 'mt-10' : 'mt-5'}`}
+        className={`mt-3 flex items-center justify-around gap-5 px-2 pb-2 md:mt-6 md:pb-0 lg:mt-8 lg:gap-0 4xl:mt-5 ${isMobileXS ? 'mt-4' : isMobile ? 'mt-10' : 'mt-5'}`}
       >
         <button
           className={`cursor-contact rounded-full bg-[var(--dynamic-color)] px-6 py-2 font-RecoletaBlack uppercase tracking-wide text-white transition-all duration-200 hover:-rotate-2 hover:scale-125 hover:bg-white hover:text-[var(--dynamic-color)] hover:shadow-lg 4xl:text-lg`}
