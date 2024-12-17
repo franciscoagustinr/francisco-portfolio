@@ -55,7 +55,7 @@ export const PopUpAbout = ({ hatName }) => {
         popupRef.current,
         { scale: 0, opacity: 0, rotation: -180 },
         {
-          scale: is3XL ? 1.15 : is4XL ? 1.2 : 1,
+          scale: is3XL ? 1 : is4XL ? 2.5 : 1,
           opacity: 1,
           rotation: 0,
           duration: 1,
@@ -140,24 +140,24 @@ export const PopUpAbout = ({ hatName }) => {
 export const ChatSimulator = () => {
   const messages = useMemo(
     () => [
-      `Hi there! <img src=${WavingHand} class='inline-block w-5 aspect-square
+      `Hi there! <img src=${WavingHand} class='3xl:w-6 inline-block w-5 aspect-square
 object-contain animate-wavingHand'/> I’m Francisco Agustín Rodríguez —but you can call me Fran.`,
-      `I’m a front-end developer hailing from Buenos Aires, Argentina <img src=${FlagArgentina} class='inline-block w-5 aspect-square
+      `I’m a front-end developer hailing from Buenos Aires, Argentina <img src=${FlagArgentina} class='3xl:w-6 inline-block w-5 aspect-square
 object-contain'/>`,
-      `I bring websites to life by creating interactive <img src=${Joystick} class='inline-block w-5 aspect-square
-object-contain animate-shake'/> visually stunning experiences <img src=${Palette} class='inline-block w-5 aspect-square
-object-contain'/> with a focus on seamless motion and user-friendly design <img src=${Sparkles} class='inline-block w-5 aspect-square
+      `I bring websites to life by creating interactive <img src=${Joystick} class='3xl:w-6 inline-block w-5 aspect-square
+object-contain animate-shake'/> visually stunning experiences <img src=${Palette} class='3xl:w-6 inline-block w-5 aspect-square
+object-contain'/> with a focus on seamless motion and user-friendly design <img src=${Sparkles} class='3xl:w-6 inline-block w-5 aspect-square
 object-contain animate-pulse'/>`,
-      `This is my teammate <img src=${HandPointingDown} class='inline-block w-5 aspect-square
-object-contain animate-bounce duration-150'/> <img src=${HandPointingDown} class='inline-block w-5 aspect-square
+      `This is my teammate <img src=${HandPointingDown} class='3xl:w-6 inline-block w-5 aspect-square
+object-contain animate-bounce duration-150'/> <img src=${HandPointingDown} class='3xl:w-6 inline-block w-5 aspect-square
 object-contain animate-bounce duration-150'/>`,
       'img',
-      `Beto, my loyal sidekick <img src=${Dog} class='inline-block w-5 aspect-square
-object-contain animate-shake'/>  He keeps the creativity flowing! <img src=${Dizzy} class='inline-block w-5 aspect-square
+      `Beto, my loyal sidekick <img src=${Dog} class='3xl:w-6 inline-block w-5 aspect-square
+object-contain animate-shake'/>  He keeps the creativity flowing! <img src=${Dizzy} class='3xl:w-6 inline-block w-5 aspect-square
 object-contain'/>`,
-      `Let’s connect <img src=${Handshake} class='animate-bounce inline-block w-5 aspect-square
-object-contain'/> share some laughs <img src=${UpsideDownFace} class='animate-spin inline-block w-5 aspect-square
-object-contain'/> and turn your ideas into reality! <img src=${Rocket} class='inline-block w-5 aspect-square
+      `Let’s connect <img src=${Handshake} class='3xl:w-6 animate-bounce inline-block w-5 aspect-square
+object-contain'/> share some laughs <img src=${UpsideDownFace} class='3xl:w-6 animate-spin inline-block w-5 aspect-square
+object-contain'/> and turn your ideas into reality! <img src=${Rocket} class='3xl:w-6 inline-block w-5 aspect-square
 object-contain'/> `,
     ],
     []
@@ -218,7 +218,7 @@ object-contain'/> `,
       {visibleMessages.map((message, index) => (
         <div
           key={index}
-          className={`relative max-w-max animate-appear cursor-pointer select-none rounded-2xl rounded-bl-md bg-[#ffffff] py-2 pl-3 pr-2 font-KarlaLight text-sm shadow-sm transition-all duration-300 ease-in-out hover:!scale-[1.009] 3xl:text-base ${
+          className={`relative max-w-max animate-appear cursor-pointer select-none rounded-2xl rounded-bl-md bg-[#ffffff] py-2 pl-3 pr-2 font-KarlaLight text-sm shadow-sm transition-all duration-300 ease-in-out 3xl:text-base 4xl:text-xl ${
             reactions[index].emoji ? 'mb-5' : 'mb-2'
           } `}
           onClick={() => handleReaction(index)}
@@ -236,7 +236,7 @@ object-contain'/> `,
             <div dangerouslySetInnerHTML={{ __html: message }} />
           )}
           {reactions[index].emoji && (
-            <span className="text-md absolute -bottom-3.5 right-2 flex animate-appear items-center justify-center rounded-full border border-gray-300 bg-white px-2 py-0.5 shadow-sm duration-0">
+            <span className="absolute -bottom-3.5 right-2 flex animate-appear items-center justify-center rounded-full border border-gray-300 bg-white px-2 py-0.5 shadow-sm duration-0 3xl:px-2.5 3xl:py-1">
               {reactions[index].emoji.id === 'star' ? (
                 Array.from({ length: 3 }).map((_, idx) => (
                   <img
@@ -244,7 +244,7 @@ object-contain'/> `,
                     src={reactions[index].emoji.src}
                     alt="emoji"
                     loading="eager"
-                    className="mr-0.5 inline-block aspect-square w-4 object-contain 3xl:w-5"
+                    className="mr-1 inline-block aspect-square w-4 object-contain 3xl:w-6"
                   />
                 ))
               ) : (
@@ -252,13 +252,13 @@ object-contain'/> `,
                   src={reactions[index].emoji.src}
                   alt="emoji"
                   loading="eager"
-                  className="inline-block aspect-square w-4 object-contain 3xl:w-5"
+                  className="inline-block aspect-square w-4 object-contain 3xl:w-6"
                 />
               )}
 
               <span
                 key={`${index}-${reactions[index].count}`}
-                className="relative ml-0.5 animate-appear pl-0.5 text-xs text-gray-500"
+                className="relative ml-0.5 animate-appear pl-0.5 text-xs text-gray-500 3xl:text-sm"
               >
                 {reactions[index].count}
               </span>
