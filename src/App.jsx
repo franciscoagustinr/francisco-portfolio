@@ -43,7 +43,8 @@ function App() {
     gsap.to('.main-container', {
       background: getGradientBackground(hatName),
       duration: 1,
-      ease: 'power4.in',
+      ease: 'sine',
+      // ease: 'power4.in',
     });
   }, [getGradientBackground, hatName, isLoading]);
 
@@ -113,7 +114,7 @@ function App() {
 
   return (
     <div
-      className={`main-container h-dvh !overflow-hidden ${isLoading && 'bg-[#101720]'}`}
+      className={`main-container h-dvh !overflow-hidden bg-[#101720] ${isLoading && 'bg-[#101720]'}`}
     >
       <Scene setDialogText={setDialogText} />
       {isLoading && (
