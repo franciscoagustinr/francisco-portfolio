@@ -7,6 +7,7 @@ import Rocket from '../assets/images/rocket.png';
 import SmileFace from '../assets/images/slightly-smiling-face.png';
 import gsap from 'gsap';
 import { useScrollStore } from '../stores/useScroll';
+import { usePopupStore } from '../stores/usePopUp';
 import { applyBounceEffect } from '../utils/applyBounceEffect';
 
 export const RRSS = ({ setDialogText }) => {
@@ -19,6 +20,7 @@ export const RRSS = ({ setDialogText }) => {
     coffeeRef.current,
   ];
   const isScrolling = useScrollStore((state) => state.isScrolling);
+  const isPopUpOpen = usePopupStore((state) => state.isPopUpOpen);
 
   const playHoverSound = () => {
     const sound = new Howl({
@@ -115,8 +117,8 @@ export const RRSS = ({ setDialogText }) => {
   }, []);
 
   useEffect(() => {
-    applyBounceEffect(elementsRef, isScrolling);
-  }, [isScrolling]);
+    applyBounceEffect(elementsRef, isScrolling, isPopUpOpen);
+  }, [isScrolling, isPopUpOpen]);
 
   return (
     <>

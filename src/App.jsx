@@ -97,6 +97,15 @@ function App() {
   }, [isLoading]);
 
   useEffect(() => {
+    if (isPopUpOpen) {
+      document.body.style.overflow = 'hidden';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isPopUpOpen]);
+
+  useEffect(() => {
     getClickCount();
     console.log(
       '%c❤️ SITE MADE WITH LOVE BY FRANCISCO AGUSTIN ❤️',

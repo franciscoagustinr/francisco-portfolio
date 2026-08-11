@@ -11,10 +11,11 @@ export const About = ({ setDialogText }) => {
   const openPopUp = usePopupStore((state) => state.openPopUp);
   const isScrolling = useScrollStore((state) => state.isScrolling);
   const isMusicPlaying = useMusicPlaying((state) => state.isMusicPlaying);
+  const isPopUpOpen = usePopupStore((state) => state.isPopUpOpen);
 
   useEffect(() => {
-    applyBounceEffect('.picture-container', isScrolling);
-  }, [isScrolling]);
+    applyBounceEffect('.picture-container', isScrolling, isPopUpOpen);
+  }, [isScrolling, isPopUpOpen]);
 
   return (
     <div

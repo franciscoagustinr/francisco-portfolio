@@ -5,6 +5,7 @@ import ConfettiExplosion from 'react-confetti-explosion';
 import { useConfettiStore } from '../stores/useTriggerConfetti-Talk';
 import { useHatBackground } from '../hooks/useBackground';
 import { useScrollStore } from '../stores/useScroll';
+import { usePopupStore } from '../stores/usePopUp';
 import { applyBounceEffect } from '../utils/applyBounceEffect';
 import Party from '../assets/images/party.png';
 import Balloon from '../assets/images/balloon.png';
@@ -18,10 +19,11 @@ const WeatherData = ({ setDialogText, hatName }) => {
   );
   const { getHexBackground } = useHatBackground();
   const isScrolling = useScrollStore((state) => state.isScrolling);
+  const isPopUpOpen = usePopupStore((state) => state.isPopUpOpen);
 
   useEffect(() => {
-    applyBounceEffect('.weatherContainer', isScrolling);
-  }, [isScrolling]);
+    applyBounceEffect('.weatherContainer', isScrolling, isPopUpOpen);
+  }, [isScrolling, isPopUpOpen]);
 
   useEffect(() => {
     GetWeather(setWeatherData);

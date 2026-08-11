@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { getClickCount } from '../utils/getClickCount';
 import { useScrollStore } from '../stores/useScroll';
+import { usePopupStore } from '../stores/usePopUp';
 import { applyBounceEffect } from '../utils/applyBounceEffect';
 import { usePreloader } from '../stores/usePreloader';
 import { useHatStore } from '../stores/useHatStore';
@@ -13,6 +14,7 @@ export const Count = () => {
   const isLoading = usePreloader((state) => state.isLoading);
   const { hatName } = useHatStore();
   const isScrolling = useScrollStore((state) => state.isScrolling);
+  const isPopUpOpen = usePopupStore((state) => state.isPopUpOpen);
 
   useEffect(() => {
     const fetchClickCount = async () => {
@@ -25,8 +27,8 @@ export const Count = () => {
   }, [hatName]);
 
   useEffect(() => {
-    applyBounceEffect(countIndicatorContainerRef.current, isScrolling);
-  }, [isScrolling]);
+    applyBounceEffect(countIndicatorContainerRef.current, isScrolling, isPopUpOpen);
+  }, [isScrolling, isPopUpOpen]);
 
   useEffect(() => {
     if (isLoading) return;
