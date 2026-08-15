@@ -29,6 +29,8 @@ export const PopUpAbout = ({ hatName }) => {
   const is3XL = window.innerWidth >= 1920 && window.innerWidth <= 3999;
   const is4XL = window.innerWidth >= 4000;
 
+  const [activeTab, setActiveTab] = useState('about');
+
   const closePopup = () => {
     if (popupRef.current) {
       gsap.to(popupRef.current, {
@@ -78,18 +80,59 @@ export const PopUpAbout = ({ hatName }) => {
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-50 bg-opacity-5 backdrop-blur-md">
         <div
           ref={popupRef}
-          className={`no-scrollbar relative top-0 z-20 mx-1 h-[40rem] w-auto overflow-x-hidden overflow-y-scroll rounded-2xl border border-solid border-gray-100 bg-gray-600 bg-opacity-20 shadow-2xl will-change-transform md:h-[43rem] lg:top-2 4xl:!w-[70rem] ${isMobileXS && 'h-[36.5rem]'}`}
+          className={`no-scrollbar relative top-0 z-20 !w-[95%] min-w-0 overflow-x-hidden overflow-y-scroll rounded-2xl border border-solid border-gray-100 bg-gray-600 bg-opacity-20 shadow-2xl will-change-transform md:mx-1 md:h-[43rem] md:!w-auto md:min-w-[700px] lg:top-2 4xl:!w-[70rem] ${isMobileXS ? 'h-[36.5rem]' : 'h-[40rem]'}`}
         >
+          {/* Cruz visible solo en desktop, posicionada arriba a la derecha del modal */}
           <IconCross
-            className="absolute right-2 top-2 z-50 cursor-pointer"
+            className="absolute right-2 top-2 z-50 hidden cursor-pointer md:block"
             onClick={closePopup}
           />
-          <div className="relative mx-4 flex min-h-full flex-col gap-1 pb-1 pt-2.5 md:flex-row lg:mr-8 lg:gap-4 4xl:justify-between">
-            <div className="hidden flex-col justify-end gap-3 text-black md:flex md:w-[390px] lg:w-[440px] 4xl:flex-1">
+
+          {/* Tabs + cruz — solo visibles en mobile */}
+          <div className="sticky top-0 z-40 flex w-full items-center justify-around gap-2 bg-gray-600/40 px-4 pb-2 pt-3 backdrop-blur-sm md:hidden">
+            <div className="align-center flex w-full justify-center">
+              <button
+                type="button"
+                onClick={() => setActiveTab('about')}
+                className={`rounded-full px-4 py-1.5 font-KarlaLight text-sm transition-all duration-200 ${
+                  activeTab === 'about'
+                    ? 'bg-white text-black shadow-sm'
+                    : 'bg-transparent text-white/70'
+                }`}
+              >
+                About
+              </button>
+              <button
+                type="button"
+                onClick={() => setActiveTab('works')}
+                className={`rounded-full px-4 py-1.5 font-KarlaLight text-sm transition-all duration-200 ${
+                  activeTab === 'works'
+                    ? 'bg-white text-black shadow-sm'
+                    : 'bg-transparent text-white/70'
+                }`}
+              >
+                Works
+              </button>
+            </div>
+            <IconCross className="cursor-pointer" onClick={closePopup} />
+          </div>
+
+          <div
+            className={`relative mx-4 flex h-full flex-col justify-end gap-1 overflow-visible pb-1 md:flex-row lg:mr-8 lg:gap-4 4xl:justify-between ${activeTab === 'about' ? 'pt-[47.625rem] lg:pt-2.5' : 'pt-2.5'}`}
+          >
+            <div
+              className={`${
+                activeTab === 'about' ? 'flex' : 'hidden'
+              } h-[100%] flex-col justify-end gap-3 overflow-y-visible text-black md:flex md:h-[36rem] md:w-[390px] lg:h-[38rem] lg:w-[440px] 4xl:h-[45rem] 4xl:flex-1`}
+            >
               <ChatSimulator />
             </div>
-            <div className="sticky top-8 flex h-full flex-col items-center justify-start rounded-lg lg:w-[450px]">
-              <h2 className="relative -rotate-3 select-none pt-1 text-center font-RecoletaBlack text-6xl leading-[3rem] tracking-wider text-[#fff] lg:pt-0 lg:text-7xl lg:leading-[4.2rem]">
+            <div
+              className={`sticky top-14 h-full flex-col items-center justify-start rounded-lg lg:top-8 lg:w-[450px] ${
+                activeTab === 'works' ? 'flex' : 'hidden'
+              } md:flex`}
+            >
+              <h2 className="-rotate-2.5 relative select-none pt-14 text-center font-RecoletaBlack text-6xl leading-[2.9rem] tracking-wider text-[#fff] lg:-rotate-3 lg:pt-0 lg:text-7xl lg:leading-[4.2rem]">
                 {Array.from('Selected').map((letter, index) => (
                   <span
                     key={index}
@@ -127,7 +170,7 @@ export const PopUpAbout = ({ hatName }) => {
                   </span>
                 ))}
               </h2>
-              <div className="mt-4 px-2 md:mt-8 lg:w-full lg:px-6 4xl:mt-6">
+              <div className="px-2 sm:mt-2 md:mt-8 lg:w-full lg:px-6 4xl:mt-6">
                 <WorksContainer hatName={hatName} />
               </div>
             </div>
@@ -215,7 +258,7 @@ object-contain'/> `,
   }, [visibleMessages.length, showTypingDots]);
 
   return (
-    <div className="flex h-full flex-col justify-end bg-transparent">
+    <div className="flex h-full flex-1 flex-col justify-end gap-0 overflow-y-visible bg-transparent">
       {visibleMessages.map((message, index) => (
         <div
           key={index}
