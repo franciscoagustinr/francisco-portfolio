@@ -11,7 +11,7 @@ export const WorksContainer = ({ hatName }) => {
   const isMobile = window.innerWidth >= 390 && window.innerWidth <= 767;
 
   const handleCV = () => {
-    window.open('./CV_FranciscoAgustinRodriguez.pdf', '_blank');
+    window.open('./CV-Francisco_Agustin_Rodriguez-frontend.pdf', '_blank');
   };
 
   return (
