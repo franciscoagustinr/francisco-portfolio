@@ -153,7 +153,14 @@ export const TextTitle = () => {
 
     tl.fromTo(
       AgustinRef.current.rotation,
-      { x: -3, y: 1, z: -1, duration: 0.2, ease: 'power3.in', delay: 0 },
+      {
+        x: -3,
+        y: 1,
+        z: isMobile ? -10 : -1,
+        duration: 0.2,
+        ease: 'power3.in',
+        delay: 0,
+      },
       { x: 0, y: 0, z: 0 }
     );
   }, [isLoading]);
