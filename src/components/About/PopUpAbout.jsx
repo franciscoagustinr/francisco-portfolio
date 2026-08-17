@@ -123,7 +123,7 @@ export const PopUpAbout = ({ hatName }) => {
             <div
               className={`${
                 activeTab === 'about' ? 'flex' : 'hidden'
-              } h-[100%] flex-col justify-end gap-3 overflow-y-visible text-black md:h-[36rem] md:w-[390px] lg:h-[41rem] lg:w-[440px] lg:overflow-y-auto 4xl:h-[45rem] 4xl:flex-1`}
+              } no-scrollbar h-[100%] flex-col justify-end gap-3 overflow-y-visible text-black md:h-[36rem] md:w-[390px] lg:h-[41rem] lg:w-[440px] lg:overflow-y-auto 4xl:h-[45rem] 4xl:flex-1`}
             >
               <ChatSimulator />
             </div>
@@ -262,7 +262,7 @@ object-contain'/> `,
       {visibleMessages.map((message, index) => (
         <div
           key={index}
-          className={`relative max-w-max animate-appear cursor-pointer select-none rounded-2xl rounded-bl-md bg-[#ffffff] py-2 pl-3 pr-2 font-KarlaLight text-sm shadow-sm transition-all duration-300 ease-in-out 3xl:text-base 4xl:text-xl ${
+          className={`relative ml-1.5 max-w-max animate-appear cursor-pointer select-none rounded-2xl rounded-bl-md bg-[#ffffff] py-2 pl-3 pr-2 font-KarlaLight text-sm shadow-sm transition-all duration-300 ease-in-out 3xl:text-base 4xl:text-xl ${
             reactions[index].emoji ? 'mb-5' : 'mb-2'
           } `}
           onClick={() => handleReaction(index)}
