@@ -302,7 +302,7 @@ object-contain'/> `,
 
               <span
                 key={`${index}-${reactions[index].count}`}
-                className="relative ml-0.5 animate-appear pl-0.5 text-xs text-gray-500 3xl:text-sm"
+                className="relative ml-0.5 animate-appear pl-0.5 text-xs text-gray-500 3xl:text-sm 4xl:text-sm"
               >
                 {reactions[index].count}
               </span>
