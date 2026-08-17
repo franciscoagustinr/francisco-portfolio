@@ -24,7 +24,7 @@ export const Scene = ({ setDialogText }) => {
     <Canvas dpr={[1.5, 2]}>
       <Suspense fallback={null}>
         <ambientLight intensity={1} position={[0, 0, 0]} />
-        <Environment preset="warehouse" />
+        <Environment files="./hdr/empty_warehouse_01_1k.hdr" />
         <ContactShadows
           position={[0, -1.55, 0.15]}
           opacity={0.35}

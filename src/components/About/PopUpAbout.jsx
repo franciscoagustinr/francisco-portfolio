@@ -84,12 +84,12 @@ export const PopUpAbout = ({ hatName }) => {
         >
           {/* Cruz visible solo en desktop, posicionada arriba a la derecha del modal */}
           <IconCross
-            className="absolute right-2 top-2 z-50 hidden cursor-pointer md:block"
+            className="absolute right-2 top-2 z-50 hidden cursor-pointer lg:block"
             onClick={closePopup}
           />
 
-          {/* Tabs + cruz — solo visibles en mobile */}
-          <div className="sticky top-0 z-40 flex w-full items-center justify-around gap-2 bg-gray-600/40 px-4 pb-2 pt-3 backdrop-blur-sm md:hidden">
+          {/* Tabs + cruz — solo visibles en mobile y tablet */}
+          <div className="sticky top-0 z-40 flex w-full items-center justify-around gap-2 bg-gray-600/40 px-4 pb-2 pt-3 backdrop-blur-sm lg:hidden">
             <div className="align-center flex w-full justify-center">
               <button
                 type="button"
@@ -118,21 +118,21 @@ export const PopUpAbout = ({ hatName }) => {
           </div>
 
           <div
-            className={`relative mx-4 flex h-full flex-col justify-end gap-1 overflow-visible pb-1 md:flex-row lg:mr-8 lg:gap-4 4xl:justify-between ${activeTab === 'about' ? 'pt-[47.625rem] lg:pt-2.5' : 'pt-2.5'}`}
+            className={`relative mx-4 flex flex-col justify-end gap-1 overflow-visible pb-1 lg:mr-8 lg:flex-row lg:gap-4 4xl:justify-between ${activeTab === 'about' ? 'h-full pt-[48rem] lg:pt-2.5' : 'h-auto pt-2.5'}`}
           >
             <div
               className={`${
                 activeTab === 'about' ? 'flex' : 'hidden'
-              } h-[100%] flex-col justify-end gap-3 overflow-y-visible text-black md:flex md:h-[36rem] md:w-[390px] lg:h-[38rem] lg:w-[440px] 4xl:h-[45rem] 4xl:flex-1`}
+              } h-[100%] flex-col justify-end gap-3 overflow-y-visible text-black md:h-[36rem] md:w-[390px] lg:h-[41rem] lg:w-[440px] lg:overflow-y-auto 4xl:h-[45rem] 4xl:flex-1`}
             >
               <ChatSimulator />
             </div>
             <div
-              className={`sticky top-14 h-full flex-col items-center justify-start rounded-lg lg:top-8 lg:w-[450px] ${
+              className={`sticky top-14 flex-col items-center justify-start rounded-lg lg:top-8 lg:w-[450px] ${
                 activeTab === 'works' ? 'flex' : 'hidden'
-              } md:flex`}
+              } lg:flex`}
             >
-              <h2 className="-rotate-2.5 relative select-none pt-14 text-center font-RecoletaBlack text-6xl leading-[2.9rem] tracking-wider text-[#fff] lg:-rotate-3 lg:pt-0 lg:text-7xl lg:leading-[4.2rem]">
+              <h2 className="-rotate-2.5 relative select-none pt-7 text-center font-RecoletaBlack text-6xl leading-[2.9rem] tracking-wider text-[#fff] lg:-rotate-3 lg:pt-4 lg:text-7xl lg:leading-[4.2rem]">
                 {Array.from('Selected').map((letter, index) => (
                   <span
                     key={index}
