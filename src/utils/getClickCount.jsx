@@ -1,8 +1,14 @@
-import { doc, getDoc } from 'firebase/firestore';
-import { db } from './firebaseConfig';
+const loadFirestore = async () => {
+  const [{ db }, { doc, getDoc }] = await Promise.all([
+    import('./firebaseConfig'),
+    import('firebase/firestore'),
+  ]);
+  return { db, doc, getDoc };
+};
 
 export const getClickCount = async () => {
   try {
+    const { db, doc, getDoc } = await loadFirestore();
     const counterRef = doc(db, 'clickCounters', 'avatarClickCount');
 
     const docSnap = await getDoc(counterRef);

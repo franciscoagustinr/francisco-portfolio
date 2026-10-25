@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect, useState } from 'react';
+import React, { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Center, ContactShadows, Environment, Float } from '@react-three/drei';
 import { TextTitle } from './Text';
@@ -6,19 +6,11 @@ import { Francisco } from './Francisco';
 import { usePreloader } from '../../stores/usePreloader';
 
 export const Scene = ({ setDialogText }) => {
-  const [time, setTime] = useState(0);
   const isLoading = usePreloader((state) => state.isLoading);
 
   const meshResponsivePosition =
     window.innerWidth >= 4000 ? [0, 0, 0] : [-0.2, -4.3, 0];
   const meshResponsiveScale = window.innerWidth >= 4000 ? 2 : 1.7;
-
-  useEffect(() => {
-    const intervalScrollReaction = setInterval(() => {
-      setTime((prevTime) => prevTime + 0.05);
-    }, 16);
-    return () => clearInterval(intervalScrollReaction);
-  }, []);
 
   return (
     <Canvas dpr={[1.5, 2]}>

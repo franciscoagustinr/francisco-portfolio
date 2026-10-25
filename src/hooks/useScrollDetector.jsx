@@ -8,17 +8,19 @@ export const useScrollDetector = () => {
     let timeout;
 
     const handleScrollOrTouch = () => {
-      setIsScrolling(true);
+      if (!useScrollStore.getState().isScrolling) setIsScrolling(true);
 
       clearTimeout(timeout);
       timeout = setTimeout(() => {
-        setIsScrolling(false);
+        if (useScrollStore.getState().isScrolling) setIsScrolling(false);
       }, 50);
     };
 
-    window.addEventListener('scroll', handleScrollOrTouch);
-    window.addEventListener('wheel', handleScrollOrTouch);
-    window.addEventListener('touchmove', handleScrollOrTouch);
+    window.addEventListener('scroll', handleScrollOrTouch, { passive: true });
+    window.addEventListener('wheel', handleScrollOrTouch, { passive: true });
+    window.addEventListener('touchmove', handleScrollOrTouch, {
+      passive: true,
+    });
 
     return () => {
       window.removeEventListener('scroll', handleScrollOrTouch);

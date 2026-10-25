@@ -1,12 +1,12 @@
-import PortfolioPreview from '../assets/images/Portfolio2023Preview.jpg';
-import LogoUnusedImagesFinder from '../assets/images/logo-unused_images_finder.png';
-import FantasyManagerAr from '../assets/images/fantasy-manager-ar.png';
-import AgilityPets from '../assets/images/agility-pets.png';
-import ShurikenPreview from '../assets/images/ShurikenPreview.png';
-import CrypcollPreview from '../assets/images/CrypcollPreview.png';
-import LuvlyPreview from '../assets/images/LuvlyPreview.png';
-import DisneyPreview from '../assets/images/DisneyPreview.jpg';
-import RMRPreview from '../assets/images/RMRPreview.jpg';
+import PortfolioPreview from '../assets/images/Portfolio2023Preview.webp';
+import LogoUnusedImagesFinder from '../assets/images/logo-unused_images_finder.webp';
+import FantasyManagerAr from '../assets/images/fantasy-manager-ar.webp';
+import AgilityPets from '../assets/images/agility-pets.webp';
+import ShurikenPreview from '../assets/images/ShurikenPreview.webp';
+import CrypcollPreview from '../assets/images/CrypcollPreview.webp';
+import LuvlyPreview from '../assets/images/LuvlyPreview.webp';
+import DisneyPreview from '../assets/images/DisneyPreview.webp';
+import RMRPreview from '../assets/images/RMRPreview.webp';
 
 export const Works = [
   {

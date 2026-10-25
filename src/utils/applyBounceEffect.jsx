@@ -1,8 +1,7 @@
 import { gsap } from 'gsap';
 
 export const applyBounceEffect = (elements, isScrolling, isPopUpOpen) => {
-  if (!isScrolling || isPopUpOpen || !elements.length) return;
-  const currentScroll = WheelEvent.scrollY;
+  if (!elements || !isScrolling || isPopUpOpen || !elements.length) return;
 
   gsap.to(elements, {
     y: -10,

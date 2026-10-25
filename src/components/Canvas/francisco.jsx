@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Html, useGLTF } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 import { useHats } from './Hats';
-import ConfettiExplosion from 'react-confetti-explosion';
+import { ConfettiExplosion } from '../Confetti';
 import { useSpring, animated } from '@react-spring/three';
 import { useConfettiStore } from '../../stores/useTriggerConfetti-Talk';
 import { useHatStore } from '../../stores/useHatStore';
@@ -10,12 +10,12 @@ import { useScrollStore } from '../../stores/useScroll';
 import { usePreloader } from '../../stores/usePreloader';
 import gsap from 'gsap';
 import { usePopupStore } from '../../stores/usePopUp';
-import { incrementCounter } from '../../utils/incrementCounter';
-import { Howl } from 'howler';
+import { useClickCountStore } from '../../stores/useClickCount';
+import { playSound } from '../../utils/sounds';
 import { useMusicPlaying } from '../../stores/useMusicPlaying';
 import { useError404 } from '../../stores/useError404';
-import Sparkles from '../../assets/images/sparkles.png';
-import SmileFace from '../../assets/images/slightly-smiling-face.png';
+import Sparkles from '../../assets/images/sparkles.webp';
+import SmileFace from '../../assets/images/slightly-smiling-face.webp';
 
 export const Francisco = ({ props, setDialogText }) => {
   const { nodes, materials } = useGLTF('/models/F-model7.glb');
@@ -28,8 +28,8 @@ export const Francisco = ({ props, setDialogText }) => {
   const [isExploding, setIsExploding] = useState(false);
   const [hovered, setHovered] = useState(false);
   const [clicked, setClicked] = useState(false);
-  const influences = objectRef?.current?.morphTargetInfluences;
-  const [isBlinking, setIsBlinking] = useState(false);
+  const getInfluences = () => objectRef.current?.morphTargetInfluences;
+  const isBlinkingRef = useRef(false);
   const blinkStartTime = useRef(0);
   const BLINK_DURATION = 0.15;
   const BLINK_INTERVAL = useRef(Math.random() * 5 + 3);
@@ -41,24 +41,16 @@ export const Francisco = ({ props, setDialogText }) => {
   const isErrorPage = useError404((state) => state.isErrorPage);
 
   const playClickSound = () => {
-    const sound = new Howl({
-      src: ['assets/sounds/pop.mp3'],
-      volume: 0.05,
-    });
-    sound.play();
+    playSound('pop', 0.05);
   };
   const playHoverSound = () => {
-    const sound = new Howl({
-      src: ['assets/sounds/bubble-pop-avatar.mp3'],
-      volume: 0.05,
-    });
-    sound.play();
+    playSound('bubble-pop-avatar', 0.05);
   };
 
   const handleAvatarClick = (e) => {
     if (isLoading || clicked || isErrorPage) return;
     e.stopPropagation();
-    incrementCounter();
+    useClickCountStore.getState().increment();
     playClickSound();
     const nextHatIndex = (currentHatIndex + 1) % hatNames.length;
     setCurrentHatIndex(nextHatIndex);
@@ -66,8 +58,11 @@ export const Francisco = ({ props, setDialogText }) => {
     setHatName(nextHatName);
     setIsExploding(true);
     setClicked(true);
-    influences[0] = 1;
-    influences[1] = 1;
+    const influences = getInfluences();
+    if (influences) {
+      influences[0] = 1;
+      influences[1] = 1;
+    }
 
     setTimeout(() => {
       setIsExploding(false);
@@ -75,8 +70,11 @@ export const Francisco = ({ props, setDialogText }) => {
     }, 800);
 
     setTimeout(() => {
-      influences[0] = 0;
-      influences[1] = 0;
+      const current = getInfluences();
+      if (current) {
+        current[0] = 0;
+        current[1] = 0;
+      }
     }, 800);
   };
 
@@ -147,7 +145,8 @@ export const Francisco = ({ props, setDialogText }) => {
     }
 
     if (objectRef.current) {
-      if (isBlinking) {
+      const influences = objectRef.current.morphTargetInfluences;
+      if (isBlinkingRef.current) {
         const elapsedBlinkTime = time - blinkStartTime.current;
 
         if (elapsedBlinkTime < BLINK_DURATION) {
@@ -157,11 +156,11 @@ export const Francisco = ({ props, setDialogText }) => {
         } else {
           influences[0] = 0;
           influences[1] = 0;
-          setIsBlinking(false);
+          isBlinkingRef.current = false;
           BLINK_INTERVAL.current = Math.random() * 5 + 3;
         }
       } else if (time - blinkStartTime.current > BLINK_INTERVAL.current) {
-        setIsBlinking(true);
+        isBlinkingRef.current = true;
         blinkStartTime.current = time;
       }
     }
@@ -213,12 +212,18 @@ export const Francisco = ({ props, setDialogText }) => {
                 setDialogText(
                   `Welcome! <img loading="eager" src=${Sparkles} class='inline-block w-6'/><img loading="eager" src=${SmileFace} class='inline-block w-6'/> `
                 );
-                influences[0] = 1;
-                influences[1] = 1;
+                const influences = getInfluences();
+                if (influences) {
+                  influences[0] = 1;
+                  influences[1] = 1;
+                }
 
                 setTimeout(() => {
-                  influences[0] = 0;
-                  influences[1] = 0;
+                  const current = getInfluences();
+                  if (current) {
+                    current[0] = 0;
+                    current[1] = 0;
+                  }
                   setDialogText('');
                 }, 1000);
               }, 1300);

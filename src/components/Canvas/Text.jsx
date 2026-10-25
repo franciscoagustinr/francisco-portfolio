@@ -7,12 +7,13 @@ import React, {
   useState,
 } from 'react';
 import { Text } from '@react-three/drei';
+import { useFrame } from '@react-three/fiber';
 import { useMousePosition } from '../../utils/mousePosition';
 import gsap from 'gsap';
 import { usePreloader } from '../../stores/usePreloader';
 
 export const TextTitle = () => {
-  const mousePosition = useMousePosition();
+  const pointer = useMousePosition();
   const FONT_SIZE = 2.8;
   const BASE_SPACING = FONT_SIZE * 0.45;
   const titleRef = useRef(null);
@@ -21,6 +22,7 @@ export const TextTitle = () => {
   const isLoading = usePreloader((state) => state.isLoading);
   const isMobile = window.innerWidth < 768;
   const isTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
+  const isResponsive = isMobile || isTablet;
   const franciscoPosition = isMobile
     ? [-2.01, 0.3, 0]
     : isTablet
@@ -165,20 +167,28 @@ export const TextTitle = () => {
     );
   }, [isLoading]);
 
+  useFrame(() => {
+    if (isResponsive || !titleRef.current) return;
+    titleRef.current.position.x = -((pointer.x / window.innerWidth) * 2) / 8;
+    titleRef.current.position.y = ((pointer.y / window.innerHeight) * 2) / 8;
+  });
+
   return (
     <>
       <group
         ref={titleRef}
         position={
-          isMobile
-            ? [0.13, 0, 0]
-            : isTablet
-              ? [0.25, 0, 0]
-              : [
-                  (-(mousePosition.x / window.innerWidth) * 2) / 8,
-                  ((mousePosition.y / window.innerHeight) * 2) / 8,
-                  0,
-                ]
+          isResponsive
+            ? [
+                isMobile ? 0.13 : 0.25,
+                0,
+                0,
+              ]
+            : [
+                (-(pointer.x / window.innerWidth) * 2) / 8,
+                ((pointer.y / window.innerHeight) * 2) / 8,
+                0,
+              ]
         }
       >
         <mesh position={franciscoPosition} scale={textScale} ref={FranciscoRef}>

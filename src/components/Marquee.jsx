@@ -1,17 +1,21 @@
 import React from 'react';
-import GreenCircle from '../assets/images/green-circle.png';
+import GreenCircle from '../assets/images/green-circle.webp';
 
-export const Marquee = () => {
-  const repeatedContent = Array.from({ length: 20 }, (_, i) => (
-    <React.Fragment key={i}>
-      AVAILABLE FOR FREELANCE WORK
-      <img
-        src={GreenCircle}
-        alt="Green Circle"
-        className="mx-1 inline-block aspect-square w-3 object-contain"
-      />
-    </React.Fragment>
-  ));
+const REPEATED_CONTENT = Array.from({ length: 20 }, (_, i) => (
+  <React.Fragment key={i}>
+    AVAILABLE FOR FREELANCE WORK
+    <img
+      src={GreenCircle}
+      alt="Green Circle"
+      loading="lazy"
+      decoding="async"
+      className="mx-1 inline-block aspect-square w-3 object-contain"
+    />
+  </React.Fragment>
+));
+
+export const Marquee = React.memo(() => {
+  const repeatedContent = REPEATED_CONTENT;
 
   return (
     <div className="absolute top-0 z-50 flex w-full select-none overflow-hidden bg-[#217281] bg-opacity-30">
@@ -21,4 +25,4 @@ export const Marquee = () => {
       </div>
     </div>
   );
-};
+});

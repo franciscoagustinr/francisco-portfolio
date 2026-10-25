@@ -1,22 +1,22 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import FranciscoWithBeto from '../../assets/images/FranciscoWithBeto.JPG';
-import WavingHand from '../../assets/images/waving-hand.png';
-import FlagArgentina from '../../assets/images/flag-argentina.png';
-import Joystick from '../../assets/images/joystick.png';
-import Palette from '../../assets/images/artist-palette.png';
-import Sparkles from '../../assets/images/sparkles.png';
-import HandPointingDown from '../../assets/images/backhand-pointing-down.png';
-import Dog from '../../assets/images/dog.png';
-import Dizzy from '../../assets/images/dizzy.png';
-import Handshake from '../../assets/images/handshake.png';
-import UpsideDownFace from '../../assets/images/upside-down-face.png';
-import Rocket from '../../assets/images/rocket.png';
-import GrinningFace from '../../assets/images/grinning-face.png';
-import Star from '../../assets/images/star.png';
-import Nerd from '../../assets/images/nerd-face.png';
-import Rainbow from '../../assets/images/rainbow.png';
-import FaceLove from '../../assets/images/smiling-face-love.png';
-import SparklingHeart from '../../assets/images/sparkling-heart.png';
+import FranciscoWithBeto from '../../assets/images/FranciscoWithBeto.webp';
+import WavingHand from '../../assets/images/waving-hand.webp';
+import FlagArgentina from '../../assets/images/flag-argentina.webp';
+import Joystick from '../../assets/images/joystick.webp';
+import Palette from '../../assets/images/artist-palette.webp';
+import Sparkles from '../../assets/images/sparkles.webp';
+import HandPointingDown from '../../assets/images/backhand-pointing-down.webp';
+import Dog from '../../assets/images/dog.webp';
+import Dizzy from '../../assets/images/dizzy.webp';
+import Handshake from '../../assets/images/handshake.webp';
+import UpsideDownFace from '../../assets/images/upside-down-face.webp';
+import Rocket from '../../assets/images/rocket.webp';
+import GrinningFace from '../../assets/images/grinning-face.webp';
+import Star from '../../assets/images/star.webp';
+import Nerd from '../../assets/images/nerd-face.webp';
+import Rainbow from '../../assets/images/rainbow.webp';
+import FaceLove from '../../assets/images/smiling-face-love.webp';
+import SparklingHeart from '../../assets/images/sparkling-heart.webp';
 import { WorksContainer } from './WorksContainer';
 import { usePopupStore } from '../../stores/usePopUp';
 import gsap from 'gsap';
@@ -209,18 +209,22 @@ object-contain'/> `,
   const [reactions, setReactions] = useState(
     messages.map(() => ({ emoji: null, count: 0 }))
   );
-  const emojiReactions = [
-    { id: 'grinningFace', src: `${GrinningFace}` },
-    { id: 'star', src: `${Star}` },
-    { id: 'nerd', src: `${Nerd}` },
-    { id: 'rainbow', src: `${Rainbow}` },
-    { id: 'faceLove', src: `${FaceLove}` },
-    { id: 'sparklingHeart', src: `${SparklingHeart}` },
-    { id: 'sparkles', src: `${Sparkles}` },
-  ];
+  const emojiReactions = useMemo(
+    () => [
+      { id: 'grinningFace', src: `${GrinningFace}` },
+      { id: 'star', src: `${Star}` },
+      { id: 'nerd', src: `${Nerd}` },
+      { id: 'rainbow', src: `${Rainbow}` },
+      { id: 'faceLove', src: `${FaceLove}` },
+      { id: 'sparklingHeart', src: `${SparklingHeart}` },
+      { id: 'sparkles', src: `${Sparkles}` },
+    ],
+    []
+  );
   const endOfMessagesRef = useRef();
   const [count, setCount] = useState(0);
   const [showTypingDots, setShowTypingDots] = useState(true);
+  const countRef = useRef(0);
 
   const handleReaction = (index) => {
     setReactions((prevReactions) => {
@@ -239,17 +243,18 @@ object-contain'/> `,
 
   useEffect(() => {
     const interval = setInterval(() => {
-      if (count < messages.length) {
-        setCount((prevCount) => prevCount + 1);
-        setShowTypingDots(false);
-        setTimeout(() => setShowTypingDots(true), 400);
-      } else {
+      if (countRef.current >= messages.length) {
         clearInterval(interval);
+        return;
       }
+      countRef.current += 1;
+      setCount(countRef.current);
+      setShowTypingDots(false);
+      setTimeout(() => setShowTypingDots(true), 400);
     }, 2000);
 
     return () => clearInterval(interval);
-  }, [count, messages.length, visibleMessages.length]);
+  }, [messages.length]);
 
   useEffect(() => {
     if (endOfMessagesRef.current && visibleMessages) {

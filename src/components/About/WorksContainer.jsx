@@ -1,14 +1,32 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Works } from '../../utils/works';
-import { useMousePosition } from '../../utils/mousePosition';
+import { mousePosition, useMousePosition } from '../../utils/mousePosition';
 import { useHatBackground } from '../../hooks/useBackground';
 
 export const WorksContainer = ({ hatName }) => {
-  const mousePosition = useMousePosition();
+  useMousePosition();
+  const previewRef = useRef(null);
   const { getHexBackground } = useHatBackground();
   const dynamicColor = getHexBackground(hatName);
   const isMobileXS = window.innerWidth <= 389;
   const isMobile = window.innerWidth >= 390 && window.innerWidth <= 767;
+
+  useEffect(() => {
+    let frame;
+    const update = () => {
+      const element = previewRef.current;
+      if (element) {
+        const left =
+          window.innerWidth >= 4000
+            ? (mousePosition.x / Math.PI - 800) / 4
+            : (mousePosition.x / Math.PI - 250) / 4;
+        element.style.left = `${left}px`;
+      }
+      frame = requestAnimationFrame(update);
+    };
+    frame = requestAnimationFrame(update);
+    return () => cancelAnimationFrame(frame);
+  }, []);
 
   const handleCV = () => {
     window.open('./CV-Francisco_Agustin_Rodriguez-frontend.pdf', '_blank');
@@ -35,15 +53,7 @@ export const WorksContainer = ({ hatName }) => {
                 className="group z-50"
               >
                 <div className="relative left-[15rem]">
-                  <div
-                    style={{
-                      left:
-                        window.innerWidth >= 4000
-                          ? (mousePosition.x / Math.PI - 250 * 3.2) / 4
-                          : (mousePosition.x / Math.PI - 250) / 4,
-                    }}
-                    className="absolute"
-                  >
+                  <div ref={previewRef} className="absolute">
                     <img
                       src={work.imageURL}
                       alt={work.name}

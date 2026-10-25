@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
-import SoundOn from '../assets/images/Speaker.png';
-import SoundOff from '../assets/images/SpeakerMuted.png';
-import MusicalNote from '../assets/images/MusicalNote.png';
-import Dancing from '../assets/images/man-dancing.png';
-import Seal from '../assets/images/seal.png';
-import { Howl } from 'howler';
+import SoundOn from '../assets/images/Speaker.webp';
+import SoundOff from '../assets/images/SpeakerMuted.webp';
+import MusicalNote from '../assets/images/MusicalNote.webp';
+import Dancing from '../assets/images/man-dancing.webp';
+import Seal from '../assets/images/seal.webp';
+import { getSound } from '../utils/sounds';
 import { useMusicPlaying } from '../stores/useMusicPlaying';
 import gsap from 'gsap';
 
@@ -17,14 +17,13 @@ export const MusicIcon = ({ setDialogText }) => {
   const noteTwoRef = useRef(null);
   const isMobile = window.innerWidth < 768;
 
-  const toggleMusic = () => {
+  const toggleMusic = async () => {
     if (isMusicPlaying && sound) {
       sound.stop();
       stopMusic();
     } else {
-      const newSound = new Howl({
+      const newSound = await getSound('home-music', {
         volume: 0.07,
-        src: ['assets/sounds/home-music.mp3'],
         loop: true,
         rate: 0.9,
       });

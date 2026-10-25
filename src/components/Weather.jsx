@@ -1,14 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { GetWeather } from '../utils/getWeather';
 import gsap from 'gsap';
-import ConfettiExplosion from 'react-confetti-explosion';
+import { ConfettiExplosion } from './Confetti';
 import { useConfettiStore } from '../stores/useTriggerConfetti-Talk';
 import { useHatBackground } from '../hooks/useBackground';
-import { useScrollStore } from '../stores/useScroll';
-import { usePopupStore } from '../stores/usePopUp';
-import { applyBounceEffect } from '../utils/applyBounceEffect';
-import Party from '../assets/images/party.png';
-import Balloon from '../assets/images/balloon.png';
+import { useBounceOnScroll } from '../hooks/useBounceOnScroll';
+import { playSound } from '../utils/sounds';
+import Party from '../assets/images/party.webp';
+import Balloon from '../assets/images/balloon.webp';
 
 const WeatherData = ({ setDialogText, hatName }) => {
   const [weatherData, setWeatherData] = useState(null);
@@ -18,15 +17,14 @@ const WeatherData = ({ setDialogText, hatName }) => {
     (state) => state.setTriggerConfetti
   );
   const { getHexBackground } = useHatBackground();
-  const isScrolling = useScrollStore((state) => state.isScrolling);
-  const isPopUpOpen = usePopupStore((state) => state.isPopUpOpen);
 
-  useEffect(() => {
-    applyBounceEffect('.weatherContainer', isScrolling, isPopUpOpen);
-  }, [isScrolling, isPopUpOpen]);
+  useBounceOnScroll(() => '.weatherContainer');
 
   useEffect(() => {
     GetWeather(setWeatherData);
+  }, []);
+
+  useEffect(() => {
     gsap.to(document.documentElement, {
       duration: 0.8,
       '--bg-after': getHexBackground(hatName),
@@ -50,18 +48,10 @@ const WeatherData = ({ setDialogText, hatName }) => {
       : null;
 
   const playHoverSound = () => {
-    const sound = new Howl({
-      src: ['assets/sounds/bubble-pop-buttons.mp3'],
-      volume: 0.005,
-    });
-    sound.play();
+    playSound('bubble-pop-buttons', 0.005);
   };
   const playConfettiSound = () => {
-    const sound = new Howl({
-      src: ['assets/sounds/woo-hoo.mp3'],
-      volume: 0.07,
-    });
-    sound.play();
+    playSound('woo-hoo', 0.07);
   };
 
   const handleTriggerConfetti = () => {

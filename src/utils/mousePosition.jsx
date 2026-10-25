@@ -1,18 +1,33 @@
-import React from "react";
+import React from 'react';
+
+export const mousePosition = { x: 0, y: 0 };
+
+let activeSubscriptions = 0;
+let removeListener = null;
+
+const handleMouseMove = (event) => {
+  mousePosition.x = event.clientX;
+  mousePosition.y = event.clientY;
+};
+
+const subscribe = () => {
+  if (activeSubscriptions === 0) {
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    removeListener = () =>
+      window.removeEventListener('mousemove', handleMouseMove);
+  }
+  activeSubscriptions += 1;
+
+  return () => {
+    activeSubscriptions -= 1;
+    if (activeSubscriptions === 0 && removeListener) {
+      removeListener();
+      removeListener = null;
+    }
+  };
+};
 
 export const useMousePosition = () => {
-  const [mousePosition, setMousePosition] = React.useState({
-    x: null,
-    y: null,
-  });
-  React.useEffect(() => {
-    const updateMousePosition = (ev) => {
-      setMousePosition({ x: ev.clientX, y: ev.clientY });
-    };
-    window.addEventListener("mousemove", updateMousePosition);
-    return () => {
-      window.removeEventListener("mousemove", updateMousePosition);
-    };
-  }, []);
+  React.useEffect(() => subscribe(), []);
   return mousePosition;
 };

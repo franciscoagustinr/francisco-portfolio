@@ -1,23 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import FranciscoPhoto from '../assets/images/francisco-photo.png';
-import FranciscoFunPhoto from '../assets/images/francisco-fun-photo.png';
-import GrinningFace from '../assets/images/grinning-face.png';
+import React, { useState } from 'react';
+import FranciscoPhoto from '../assets/images/francisco-photo.webp';
+import FranciscoFunPhoto from '../assets/images/francisco-fun-photo.webp';
+import GrinningFace from '../assets/images/grinning-face.webp';
 import { usePopupStore } from '../stores/usePopUp';
-import { useScrollStore } from '../stores/useScroll';
-import { applyBounceEffect } from '../utils/applyBounceEffect';
+import { useBounceOnScroll } from '../hooks/useBounceOnScroll';
 import { useMusicPlaying } from '../stores/useMusicPlaying';
 
 export const About = ({ setDialogText }) => {
   const openPopUp = usePopupStore((state) => state.openPopUp);
-  const isScrolling = useScrollStore((state) => state.isScrolling);
   const isMusicPlaying = useMusicPlaying((state) => state.isMusicPlaying);
-  const isPopUpOpen = usePopupStore((state) => state.isPopUpOpen);
 
   const [isHovered, setIsHovered] = useState(false);
 
-  useEffect(() => {
-    applyBounceEffect('.picture-container', isScrolling, isPopUpOpen);
-  }, [isScrolling, isPopUpOpen]);
+  useBounceOnScroll(() => '.picture-container');
 
   const showHoverState = () => {
     setIsHovered(true);

@@ -1,42 +1,62 @@
-import { useEffect, useRef, useState } from 'react';
+import React, { lazy, Suspense, useEffect } from 'react';
 import { DialogBox } from './components/DialogBox';
 import { Marquee } from './components/Marquee';
 import { RRSS } from './components/RRSS';
-import { Scene } from './components/canvas/Scene';
 import { About } from './components/About';
 import { LoadingBar } from './components/LoadingBar';
 import { HandwrittenTexts } from './components/TextHandwritten';
-import { PopUpAbout } from './components/about/PopUpAbout';
 import { useHatBackground } from './hooks/useBackground';
 import { useHatStore } from './stores/useHatStore';
 import { useScrollDetector } from './hooks/useScrollDetector';
 import { useScrollStore } from './stores/useScroll';
 import { usePreloader } from './stores/usePreloader';
 import { usePopupStore } from './stores/usePopUp';
-import { getClickCount } from './utils/getClickCount';
+import { useDialogStore, setDialogText } from './stores/useDialog';
 import { Count } from './components/Count';
 import WeatherData from './components/Weather';
 import gsap from 'gsap';
 import RotatingText from './components/RotatingText';
 import { MusicIcon } from './components/MusicIcon';
-import UpsideDownSmile from './assets/images/upside-down-face.png';
+import UpsideDownSmile from './assets/images/upside-down-face.webp';
+import { Howl } from 'howler';
+import bubblePopButtons from './assets/sounds/bubble-pop-buttons.mp3';
+
+const Scene = lazy(() =>
+  import('./components/Canvas/Scene').then((module) => ({
+    default: module.Scene,
+  }))
+);
+
+const PopUpAbout = lazy(() =>
+  import('./components/About/PopUpAbout').then((module) => ({
+    default: module.PopUpAbout,
+  }))
+);
+
+const DialogLayer = () => {
+  const text = useDialogStore((state) => state.text);
+  return text ? <DialogBox text={text} /> : null;
+};
 
 function App() {
-  const [dialogText, setDialogText] = useState(null);
   const { getGradientBackground } = useHatBackground();
   const { hatName } = useHatStore();
   useScrollDetector();
-  const isScrolling = useScrollStore((state) => state.isScrolling);
   const isLoading = usePreloader((state) => state.isLoading);
   const isPopUpOpen = usePopupStore((state) => state.isPopUpOpen);
 
   useEffect(() => {
-    if (!isScrolling || isPopUpOpen) return;
-    setDialogText(
-      `Nope, everything is here! <img loading="eager" src=${UpsideDownSmile} class='inline-block w-6'/>`
-    );
-    setTimeout(() => setDialogText(''), 1800);
-  }, [isScrolling, isPopUpOpen]);
+    const unsubscribe = useScrollStore.subscribe((state, prev) => {
+      if (!state.isScrolling || state.isScrolling === prev.isScrolling) return;
+      if (usePopupStore.getState().isPopUpOpen) return;
+      setDialogText(
+        `Nope, everything is here! <img loading="eager" src=${UpsideDownSmile} class='inline-block w-6'/>`
+      );
+      setTimeout(() => setDialogText(''), 1800);
+    });
+
+    return unsubscribe;
+  }, []);
 
   useEffect(() => {
     if (isLoading) return;
@@ -106,7 +126,6 @@ function App() {
   }, [isPopUpOpen]);
 
   useEffect(() => {
-    getClickCount();
     console.log(
       '%c❤️ SITE MADE WITH LOVE BY FRANCISCO AGUSTIN ❤️',
       'background-color: #047692; color: white; padding: 20px;'
@@ -115,7 +134,7 @@ function App() {
 
   const playHoverSound = () => {
     const sound = new Howl({
-      src: ['assets/sounds/bubble-pop-buttons.mp3'],
+      src: [bubblePopButtons],
       volume: 0.01,
     });
     sound.play();
@@ -125,7 +144,9 @@ function App() {
     <div
       className={`main-container h-dvh !overflow-hidden bg-[#101720] ${isLoading && 'bg-[#101720]'}`}
     >
-      <Scene setDialogText={setDialogText} />
+      <Suspense fallback={null}>
+        <Scene setDialogText={setDialogText} />
+      </Suspense>
       {isLoading && (
         <>
           <div className="absolute inset-0 flex w-full items-center justify-center">
@@ -141,7 +162,9 @@ function App() {
           <div className="handwritten-texts absolute top-0 z-50 w-full">
             <HandwrittenTexts />
           </div>
-          <PopUpAbout hatName={hatName} />
+          <Suspense fallback={null}>
+            <PopUpAbout hatName={hatName} />
+          </Suspense>
           <div
             onMouseEnter={playHoverSound}
             className="about absolute -left-4 top-4 lg:left-2 lg:top-6"
@@ -168,7 +191,7 @@ function App() {
               ALL RIGHTS RESERVED.
             </p>
           </div>
-          {dialogText && <DialogBox text={dialogText} />}
+          <DialogLayer />
         </>
       )}
     </div>

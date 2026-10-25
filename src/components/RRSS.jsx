@@ -1,33 +1,27 @@
 import React, { useEffect, useRef } from 'react';
-import GithubLogo from '../assets/images/github.png';
-import LinkedinLogo from '../assets/images/linkedin.png';
-import CoffeeCup from '../assets/images/coffee-cup.png';
-import Seeding from '../assets/images/seeding.png';
-import Rocket from '../assets/images/rocket.png';
-import SmileFace from '../assets/images/slightly-smiling-face.png';
+import GithubLogo from '../assets/images/github.webp';
+import LinkedinLogo from '../assets/images/linkedin.webp';
+import CoffeeCup from '../assets/images/coffee-cup.webp';
+import Seeding from '../assets/images/seeding.webp';
+import Rocket from '../assets/images/rocket.webp';
+import SmileFace from '../assets/images/slightly-smiling-face.webp';
 import gsap from 'gsap';
-import { useScrollStore } from '../stores/useScroll';
-import { usePopupStore } from '../stores/usePopUp';
-import { applyBounceEffect } from '../utils/applyBounceEffect';
+import { useBounceOnScroll } from '../hooks/useBounceOnScroll';
+import { playSound } from '../utils/sounds';
 
 export const RRSS = ({ setDialogText }) => {
   const githubRef = useRef(null);
   const linkedinRef = useRef(null);
   const coffeeRef = useRef(null);
-  const elementsRef = [
+
+  useBounceOnScroll(() => [
     githubRef.current,
     linkedinRef.current,
     coffeeRef.current,
-  ];
-  const isScrolling = useScrollStore((state) => state.isScrolling);
-  const isPopUpOpen = usePopupStore((state) => state.isPopUpOpen);
+  ]);
 
   const playHoverSound = () => {
-    const sound = new Howl({
-      src: ['assets/sounds/elastic.mp3'],
-      volume: 0.06,
-    });
-    sound.play();
+    playSound('elastic', 0.06);
   };
 
   const initHoverEffect = (el) => {
@@ -115,10 +109,6 @@ export const RRSS = ({ setDialogText }) => {
       cleanupCoffe();
     };
   }, []);
-
-  useEffect(() => {
-    applyBounceEffect(elementsRef, isScrolling, isPopUpOpen);
-  }, [isScrolling, isPopUpOpen]);
 
   return (
     <>

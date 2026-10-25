@@ -1,34 +1,23 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { getClickCount } from '../utils/getClickCount';
-import { useScrollStore } from '../stores/useScroll';
-import { usePopupStore } from '../stores/usePopUp';
-import { applyBounceEffect } from '../utils/applyBounceEffect';
+import { useBounceOnScroll } from '../hooks/useBounceOnScroll';
 import { usePreloader } from '../stores/usePreloader';
 import { useHatStore } from '../stores/useHatStore';
+import { useClickCountStore } from '../stores/useClickCount';
 import gsap from 'gsap';
 
 export const Count = () => {
-  const [clickCount, setClickCount] = useState(null);
-  const countIndicatorContainerRef = useRef();
   const [isAnimatingCount, setIsAnimatingCount] = useState(false);
   const isLoading = usePreloader((state) => state.isLoading);
   const { hatName } = useHatStore();
-  const isScrolling = useScrollStore((state) => state.isScrolling);
-  const isPopUpOpen = usePopupStore((state) => state.isPopUpOpen);
+  const clickCount = useClickCountStore((state) => state.count);
+  const loadClickCount = useClickCountStore((state) => state.load);
+  const countIndicatorContainerRef = useRef();
+
+  useBounceOnScroll(() => countIndicatorContainerRef.current);
 
   useEffect(() => {
-    const fetchClickCount = async () => {
-      const count = await getClickCount();
-      if (count !== null) {
-        setClickCount(count);
-      }
-    };
-    fetchClickCount();
-  }, [hatName]);
-
-  useEffect(() => {
-    applyBounceEffect(countIndicatorContainerRef.current, isScrolling, isPopUpOpen);
-  }, [isScrolling, isPopUpOpen]);
+    loadClickCount();
+  }, [loadClickCount]);
 
   useEffect(() => {
     if (isLoading) return;
